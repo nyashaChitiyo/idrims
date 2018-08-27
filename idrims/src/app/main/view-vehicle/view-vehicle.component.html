@@ -1,0 +1,43 @@
+<div class="content-wrapper">
+    <section class="content col-md-10">
+    <div class="box col-md-4" >
+    <div align="center" class="box-header with-border">
+      <h3 class="box-title"><b>Vehicle Reg Number</b></h3>
+    </div>
+    <!-- /.box-header --> 
+    <!-- form start -->
+      <div class="box-body" *ngFor= "let vehicle of vehicles">
+          <div class="row">
+        <div class="form-group col-md-6">
+          <label for="vrn">Vehicle Reg Number</label>{{vehicle.vehicleRegistrationNumber}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="make">Make</label>{{vehicle.make}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="model">Model</label>{{vehicle.model}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Vehicle Ownership</label>{{vehicle.vehicleOwnership}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Vehicle Usage</label>{{vehicle.vehicleUsage}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="createdBy">Created By</label>{{vehicle.createdBy}}
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Updated By</label>{{vehicle.updatedBy}}
+        </div>
+      </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+      <div class="box-footer" align="center">
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/verifiedVehicles"> Close</button>
+      </div>
+    </section>
+
+
+
+ 

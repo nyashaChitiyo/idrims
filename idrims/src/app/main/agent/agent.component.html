@@ -1,0 +1,26 @@
+<div class="content-wrapper">
+<section id="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+          <img src="../../../assets/avatar.png" class="img-rounded" alt="Cinque Terre">
+      </div>
+      <div class="col-md-9">
+        <form>
+                    <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
+                    <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control">
+                    <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
+                    <label>Role:</label><input [disabled]="isEdit" type="text" [(ngModel)]="role" name="firstNa" class="form-control">
+                    <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
+                    <div class="form-group">
+                      <div class="row col-md-3">
+                    <button class="btn btn-primary margin-bottom" (click)="isDisabled()">Edit</button>
+                    <button class="btn btn-primary margin-bottom">save</button>
+                  </div>
+                  </div>
+        </form>
+          </div>  
+      </div>
+  </div>
+</section>
+</div>

@@ -1,0 +1,42 @@
+[
+  {
+    "phoneNumber": "0775503141",
+    "firstName": "Nyasha",
+    "surName": "Chitiyo",
+    "role": "Agent",
+    "id":0,
+    "station":"Joina"
+  },
+  {
+    "phoneNumber": "0774392102",
+    "firstName": "Clive",
+    "surName": "Kandla",
+    "role": true,
+    "id":1,
+    "station":"First"
+  },
+  {
+    "phoneNumber": "0733903261",
+    "firstName": "Chipo",
+    "surName": "Sango",
+    "role": "Agent",
+    "id":2,
+    "station":"Queensdale"
+  },
+  {
+    "phoneNumber": "0775934543",
+    "firstName": "Anesha",
+    "surName": "Masuka",
+    "role": "Agent",
+    "id":3,
+    "station":"Mabvuku"
+  },
+  {
+    "phoneNumber": "0772938432",
+    "firstName": "Paida",
+    "surName": "Moyo",
+    "role": "Agent",
+    "id":4,
+    "station":"Mbare"
+  }
+]

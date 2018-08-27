@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+
+  <!--Mailbox Div-->
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+        <button type="button" name="addInsComp" id="addInsComp" class="btn btn-primary btn-block margin-bottom" routerLink="/addInsComp">Add Insurance Company</button>
+      </form>
+
+    </div>
+  </div>
+  <!--general-->
+  <div class="box">
+      <div align="center" class="box-header">
+        <h1 class="box-title"><b>Insurance Companies</b></h1>
+      </div>
+      <hr>
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-hover" id="" cellspacing="0">
+          <thead>
+          <tr>
+            <th><h4><b>Code</b></h4></th>
+            <th><h4><b>Company Name</b></h4></th>
+            <th><h4><b>Address</b></h4></th>
+            <th><h4><b>Contact</b></h4></th>
+          </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let company of companies">
+                <td>{{company.code}}</td>
+                <td>{{company.name}}</td>
+                <td>{{company.address}}</td>
+                <td>{{company.contact}}</td>
+                <button>view</button>
+              </tr>
+              </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+
+
+  </div>
+
+
+
+

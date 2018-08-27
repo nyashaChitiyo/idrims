@@ -1,0 +1,48 @@
+<div class="login-box">
+  <div class="login-logo">
+    <img src="../../../assets/img/ecosure-auto-logo.png">
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+      <div class="form-group has-feedback">
+        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Username">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+      </div>
+      <div class="form-group has-feedback">
+        <input type="password" [(ngModel)]="password" class="form-control" placeholder="Password">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="checkbox icheck">
+            <label>
+              <input type="checkbox"> Remember Me
+            </label>
+          </div>
+        </div>
+        <!-- /.col -->
+        <div class="col-xs-4">
+          <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </div>
+
+    <a routerLink="/">I forgot my password</a><br>
+    <a routerLink="/" class="text-center">Register a new membership</a>
+
+  </div>
+  <!-- /.login-box-body -->
+<app-loading *ngIf="loading.loading"></app-loading>
+<!-- /.login-box -->
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass: 'iradio_square-blue',
+      increaseArea: '20%' /* optional */
+    });
+  });
+</script>

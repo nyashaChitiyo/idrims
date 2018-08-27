@@ -1,0 +1,62 @@
+<div class="content-wrapper">
+    <section class="content col-md-10">
+    <div class="box col-md-4" >
+    <div align="center" class="box-header with-border">
+      <h3 class="box-title"><b>REGISTER USER</b></h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+      <div class="box-body">
+          <div class="row">
+        <div class="form-group col-md-6">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="firstName" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="surname">Surname</label>
+          <input type="text" class="form-control" id="surname" [(ngModel)]="surname" placeholder="Last Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nationalId">NationalId</label>
+          <input type="text" class="form-control" id="nationalId" [(ngModel)]="nationalId" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="number" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Status</label>
+            <select class="form-control" name="vType" required>
+                <option selected  style="display: none;" >Select Status</option>
+                <option value="Active">Active </option>
+                <option value="Deactive">Deactivate</option>
+              </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Station</label>
+            <select class="form-control" name="vType" required>
+                <option selected  style="display: none;" >Select Station</option>
+                <option value="A">A </option>
+                <option value="B">B</option>
+              </select>
+        </div>
+      </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer" align="center">
+        <button (click)="postProfile()" type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/userManagement"> Cancel</button>
+      </div>
+    </section>
+
+

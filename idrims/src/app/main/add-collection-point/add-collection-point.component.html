@@ -1,0 +1,49 @@
+<div class="content-wrapper">
+    <section class="content-header">
+      <h1>
+        Collection Points
+      </h1>
+    </section>
+    <section align= "center" class="content">
+    <div class="box">
+    <div class="box-header with-border">
+      <h3 class="box-title">Add Collection Point</h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+      <div class="box-body">
+        <div class="form-group col-md-6">
+          <label for="firstName">Collection Point Name</label>
+          <input type="text" class="form-control" id="firstName" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="Address">Address</label>
+          <input type="text" class="form-control" id="Address" placeholder="Address">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="number" class="form-control" id="phoneNumber" placeholder="Phone">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" placeholder="Enter email">
+        </div>
+        <div class="form-groupcol-md-6">
+            <label for="email">Status</label>
+            <select class="form-control" name="vType" required>
+                <option selected  style="display: none;" >Select Status</option>
+                <option value="Active">Active </option>
+                <option value="Deactive">Deactivate</option>
+              </select>
+        </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/collectionPoints"> Cancel</button>
+      </div>
+    </section>
+
+

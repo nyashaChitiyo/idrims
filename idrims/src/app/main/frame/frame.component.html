@@ -1,0 +1,13 @@
+
+<div class="wrapper" id="wrapper" style="min-height: 900px">
+<app-header *ngIf="session.isLoggedIn"></app-header>
+<app-sidebar *ngIf="session.isLoggedIn"></app-sidebar>
+<!-- Content Wrapper. Contains page content -->
+<router-outlet></router-outlet>
+<!-- /.content-wrapper -->
+<app-footer *ngIf="session.isLoggedIn"></app-footer>
+  <!-- Add the sidebar's background. This div must be placed
+     immediately after the control sidebar -->
+  <div class="control-sidebar-bg" *ngIf="session.isLoggedIn"></div>
+  <!-- ./wrapper -->
+</div>

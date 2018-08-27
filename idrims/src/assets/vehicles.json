@@ -1,0 +1,38 @@
+[
+  {
+    "createdAt": "2018-08-25T09:56:20.382Z",
+    "createdBy": "Nyasha",
+    "id": 0,
+    "status": true,
+    "updatedAt": "2018-08-25T09:56:20.382Z",
+    "updatedBy": "nyasha",
+    "vehicleRegistrationNumber": "ADC9823"
+  },
+  {
+    "createdAt": "2018-08-25T09:56:20.382Z",
+    "createdBy": "nyasha",
+    "id": 1,
+    "status": true,
+    "updatedAt": "2018-08-25T09:56:20.382Z",
+    "updatedBy": "nyasha",
+    "vehicleRegistrationNumber": "BDA6732"
+  },
+  {
+    "createdAt": "2018-08-25T09:56:20.382Z",
+    "createdBy": "nyasha",
+    "id": 2,
+    "status": true,
+    "updatedAt": "2018-08-25T09:56:20.382Z",
+    "updatedBy": "nyasha",
+    "vehicleRegistrationNumber": "CAA9034"
+  },
+  {
+    "createdAt": "2018-08-25T09:56:20.382Z",
+    "createdBy": "nyasha",
+    "id": 3,
+    "status": true,
+    "updatedAt": "2018-08-25T09:56:20.382Z",
+    "updatedBy": "nyasha",
+    "vehicleRegistrationNumber": "ACD8976"
+  }
+]
