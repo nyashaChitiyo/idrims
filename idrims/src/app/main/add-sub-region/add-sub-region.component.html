@@ -1,0 +1,42 @@
+<div class="content-wrapper">
+    <br>
+      <section align= "center" class="content">
+      <div class="box">
+      <div class="box-header with-border">
+        <br>
+        <h3 class="box-title"><b>ADD SUB-REGION</b></h3>
+      </div>
+      <hr>
+      <!-- /.box-header -->
+      <!-- form start -->
+        <div class="box-body">
+            <div class="form-group col-md-4">
+                <label for="email">Region</label>
+                <select class="form-control" name="vType" required>
+                    <option selected  style="display: none;" >Select Region</option>
+                    <option value="Harare">Harare </option>
+                    <option value="Bulawayo">Bulawayo</option>
+                    <option value="Midlands">Midlands </option>
+                    <option value="Manicaland">Manicaland</option>
+                  </select>
+            </div>
+          <div class="form-group col-md-4">
+            <label for="regionName">Sub-Region ID</label>
+            <input type="text" class="form-control" id="regionName" placeholder="regionName"required>
+          </div>
+          <div class="form-group col-md-4">
+              <label for="regionName">Sub-Region Name</label>
+              <input type="text" class="form-control" id="regionName" placeholder="regionID"required>
+            </div>
+        </div>
+        </div>
+        <!-- /.box-body -->
+  
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary" (click)="postSubRegion()">Submit</button>
+          <button class="btn btn-warning" aria-hidden="true" routerLink ="/subRegions"> Cancel</button>
+        </div>
+      </section>
+  
+  
+  

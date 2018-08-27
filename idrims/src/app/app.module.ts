@@ -35,6 +35,11 @@ import { ViewAgentsComponent } from './main/view-agents/view-agents.component';
 import { VerifiedVehiclesComponent } from './main/verified-vehicles/verified-vehicles.component';
 import {AgentComponent} from './main/agent/agent.component';
 import { ViewVehicleComponent } from './main/view-vehicle/view-vehicle.component';
+import { LocationsComponent } from './main/locations/locations.component';
+import { RegionsComponent } from './main/regions/regions.component';
+import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
+import { AddRegionComponent} from './main/add-region/add-region.component';
+import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -67,7 +72,13 @@ import { JwtModule } from '@auth0/angular-jwt';
     ViewAgentsComponent,
     ViewCustomersComponent,
     VerifiedVehiclesComponent,
-    ViewVehicleComponent
+    ViewVehicleComponent,
+    ViewVehicleComponent,
+    LocationsComponent,
+    RegionsComponent,
+    SubRegionsComponent,
+    AddSubRegionComponent,
+    AddRegionComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,12 @@ import { ViewAgentsComponent } from './main/view-agents/view-agents.component';
 import { ViewCustomersComponent } from './main/view-customers/view-customers.component';
 import { VerifiedVehiclesComponent } from './main/verified-vehicles/verified-vehicles.component';
 import { ViewVehicleComponent } from './main/view-vehicle/view-vehicle.component';
+import { LocationsComponent} from './main/locations/locations.component';
+import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
+import { RegionsComponent} from './main/regions/regions.component';
+import { AddRegionComponent} from './main/add-region/add-region.component';
+import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -39,6 +45,11 @@ const appRoutes: Routes = [
   {path: 'viewCustomers', component: ViewCustomersComponent, canActivate: [AuthGuard]},
   {path: 'verifiedVehicles', component: VerifiedVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'viewVehicle', component: ViewVehicleComponent, canActivate: [AuthGuard]},
+  {path: 'locations', component: LocationsComponent, canActivate: [AuthGuard]},
+  {path: 'regions', component: RegionsComponent, canActivate: [AuthGuard]},
+  {path: 'subRegions', component: SubRegionsComponent, canActivate: [AuthGuard]},
+  {path: 'addRegions', component: AddRegionComponent, canActivate: [AuthGuard]},
+  {path: 'addSubRegions', component: AddSubRegionComponent, canActivate: [AuthGuard]},
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
 
   {path: '**', component: PageNotFoundComponent}

@@ -22,32 +22,7 @@ export class SessionsService {
     });
     this.getIsloggedIn();
   }
-  // login(username: string, password: string) {
-  //   const userCredentials = {
-  //     'phoneNumberOrEmail' : username,
-  //     'password' : password
-  //   };
-  //   this.loading.onRequestStarted();
-  //   const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
-  //   this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials,{headers}).subscribe(data => {
-  //     if (data['token'] != null) {
-  //       localStorage.setItem('token', data['token']);
-  //       localStorage.setItem('loggedIn', 'true');
-  //       localStorage.setItem('phoneNumberOrEmail', username);
-  //       localStorage.setItem('fullName', 'Andrew Sithole');
-  //       localStorage.setItem('userType', 'AGENT01');
-  //       localStorage.setItem('userStation', '1');
-  //       localStorage.setItem('nationalId', '25000000Z91');
-  //       this.isLoggedIn = true;
-  //       this.router.navigate(['/'], { replaceUrl: true });
-  //       // this.getUserInformation();
-  //     }
-  //   },
-  //       error => {
-  //         this.loading.onRequestFinished();
-  //         console.log(error.message);
-  //       });
-  // }
+  
   login(username: string, password: string) {
     const userCredentials = {
       'phoneNumberOrEmail' : username,
@@ -62,7 +37,7 @@ export class SessionsService {
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('phoneNumberOrEmail', username);
         localStorage.setItem('firstname', data['firstname']);
-        localStorage.setItem('fullName', 'Andrew Sithole');
+        localStorage.setItem('fullName', data['firstname']);
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
@@ -121,79 +96,3 @@ export class SessionsService {
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
-//////////////////////////////////////////////////////////////////////////////
-
-// @Injectable()
-// export class SessionsService {
-//   isLoggedIn: boolean;
-//   currentUrl: string;
-//   redirectUrl: string;
-
-//   constructor(private router: Router, private httpClient: HttpClient, private loading: LoadingIndicatorService) {
-//     router.events.subscribe((event: Event) => {
-//       if (event instanceof RouterEvent ) {
-//         console.log('The current url is ??? : ' + event.url);
-//         this.currentUrl = event.url;
-//       }
-//     });
-//     this.getIsloggedIn();
-//  }
-  // login(phoneNumberOrEmail: string, password: string) {
-  //   const userCredentials = {
-  //     'username' : phoneNumberOrEmail,
-  //     'password' : password
-  //   };
-  //   this.loading.onRequestStarted();
-  //   this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials).subscribe(data => {
-  //     if (data['token'] != null) {
-  //       localStorage.setItem('token', data['token']);
-  //       localStorage.setItem('loggedIn', 'true');
-  //       localStorage.setItem('usernmae', phoneNumberOrEmail);
-  //       localStorage.setItem('fullName', 'Andrew Sithole');
-  //       localStorage.setItem('userType', 'AGENT01');
-  //       localStorage.setItem('userStation', '1');
-  //       localStorage.setItem('nationalId', '25000000Z91');
-  //       this.isLoggedIn = true;
-  //       this.router.navigate(['/'], { replaceUrl: true });
-  //       // this.getUserInformation();
-  //     }
-  //   },
-  //       error => {
-  //         this.loading.onRequestFinished();
-  //         console.log(error.message);
-  //       });
-  // }
-  //////////////////////////////////////////
-
-  // login(phoneNumberOrEmail: string, password: string) {
-  //   const userCredentials = {
-  //     'username' : phoneNumberOrEmail,
-  //     'password' : password
-  //   };
-  //   this.loading.onRequestStarted();
-  //   const headers = new HttpHeaders(
-  //     {
-  //       'Content-Type': 'Application/json',
-  //       'Access-Control-Allow-Origin':'*',
-  //     }
-  //   ).set(InterceptorSkipHeader, 'True');
-  //   this.httpClient.post('https://reqres.in/api/login', 
-  //   userCredentials, {headers}).subscribe(data => {
-  //     console.log('token: ' + data['token']);
-  //     if (data['token'] != null) {
-  //       localStorage.setItem('token', data['token']);
-  //       localStorage.setItem('loggedIn', 'true');
-  //       localStorage.setItem('username', phoneNumberOrEmail);
-  //       localStorage.setItem('fullName', 'Andrew Sithole');
-  //       // localStorage.setItem('userType', 'AGENT01');
-  //       // localStorage.setItem('userStation', '1');
-  //       // localStorage.setItem('nationalId', '25000000Z91');
-  //       this.isLoggedIn = true;
-  //       this.router.navigate(['/'], { replaceUrl: true });
-  //       // this.getUserInformation(username);
-  //     }
-  //   },
-  //       error => {
-  //         this.loading.onRequestFinished();
-  //         console.log(error.message);
-  //       })
