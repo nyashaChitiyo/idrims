@@ -9,6 +9,7 @@ export class RegionsComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit() {
   }
 

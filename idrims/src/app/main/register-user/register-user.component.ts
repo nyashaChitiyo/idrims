@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-register-user',
@@ -11,27 +12,29 @@ export class RegisterUserComponent implements OnInit {
 
   email: string;
   firstname: string;
-  nationalId: string;
+  nationalID: string;
   password: string;
   phoneNumber: string;
   surname: string;
   userGroup: string;
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private httpClient: HttpClient) {}
 
   postProfile(){
 
     
-    this.httpClient.post('https://reqres.in/api/users',
+    this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
     'firstname' : this.firstname,
     'email' : this.email,
-    'nationalID':  this.nationalId,
+    'nationalId':  this.nationalID,
     'password' : this.password,
     'phoneNumber': this.phoneNumber,
     'surname': this.surname,
     'userGroup':'Agent',
-    'roles': [
+    'roles': [ 
       {
         'created': new Date(),
         'description': 'Agent',
@@ -46,29 +49,22 @@ export class RegisterUserComponent implements OnInit {
 
   })
   .subscribe(data => {
-    if (data['statusMessage'] === 'OK') {
-      console.log('Success', + data);
+    if (data['success'] === true) {       
+      console.log('failed',+ data);
+      //this.successSwal.show();
       this.reset();
     } else {
       console.log('failed',+ data);
-      //this.failedSwal.show();
+      this.failedSwal.show();
     }
   }, error => {
     console.log(Response);
     //this.failedSwal.show();
   }); 
-    //  .subscribe(
-    //    (data:any[])=> {
-    //      console.log(data);
-    //      //if(data.length) {
-    //       //  this.phone = data[0].phone;
-    //       //  this.found = true;
-    //    }
-    //  )
   }
   reset() {
     this.firstname = '';
-    this.nationalId = '';
+    this.nationalID = '';
     this.phoneNumber = '';
     this.email = '';
     this.surname = '';

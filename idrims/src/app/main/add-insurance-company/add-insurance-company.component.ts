@@ -15,7 +15,7 @@ export class AddInsuranceCompanyComponent implements OnInit {
     contact: string;
     description: string;
     email: string;
-    name: string;
+    name: string; 
     type: string;
     @ViewChild('successSwal') private successSwal: SwalComponent;
     @ViewChild('failedSwal') private failedSwal: SwalComponent;

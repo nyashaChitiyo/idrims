@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicesService } from '../../services.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-add-region',
@@ -7,9 +10,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddRegionComponent implements OnInit {
 
-  constructor() { }
+
+  id: 0;
+  name: string;
+
+
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
+  }
+
+  postRegion(){
+    this.httpClient.post('http://108.61.174.41:7070/api/location/create/Region',
+  {
+    'name': this.name,
+
+  })
+  .subscribe(data => {
+    if (data['success'] === true) {        
+      console.log(data['message'], + data['message']);
+      this.reset();
+    } else {
+      console.log('failed',+ data);
+      
+    }
+  }, error => {
+    console.log(Response);
+  }); 
+
+  }
+  reset(){
+    this.name = '';
   }
 
 }
