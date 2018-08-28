@@ -6,7 +6,11 @@
     "status": true,
     "updatedAt": "2018-08-25T09:56:20.382Z",
     "updatedBy": "nyasha",
-    "vehicleRegistrationNumber": "ADC9823"
+    "vehicleRegistrationNumber": "ADC9823",
+    "vehicleInfo": {
+      "make": "string",
+      "model": "string"
+    }
   },
   {
     "createdAt": "2018-08-25T09:56:20.382Z",

@@ -22,6 +22,10 @@ export class VerifyVehicleComponent implements OnInit {
     //  this.getVehicle();
     })
   }
+
+  saveVehicle(){
+    
+  }
   /*async getVehicle(event ?: any){
     if(event){
       this.vehicle = null;

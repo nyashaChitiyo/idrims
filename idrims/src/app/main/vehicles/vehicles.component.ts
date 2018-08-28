@@ -19,29 +19,31 @@ export class VehiclesComponent implements OnInit {
     console.log(vehicle)
     this.router.navigate(['/vehicles'], vehicle);
   }
+
   ngOnInit() { 
   }
 
-  /*getVehicle(){
-    this.httpClient.get('http://108.61.174.41:7070/api/vehicles/view/all')
+  getVehicle(){
+    this.demo.get('http://108.61.174.41:7070/api/vehicles/view/all')
     .subscribe(
       (data)=> {
         let arr = [];
         arr.push(data)
-        this.vehicles = arr[1];
-        console.log(data);
+        this.vehicles = arr[0];
+        console.log(this.vehicles);
 
       }
     ) 
-  }*/
+  }
 
-  getVehicle(){
+  /*getVehicle(){
     this.demo.getVehicles()
     .subscribe(data => {
       let arr=[]; 
+      //console.log(data)
       arr.push(data);
       this.vehicles = arr[0];
-      console.log(this.vehicles)
+      //console.log(this.vehicles)
     });
-  }
+  }*/
 }
