@@ -24,7 +24,6 @@ export class AddRegionComponent implements OnInit {
     this.httpClient.post('http://108.61.174.41:7070/api/location/create/Region',
   {
     'name': this.name,
-
   })
   .subscribe(data => {
     if (data['success'] === true) {        

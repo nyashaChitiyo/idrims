@@ -12,15 +12,15 @@
                   <div class="row">
                   <div class="form-group col-md-4">
                     <label>Vehicle Make</label>
-                    <input class="form-control" type="text" id="vMake" [(ngModel)]="vMake" placeholder="Vehicle make" required>
+                    <input class="form-control" type="text" id="vMake" [(ngModel)]="vMake" name="vMake" placeholder="Vehicle make" required>
                     </div>
                   <div class="form-group col-md-4">
                     <label>Vehicle Model</label>
-                    <input class="form-control" type="text" id="vModel" [(ngModel)]="vModel" placeholder="Vehicle model" required>
+                    <input class="form-control" type="text" id="vModel" [(ngModel)]="vModel" name="vModel" placeholder="Vehicle model" required>
                     </div>
                     <div class="form-group col-md-4">
                     <label>Vehicle Type</label>
-                    <select class="form-control" id="vType" [(ngModel)]="vType" required>
+                    <select class="form-control" id="vType" [(ngModel)]="vType" name="vType"required>
                       <option selected  style="display: none;" >choose type</option>
 
                       <option value="Private">Private </option>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="form-group col-md-4">
                     <label>Vehicle Usage</label>
-                    <select class="form-control" id="vUsage" [(ngModel)]="vUsage" required>
+                    <select class="form-control" id="vUsage" [(ngModel)]="vUsage" name="vUsage" required>
                       <option selected  style="display: none;" >choose usage</option>
 
                       <option value="Private">Private</option>
@@ -38,26 +38,26 @@
                     </div>
                     <div class="form-group col-md-4">
                     <label>Insurance Expiry</label>
-                    <input class="form-control" type="date" required id="InsExp" [(ngModel)]="InsExp">
+                    <input class="form-control" type="date" required id="InsExp" [(ngModel)]="InsExp" name="InsExp">
                     </div>
                     <div class="form-group col-md-4">
                     <label>Licencing Tax Class</label>
-                    <select class="form-control" id="licTaxClass" [(ngModel)]="licTaxClass" required>
+                    <select class="form-control" id="licTaxClass" [(ngModel)]="licTaxClass" name ="licTaxClass" required>
                       <option selected  style="display: none;">Licencing Tax Class</option>
                       <option><a href="#"></a></option>
                     </select>
                     </div>
                     <div class="form-group col-md-4">
                     <label>Licencing Expiry</label>
-                    <input class="form-control" type="date" required id="licExp" [(ngModel)]="licExp">
+                    <input class="form-control" type="date" required id="licExp" [(ngModel)]="licExp" name="licExp">
                     </div>
                     <div class="form-group col-md-4">
                     <label>Licencing Arrears</label>
-                    <input class="form-control" type="number" id="licArreas" [(ngModel)]="licArreas" placeholder="Licencing areas" required>
+                    <input class="form-control" type="number" id="licArreas" [(ngModel)]="licArreas" name="licArreas" placeholder="Licencing areas" required>
                     </div>
                     <div class="form-group col-md-4">
                     <label>Insurance Tax Class</label>
-                    <select class="form-control" id="insTaxClass" [(ngModel)]="insTaxClass" required>
+                    <select class="form-control" id="insTaxClass" [(ngModel)]="insTaxClass" name="insTaxClass" required>
                       <option selected  style="display: none;">Licencing Tax Class</option>
                       <option><a href="#"></a></option>
                     </select>

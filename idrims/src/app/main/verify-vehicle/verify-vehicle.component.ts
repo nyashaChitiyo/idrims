@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { DemoService } from '../../demo.service';
 
 @Component({
   selector: 'app-verify-vehicle',
@@ -13,7 +14,17 @@ export class VerifyVehicleComponent implements OnInit {
   vehicle:any;
   page=1;
 
-  constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { }
+  vMake = '';
+  vModel = '';
+  vType = '';
+  vUsage = '';
+  InsExp = '';
+  licExp = '';
+  licArrears = '';
+  licTaxClass = '';
+  insTaxClass = '';
+
+  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res =>{
@@ -24,7 +35,13 @@ export class VerifyVehicleComponent implements OnInit {
   }
 
   saveVehicle(){
-    
+    this.demo.post("http://108.61.174.41:7070/api/vehicles/update",{
+        "vehicleMake": this.vMake,
+        "vehicleModel": this.vModel,
+        "vehicleOwnership": this.vType,
+        "vehicleRegNum": this.vehicleVRN,
+        "vehicleUsage": this.vUsage
+    });
   }
   /*async getVehicle(event ?: any){
     if(event){

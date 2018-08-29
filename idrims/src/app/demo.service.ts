@@ -16,6 +16,7 @@ export class DemoService {
   //private url: string = "http://108.61.174.41:7070/api/vehicles/view/all";
   private createVehile: string = "http://108.61.174.41:7070/api/vehicles/create";
   private agents_url: string = "../assets/agents.json";
+  
   constructor(private http: HttpClient) { }
   get(url:string){
     return this.http.get(url);
