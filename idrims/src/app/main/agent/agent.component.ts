@@ -19,6 +19,7 @@ export class AgentComponent implements OnInit {
   surname: string;
   role: string;
   station: string;
+  userStatus: boolean ;
   isEdit: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
@@ -40,6 +41,7 @@ export class AgentComponent implements OnInit {
       this.surname= params['surName'];
       this.role= params['role'];
       this.station= params['station'];
+      this.userStatus = params['userStatus'];
     })
   }
 

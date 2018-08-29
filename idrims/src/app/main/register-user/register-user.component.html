@@ -58,5 +58,21 @@
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/userManagement"> Cancel</button>
       </div>
     </section>
+    <swal
+    #successSwal
+    title="Success"
+    text="Successfully Registered Vehicle"
+    type="success"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+  <swal
+    #failedSwal
+    title="Failed"
+    text="An error occured while processing your request"
+    type="warning"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
 
-
+ 

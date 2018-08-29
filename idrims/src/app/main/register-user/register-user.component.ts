@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
@@ -23,7 +24,7 @@ export class RegisterUserComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
 
   postProfile(){
-
+ 
     
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
@@ -49,17 +50,15 @@ export class RegisterUserComponent implements OnInit {
 
   })
   .subscribe(data => {
-    if (data['success'] === true) {       
-      console.log('failed',+ data);
-      //this.successSwal.show();
+    if (data['success'] === true) {  
+     this.successSwal.show();
       this.reset();
     } else {
-      console.log('failed',+ data);
       this.failedSwal.show();
     }
   }, error => {
     console.log(Response);
-    //this.failedSwal.show();
+    this.failedSwal.show();
   }); 
   }
   reset() {

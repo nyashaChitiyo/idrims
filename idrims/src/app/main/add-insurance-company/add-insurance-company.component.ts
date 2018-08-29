@@ -38,18 +38,18 @@ export class AddInsuranceCompanyComponent implements OnInit {
     })
     .subscribe(data => {
       if (data['success'] === true) {        
-        //this.successSwal.show();
-       // setTimeout(function(){ this.successSwal.showAlert(); },0)
+        this.successSwal.show();
+        setTimeout(function(){ this.successSwal.showAlert(); },0)
         console.log(data['message'], + data['message']);
         this.reset();
       } else {
         console.log('failed',+ data);
-        //this.failedSwal.showAlert();
+        this.failedSwal.show();
         
       }
     }, error => {
       console.log(Response);
-      //this.failedSwal.show();
+      this.failedSwal.show();
     }); 
     }
     reset() {

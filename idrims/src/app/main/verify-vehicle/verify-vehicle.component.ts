@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
-
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 @Component({
   selector: 'app-verify-vehicle',
   templateUrl: './verify-vehicle.component.html',
@@ -24,6 +25,9 @@ export class VerifyVehicleComponent implements OnInit {
   licTaxClass = '';
   insTaxClass = '';
 
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
+
   constructor(private activatedRoute: ActivatedRoute, private demo: DemoService) { }
 
   ngOnInit() {
@@ -41,7 +45,26 @@ export class VerifyVehicleComponent implements OnInit {
         "vehicleOwnership": this.vType,
         "vehicleRegNum": this.vehicleVRN,
         "vehicleUsage": this.vUsage
-    });
+    })
+    .subscribe(data => {
+      if (data['status'] === "Success") {  
+       this.successSwal.show();
+        this.reset();
+      } else {
+        this.failedSwal.show();
+      }
+    }, error => {
+      console.log(Response);
+      this.failedSwal.show();
+    }); 
+    }
+    reset() {
+      this.vMake = '';
+      this.vModel = '';
+      this.vType = '';
+      this.vehicleVRN = '';
+      this.vUsage = '';
+    }
   }
   /*async getVehicle(event ?: any){
     if(event){
@@ -59,4 +82,3 @@ export class VerifyVehicleComponent implements OnInit {
      console.log(['error']);
     }
   }*/
-}

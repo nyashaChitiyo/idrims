@@ -20,12 +20,10 @@
           <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
           <label>Role:</label><input [disabled]="isEdit" type="text" [(ngModel)]="role" name="firstNa" class="form-control">
           <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
-          <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
-          <label for="type">Type</label>
+          <label for="type">Status</label>
           <select class="form-control" name="type" required>
-              <option selected  style="display: none;" >Select Type</option>
-              <option value="Active">Category 1 </option>
-              <option value="Deactive">Category 2</option>
+              <option selected  style="display: none;" >Change Status</option>
+              <option value="false"[disabled]="isEdit"  [(ngModel)]="userStatus">Deactivate</option>
             </select>
         </div>
       </div>
