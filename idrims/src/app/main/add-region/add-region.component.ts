@@ -13,6 +13,7 @@ export class AddRegionComponent implements OnInit {
 
   id: 0;
   name: string;
+  code: string;
 
 
   constructor(private httpClient: HttpClient) { }
@@ -23,7 +24,8 @@ export class AddRegionComponent implements OnInit {
   postRegion(){
     this.httpClient.post('http://108.61.174.41:7070/api/location/create/Region',
   {
-    'name': this.name,
+    'code':this.code,
+    'name': this.name
   })
   .subscribe(data => {
     if (data['success'] === true) {        
