@@ -24,7 +24,9 @@ export class VehiclesComponent implements OnInit {
   }
 
   getVehicle(){
-    this.demo.get('http://108.61.174.41:7070/api/vehicles/view/all')
+    this.demo.post('http://108.61.174.41:7070/api/vehicles/view/verificationStatus',{
+      "bool": false
+    })
     .subscribe(
       (data)=> {
         let arr = [];

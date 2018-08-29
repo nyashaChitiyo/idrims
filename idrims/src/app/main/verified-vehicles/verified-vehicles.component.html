@@ -18,19 +18,23 @@
         <table class="table table-hover" id="monthlyTable" cellspacing="0">
           <thead>
           <tr>
-            <th>Transaction ID</th>
+            <th>Vehicle Make</th>
+            <th>Vehicle Model</th>
             <th>Vehicle Reg Number</th>
-            <th>Phone Number</th>
-            <th>Status</th>
+            <th>Ownership</th>
+            <th>Usage</th>
+            <th>Expiring Date</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Test</td>
-            <td>Verified</td>
-            <button type="button" name="verifVehicle" routerLink="/viewVehicle">View</button>
+          <tr *ngFor="let vehicle of vehicles">
+            <td>{{vehicle.vehicleMake}}</td>
+            <td>{{vehicle.vehicleModel}}</td>
+            <td>{{vehicle.vehicleRegistrationNumber}}</td>
+            <td>{{vehicle.vehicleOwnership}}</td>
+            <td>{{vehicle.vehicleUsage}}</td>
+            <td>{{vehicle.insuranceExpiringDate}}</td>
+            <button class="btn btn-primary btn-block margin-bottom" type="button" name="verifVehicle" routerLink="/viewVehicle">View</button>
           </tr>
           </tbody>
         </table>

@@ -11,7 +11,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class VerifyVehicleComponent implements OnInit {
 
-  vehicleVRN: any;
+  vehicleVRN:string;
   vehicle:any;
   page=1;
 
@@ -24,11 +24,10 @@ export class VerifyVehicleComponent implements OnInit {
   licArrears = '';
   licTaxClass = '';
   insTaxClass = '';
-
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService) { }
+  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { }
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res =>{
@@ -39,7 +38,9 @@ export class VerifyVehicleComponent implements OnInit {
   }
 
   saveVehicle(){
-    this.demo.post("http://108.61.174.41:7070/api/vehicles/update",{
+  
+      const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
+        "insuranceTaxClass": 0,
         "vehicleMake": this.vMake,
         "vehicleModel": this.vModel,
         "vehicleOwnership": this.vType,
@@ -65,7 +66,7 @@ export class VerifyVehicleComponent implements OnInit {
       this.vehicleVRN = '';
       this.vUsage = '';
     }
-  }
+}
   /*async getVehicle(event ?: any){
     if(event){
       this.vehicle = null;
