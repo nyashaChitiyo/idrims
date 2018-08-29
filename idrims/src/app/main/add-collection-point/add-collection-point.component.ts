@@ -18,12 +18,22 @@ export class AddCollectionPointComponent implements OnInit {
   email = '';
   region = '';
   subRegion = '';
+  allRegionNames = [];
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private demo: DemoService) {
-
+    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
+    .subscribe(data => {
+      let arr = [];
+      arr.push(data);
+      let arr1 = arr[0].map(a => a.name);
+      let regionIds = arr[0].map(a => a.id);
+      this.allRegionNames = arr[0];
+      
+      console.log(this.allRegionNames);
+    })
    }
 
    postColPoint(){
