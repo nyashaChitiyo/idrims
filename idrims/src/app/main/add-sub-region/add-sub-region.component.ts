@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {DemoService} from '../../demo.service';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import{Location} from '@angular/common';
+
 @Component({
   selector: 'app-add-sub-region',
   templateUrl: './add-sub-region.component.html',
@@ -14,17 +17,27 @@ export class AddSubRegionComponent implements OnInit {
   regionName = '';
   regionIds = '';
 
-  constructor(private demo: DemoService) {
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
+
+  constructor(private demo: DemoService,private router: Location) {
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     .subscribe(data => {
-      let arr = [];
-      arr.push(data);
-      let arr1 = arr[0].map(a => a.name);
-      let regionIds = arr[0].map(a => a.id);
-      this.allRegionNames = arr[0];
-      
-      console.log(this.allRegionNames);
-    })
+      if (data['success'] === true) {        
+        this.successSwal.show();
+        setTimeout(function(){ this.successSwal.showAlert(); },0)
+        console.log(data['message'], + data['message']);
+        this.reset();
+      } else {
+        console.log('failed',+ data);
+        this.failedSwal.show();
+        
+      }
+    }, error => {
+      console.log(Response);
+      this.failedSwal.show();
+    }); 
+  
    }
 
   ngOnInit() {
@@ -43,6 +56,7 @@ export class AddSubRegionComponent implements OnInit {
   .subscribe(data => {
     if (data['success'] === true) {        
       console.log(data['message'], + data['message']);
+      this.router.back();
       
     } else {
       console.log('failed',+ data);
@@ -50,8 +64,11 @@ export class AddSubRegionComponent implements OnInit {
     }
   }, error => {
     console.log(Response);
-  }); ;
+  })
+}
+  reset() {
+    this.regionName = '';
+    this.regionIds = '';
   }
-
 }
  

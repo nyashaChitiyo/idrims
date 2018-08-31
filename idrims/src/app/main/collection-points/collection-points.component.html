@@ -26,16 +26,16 @@
       <table class="table table-hover" id="" cellspacing="0">
         <thead>
         <tr>
-          <th>Colletion Point  ID</th>
+          <th>Contact Person</th>
           <th>Collection Point Name</th>
           <th>Phone Number</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-          <td>Test</td>
-          <td>Test</td>
-          <td>Test</td>
+          <tr *ngFor="let region of regions">
+            <td>{{region.contactPerson}}</td>
+            <td>{{region.name}}</td>
+          <td>{{region.phoneNumber}}</td>
           <button type="submit" routerLinkActive="active" name="verifyVehicle"><a routerLink="/verifyVehicle"></a>View</button>
         </tr>
         </tbody>

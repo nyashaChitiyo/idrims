@@ -24,10 +24,12 @@ import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
 import { RegionsComponent} from './main/regions/regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
+import {AdminComponent} from './main/admin/admin.component';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
   {path: 'userManagement/:phoneNumber', component: AgentComponent},

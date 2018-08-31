@@ -10,10 +10,13 @@ import {of} from 'rxjs';
 @Injectable()
 export class SessionsService {
   isLoggedIn: boolean;
+  isTest: boolean = false;
   currentUrl: string;
   redirectUrl: string;
 
+
   constructor(private router: Router, private httpClient: HttpClient, private loading: LoadingIndicatorService) {
+    
     router.events.subscribe((event: Event) => {
       if (event instanceof RouterEvent ) {
         console.log('The current url is ??? : ' + event.url);
@@ -38,11 +41,27 @@ export class SessionsService {
         localStorage.setItem('phoneNumberOrEmail', username);
         localStorage.setItem('firstname', data['firstname']);
         localStorage.setItem('fullName', data['firstname']);
+        console.log('User status is '+data['userGroup']);
+        //this.isLoggedIn = true;
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
-        this.isLoggedIn = true;
-        this.router.navigate(['/'], { replaceUrl: true });
+        if(data['userGroup'] == 'System Admin'){
+          this.isLoggedIn = true;
+          
+          this.router.navigate(['/'], { replaceUrl: true });
+        }
+        else if(data['userGroup'] == 'Admin'){
+          this.isLoggedIn = true;
+          this.isTest = true;
+          this.router.navigate(['/'], { replaceUrl: true });
+        }
+        else{
+          this.isLoggedIn = true;
+          this.loading.onRequestFinished();
+          this.router.navigate(['/login'], { replaceUrl: true });
+        }
+        //this.router.navigate(['/'], { replaceUrl: true });
         // this.getUserInformation(username);
       }
     },
@@ -53,6 +72,7 @@ export class SessionsService {
   }
   isAuthenticated(roles: string[]): Observable<boolean> {
     console.log('auth status: ' + this.isLoggedIn);
+    this.loading.onRequestFinished();
     return this.isLoggedIn ? of(true) : of(false);
   }
   logout(): void {

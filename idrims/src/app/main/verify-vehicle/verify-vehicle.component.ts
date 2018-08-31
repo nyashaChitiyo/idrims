@@ -45,7 +45,8 @@ export class VerifyVehicleComponent implements OnInit {
         "vehicleModel": this.vModel,
         "vehicleOwnership": this.vType,
         "vehicleRegNum": this.vehicleVRN,
-        "vehicleUsage": this.vUsage
+        "vehicleUsage": this.vUsage,
+        "zinaraTaxClass": 0
     })
     .subscribe(data => {
       if (data['status'] === "Success") {  

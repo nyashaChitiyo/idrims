@@ -41,13 +41,14 @@ import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
-
+import {AdminComponent} from './main/admin/admin.component';
 import { JwtModule } from '@auth0/angular-jwt';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminComponent,
     LoginComponent,
     FooterComponent,
     HeaderComponent,

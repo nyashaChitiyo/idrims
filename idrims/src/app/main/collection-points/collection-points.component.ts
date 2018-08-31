@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DemoService } from '../../demo.service';
 
 @Component({
   selector: 'app-collection-points',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CollectionPointsComponent implements OnInit {
 
-  constructor() { }
+  public regions= [];
+
+  constructor(private demo: DemoService) { }
 
   ngOnInit() {
+    this.demo.get('http://108.61.174.41:7070/api/location/view/allCollectionPoints')
+    .subscribe(
+      (data)=> {
+        let arr = [];
+        arr.push(data)
+        this.regions = arr[0];
+        console.log(this.regions);
+
+      }
+    ) ;
   }
 
 }

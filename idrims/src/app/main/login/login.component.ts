@@ -37,5 +37,4 @@ export class LoginComponent implements OnInit, AfterViewInit {
       this.session.login(this.username, this.password);
     }
   }
-
 }

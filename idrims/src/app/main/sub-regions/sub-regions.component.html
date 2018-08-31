@@ -27,16 +27,14 @@
         <table class="table table-hover" id="" cellspacing="0">
           <thead>
           <tr>
-            <th>Region </th>
             <th>Sub-Region ID</th>
             <th>Sub-Region Name</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Harare</td>
-            <td>CBD</td>
-            <td>CBD</td>
+          <tr *ngFor="let region of regions">
+            <td>{{region.code}}</td>
+            <td>{{region.name}}</td>
             <button type="submit" routerLinkActive="active" name="subRegions"><a routerLink="/subRegions"></a>View</button>
           </tr>
           </tbody>
