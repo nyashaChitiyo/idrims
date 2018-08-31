@@ -8,7 +8,7 @@
       </div>
       <hr>
       <!-- /.box-header -->
-      <!-- form start -->
+      <!-- form start --> 
         <div class="box-body">
             <div class="form-group col-md-4">
                 <label for="email">Region</label>
@@ -33,6 +33,21 @@
           <button class="btn btn-warning" aria-hidden="true" routerLink ="/subRegions"> Cancel</button>
         </div>
       </section>
-  
+      <swal
+      #successSwal
+      title="Success"
+      text="Successfully Registered Sub-Region"
+      type="success"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
+    <swal
+      #failedSwal
+      title="Failed"
+      text="An error occured while processing your request"
+      type="warning"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
   
   

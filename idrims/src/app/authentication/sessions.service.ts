@@ -72,7 +72,8 @@ export class SessionsService {
   getUserInformation () {
     const details = { 'phoneNumber' : '0775181633'};
     // tslint:disable-next-line:max-line-length
-    this.httpClient.post('http://', details).subscribe(userData => {
+    this.httpClient.get('http://108.61.174.41:7070/api/user/me')
+    .subscribe(userData => {
       this.isLoggedIn = true;
       console.log('the logging in od the usre');
       localStorage.setItem('loggedIn', 'true');
@@ -93,6 +94,9 @@ export class SessionsService {
   }
   isAgent() {
     return localStorage.getItem('userGroup') === 'AGENT01';
+  }
+  isSystemAdmin() {
+    return localStorage.getItem('userGroup') === 'SYTADMIN';
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';

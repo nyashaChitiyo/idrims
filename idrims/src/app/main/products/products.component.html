@@ -3,14 +3,14 @@
     <!-- Content Header (Page header) -->
     <section align="center" class="content-header">
       <h1>
-        <strong>Products Management</strong>
+        <strong>Claims Management</strong>
       </h1>
     </section>
 <hr>
     <!-- Main content -->
     <section class="content">
 
-  <!--Mailbox Div-->
+  <!--Mailbox Div
   <div class="row">
     <div class="col-md-12">
       <form method="post">
@@ -18,7 +18,7 @@
       </form>
 
     </div>
-  </div>
+  </div>-->
   <!--general-->
   <div class="box">
       <!-- /.box-header -->
@@ -26,22 +26,46 @@
         <table class="table table-hover" id="" cellspacing="0">
           <thead>
           <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
+            <th>Claim ID</th>
+            <th>Claim Date</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Nature of Claim</th>
+            <th>Vehicle Reg Number</th>
           </tr>
           </thead>
           <tbody>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <button type="submit" routerLinkActive="active" name="viewProduct"><a routerLink="/"></a>View</button>
+          <tr *ngFor ="let claim of claims">
+            <td>{{claim.claimId}}</td>
+            <td>{{claim.claimDate}}</td>
+            <td>{{claim.firstName}}</td>
+            <td>{{claim.lastName}}</td>
+            <td>{{claim.natureOfClaim}}</td>
+            <td>{{claim.vehicleRegistrationNumber}}</td>
+            <td><button class="btn btn-primary" (click)="updateClaim()">Done</button></td>
           </tr>
-          </tbody>
+          </tbody> 
         </table>
       </div>
     </div>
     </section>
   </div>
+  <swal
+  #successSwal
+  title="Success"
+  text="Successfully Updated Claim"
+  type="success"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
+<swal
+  #failedSwal
+  title="Failed"
+  text="An error occured while processing your request"
+  type="warning"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
 
 
 

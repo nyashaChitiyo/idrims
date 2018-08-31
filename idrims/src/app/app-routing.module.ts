@@ -25,32 +25,195 @@ import { RegionsComponent} from './main/regions/regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 
+import { NgxPermissionsGuard } from 'ngx-permissions';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
-  {path: 'userManagement/:phoneNumber', component: AgentComponent},
-  {path: 'vehicles', component: VehiclesComponent, canActivate: [AuthGuard]},
-  {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent},
-  {path: 'collectionPoints', component: CollectionPointsComponent, canActivate: [AuthGuard]},
-  {path: 'InsCompanies', component: InsuranceCompaniesComponent, canActivate: [AuthGuard]},
-  {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard]},
-  {path: 'verifyVehicle', component: VerifyVehicleComponent, canActivate: [AuthGuard]},
-  {path: 'registerUser', component: RegisterUserComponent, canActivate: [AuthGuard]},
-  {path: 'addColPoint', component: AddCollectionPointComponent, canActivate: [AuthGuard]},
-  {path: 'addInsComp', component: AddInsuranceCompanyComponent, canActivate: [AuthGuard]},
-  {path: 'addProduct', component: AddProductComponent, canActivate: [AuthGuard]},
-  {path: 'viewAgents', component: ViewAgentsComponent, canActivate: [AuthGuard]},
-  {path: 'viewCustomers', component: ViewCustomersComponent, canActivate: [AuthGuard]},
-  {path: 'verifiedVehicles', component: VerifiedVehiclesComponent, canActivate: [AuthGuard]},
-  {path: 'viewVehicle', component: ViewVehicleComponent, canActivate: [AuthGuard]},
-  {path: 'locations', component: LocationsComponent, canActivate: [AuthGuard]},
-  {path: 'regions', component: RegionsComponent, canActivate: [AuthGuard]},
-  {path: 'subRegions', component: SubRegionsComponent, canActivate: [AuthGuard]},
-  {path: 'addRegions', component: AddRegionComponent, canActivate: [AuthGuard]},
-  {path: 'addSubRegions', component: AddSubRegionComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+  {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  // data: {
+  //   permissions: {
+  //     only: 'ADMIN',
+  //   }
+  // }
+},
+  {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'userManagement/:phoneNumber', component: AgentComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'vehicles', component: VehiclesComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: ['ADMIN','SYTADMIN'],
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+
+  {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'ADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'collectionPoints', component: CollectionPointsComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'InsCompanies', component: InsuranceCompaniesComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'ADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'verifyVehicle', component: VerifyVehicleComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'ADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'registerUser', component: RegisterUserComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'addColPoint', component: AddCollectionPointComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'addInsComp', component: AddInsuranceCompanyComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'addProduct', component: AddProductComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: ['ADMIN','SYTADMIN'],
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'viewAgents', component: ViewAgentsComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'viewCustomers', component: ViewCustomersComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'verifiedVehicles', component: VerifiedVehiclesComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: ['ADMIN','SYTADMIN'],
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'viewVehicle', component: ViewVehicleComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: ['ADMIN','SYTADMIN'],
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'locations', component: LocationsComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'regions', component: RegionsComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'subRegions', component: SubRegionsComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'addRegions', component: AddRegionComponent, canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: 'addSubRegions', component: AddSubRegionComponent, canActivate: [AuthGuard,NgxPermissionsGuard], 
+  // data: {
+  //   permissions: {
+  //     only: 'SYTADMIN',
+  //     redirectTo: '**'
+  //   }
+  // }
+},
+  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard,NgxPermissionsGuard],
+  //  data: {
+  //   permissions: {
+  //     only: ['ADMIN','SYTADMIN'],
+  //     redirectTo: '**'
+  //   }
+  // } 
+},
 
   {path: '**', component: PageNotFoundComponent}
 ];

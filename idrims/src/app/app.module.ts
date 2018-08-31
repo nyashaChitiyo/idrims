@@ -41,6 +41,7 @@ import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 import { JwtModule } from '@auth0/angular-jwt';
 
@@ -91,7 +92,9 @@ import { JwtModule } from '@auth0/angular-jwt';
       customClass: 'modal-content',
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
-    })
+    }),
+    NgxPermissionsModule.forRoot()
+    
   ],
   providers: [
     AuthGuard,
@@ -103,6 +106,9 @@ import { JwtModule } from '@auth0/angular-jwt';
       multi: true
     }
   ],
+  exports: [
+    NgxPermissionsModule
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

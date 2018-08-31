@@ -17,6 +17,7 @@ import { ViewAgentsComponent } from './view-agents/view-agents.component';
 import { ViewCustomersComponent } from './view-customers/view-customers.component';
 import { VerifiedVehiclesComponent } from './verified-vehicles/verified-vehicles.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { CustomerComponent } from './customer/customer.component';
 
 @NgModule({
   imports: [
@@ -39,6 +40,7 @@ import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
   ViewAgentsComponent,
   ViewCustomersComponent,
   VerifiedVehiclesComponent,
-  ViewVehicleComponent]
+  ViewVehicleComponent,
+  CustomerComponent]
 })
 export class MainModule { }

@@ -1,8 +1,9 @@
+
 <div class="content-wrapper">
     <section class="content col-md-10">
     <div class="box col-md-4" >
     <div align="center" class="box-header with-border">
-      <h3 class="box-title"><b>REGISTER USER</b></h3>
+      <h3 class="box-title"><b>REGISTER AGENT</b></h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -33,21 +34,11 @@
           <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
         </div>
         <div class="form-group col-md-6">
-            <label for="email">Status</label>
-            <select class="form-control" name="vType" required>
-                <option selected  style="display: none;" >Select Status</option>
-                <option value="Active">Active </option>
-                <option value="Deactive">Deactivate</option>
-              </select>
-        </div>
-        <div class="form-group col-md-6">
             <label for="email">Station</label>
-            <select class="form-control" name="vType" required>
-                <option selected  style="display: none;" >Select Station</option>
-                <option value="A">A </option>
-                <option value="B">B</option>
+            <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
+                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
               </select>
-        </div>
+        </div> 
       </div>
       </div>
       </div>
@@ -61,7 +52,7 @@
     <swal
     #successSwal
     title="Success"
-    text="Successfully Registered Vehicle"
+    text="Successfully Registered Agent"
     type="success"
     [showCancelButton]="false"
     [focusCancel]="false">
@@ -75,4 +66,8 @@
     [focusCancel]="false">
   </swal>
 
- 
+ <script>
+   $(document).ready(function() {
+    $('.formselect').select2();
+});
+ </script>

@@ -1,9 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import {DemoService} from '../../demo.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { DemoService } from '../../demo.service';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import {SwalComponent} from '@toverux/ngx-sweetalert2'
+
 @Component({
   selector: 'app-add-sub-region',
   templateUrl: './add-sub-region.component.html',
-  styleUrls: ['./add-sub-region.component.css']
+  styleUrls: ['./add-sub-region.component.css'] 
 })
 export class AddSubRegionComponent implements OnInit {
   
@@ -13,6 +18,10 @@ export class AddSubRegionComponent implements OnInit {
   regionShortCode:string;
   regionName = '';
   regionIds = '';
+
+  
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private demo: DemoService) {
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
@@ -43,13 +52,16 @@ export class AddSubRegionComponent implements OnInit {
   .subscribe(data => {
     if (data['success'] === true) {        
       console.log(data['message'], + data['message']);
+      this.successSwal.show();
       
     } else {
       console.log('failed',+ data);
+      this.failedSwal.show();
       
     }
   }, error => {
     console.log(Response);
+    this.failedSwal.show();
   }); ;
   }
 
