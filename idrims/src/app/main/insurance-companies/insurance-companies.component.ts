@@ -20,7 +20,7 @@ export class InsuranceCompaniesComponent implements OnInit {
   getCompany(){
     this.httpClient.get('http://108.61.174.41:7070/api/companies/view/all')
     .subscribe(
-      (data:any[])=> {
+      (data:any[])=> { 
         let arr = [];
         arr.push(data)
         this.companies = arr[0];

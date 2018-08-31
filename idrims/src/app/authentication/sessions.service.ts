@@ -35,7 +35,7 @@ export class SessionsService {
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
       console.log('accessToken: ' + data['accessToken']);
-      if (data['accessToken'] != null) {
+      if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('phoneNumberOrEmail', username);
@@ -92,7 +92,8 @@ export class SessionsService {
   getUserInformation () {
     const details = { 'phoneNumber' : '0775181633'};
     // tslint:disable-next-line:max-line-length
-    this.httpClient.post('http://', details).subscribe(userData => {
+    this.httpClient.get('http://108.61.174.41:7070/api/user/me')
+    .subscribe(userData => {
       this.isLoggedIn = true;
       console.log('the logging in od the usre');
       localStorage.setItem('loggedIn', 'true');
@@ -109,10 +110,13 @@ export class SessionsService {
   }
 
   isAdmin() {
-    return localStorage.getItem('userGroup') === 'ADMIN';
+    return localStorage.getItem('userGroup') === 'ADMIN01';
   }
   isAgent() {
     return localStorage.getItem('userGroup') === 'AGENT01';
+  }
+  isSystemAdmin() {
+    return localStorage.getItem('userGroup') === 'SYTADMIN';
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';

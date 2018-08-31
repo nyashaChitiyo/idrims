@@ -20,7 +20,7 @@ export class VerifyVehicleComponent implements OnInit {
   vType = '';
   vUsage = '';
   InsExp = '';
-  licExp = '';
+  licExp = ''; 
   licArrears = '';
   licTaxClass = '';
   insTaxClass = '';
@@ -32,31 +32,39 @@ export class VerifyVehicleComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(res =>{
       this.vehicleVRN = res['vehicleRegistrationNumber'];
-      console.log(this.vehicleVRN);
+      console.log(this.vehicleVRN); 
     //  this.getVehicle();
-    })
+    }) 
   }
 
   saveVehicle(){
   
       const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
         "insuranceTaxClass": 0,
+        "insuranceExpiry" : 0,
         "vehicleMake": this.vMake,
         "vehicleModel": this.vModel,
         "vehicleOwnership": this.vType,
+<<<<<<< HEAD
         "vehicleRegNum": this.vehicleVRN,
         "vehicleUsage": this.vUsage,
+=======
+        "vehicleRegistrationNumber": this.vehicleVRN,
+        "vehicleUsage": this.vUsage,
+        "verifStatus": true,
+>>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
         "zinaraTaxClass": 0
     })
+	
     .subscribe(data => {
-      if (data['status'] === "Success") {  
+      if (data['status'] === "Success ") {  
        this.successSwal.show();
         this.reset();
       } else {
         this.failedSwal.show();
       }
     }, error => {
-      console.log(Response);
+      console.log(Response); 
       this.failedSwal.show();
     }); 
     }

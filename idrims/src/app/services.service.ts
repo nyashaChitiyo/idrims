@@ -25,7 +25,7 @@ export class ServicesService {
 
 
   getUsers(){
-   return this.httpClient.get("http://jsonplaceholder.typicode.com/users")
+   return this.httpClient.get("")
       .map((res: Response) => res.json())
   }
 
@@ -33,7 +33,7 @@ export class ServicesService {
   getUserInformation () {
     const details = { 'phoneNumber' : '0775181633'};
     // tslint:disable-next-line:max-line-length
-    this.httpClient.post('http://ecosureauto.econet.co.zw/idrive-core/idrive/endpoint/view/user/byPhoneNumber', details).subscribe(userData => {
+    this.httpClient.post('', details).subscribe(userData => {
       console.log('the logging in od the usre');
       localStorage.setItem('loggedIn', 'true');
       console.log('userType is: ' + userData['userType']);
@@ -49,7 +49,7 @@ export class ServicesService {
   }
   
   addAgent(model:any){
-    return this.httpClient.post("https://jsonplaceholder.typicode.com/posts",model)
+    return this.httpClient.post("",model)
     .map(( res: Response) => res.json());
   }
 

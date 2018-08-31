@@ -11,6 +11,11 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class RegisterUserComponent implements OnInit {
 
+    
+  selectedValue: string;
+  allColPointNames= [];
+  colPoint = '';
+  colPointIds = '';
   email: string;
   firstname: string;
   nationalID: string;
@@ -21,11 +26,21 @@ export class RegisterUserComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) {}
-
-  postProfile(){
- 
+  constructor(private httpClient: HttpClient) {
     
+    this.httpClient.get('http://108.61.174.41:7070/api/location/view/allCollectionPoints')
+    .subscribe(data => {
+      let arr = [];
+      arr.push(data);
+      let arr1 = arr[0].map(a => a.name);
+      let colPointIds = arr[0].map(a => a.id);
+      this.allColPointNames = arr[0];
+      
+      console.log(this.allColPointNames);
+    })
+  }
+
+  postProfile(){ 
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
     'firstname' : this.firstname,
@@ -44,7 +59,7 @@ export class RegisterUserComponent implements OnInit {
         'roleName': 'Agent'
       }
     ],
-      'userStation': '1',
+      'userStation': +this.selectedValue,
       'userStatus': true,
       'userType': 'Agent',
 

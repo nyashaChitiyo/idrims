@@ -1,0 +1,74 @@
+<div class="content-wrapper">
+    <hr>
+      <!-- Content Header (Page header) -->
+      <section  class="content-header">
+        <h1 align="center">
+          <strong>Open Claims</strong>
+        </h1>
+        <p><button align="left" class="btn btn-warning" routerLink ="/Products">Back to User Managemnt</button></p> 
+      </section>
+  <hr>
+      <!-- Main content -->
+      <section class="content">
+  
+    <!--Mailbox Div
+    <div class="row">
+      <div class="col-md-12">
+        <form method="post">
+          <button type="button" name="Products" id="Products" class="btn btn-primary btn-block margin-bottom" routerLink="/addProduct">Add New Product</button>
+        </form>
+  
+      </div>
+    </div>-->
+    <!--general-->
+    <div class="box">
+        <!-- /.box-header -->
+        <div class="box-body">
+          <table class="table table-hover" id="" cellspacing="0">
+            <thead>
+            <tr>
+              <th>Claim ID</th>
+              <th>Claim Date</th>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Nature of Claim</th>
+              <th>Vehicle Reg Number</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor ="let claim of claims">
+              <td>{{claim.claimId}}</td>
+              <td>{{claim.claimDate}}</td>
+              <td>{{claim.firstName}}</td>
+              <td>{{claim.lastName}}</td>
+              <td>{{claim.natureOfClaim}}</td>
+              <td>{{claim.vehicleRegistrationNumber}}</td>
+              <td><button class="btn btn-primary" (click)="updateClaim()">Done</button></td>
+            </tr>
+            </tbody> 
+          </table>
+        </div>
+      </div>
+      </section>
+    </div>
+    <swal
+    #successSwal
+    title="Success"
+    text="Successfully Updated Claim"
+    type="success"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+  <swal
+    #failedSwal
+    title="Failed"
+    text="An error occured while processing your request"
+    type="warning"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+  
+  
+  
+  
+  

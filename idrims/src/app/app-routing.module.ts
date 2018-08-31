@@ -24,7 +24,20 @@ import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
 import { RegionsComponent} from './main/regions/regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
+<<<<<<< HEAD
 import {AdminComponent} from './main/admin/admin.component';
+=======
+import { ClosedClaimsComponent} from './main/closed-claims/closed-claims.component';
+import { OpenClaimsComponent } from './main/open-claims/open-claims.component';
+import { PricingSchemeComponent} from './main/pricing-scheme/pricing-scheme.component';
+import { ZinaraPricingSchemeComponent } from './main/zinara-pricing-scheme/zinara-pricing-scheme.component';
+import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/insurance-pricing-scheme.component';
+import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
+import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
+
+
+import { NgxPermissionsGuard } from 'ngx-permissions';
+>>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
 
 
 const appRoutes: Routes = [
@@ -32,9 +45,9 @@ const appRoutes: Routes = [
   {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
-  {path: 'userManagement/:phoneNumber', component: AgentComponent},
+  {path: 'userManagement/:phoneNumber', component: AgentComponent, canActivate: [AuthGuard]},
   {path: 'vehicles', component: VehiclesComponent, canActivate: [AuthGuard]},
-  {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent},
+  {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
   {path: 'collectionPoints', component: CollectionPointsComponent, canActivate: [AuthGuard]},
   {path: 'InsCompanies', component: InsuranceCompaniesComponent, canActivate: [AuthGuard]},
   {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard]},
@@ -52,7 +65,15 @@ const appRoutes: Routes = [
   {path: 'subRegions', component: SubRegionsComponent, canActivate: [AuthGuard]},
   {path: 'addRegions', component: AddRegionComponent, canActivate: [AuthGuard]},
   {path: 'addSubRegions', component: AddSubRegionComponent, canActivate: [AuthGuard]},
-  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
+  {path: 'closedClaims', component: ClosedClaimsComponent, canActivate: [AuthGuard]},
+  {path: 'openClaims', component: OpenClaimsComponent, canActivate: [AuthGuard]},
+  {path: 'PricingScheme', component: PricingSchemeComponent, canActivate: [AuthGuard]},
+  {path: 'ZinaraPricingScheme', component: ZinaraPricingSchemeComponent, canActivate: [AuthGuard,]},
+  {path: 'InsurancePricingScheme', component: InsurancePricingSchemeComponent, canActivate: [AuthGuard]},
+  {path: 'AddZinaraPricingScheme', component: AddZinaraPricingSchemeComponent, canActivate: [AuthGuard]},
+  {path: 'AddInsurancePricingScheme', component: AddInsurancePricingSchemeComponent, canActivate: [AuthGuard]},
+
+  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: PageNotFoundComponent}
 ];

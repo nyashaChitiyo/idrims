@@ -3,45 +3,44 @@
     <!-- Content Header (Page header) -->
     <section align="center" class="content-header">
       <h1>
-        <strong>Products Management</strong>
+        <strong>Claims Management</strong>
       </h1>
     </section>
 <hr>
     <!-- Main content -->
     <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+              <form method="post">
+                <button name="closedClaims" id="closedClaims" class="btn btn-primary btn-block margin-bottom" routerLink="/closedClaims">Closed Claims</button>
+              </form>
+        
+            </div>
+              <div class="col-md-6">
+                <form method="post">
+                  <button name="closedClaims" id="closedClaims" class="btn btn-primary btn-block margin-bottom" routerLink="/openClaims">Open Claims</button>
+                </form>
+          
+              </div>
+            </div>
 
-  <!--Mailbox Div-->
-  <div class="row">
-    <div class="col-md-12">
-      <form method="post">
-        <button type="button" name="Products" id="Products" class="btn btn-primary btn-block margin-bottom" routerLink="/addProduct">Add New Product</button>
-      </form>
-
-    </div>
-  </div>
-  <!--general-->
-  <div class="box">
-      <!-- /.box-header -->
-      <div class="box-body">
-        <table class="table table-hover" id="" cellspacing="0">
-          <thead>
-          <tr>
-            <th>Product ID</th>
-            <th>Product Name</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Test</td>
-            <td>Test</td>
-            <button type="submit" routerLinkActive="active" name="viewProduct"><a routerLink="/"></a>View</button>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    </section>
-  </div>
+ 
+  <swal
+  #successSwal
+  title="Success"
+  text="Successfully Updated Claim"
+  type="success"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
+<swal
+  #failedSwal
+  title="Failed"
+  text="An error occured while processing your request"
+  type="warning"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
 
 
 

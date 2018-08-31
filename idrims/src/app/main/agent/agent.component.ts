@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-agent',
-  templateUrl: './agent.component.html',
+  templateUrl: './agent.component.html', 
   styleUrls: ['./agent.component.css']
 })
 export class AgentComponent implements OnInit {
@@ -15,7 +15,7 @@ export class AgentComponent implements OnInit {
   vehicle:any;
   page=1;
   phoneNumber: string;
-  firstName: string;
+  firstname: string;
   surname: string;
   role: string;
   station: string;
@@ -37,7 +37,7 @@ export class AgentComponent implements OnInit {
       this.agents = params;
       console.log(params);
       this.phoneNumber = params['phoneNumber'];
-      this.firstName= params['firstName'];
+      this.firstname= params['firstName'];
       this.surname= params['surName'];
       this.role= params['role'];
       this.station= params['station'];

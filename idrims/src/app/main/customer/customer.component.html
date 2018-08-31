@@ -1,0 +1,35 @@
+<div class="content-wrapper">
+
+    <section align= "center" class="content">
+    <div class="box">
+    <!-- /.box-header -->
+    <div class="box-header with-border">
+        <br>
+        <h3 class="box-title"><b>{{firstName}}&nbsp;{{surname}}</b></h3>
+      </div>
+    <!-- form start -->
+    <hr>
+      <div class="box-body">
+          <div class="col-md-3">
+              <img src="../../../assets/avatar.png" class="img-rounded" alt="Cinque Terre">
+          </div>
+
+          <div class="col-md-9">
+          <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
+          <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control">
+          <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
+          <label>Address:</label><input [disabled]="isEdit" type="text" [(ngModel)]="Address" name="Address" class="form-control">
+
+        </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+  
+      <div class="box-footer">
+          <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
+          <button class="btn btn-warning" >save</button>
+          <button class="btn btn-primary" aria-hidden="true" routerLink ="/viewCustomers"> Cancel</button></div>
+    </section>
+  
+  
+  

@@ -42,8 +42,24 @@ import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {AdminComponent} from './main/admin/admin.component';
+//import { NgxPermissionsModule } from 'ngx-permissions';
+import { RouterModule, Routes, PreloadAllModules } from '@angular/router'; 
 import { JwtModule } from '@auth0/angular-jwt';
+import { ClosedClaimsComponent } from './main/closed-claims/closed-claims.component';
+import { OpenClaimsComponent } from './main/open-claims/open-claims.component';
+import { PricingSchemeComponent} from './main/pricing-scheme/pricing-scheme.component';
+import { ZinaraPricingSchemeComponent } from './main/zinara-pricing-scheme/zinara-pricing-scheme.component';
+import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/insurance-pricing-scheme.component';
+import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
+import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
 
+
+//import { AdminComponent } from './admin/admin.component';
+// import { AdminModule } from './admin/admin.module';
+
+// const routes: Routes =[
+//   { path: 'Home', loadChildren:()=> System.import('./Home').then((comp: any) => comp.default) }
+// ]
 
 @NgModule({
   declarations: [
@@ -80,7 +96,14 @@ import { JwtModule } from '@auth0/angular-jwt';
     RegionsComponent,
     SubRegionsComponent,
     AddSubRegionComponent,
-    AddRegionComponent
+    AddRegionComponent,
+    ClosedClaimsComponent,
+    OpenClaimsComponent,
+    PricingSchemeComponent,
+    ZinaraPricingSchemeComponent,
+    InsurancePricingSchemeComponent,
+    AddZinaraPricingSchemeComponent,
+    AddInsurancePricingSchemeComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +115,9 @@ import { JwtModule } from '@auth0/angular-jwt';
       customClass: 'modal-content',
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
-    })
+    }),
+   // NgxPermissionsModule.forRoot()
+    
   ],
   providers: [
     AuthGuard,
@@ -104,7 +129,10 @@ import { JwtModule } from '@auth0/angular-jwt';
       multi: true
     }
   ],
+  exports: [
+ //   NgxPermissionsModule
+],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
 

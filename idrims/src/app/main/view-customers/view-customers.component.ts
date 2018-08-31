@@ -22,7 +22,7 @@ export class ViewCustomersComponent implements OnInit {
     this.httpClient.post('http://108.61.174.41:7070/api/view/group',
     {
       
-        'userGroup': 'Customer'
+        'searchString': 'CUST01'
       
     })
       .subscribe(
