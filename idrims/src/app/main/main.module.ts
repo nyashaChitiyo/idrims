@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
+import { AppComponent } from '../app.component';
 import { CommonModule } from '@angular/common';
+
 import { LoadingComponent } from './loading/loading.component';
 import { BuyEcosureComponent } from './buy-ecosure/buy-ecosure.component';
 import { MailboxComponent } from './mailbox/mailbox.component';
@@ -18,6 +20,14 @@ import { ViewCustomersComponent } from './view-customers/view-customers.componen
 import { VerifiedVehiclesComponent } from './verified-vehicles/verified-vehicles.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ClosedClaimsComponent } from './closed-claims/closed-claims.component';
+import { OpenClaimsComponent } from './open-claims/open-claims.component';
+import { PricingSchemeComponent } from './pricing-scheme/pricing-scheme.component';
+import { ZinaraPricingSchemeComponent } from './zinara-pricing-scheme/zinara-pricing-scheme.component';
+import { InsurancePricingSchemeComponent } from './insurance-pricing-scheme/insurance-pricing-scheme.component';
+import { AddInsurancePricingSchemeComponent } from './add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
+import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
+
 
 @NgModule({
   imports: [
@@ -41,6 +51,13 @@ import { CustomerComponent } from './customer/customer.component';
   ViewCustomersComponent,
   VerifiedVehiclesComponent,
   ViewVehicleComponent,
-  CustomerComponent]
+  CustomerComponent,
+  ClosedClaimsComponent,
+  OpenClaimsComponent,
+  PricingSchemeComponent,
+  ZinaraPricingSchemeComponent,
+  InsurancePricingSchemeComponent,
+  AddInsurancePricingSchemeComponent,
+  AddZinaraPricingSchemeComponent]
 })
 export class MainModule { }

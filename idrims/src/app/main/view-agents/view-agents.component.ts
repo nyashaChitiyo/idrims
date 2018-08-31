@@ -35,7 +35,7 @@ export class ViewAgentsComponent implements OnInit {
     this.httpClient.post('http://108.61.174.41:7070/api/view/group',
   {
     
-      'searchString': 'Agent'
+      'searchString': 'AGENT'
     
   })
     .subscribe(

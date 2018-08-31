@@ -32,15 +32,12 @@ export class SessionsService {
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
       console.log('accessToken: ' + data['accessToken']);
-      if (data['accessToken'] != null) {
+      if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
         localStorage.setItem('phoneNumberOrEmail', username);
         localStorage.setItem('firstname', data['firstname']);
         localStorage.setItem('fullName', data['firstname']);
-        // localStorage.setItem('userType', 'AGENT01');
-        // localStorage.setItem('userStation', '1');
-        // localStorage.setItem('nationalId', '25000000Z91');
         this.isLoggedIn = true;
         this.router.navigate(['/'], { replaceUrl: true });
         // this.getUserInformation(username);
@@ -90,7 +87,7 @@ export class SessionsService {
   }
 
   isAdmin() {
-    return localStorage.getItem('userGroup') === 'ADMIN';
+    return localStorage.getItem('userGroup') === 'ADMIN01';
   }
   isAgent() {
     return localStorage.getItem('userGroup') === 'AGENT01';

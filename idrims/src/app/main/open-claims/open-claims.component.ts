@@ -3,15 +3,15 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
-import {SwalComponent} from '@toverux/ngx-sweetalert2'; 
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
+
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-open-claims',
+  templateUrl: './open-claims.component.html',
+  styleUrls: ['./open-claims.component.css']
 })
-export class ProductsComponent implements OnInit {
-
+export class OpenClaimsComponent implements OnInit {
   claims=[];
   claimId : string;
   claimDate = '';

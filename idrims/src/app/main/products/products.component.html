@@ -9,47 +9,22 @@
 <hr>
     <!-- Main content -->
     <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+              <form method="post">
+                <button name="closedClaims" id="closedClaims" class="btn btn-primary btn-block margin-bottom" routerLink="/closedClaims">Closed Claims</button>
+              </form>
+        
+            </div>
+              <div class="col-md-6">
+                <form method="post">
+                  <button name="closedClaims" id="closedClaims" class="btn btn-primary btn-block margin-bottom" routerLink="/openClaims">Open Claims</button>
+                </form>
+          
+              </div>
+            </div>
 
-  <!--Mailbox Div
-  <div class="row">
-    <div class="col-md-12">
-      <form method="post">
-        <button type="button" name="Products" id="Products" class="btn btn-primary btn-block margin-bottom" routerLink="/addProduct">Add New Product</button>
-      </form>
-
-    </div>
-  </div>-->
-  <!--general-->
-  <div class="box">
-      <!-- /.box-header -->
-      <div class="box-body">
-        <table class="table table-hover" id="" cellspacing="0">
-          <thead>
-          <tr>
-            <th>Claim ID</th>
-            <th>Claim Date</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Nature of Claim</th>
-            <th>Vehicle Reg Number</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor ="let claim of claims">
-            <td>{{claim.claimId}}</td>
-            <td>{{claim.claimDate}}</td>
-            <td>{{claim.firstName}}</td>
-            <td>{{claim.lastName}}</td>
-            <td>{{claim.natureOfClaim}}</td>
-            <td>{{claim.vehicleRegistrationNumber}}</td>
-            <td><button class="btn btn-primary" (click)="updateClaim()">Done</button></td>
-          </tr>
-          </tbody> 
-        </table>
-      </div>
-    </div>
-    </section>
-  </div>
+ 
   <swal
   #successSwal
   title="Success"

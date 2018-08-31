@@ -4,27 +4,27 @@
       <div class="box">
       <div class="box-header with-border">
         <br>
-        <h3 class="box-title"><b>ADD REGION</b></h3> 
-      </div>
+        <h3 class="box-title"><b>ADD ZINARA PRICING SCHEME</b></h3>
+      </div> 
       <hr>
       <!-- /.box-header -->
       <!-- form start -->
         <div class="box-body"> 
-          <div class="form-group col-md-6">
+          <!-- <div class="form-group col-md-6">
             <label for="regionID">Region Short Code</label>
             <input type="text" class="form-control" [(ngModel)]= "code" id="regionID" placeholder="regionID"required>
-          </div>
+          </div> -->
           <div class="form-group col-md-6">
-            <label for="regionName">Region Name</label>
-            <input type="text" class="form-control" [(ngModel)]= "name" id="regionName" placeholder="regionName"required>
+            <label for="regionName">Tax Class Desription</label>
+            <input type="text" align= "center" class="form-control" [(ngModel)]= "taxClassDesc" id="taxClassDescr" placeholder="Tax Class Description"required>
           </div>
         </div>
         </div>
         <!-- /.box-body -->
   
         <div class="box-footer">
-          <button type="submit" class="btn btn-primary" (click)="postRegion()">Submit</button>
-          <button class="btn btn-warning" aria-hidden="true" routerLink ="/regions"> Cancel</button>
+          <button type="submit" class="btn btn-primary" (click)="postZinPricing()">Submit</button>
+          <button class="btn btn-warning" aria-hidden="true" routerLink ="/ZinaraPricingScheme"> Cancel</button>
         </div>
       </section>
       <swal
