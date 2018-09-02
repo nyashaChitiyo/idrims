@@ -19,9 +19,7 @@ import { ViewAgentsComponent } from './view-agents/view-agents.component';
 import { ViewCustomersComponent } from './view-customers/view-customers.component';
 import { VerifiedVehiclesComponent } from './verified-vehicles/verified-vehicles.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
-<<<<<<< HEAD
 import { AdminComponent } from './admin/admin.component';
-=======
 import { CustomerComponent } from './customer/customer.component';
 import { ClosedClaimsComponent } from './closed-claims/closed-claims.component';
 import { OpenClaimsComponent } from './open-claims/open-claims.component';
@@ -31,7 +29,6 @@ import { InsurancePricingSchemeComponent } from './insurance-pricing-scheme/insu
 import { AddInsurancePricingSchemeComponent } from './add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
 import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
 
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
 
 @NgModule({
   imports: [
@@ -55,9 +52,7 @@ import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add
   ViewCustomersComponent,
   VerifiedVehiclesComponent,
   ViewVehicleComponent,
-<<<<<<< HEAD
-  AdminComponent]
-=======
+  AdminComponent,
   CustomerComponent,
   ClosedClaimsComponent,
   OpenClaimsComponent,
@@ -66,6 +61,5 @@ import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add
   InsurancePricingSchemeComponent,
   AddInsurancePricingSchemeComponent,
   AddZinaraPricingSchemeComponent]
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
 })
 export class MainModule { }

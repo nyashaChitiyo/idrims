@@ -24,9 +24,7 @@ import { SubRegionsComponent } from './main/sub-regions/sub-regions.component';
 import { RegionsComponent} from './main/regions/regions.component';
 import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
-<<<<<<< HEAD
 import {AdminComponent} from './main/admin/admin.component';
-=======
 import { ClosedClaimsComponent} from './main/closed-claims/closed-claims.component';
 import { OpenClaimsComponent } from './main/open-claims/open-claims.component';
 import { PricingSchemeComponent} from './main/pricing-scheme/pricing-scheme.component';
@@ -34,10 +32,7 @@ import { ZinaraPricingSchemeComponent } from './main/zinara-pricing-scheme/zinar
 import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/insurance-pricing-scheme.component';
 import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
 import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
-
-
 import { NgxPermissionsGuard } from 'ngx-permissions';
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
 
 
 const appRoutes: Routes = [
