@@ -10,18 +10,17 @@ export class ZinaraPricingSchemeComponent implements OnInit {
 
 
 
-  public taxclass= [];
-  constructor(private demo: DemoService) { }
+  taxclasses = [];
+  constructor(private demo: DemoService) { 
+    this.getZinTaxClass();
+  }
 
    getZinTaxClass(){
     this.demo.get('http://108.61.174.41:7070/api/zinaraPricing/view')
-    .subscribe(
-      (data:any[])=> { 
-        let arr = [];
-        arr.push(data)
-        this.taxclass = arr[0];
-        
-        console.log(this.taxclass);
+    .subscribe(taxclasses=> { 
+      let arr = [];
+        arr.push(taxclasses)
+        this.taxclasses = arr[0];
       }
     ) 
   }

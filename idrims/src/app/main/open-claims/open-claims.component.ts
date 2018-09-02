@@ -68,7 +68,7 @@ export class OpenClaimsComponent implements OnInit {
   })
 
   .subscribe(data => {
-    if (data['status'] === "Success") {  
+    if (data['status'] === "success") {  
       console.log(data);
      this.successSwal.show();
     } else {

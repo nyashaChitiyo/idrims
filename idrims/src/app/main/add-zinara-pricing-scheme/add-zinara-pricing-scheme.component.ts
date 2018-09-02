@@ -19,7 +19,7 @@ export class AddZinaraPricingSchemeComponent implements OnInit {
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-  }
+  } 
 
   postZinPricing(){
     this.httpClient.post('http://108.61.174.41:7070/api/zinaraPricing/create',
