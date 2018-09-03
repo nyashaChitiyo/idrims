@@ -14,6 +14,9 @@ export class VerifyVehicleComponent implements OnInit {
   vehicleVRN:string;
   vehicle:any;
   page=1;
+  taxClassId = '';
+  licTaxClasses;
+  insTaxClasses;
 
   vMake = '';
   vModel = '';
@@ -24,10 +27,43 @@ export class VerifyVehicleComponent implements OnInit {
   licArrears = '';
   licTaxClass = '';
   insTaxClass = '';
+  vOwnership = '';
+
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { }
+  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { 
+
+    this.getLicTaxClasses();
+    this.getInsTaxClass();
+  }
+
+  getLicTaxClasses(){
+    /// take the value of onselected region name and assign it to region
+    
+    this.demo.get('http://108.61.174.41:7070/api/zinaraPricing/view')
+        .subscribe(data => {
+          let arr = [];
+          arr.push(data);
+          let arr1 = arr[0].map(a => a.taxClassDescription);
+          let taxClassId = arr[0].map(a => a.taxClassId);
+          this.licTaxClasses = arr[0];
+          
+          console.log(this.licTaxClasses);
+        }); }
+
+        getInsTaxClass(){
+          this.demo.get('http://108.61.174.41:7070/api/insurancePricing/view')
+          .subscribe(insTaxClasses=> { 
+            let arr = [];
+              arr.push(insTaxClasses)
+              this.insTaxClasses = arr[0];
+
+              console.log(this.insTaxClasses);
+            }
+          ) 
+        } 
+
 
   ngOnInit() {
     this.activatedRoute.params.subscribe(res =>{
@@ -40,15 +76,15 @@ export class VerifyVehicleComponent implements OnInit {
   saveVehicle(){
   
       const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
-        "insuranceTaxClass": 0,
-        "insuranceExpiry" : 0,
+        "insuranceTaxClass": this.insTaxClass,
+        "insuranceExpiry" : this.InsExp,
         "vehicleMake": this.vMake,
         "vehicleModel": this.vModel,
         "vehicleOwnership": this.vType,
         "vehicleRegistrationNumber": this.vehicleVRN,
         "vehicleUsage": this.vUsage,
         "verifStatus": true,
-        "zinaraTaxClass": 0
+        "zinaraTaxClass": this.licTaxClass
     })
 	
     .subscribe(data => {
@@ -67,23 +103,13 @@ export class VerifyVehicleComponent implements OnInit {
       this.vMake = '';
       this.vModel = '';
       this.vType = '';
-      this.vehicleVRN = '';
+      this.InsExp = '';
       this.vUsage = '';
+      this.licExp = '';
+      this.licArrears = '';
+      this.licTaxClass = '';
+      this.insTaxClass = '';
+      this.vOwnership = '';
     }
 }
-  /*async getVehicle(event ?: any){
-    if(event){
-      this.vehicle = null;
-    }
-    try{
-      const data = await this.httpClient.get(
-        `http://108.61.174.41:7070/api/vehicles/view/all/${this.vehicleVRN}?page=${this.page -1}`
-      );
-      data['success']
-      ?(this.vehicle = data)
-      : console.log(['error']);
-    }
-    catch(error){
-     console.log(['error']);
-    }
-  }*/
+

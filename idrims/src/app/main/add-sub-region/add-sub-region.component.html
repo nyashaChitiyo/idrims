@@ -15,7 +15,7 @@
                 <select [(ngModel)]="selectedValue" class="form-control" name="regionName" required>
                     <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
                   </select>
-            </div>
+            </div> 
           <div class="form-group col-md-4">
             <label for="regionName">Sub-Region Code</label>
             <input type="text" class="form-control" id="regionShortCode" [(ngModel)] ="regionShortCode" name ="regionShortCode" placeholder="Region short-code"required>
