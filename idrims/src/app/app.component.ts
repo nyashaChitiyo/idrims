@@ -1,7 +1,7 @@
 import {Component, HostListener} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { NgxPermissionsService } from 'ngx-permissions';
+//import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +15,5 @@ export class AppComponent {
   clearLocalStorage(event) {
     localStorage.clear();
   }
-  constructor(private httpClient: HttpClient, private permissionsService: NgxPermissionsService){};
+  constructor(private httpClient: HttpClient){};
 }

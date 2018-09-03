@@ -45,14 +45,9 @@ export class VerifyVehicleComponent implements OnInit {
         "vehicleMake": this.vMake,
         "vehicleModel": this.vModel,
         "vehicleOwnership": this.vType,
-<<<<<<< HEAD
-        "vehicleRegNum": this.vehicleVRN,
-        "vehicleUsage": this.vUsage,
-=======
         "vehicleRegistrationNumber": this.vehicleVRN,
         "vehicleUsage": this.vUsage,
         "verifStatus": true,
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
         "zinaraTaxClass": 0
     })
 	

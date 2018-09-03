@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import { Component, OnInit,ViewChild } from '@angular/core';
-=======
-import { Component, OnInit, ViewChild} from '@angular/core';
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
@@ -22,8 +18,6 @@ export class AddRegionComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  @ViewChild('successSwal') private successSwal: SwalComponent;
-  @ViewChild('failedSwal') private failedSwal: SwalComponent;
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -45,10 +39,6 @@ export class AddRegionComponent implements OnInit {
     } else {
       console.log('failed',+ data);
       this.failedSwal.show();
-<<<<<<< HEAD
-=======
-      
->>>>>>> ddbc5053c4bc38b3b7f52f5cfb58994763043f1c
     }
   }, error => {
     console.log(Response);

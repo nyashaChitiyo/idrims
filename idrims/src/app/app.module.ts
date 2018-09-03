@@ -14,6 +14,7 @@ import {LoginComponent} from './main/login/login.component';
 import {AppRoutingModule} from './app-routing.module';
 import {SessionsService} from './authentication/sessions.service';
 import {AuthGuard} from './authentication/auth.guard';
+import {AuthGuardRouteService} from './authentication/auth-guard-route.service';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {LoadingComponent} from './main/loading/loading.component';
@@ -121,6 +122,7 @@ import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-
   ],
   providers: [
     AuthGuard,
+    AuthGuardRouteService,
     DemoService,
     SessionsService,
     {
