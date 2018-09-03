@@ -1,8 +1,9 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit,ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SessionsService} from '../../authentication/sessions.service';
 import { Router} from '@angular/router';
 import {LoadingIndicatorService} from '../../loading-indicator.service';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private session: SessionsService,
     public loading: LoadingIndicatorService) {
   }
+ 
+  
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   ngOnInit() {
     const element = document.getElementById('body');
@@ -35,6 +40,10 @@ export class LoginComponent implements OnInit, AfterViewInit {
   login() {
     if (this.username != null && this.password != null) {
       this.session.login(this.username, this.password);
+    }
+    else {
+      this.failedSwal.show();
+      
     }
   }
 }

@@ -17,7 +17,11 @@ export class ViewVehicleComponent implements OnInit {
 
   getVehicle(){
 
-    
+    // this.httpClient.post('http:108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',{
+    //   {
+    //     "vehicleRegistrationNumber": "string"
+    //   }
+    // })
   }
 
   ngOnInit() {

@@ -24,22 +24,7 @@ export class AddSubRegionComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private demo: DemoService) {
-    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
-    .subscribe(data => {
-      if (data['success'] === true) {        
-        this.successSwal.show();
-        setTimeout(function(){ this.successSwal.showAlert(); },0)
-        console.log(data['message'], + data['message']);
-        this.reset();
-      } else {
-        console.log('failed',+ data);
-        this.failedSwal.show();
-        
-      }
-    }, error => {
-      console.log(Response);
-      this.failedSwal.show();
-    }); 
+   this.getRegionName();
   
    }
 
@@ -47,7 +32,17 @@ export class AddSubRegionComponent implements OnInit {
   }
   getRegionName(){
 /// take the value of onselected region name and assign it to region
-  }
+
+this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
+    .subscribe(data => {
+      let arr = [];
+      arr.push(data);
+      let arr1 = arr[0].map(a => a.name);
+      let regionIds = arr[0].map(a => a.id);
+      this.allRegionNames = arr[0];
+      
+      console.log(this.allRegionNames);
+    }); }
 
   postSubRegion(){
   this.demo.post('http://108.61.174.41:7070/api/location/create/SubRegion',
@@ -72,8 +67,9 @@ export class AddSubRegionComponent implements OnInit {
   })
 }
   reset() {
+    this.regionShortCode = '';
+    this.subRegionName = '';
     this.regionName = '';
-    this.regionIds = '';
   }
-}
+} 
  

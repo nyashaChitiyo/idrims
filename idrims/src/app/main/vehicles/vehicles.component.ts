@@ -32,7 +32,6 @@ export class VehiclesComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.vehicles = arr[0];
-        console.log(this.vehicles);
 
       }
     ) 

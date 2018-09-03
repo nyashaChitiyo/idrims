@@ -23,8 +23,8 @@ export class ZinaraPricingSchemeComponent implements OnInit {
         this.taxclasses = arr[0];
       }
     ) 
-  }
-
+  } 
+ 
   ngOnInit() {
   }
 

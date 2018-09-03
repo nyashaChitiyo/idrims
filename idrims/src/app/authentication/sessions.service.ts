@@ -46,12 +46,12 @@ export class SessionsService {
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
-        if(data['userGroup'] == 'System Admin'){
+        if(data['userGroup'] == 'SYTADMIN'){
           this.isLoggedIn = true;
           
           this.router.navigate(['/'], { replaceUrl: true });
         }
-        else if(data['userGroup'] == 'Admin'){
+        else if(data['userGroup'] == 'ADMIN'){
           this.isLoggedIn = true;
           this.isTest = true;
           this.router.navigate(['/'], { replaceUrl: true });
@@ -110,10 +110,10 @@ export class SessionsService {
   }
 
   isAdmin() {
-    return localStorage.getItem('userGroup') === 'ADMIN01';
+    return localStorage.getItem('userGroup') === 'ADMIN';
   }
   isAgent() {
-    return localStorage.getItem('userGroup') === 'AGENT01';
+    return localStorage.getItem('userGroup') === 'AGENT';
   }
   isSystemAdmin() {
     return localStorage.getItem('userGroup') === 'SYTADMIN';
