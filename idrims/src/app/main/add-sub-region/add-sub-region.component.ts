@@ -1,3 +1,4 @@
+import{Location} from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -19,12 +20,26 @@ export class AddSubRegionComponent implements OnInit {
   regionName = '';
   regionIds = '';
 
-  
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private demo: DemoService) {
-   this.getRegionName();
+  constructor(private demo: DemoService,private router: Location) {
+    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
+    .subscribe(data => {
+      if (data['success'] === true) {        
+        this.successSwal.show();
+        setTimeout(function(){ this.successSwal.showAlert(); },0)
+        console.log(data['message'], + data['message']);
+        this.reset();
+      } else {
+        console.log('failed',+ data);
+        this.failedSwal.show();
+        
+      }
+    }, error => {
+      console.log(Response);
+      this.failedSwal.show();
+    }); 
   
    }
 
@@ -54,8 +69,9 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
   .subscribe(data => {
     if (data['success'] === true) {        
       console.log(data['message'], + data['message']);
-      // *this.router.back();
       this.successSwal.show();
+      this.router.back();
+      
       
     } else {
       console.log('failed',+ data);
@@ -70,6 +86,7 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     this.regionShortCode = '';
     this.subRegionName = '';
     this.regionName = '';
+    this.regionIds = '';
   }
 } 
  

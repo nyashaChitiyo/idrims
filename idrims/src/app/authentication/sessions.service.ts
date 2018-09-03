@@ -41,27 +41,14 @@ export class SessionsService {
         localStorage.setItem('phoneNumberOrEmail', username);
         localStorage.setItem('firstname', data['firstname']);
         localStorage.setItem('fullName', data['firstname']);
+        localStorage.setItem('userGroup', data['userGroup'])
         console.log('User status is '+data['userGroup']);
-        //this.isLoggedIn = true;
+        this.isLoggedIn = true;
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
-        if(data['userGroup'] == 'SYTADMIN'){
-          this.isLoggedIn = true;
-          
-          this.router.navigate(['/'], { replaceUrl: true });
-        }
-        else if(data['userGroup'] == 'ADMIN'){
-          this.isLoggedIn = true;
-          this.isTest = true;
-          this.router.navigate(['/'], { replaceUrl: true });
-        }
-        else{
-          this.isLoggedIn = true;
-          this.loading.onRequestFinished();
-          this.router.navigate(['/login'], { replaceUrl: true });
-        }
-        //this.router.navigate(['/'], { replaceUrl: true });
+        
+        this.router.navigate(['/'], { replaceUrl: true });
         // this.getUserInformation(username);
       }
     },
@@ -95,7 +82,7 @@ export class SessionsService {
     this.httpClient.get('http://108.61.174.41:7070/api/user/me')
     .subscribe(userData => {
       this.isLoggedIn = true;
-      console.log('the logging in od the usre');
+      
       localStorage.setItem('loggedIn', 'true');
       console.log('userGroup is: ' + userData['userGroup']);
       localStorage.setItem('userGroup', userData['userGroup']);

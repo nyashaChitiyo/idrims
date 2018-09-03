@@ -32,39 +32,42 @@ import { ZinaraPricingSchemeComponent } from './main/zinara-pricing-scheme/zinar
 import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/insurance-pricing-scheme.component';
 import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
 import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
-import { NgxPermissionsGuard } from 'ngx-permissions';
+import { AuthGuardRouteService } from './authentication/auth-guard-route.service';
+
+
+//import { NgxPermissionsGuard } from 'ngx-permissions';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
-  {path: 'userManagement/:phoneNumber', component: AgentComponent, canActivate: [AuthGuard]},
-  {path: 'vehicles', component: VehiclesComponent, canActivate: [AuthGuard]},
+  {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
-  {path: 'collectionPoints', component: CollectionPointsComponent, canActivate: [AuthGuard]},
-  {path: 'InsCompanies', component: InsuranceCompaniesComponent, canActivate: [AuthGuard]},
+  {path: 'admin/locations/collectionPoints', component: CollectionPointsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/InsCompanies', component: InsuranceCompaniesComponent, canActivate:[AuthGuardRouteService]},
   {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard]},
   {path: 'verifyVehicle', component: VerifyVehicleComponent, canActivate: [AuthGuard]},
-  {path: 'registerUser', component: RegisterUserComponent, canActivate: [AuthGuard]},
-  {path: 'addColPoint', component: AddCollectionPointComponent, canActivate: [AuthGuard]},
-  {path: 'addInsComp', component: AddInsuranceCompanyComponent, canActivate: [AuthGuard]},
+  {path: 'admin/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/collectionPoints/addColPoint', component: AddCollectionPointComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/InsCompanies/addInsComp', component: AddInsuranceCompanyComponent, canActivate:[AuthGuardRouteService]},
   {path: 'addProduct', component: AddProductComponent, canActivate: [AuthGuard]},
-  {path: 'viewAgents', component: ViewAgentsComponent, canActivate: [AuthGuard]},
-  {path: 'viewCustomers', component: ViewCustomersComponent, canActivate: [AuthGuard]},
+  {path: 'admin/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'verifiedVehicles', component: VerifiedVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'viewVehicle', component: ViewVehicleComponent, canActivate: [AuthGuard]},
-  {path: 'locations', component: LocationsComponent, canActivate: [AuthGuard]},
-  {path: 'regions', component: RegionsComponent, canActivate: [AuthGuard]},
-  {path: 'subRegions', component: SubRegionsComponent, canActivate: [AuthGuard]},
-  {path: 'addRegions', component: AddRegionComponent, canActivate: [AuthGuard]},
-  {path: 'addSubRegions', component: AddSubRegionComponent, canActivate: [AuthGuard]},
+  {path: 'admin/locations', component: LocationsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/regions', component: RegionsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/subRegions', component: SubRegionsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/regions/addRegions', component: AddRegionComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/subRegions/addSubRegions', component: AddSubRegionComponent, canActivate:[AuthGuardRouteService]},
   {path: 'closedClaims', component: ClosedClaimsComponent, canActivate: [AuthGuard]},
   {path: 'openClaims', component: OpenClaimsComponent, canActivate: [AuthGuard]},
-  {path: 'PricingScheme', component: PricingSchemeComponent, canActivate: [AuthGuard]},
-  {path: 'ZinaraPricingScheme', component: ZinaraPricingSchemeComponent, canActivate: [AuthGuard,]},
-  {path: 'InsurancePricingScheme', component: InsurancePricingSchemeComponent, canActivate: [AuthGuard]},
+  {path: 'admin/PricingScheme', component: PricingSchemeComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/PricingScheme/ZinaraPricingScheme', component: ZinaraPricingSchemeComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/PricingScheme/InsurancePricingScheme', component: InsurancePricingSchemeComponent, canActivate:[AuthGuardRouteService]},
   {path: 'AddZinaraPricingScheme', component: AddZinaraPricingSchemeComponent, canActivate: [AuthGuard]},
   {path: 'AddInsurancePricingScheme', component: AddInsurancePricingSchemeComponent, canActivate: [AuthGuard]},
 

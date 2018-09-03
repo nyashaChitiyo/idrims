@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable ,of} from 'rxjs';
 import 'rxjs/add/operator/take';
 import 'rxjs-compat/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -19,10 +19,12 @@ export class AuthGuard implements CanActivate {
       // .take(1)
       // .map(user => !!user)
       .do(authenticated => {
+
         if (!authenticated) {
           console.log('Access Denied');
           this.router.navigate(['/login']);
         }
       });
   }
+  
 }

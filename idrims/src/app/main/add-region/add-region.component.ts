@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core'
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
@@ -14,10 +14,9 @@ export class AddRegionComponent implements OnInit {
   id: 0;
   name: string;
   code: string;
-
-
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
+
   constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
