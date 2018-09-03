@@ -42,26 +42,35 @@
                     </div>
                     <div class="form-group col-md-4">
                     <label>Licencing Tax Class</label>
-                    <select class="form-control" id="licTaxClass" [(ngModel)]="licTaxClass" name ="licTaxClass" required>
-                      <option selected  style="display: none;">Licencing Tax Class</option>
-                      <option><a href="#"></a></option>
-                    </select>
-                    </div>
+                    <select [(ngModel)]="selectedValue" class="form-control" name="TaxClass" required>
+                        <option *ngFor="let TaxClass of licTaxClasses" [value]="TaxClass.taxClassId">{{TaxClass.taxClassDescription}}</option>
+                      </select>
+                    </div>  
                     <div class="form-group col-md-4">
                     <label>Licencing Expiry</label>
                     <input class="form-control" type="date" required id="licExp" [(ngModel)]="licExp" name="licExp">
                     </div>
-                    <div class="form-group col-md-4">
+                    <div class="form-group col-md-4"> 
                     <label>Licencing Arrears</label>
                     <input class="form-control" type="number" id="licArreas" [(ngModel)]="licArreas" name="licArreas" placeholder="Licencing areas" required>
                     </div>
                     <div class="form-group col-md-4">
                     <label>Insurance Tax Class</label>
-                    <select class="form-control" id="insTaxClass" [(ngModel)]="insTaxClass" name="insTaxClass" required>
-                      <option selected  style="display: none;">Licencing Tax Class</option>
-                      <option><a href="#"></a></option>
-                    </select>
+                    <select [(ngModel)]="selectedValue" class="form-control" name="insTaxClass" required>
+                        <option *ngFor="let insTaxClass of insTaxClasses">{{insTaxClass.taxClassDescription}}</option>
+                      </select>
                     </div>
+                    <br>
+                    <div class="form-group col-md-4"></div>
+                    <div class="form-group col-md-4">
+                        <label>Vehicle Ownership</label>
+                        <select class="form-control" id="vOwnership" [(ngModel)]="vOwnership" name="vOwnership" required>
+                          <option selected  style="display: none;" >choose usage</option>
+    
+                          <option value="Private">Private</option>
+                          <option value="Commercial">Business</option>
+                        </select>
+                        </div>
                       </div>
                   <div class="row">
                   <div class="box-footer"  align="center">
