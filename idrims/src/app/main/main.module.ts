@@ -19,6 +19,7 @@ import { ViewAgentsComponent } from './view-agents/view-agents.component';
 import { ViewCustomersComponent } from './view-customers/view-customers.component';
 import { VerifiedVehiclesComponent } from './verified-vehicles/verified-vehicles.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { AdminComponent } from './admin/admin.component';
 import { CustomerComponent } from './customer/customer.component';
 import { ClosedClaimsComponent } from './closed-claims/closed-claims.component';
 import { OpenClaimsComponent } from './open-claims/open-claims.component';
@@ -51,6 +52,7 @@ import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add
   ViewCustomersComponent,
   VerifiedVehiclesComponent,
   ViewVehicleComponent,
+  AdminComponent,
   CustomerComponent,
   ClosedClaimsComponent,
   OpenClaimsComponent,

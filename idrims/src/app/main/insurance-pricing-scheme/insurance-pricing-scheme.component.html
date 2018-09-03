@@ -1,3 +1,54 @@
-<p>
-  insurance-pricing-scheme works!
-</p>
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section align="center" class="content-header">
+      <h1>
+        <strong>Insurance Pricing Scheme Management</strong>
+      </h1>
+  
+    </section>
+    <p>&nbsp;<button align="left" class="btn btn-warning" routerLink ="/PricingScheme">Back to Pricing Scheme Management</button></p> 
+    <hr>
+    <!-- Main content -->
+    <section class="content">
+   
+  <!--Mailbox Div-->
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+        <button type="button" name="addInsPricing" id="addInsPricing" class="btn btn-primary btn-block margin-bottom" routerLink="/AddInsurancePricingScheme">Add Insurance Pricing Scheme</button>
+      </form>
+  
+    </div>
+  </div>
+  <div class="box">
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-hover" id="" cellspacing="0">
+          <thead>
+          <tr>  
+            <th>Tax Class Description</th>
+            <th>Annual Comp Rate</th>
+            <th>Annual Comp Rate Minimum</th>
+            <th>RTA Cover Premium</th>
+            <th>RTA Levy</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let insclass of insclasses">
+            <td>{{insclass.taxClassDescription}}</td>
+            <td>{{insclass.annualCompRate}}</td>
+            <td>{{insclass.annualCompRateMinimum}}</td>
+            <td>{{insclass.rtaCoverPremium}}</td>
+            <td>{{insclass.rtaLevy}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+  
+  
+  </div>
+  
+  
+  

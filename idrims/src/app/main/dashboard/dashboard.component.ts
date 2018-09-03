@@ -12,25 +12,38 @@ export class DashboardComponent implements OnInit {
 
 
   agentcount = [];
+  unverifiedcount = [];
   count: string;
 
   constructor( private httpClient: HttpClient ) { 
     this.countAgents();
-    console.log(this.count);
+    this.countUnverified();
+   
   }
   countAgents(){
     this.httpClient.post('http://108.61.174.41:7070/api/counters/users/group',{
     
-       'searchString' : 'Agent'
+       'searchString' : 'AGENT'
     })
     .subscribe( 
       (data:any[])=> {
         let arr = [];
         arr.push(data)
         this.agentcount = arr[0];
-
-      }
+ console.log(this.agentcount);
+      } 
     ) 
+  } 
+  countUnverified(){
+    this.httpClient.get('http://108.61.174.41:7070/api/counters/vehicles/unverified')
+    .subscribe(
+      (data:any[])=> { 
+        let arr = [];
+        arr.push(data)
+        this.unverifiedcount = arr[0];
+        console.log(this.unverifiedcount);
+      }
+    )  
   }
 
   ngOnInit() {
