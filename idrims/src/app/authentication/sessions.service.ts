@@ -33,7 +33,7 @@ export class SessionsService {
     };
     this.loading.onRequestStarted();
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
-    this.httpClient.post('http://108.61.  174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
+    this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
       console.log('accessToken: ' + data['accessToken']);
       if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
