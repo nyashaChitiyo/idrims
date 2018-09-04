@@ -3,13 +3,13 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
- 
+
 @Component({
-  selector: 'app-view-agents',
-  templateUrl: './view-agents.component.html',
-  styleUrls: ['./view-agents.component.css']
+  selector: 'app-view-admins',
+  templateUrl: './view-admins.component.html',
+  styleUrls: ['./view-admins.component.css']
 })
-export class ViewAgentsComponent implements OnInit {
+export class ViewAdminsComponent implements OnInit {
 
   users= [];
   userGroup:string;
@@ -18,14 +18,14 @@ export class ViewAgentsComponent implements OnInit {
  this.getUsers()
   }
   
-  getAgent(){
+  getAdmin(){
     let d = this.users[0];
     let data : NavigationExtras = {
       queryParams: d
     }
     console.log(data)
 
-    this.router.navigate(['/userManagement/'+this.users[0].phoneNumber],data);
+    this.router.navigate(['admin/userManagement/ViewAdmins/'+this.users[0].phoneNumber],data);
   }
   // onNameKeyUp(event:any){
   // this.name = event.target.value;
@@ -35,7 +35,7 @@ export class ViewAgentsComponent implements OnInit {
     this.httpClient.post('http://108.61.174.41:7070/api/view/group',
   {
     
-      'searchString': 'AGENT01'
+      'searchString': 'ADMIN01'
     
   })
     .subscribe(
@@ -50,4 +50,3 @@ export class ViewAgentsComponent implements OnInit {
   ngOnInit() {
   }
 }
- 

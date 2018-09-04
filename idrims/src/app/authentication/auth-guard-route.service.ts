@@ -9,7 +9,7 @@ export class AuthGuardRouteService {
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if(localStorage.getItem('accessToken')){
     var userGroup:string = localStorage.getItem('userGroup');
-    if(userGroup == 'System Admin'){
+    if(userGroup == 'ADMIN02'){
       return state.url.startsWith('/admin')
       ? true: (this.router.navigate(['/']), false);
     }

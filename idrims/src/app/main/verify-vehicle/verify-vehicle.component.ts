@@ -11,6 +11,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class VerifyVehicleComponent implements OnInit {
 
+  selectedValue: string;
   vehicleVRN:string;
   vehicle:any;
   page=1;
@@ -19,7 +20,7 @@ export class VerifyVehicleComponent implements OnInit {
   insTaxClasses;
 
   vMake = '';
-  vModel = '';
+  vModel = ''; 
   vType = '';
   vUsage = '';
   InsExp = '';
@@ -73,10 +74,10 @@ export class VerifyVehicleComponent implements OnInit {
     }) 
   }
 
-  saveVehicle(){
+  saveVehicle(){ 
   
       const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
-        "insuranceTaxClass": this.insTaxClass,
+        "insuranceTaxClass": +this.selectedValue,
         "insuranceExpiry" : this.InsExp,
         "vehicleMake": this.vMake,
         "vehicleModel": this.vModel,
@@ -84,7 +85,7 @@ export class VerifyVehicleComponent implements OnInit {
         "vehicleRegistrationNumber": this.vehicleVRN,
         "vehicleUsage": this.vUsage,
         "verifStatus": true,
-        "zinaraTaxClass": this.licTaxClass
+        "zinaraTaxClass": +this.selectedValue
     })
 	
     .subscribe(data => {

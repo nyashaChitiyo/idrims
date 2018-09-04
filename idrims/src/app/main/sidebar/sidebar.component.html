@@ -13,9 +13,12 @@
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/locations"><i class="fa fa-map"></i> Locations</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/InsCompanies"><i class="fa fa-building"></i> Insurance Companies</a></li>
      <li routerLinkActive="active"><a routerLink="/Products"><i class="fa fa-shopping-cart"></i> Claims</a></li>
-     <!--<li routerLinkActive="active"><a routerLink="/Claims"><i class="fa fa-shopping-cart"></i> Claims</a></li>-->
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/PricingScheme"><i class="fa fa-shopping-cart"></i> Pricing Schemes</a></li>
+     <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/customerAgentManagement"><i class="fa fa-shopping-cart"></i> User Management</a></li>
+     <!--<li routerLinkActive="active"><a routerLink="/Claims"><i class="fa fa-shopping-cart"></i> Claims</a></li>-->
+     
   </ul>
 </section>
 <!-- /.sidebar -->
 </aside>
+ 

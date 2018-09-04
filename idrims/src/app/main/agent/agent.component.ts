@@ -26,7 +26,7 @@ export class AgentComponent implements OnInit {
     //this.inputText = "nyasha"
     console.log(this.agents);
   }
-
+ 
   ngOnInit() {
     
     this.activatedRoute.queryParams.subscribe(params =>{

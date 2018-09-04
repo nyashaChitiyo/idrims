@@ -3,14 +3,15 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
- 
-@Component({
-  selector: 'app-view-agents',
-  templateUrl: './view-agents.component.html',
-  styleUrls: ['./view-agents.component.css']
-})
-export class ViewAgentsComponent implements OnInit {
 
+@Component({
+  selector: 'app-agent-management',
+  templateUrl: './agent-management.component.html',
+  styleUrls: ['./agent-management.component.css']
+})
+export class AgentManagementComponent implements OnInit {
+
+ 
   users= [];
   userGroup:string;
 

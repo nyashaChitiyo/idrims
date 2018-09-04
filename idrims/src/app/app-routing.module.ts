@@ -33,29 +33,36 @@ import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/
 import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
 import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
 import { AuthGuardRouteService } from './authentication/auth-guard-route.service';
+import { ViewAdminsComponent } from './main/view-admins/view-admins.component';
+import { RegisterCustomerComponent } from './main/register-customer/register-customer.component';
+import { RegisterAgentComponent } from './main/register-agent/register-agent.component';
+import { CustomerManagementComponent } from './main/customer-management/customer-management.component';
+import { AgentManagementComponent } from './main/agent-management/agent-management.component';
+import {CustomerAgentManagementComponent} from './main/customer-agent-management/customer-agent-management.component';
 
 
 //import { NgxPermissionsGuard } from 'ngx-permissions';
-
+ 
 
 const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent}, 
   {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'admin/userManagement/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
+  {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
   {path: 'admin/locations/collectionPoints', component: CollectionPointsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/InsCompanies', component: InsuranceCompaniesComponent, canActivate:[AuthGuardRouteService]},
   {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard]},
   {path: 'verifyVehicle', component: VerifyVehicleComponent, canActivate: [AuthGuard]},
-  {path: 'admin/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/locations/collectionPoints/addColPoint', component: AddCollectionPointComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/InsCompanies/addInsComp', component: AddInsuranceCompanyComponent, canActivate:[AuthGuardRouteService]},
   {path: 'addProduct', component: AddProductComponent, canActivate: [AuthGuard]},
-  {path: 'admin/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'admin/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'verifiedVehicles', component: VerifiedVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'viewVehicle', component: ViewVehicleComponent, canActivate: [AuthGuard]},
   {path: 'admin/locations', component: LocationsComponent, canActivate:[AuthGuardRouteService]},
@@ -70,11 +77,17 @@ const appRoutes: Routes = [
   {path: 'admin/PricingScheme/InsurancePricingScheme', component: InsurancePricingSchemeComponent, canActivate:[AuthGuardRouteService]},
   {path: 'AddZinaraPricingScheme', component: AddZinaraPricingSchemeComponent, canActivate: [AuthGuard]},
   {path: 'AddInsurancePricingScheme', component: AddInsurancePricingSchemeComponent, canActivate: [AuthGuard]},
-
+  {path: 'RegisterCustomer', component: RegisterCustomerComponent, canActivate: [AuthGuard]},
+  {path: 'RegisterAgent', component: RegisterAgentComponent, canActivate: [AuthGuard]},
+  {path: 'CustomerManagement', component: CustomerManagementComponent, canActivate: [AuthGuard]},
+  {path: 'AgentManagement', component: AgentManagementComponent, canActivate: [AuthGuard]},
+  {path: 'customerAgentManagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
+ 
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: PageNotFoundComponent}
-];
+]; 
+
 
 @NgModule({
   imports: [

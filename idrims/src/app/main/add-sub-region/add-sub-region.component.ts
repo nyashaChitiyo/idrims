@@ -27,13 +27,13 @@ export class AddSubRegionComponent implements OnInit {
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     .subscribe(data => {
       if (data['success'] === true) {        
-        this.successSwal.show();
+        //this.successSwal.show();
         setTimeout(function(){ this.successSwal.showAlert(); },0)
         console.log(data['message'], + data['message']);
         this.reset();
       } else {
         console.log('failed',+ data);
-        this.failedSwal.show();
+        //this.failedSwal.show();
         
       }
     }, error => {

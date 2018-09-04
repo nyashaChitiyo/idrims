@@ -53,7 +53,12 @@ import { ZinaraPricingSchemeComponent } from './main/zinara-pricing-scheme/zinar
 import { InsurancePricingSchemeComponent} from './main/insurance-pricing-scheme/insurance-pricing-scheme.component';
 import { AddZinaraPricingSchemeComponent} from './main/add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
 import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
-
+import { ViewAdminsComponent } from './main/view-admins/view-admins.component';
+import { RegisterCustomerComponent } from './main/register-customer/register-customer.component';
+import { RegisterAgentComponent } from './main/register-agent/register-agent.component';
+import { CustomerManagementComponent } from './main/customer-management/customer-management.component';
+import { AgentManagementComponent } from './main/agent-management/agent-management.component';
+import {CustomerAgentManagementComponent } from './main/customer-agent-management/customer-agent-management.component';
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -104,7 +109,16 @@ import { AddInsurancePricingSchemeComponent} from './main/add-insurance-pricing-
     ZinaraPricingSchemeComponent,
     InsurancePricingSchemeComponent,
     AddZinaraPricingSchemeComponent,
-    AddInsurancePricingSchemeComponent
+    AddInsurancePricingSchemeComponent,
+    ViewAdminsComponent,
+    RegisterCustomerComponent,
+    RegisterAgentComponent,
+    CustomerManagementComponent,
+    AgentManagementComponent,
+    CustomerAgentManagementComponent
+
+
+
   ],
   imports: [
     BrowserModule,

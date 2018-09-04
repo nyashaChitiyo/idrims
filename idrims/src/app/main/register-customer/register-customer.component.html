@@ -3,7 +3,7 @@
     <section class="content col-md-10">
     <div class="box col-md-4" >
     <div align="center" class="box-header with-border">
-      <h3 class="box-title"><b>REGISTER BACK-OFFICE ADMIN</b></h3>
+      <h3 class="box-title"><b>REGISTER CUSTOMER</b></h3>
     </div>
     <!-- /.box-header -->
     <!-- form start -->
@@ -23,22 +23,21 @@
         </div>
         <div class="form-group col-md-6">
           <label for="phoneNumber">Phone Number</label>
-          <input type="number" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
+          <input type="text" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email address</label>
           <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
         </div>
         <div class="form-group col-md-6">
+            <label for="address"> Street Address</label>
+            <input type="text" class="form-control" id="address" [(ngModel)]="address" placeholder="Enter address">
+          </div> 
+        <div class="form-group col-md-6">
           <label for="password">Password</label>
           <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
         </div>
-        <div class="form-group col-md-6">
-            <label for="email">Station</label>
-            <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
-                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
-              </select>
-        </div> 
+
       </div>
       </div>
       </div>
@@ -46,7 +45,7 @@
 
       <div class="box-footer" align="center">
         <button (click)="postProfile()" type="submit" class="btn btn-primary">Submit</button>
-        <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/userManagement"> Cancel</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/CustomerManagement"> Cancel</button>
       </div>
     </section>
     <swal
