@@ -5,40 +5,29 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  selector: 'app-register-customer',
+  templateUrl: './register-customer.component.html',
+  styleUrls: ['./register-customer.component.css']
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterCustomerComponent implements OnInit {
 
-    
   selectedValue: string;
   allColPointNames= [];
   colPoint = '';
   colPointIds = '';
   email: string;
+  address: string;
   firstname: string;
   nationalID: string;
   password: string;
   phoneNumber: string;
   surname: string;
-  userGroup: string;
+  userGroup: string; 
+
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) {
-    
-    this.httpClient.get('http://108.61.174.41:7070/api/location/view/allCollectionPoints')
-    .subscribe(data => {
-      let arr = [];
-      arr.push(data);
-      let arr1 = arr[0].map(a => a.name);
-      let colPointIds = arr[0].map(a => a.id);
-      this.allColPointNames = arr[0];
-      
-      console.log(this.allColPointNames);
-    })
-  }
+  constructor(private httpClient: HttpClient) {}
  
   postProfile(){ 
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
@@ -48,20 +37,20 @@ export class RegisterUserComponent implements OnInit {
     'nationalId':  this.nationalID,
     'password' : this.password,
     'phoneNumber': this.phoneNumber,
-    'lastname': this.surname,
-    'userGroup':'ADMIN01',
+    'surname': this.surname,
+    'userGroup':'CUST01',
     'roles': [ 
       {
         'created': new Date(),
-        'description': 'ADMIN01',
+        'description': 'CUST01',
         'id': 1,
         'lastModified': new Date(),
-        'roleName': 'ADMIN01'
+        'roleName': 'CUST01'
       }
     ],
       'userStation': +this.selectedValue,
       'userStatus': true,
-      'userType': 'ADMIN01',
+      'userType': 'CUST01',
 
   })
   .subscribe(data => {
@@ -88,3 +77,4 @@ export class RegisterUserComponent implements OnInit {
   }
 
 }
+

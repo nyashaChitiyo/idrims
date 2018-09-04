@@ -28,6 +28,12 @@ import { ZinaraPricingSchemeComponent } from './zinara-pricing-scheme/zinara-pri
 import { InsurancePricingSchemeComponent } from './insurance-pricing-scheme/insurance-pricing-scheme.component';
 import { AddInsurancePricingSchemeComponent } from './add-insurance-pricing-scheme/add-insurance-pricing-scheme.component';
 import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add-zinara-pricing-scheme.component';
+import { ViewAdminsComponent } from './view-admins/view-admins.component';
+import { RegisterCustomerComponent } from './register-customer/register-customer.component';
+import { RegisterAgentComponent } from './register-agent/register-agent.component';
+import { CustomerManagementComponent } from './customer-management/customer-management.component';
+import { AgentManagementComponent } from './agent-management/agent-management.component';
+import { CustomerAgentManagementComponent } from './customer-agent-management/customer-agent-management.component';
 
 
 @NgModule({
@@ -60,6 +66,12 @@ import { AddZinaraPricingSchemeComponent } from './add-zinara-pricing-scheme/add
   ZinaraPricingSchemeComponent,
   InsurancePricingSchemeComponent,
   AddInsurancePricingSchemeComponent,
-  AddZinaraPricingSchemeComponent]
+  AddZinaraPricingSchemeComponent,
+  ViewAdminsComponent,
+  RegisterCustomerComponent,
+  RegisterAgentComponent,
+  CustomerManagementComponent,
+  AgentManagementComponent,
+  CustomerAgentManagementComponent]
 })
 export class MainModule { }

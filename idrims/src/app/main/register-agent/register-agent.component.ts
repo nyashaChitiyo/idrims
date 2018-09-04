@@ -3,15 +3,14 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
-
 @Component({
-  selector: 'app-register-user',
-  templateUrl: './register-user.component.html',
-  styleUrls: ['./register-user.component.css']
+  selector: 'app-register-agent',
+  templateUrl: './register-agent.component.html',
+  styleUrls: ['./register-agent.component.css']
 })
-export class RegisterUserComponent implements OnInit {
+export class RegisterAgentComponent implements OnInit {
 
-    
+     
   selectedValue: string;
   allColPointNames= [];
   colPoint = '';
@@ -48,20 +47,20 @@ export class RegisterUserComponent implements OnInit {
     'nationalId':  this.nationalID,
     'password' : this.password,
     'phoneNumber': this.phoneNumber,
-    'lastname': this.surname,
-    'userGroup':'ADMIN01',
+    'surname': this.surname,
+    'userGroup':'AGENT01',
     'roles': [ 
       {
         'created': new Date(),
-        'description': 'ADMIN01',
+        'description': 'AGENT01',
         'id': 1,
         'lastModified': new Date(),
-        'roleName': 'ADMIN01'
+        'roleName': 'AGENT01'
       }
     ],
       'userStation': +this.selectedValue,
       'userStatus': true,
-      'userType': 'ADMIN01',
+      'userType': 'AGENT01',
 
   })
   .subscribe(data => {

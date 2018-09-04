@@ -97,13 +97,13 @@ export class SessionsService {
   }
 
   isAdmin() {
-    return localStorage.getItem('userGroup') === 'ADMIN';
+    return localStorage.getItem('userGroup') === 'ADMIN01';
   }
-  isAgent() {
-    return localStorage.getItem('userGroup') === 'AGENT';
-  }
+  // isAgent() {
+  //   return localStorage.getItem('userGroup') === 'AGENT';
+  // }
   isSystemAdmin() {
-    return localStorage.getItem('userGroup') === 'SYTADMIN';
+    return localStorage.getItem('userGroup') === 'ADMIN02';
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';

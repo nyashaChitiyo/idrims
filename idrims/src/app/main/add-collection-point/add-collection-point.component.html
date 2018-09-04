@@ -28,7 +28,7 @@
         </div>
         <div class="form-group col-md-6">
           <label for="phoneNumber">Phone Number</label>
-          <input type="number" class="form-control" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Phone"required>
+          <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" placeholder="Phone"required>
         </div>
         <div class="form-group col-md-6">
           <label for="email">Email address</label>
@@ -62,7 +62,7 @@
 
       <div class="box-footer">
         <button type="submit" class="btn btn-primary" (click)="postColPoint()">Submit</button>
-        <button class="btn btn-warning" aria-hidden="true" routerLink ="/collectionPoints"> Cancel</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/locations/collectionPoints"> Cancel</button>
       </div>
     </section>
     <swal

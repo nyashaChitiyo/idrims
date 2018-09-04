@@ -14,26 +14,38 @@
 
   <!--Mailbox Div-->
   <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6"> 
         <form method="post">
-          <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="registerUser">Add Agent</button>
+          <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="registerUser">Add Back-Office Admin</button>
         </form>
   
       </div>
+      <div class="col-md-6"> 
+          <form method="post">
+            <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="registerUser">Add Steward-Bank Back-Office Admin</button>
+          </form>
+    
+        </div>
     </div>
      <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <form method="post">
             <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="viewCustomers">View Customers</button>
           </form>
     
         </div>
-          <div class="col-md-6">
+          <div class="col-md-4">
             <form method="post">
-              <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="viewAgents">View Agents</button>
+              <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="ViewAdmins">View Back-Office Admins</button>
             </form>
       
           </div>
+          <div class="col-md-4">
+              <form method="post">
+                <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="viewAgents">View Agents</button>
+              </form>
+        
+            </div>
       </div>
 
     </section>

@@ -57,9 +57,9 @@
                     <div class="form-group col-md-4">
                     <label>Insurance Tax Class</label>
                     <select [(ngModel)]="selectedValue" class="form-control" name="insTaxClass" required>
-                        <option *ngFor="let insTaxClass of insTaxClasses">{{insTaxClass.taxClassDescription}}</option>
+                        <option *ngFor="let insTaxClass of insTaxClasses"[value]="2">{{insTaxClass.taxClassDescription}}</option>
                       </select>
-                    </div>
+                    </div> 
                     <br>
                     <div class="form-group col-md-4"></div>
                     <div class="form-group col-md-4">

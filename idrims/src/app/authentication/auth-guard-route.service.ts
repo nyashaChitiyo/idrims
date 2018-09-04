@@ -10,7 +10,7 @@ export class AuthGuardRouteService {
     if(localStorage.getItem('accessToken')){
       console.log(localStorage.getItem('userGroup')+'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
     var userGroup:string = localStorage.getItem('userGroup');
-    if(userGroup == 'System Admin'){
+    if(userGroup == 'ADMIN02'){
       return state.url.startsWith('/admin')
       ? true: (this.router.navigate(['/']), false);
     }

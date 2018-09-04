@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 export class SidebarComponent implements OnInit {
 
   isTest = false;
+  isAdmin = false;
   constructor(private router: Router, private httpClient: HttpClient) {
     const element = document.getElementById('body');
     element.classList.remove('login-page');
@@ -19,11 +20,13 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
     var userGroup: string = localStorage.getItem('userGroup');
-    if(userGroup == 'System Admin'){
+    if(userGroup == 'ADMIN02'){
       this.isTest = true;
+      this.isAdmin = false
     }
-    else if(userGroup == 'Admin'){
+    else if(userGroup == 'ADMIN01'){
       this.isTest = false;
+      this.isAdmin = true;
     }
     else{
       this.isTest = true;
