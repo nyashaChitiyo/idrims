@@ -1,0 +1,150 @@
+<!-- <div class="bs-example">
+    <div id="uModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+            <form class="form-horizontal" method="post">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title " align="center">Register for iDriveSure Mobile System </h4>
+          </div>
+          <div class="modal-body">
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Firstname&emsp;&emsp;&nbsp;&nbsp;</b></span>
+            <input type="text" name="regFname" id="regFname" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Surname&emsp;&emsp;&emsp;</b></span>
+            <input type="text" name="regSurname" id="regSurname" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>National ID&emsp;&emsp;</b></span>
+            <input type="text" name="regNationalID" id="regNationalID" class="form-control" style="text-transform: uppercase" required>                
+            <span class="input-group-addon"><i class="fa fa-newspaper-o"></i></span>
+          </div>
+    <br>
+          <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Address&emsp;&emsp;&emsp;</b></span>
+            <input type="text" name="regAddress" id="regAddress" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Email&emsp;&emsp;&emsp;&emsp;&nbsp;&nbsp;</b></span>
+            <input type="text" name="regEmail" id="regEmail" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Phone&emsp;&emsp;&emsp;&emsp;</b></span>
+            <input type="text" name="regPhoneOth" id="regPhoneOth" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa  fa-phone"></i></span>
+          </div>
+    <br>
+           <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Phone - Ecocash&emsp;&emsp;&emsp;&emsp;</b></span>
+            <input type="text" name="regPhoneEco" id="regPhoneEco" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa  fa-phone"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>PIN &emsp;&emsp;&emsp;&emsp;&emsp; </b></span>
+            <input type="password" name="regPin" id="regPin" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-shield"></i></span>
+          </div>
+    <br>
+    <div class="input-group col-md-offset-1 col-md-10">
+            <span class="input-group-addon"><b>Confirm PIN&emsp;&nbsp;&nbsp;</b></span>
+            <input type="password" name="regConfirmPin" id="regConfirmPin" class="form-control" required>                
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button data-dismiss="modal" class="btn btn-default pull-left">Cancel</button>
+            <button type="submit" name="registerBtn" id="registerBtn" class="btn btn-info pull-right" onClick="loadingAnim()">Register</button>
+          </div>
+        </div>
+   </form> </div>
+  </div>
+</div>
+///////////////// -->
+
+<div class="content-wrapper"><br><br>
+    <section class="input-group col-md-offset-1 col-md-10">
+    <div class="box col-md-4" >
+    <div align="center" class="box-header with-border">
+      <h3 class="box-title"><b>Register For iDriveSure</b></h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+      <div class="box-body">
+          <div class="row">
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="firstname" placeholder="First Name">
+        </div>
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="surname">Surname</label>
+          <input type="text" class="form-control" id="surname" [(ngModel)]="surname" placeholder="Last Name">
+        </div>
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="nationalId">NationalId</label>
+          <input type="text" class="form-control" id="nationalId" [(ngModel)]="nationalID" placeholder="First Name">
+        </div>
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
+        </div>
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
+        </div>
+        <div class="input-group col-md-offset-1 col-md-10">
+            <label for="address"> Street Address</label>
+            <input type="text" class="form-control" id="address" [(ngModel)]="address" placeholder="Enter address">
+          </div> 
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
+        </div>      
+        <div class="input-group col-md-offset-1 col-md-10">
+            <label for="password">Re-enter Password</label>
+            <input type="password" class="form-control" id="confirmpassword" [(ngModel)]="confirmpassword" placeholder="Re-enter Password">
+        </div>
+
+      </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer" align="center">
+        <button (click)="postProfile()" type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/CustomerManagement"> Cancel</button>
+      </div>
+    </section>
+    <swal
+    #successSwal
+    title="Success"
+    text="Registration Successful, Please Login"
+    type="success"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+  <swal
+    #failedSwal
+    title="Failed"
+    text="An error occured while processing your request"
+    type="warning"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+
+ <script>
+   $(document).ready(function() {
+    $('.formselect').select2();
+});
+ </script>

@@ -3,7 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
-
+ 
 @Component({
   selector: 'app-register-customer',
   templateUrl: './register-customer.component.html',

@@ -1,0 +1,41 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1 align= "center" >
+        <strong>Steward Bank Back-Office Admins</strong>
+      </h1>
+      <p><button align="left" class="btn btn-warning" routerLink ="/admin/userManagement">Back to User Managemnt</button></p> 
+    </section>
+    <hr>
+
+    <!-- Main content -->
+    <section class="content">
+  <div class="box">
+    <table class="table table-hover" id="users" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Phone Number</th>
+          <th>First Name</th>
+          <th>Surname</th> 
+          <th>Station</th> 
+        </tr>  
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{user.phoneNumber}}</td>
+          <td>{{user.firstname}}</td>
+          <td>{{user.lastname}}</td>
+          <td>{{user.userStatus}}</td>
+          <!--<td><button routerLink="/userManagement/{{user.phoneNumber}}" class="btn btn-primary btn-block margin-bottom">view</button></td>-->
+          <td><button (click)="getAdmin()" class="btn btn-primary btn-block margin-bottom">view</button></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+    </section>
+
+
+  </div>
+
+

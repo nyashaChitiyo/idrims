@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+
 @Component({
   selector: 'app-verify-vehicle',
   templateUrl: './verify-vehicle.component.html',
