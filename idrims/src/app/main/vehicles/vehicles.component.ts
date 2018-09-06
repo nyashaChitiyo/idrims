@@ -28,7 +28,7 @@ export class VehiclesComponent implements OnInit {
       "bool": false
     })
     .subscribe(
-      (data)=> {
+      (data: Response)=> {
         let arr = [];
         arr.push(data)
         this.vehicles = arr[0];

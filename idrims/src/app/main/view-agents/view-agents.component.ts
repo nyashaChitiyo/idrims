@@ -13,6 +13,7 @@ export class ViewAgentsComponent implements OnInit {
 
   users= [];
   userGroup:string;
+  public temp_var: Object = false;
 
   constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
  this.getUsers()
@@ -39,10 +40,12 @@ export class ViewAgentsComponent implements OnInit {
   })
     .subscribe(
       (data:any[])=> {
+        console.log(data);
         let arr = [];
         arr.push(data)
         this.users = arr[0];
-        console.log(arr[0]);
+        this.temp_var=true;
+        
       }
     ) 
   }
