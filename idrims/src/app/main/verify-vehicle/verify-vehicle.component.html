@@ -79,7 +79,7 @@
                     </div>
                   </div>
               </div>
-              <swal
+  <swal
     #successSwal
     title="Success"
     text="Successfully Verified Vehicle"
@@ -95,5 +95,13 @@
     [showCancelButton]="false"
     [focusCancel]="false">
   </swal>
+  <swal
+  #verifiedSwal
+  title="Failed"
+  text="Vehicle already verified"
+  type="warning"
+  [showCancelButton]="false"
+  [focusCancel]="false">
+</swal>
 
 

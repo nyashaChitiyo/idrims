@@ -18,7 +18,6 @@ export class VerifyVehicleComponent implements OnInit {
   taxClassId = '';
   licTaxClasses;
   insTaxClasses;
-
   vMake = '';
   vModel = ''; 
   vType = '';
@@ -32,9 +31,9 @@ export class VerifyVehicleComponent implements OnInit {
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
+  @ViewChild('verifiedSwal') private verifiedSwal: SwalComponent;
 
   constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { 
-
     this.getLicTaxClasses();
     this.getInsTaxClass();
   }
@@ -51,7 +50,8 @@ export class VerifyVehicleComponent implements OnInit {
           this.licTaxClasses = arr[0];
           
           console.log(this.licTaxClasses);
-        }); }
+        }); 
+      }
 
         getInsTaxClass(){
           this.demo.get('http://108.61.174.41:7070/api/insurancePricing/view')
@@ -73,32 +73,46 @@ export class VerifyVehicleComponent implements OnInit {
     //  this.getVehicle();
     }) 
   }
-
-  saveVehicle(){ 
+getStatus(): boolean{
   
-      const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
-        "insuranceTaxClass": +this.selectedValue,
-        "insuranceExpiry" : this.InsExp,
-        "vehicleMake": this.vMake,
-        "vehicleModel": this.vModel,
-        "vehicleOwnership": this.vType,
-        "vehicleRegistrationNumber": this.vehicleVRN,
-        "vehicleUsage": this.vUsage,
-        "verifStatus": true,
-        "zinaraTaxClass": +this.selectedValue
+return false;
+}
+  saveVehicle(){ 
+    const data = this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',{
+      "vehicleRegistrationNumber":this.vehicleVRN
     })
-	
     .subscribe(data => {
-      if (data['status'] === "Success ") {  
-       this.successSwal.show();
-        this.reset();
-      } else {
-        this.failedSwal.show();
-      }
-    }, error => {
-      console.log(Response); 
-      this.failedSwal.show();
-    }); 
+      if(data['verificationStatus']===false){
+          const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
+            "insuranceTaxClass": +this.selectedValue,
+            "insuranceExpiry" : this.InsExp,
+            "vehicleMake": this.vMake,
+            "vehicleModel": this.vModel,
+            "vehicleOwnership": this.vType,
+            "vehicleRegistrationNumber": this.vehicleVRN,
+            "vehicleUsage": this.vUsage,
+            "verifStatus": true,
+            "zinaraTaxClass": +this.selectedValue
+        })
+      
+        .subscribe(data => {
+          if (data['status'] === "Success ") {  
+           this.successSwal.show();
+            this.reset();
+          } else {
+            this.failedSwal.show();
+          }
+        }, error => {
+          console.log(Response); 
+          this.failedSwal.show();
+        }); 
+        }
+      else{ 
+          this.verifiedSwal.show();
+           this.reset();
+    }
+  });
+
     }
     reset() {
       this.vMake = '';

@@ -75,20 +75,14 @@ const appRoutes: Routes = [
   {path: 'admin/PricingScheme', component: PricingSchemeComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/PricingScheme/ZinaraPricingScheme', component: ZinaraPricingSchemeComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/PricingScheme/InsurancePricingScheme', component: InsurancePricingSchemeComponent, canActivate:[AuthGuardRouteService]},
-<<<<<<< HEAD
   {path: 'admin/PricingScheme/InsurancePricingScheme/AddZinaraPricingScheme', component: AddZinaraPricingSchemeComponent, canActivate: [AuthGuard]},
   {path: 'admin/PricingScheme/InsurancePricingScheme/AddInsurancePricingScheme', component: AddInsurancePricingSchemeComponent, canActivate: [AuthGuard]},
-
-=======
-  {path: 'AddZinaraPricingScheme', component: AddZinaraPricingSchemeComponent, canActivate: [AuthGuard]},
-  {path: 'AddInsurancePricingScheme', component: AddInsurancePricingSchemeComponent, canActivate: [AuthGuard]},
   {path: 'RegisterCustomer', component: RegisterCustomerComponent, canActivate: [AuthGuard]},
   {path: 'RegisterAgent', component: RegisterAgentComponent, canActivate: [AuthGuard]},
   {path: 'CustomerManagement', component: CustomerManagementComponent, canActivate: [AuthGuard]},
   {path: 'AgentManagement', component: AgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'customerAgentManagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
  
->>>>>>> 2f4fc4ce39f03ac227fed7dfd53fe40a23cc1ffd
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: PageNotFoundComponent}

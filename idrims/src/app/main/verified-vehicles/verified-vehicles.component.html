@@ -1,5 +1,5 @@
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
+    
     <section  class="content-header">
      
         <h1 align= "center">
@@ -7,15 +7,16 @@
          </h1>
          <p><button align="left" class="btn btn-warning" routerLink ="/vehicles">Back to Vehicle Management</button></p> 
        </section>
-    <!-- Main content -->
+  
     <section class="content">
  <hr>
    
-  <!--general-->
+
   <div class="box">
-      <!-- /.box-header -->
+  
       <div class="box-body">
-        <table class="table table-hover" id="monthlyTable" cellspacing="0">
+    
+        <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" *ngIf="this.temp_var">
           <thead>
           <tr>
             <th>Vehicle Make</th>
@@ -34,7 +35,7 @@
             <td>{{vehicle.vehicleOwnership}}</td>
             <td>{{vehicle.vehicleUsage}}</td>
             <td>{{vehicle.insuranceExpiryDate}}</td>
-            <!-- <button class="btn btn-primary btn-block margin-bottom" type="button" name="verifVehicle" routerLink="/viewVehicle">View</button> -->
+           
           </tr>
           </tbody>
         </table>
@@ -44,6 +45,4 @@
   
   
   </div>
-  
-  
   

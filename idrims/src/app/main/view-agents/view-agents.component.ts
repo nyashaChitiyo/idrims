@@ -36,7 +36,6 @@ export class ViewAgentsComponent implements OnInit {
   {
     
       'searchString': 'AGENT01'
-    
   })
     .subscribe(
       (data:any[])=> {

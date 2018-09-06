@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { DataTablesModule } from 'angular-datatables';
 import { AppComponent } from './app.component';
 import {DemoService}from './demo.service';
 import {FrameComponent} from './main/frame/frame.component';
@@ -123,6 +123,7 @@ import {CustomerAgentManagementComponent } from './main/customer-agent-managemen
   imports: [
     BrowserModule,
     HttpClientModule,
+    DataTablesModule,
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
     SweetAlert2Module.forRoot({
