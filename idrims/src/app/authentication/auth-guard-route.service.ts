@@ -14,11 +14,24 @@ export class AuthGuardRouteService {
       return state.url.startsWith('/admin')
       ? true: (this.router.navigate(['/']), false);
     }
-    else{
-      return state.url.startsWith('/admin')
-      ? (this.router.navigate(['/']), false)
-      : true;
+    // else{
+    //   return state.url.startsWith('/admin')
+    //   ? (this.router.navigate(['/']), false)
+    //   : true;
+    // } 
+   else if(userGroup == 'ADMIN03'){
+      return state.url.startsWith('/sbadmin')
+      ? true: (this.router.navigate(['/']), false);
     }
+    else if(userGroup == 'CUST01'){
+      return state.url.startsWith('/customer')
+      ? true: (this.router.navigate(['/']), false);
+    }
+    // else{
+    //   return state.url.startsWith('/sbadmin')
+    //   ? (this.router.navigate(['/']), false)
+    //   : true;
+    // }
   }
 else
 this.router.navigate(['/login']);

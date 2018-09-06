@@ -37,13 +37,13 @@ export class AgentComponent implements OnInit {
       this.agents = params;
       console.log(params);
       this.phoneNumber = params['phoneNumber'];
-      this.firstname= params['firstName'];
-      this.surname= params['surName'];
-      this.role= params['role'];
-      this.station= params['station'];
+      this.firstname= params['firstname'];
+      this.surname= params['lastname'];
+      this.role= params['userGroup'];
+      this.station= params['userStation'];
       this.userStatus = params['userStatus'];
     })
-  }
+  } 
 
   isDisabled(){
     console.log(this.isEdit)

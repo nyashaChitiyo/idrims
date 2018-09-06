@@ -1,0 +1,161 @@
+  <div class="content-wrapper">
+      <br>
+        <section align= "center" class="content">
+        <div class="box">
+        <div class="box-header with-border">
+          <br>
+          <h3 class="box-title"><b>Get iDriveSure</b></h3> 
+        </div>
+        <hr>
+        <!-- /.box-header -->
+        <!-- form start -->
+          <div class="box-body"> 
+                        <div class="form-group col-md-4 text-center">
+                          <label class="">Select Vehicle</label>
+                          <select name="vrnSelect" class="select2 form-control" style="width: 100%;" >
+                            <option value="NA" selected="selected" style="display: none;" >Select Vehicle</option>
+                          <option value=""></option>
+                          </select>
+                        </div>
+                          <div class="form-group col-md-4 text-center">
+                            <label class="">Select Insurance Company</label>
+                      <select class="select2 form-control " name="insuranceCompanySelect"  tabindex="1" required>
+                          <option  style="display: none;"  >Select Insurance Company</option>
+                            <option></option>
+                        </select>
+                          </div>
+                          <div class="form-group col-md-4 text-center">
+                                    <label class="">Insurance Type</label>
+                                    <select id="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
+                                      <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
+                            <option value="RTA">Road Traffic Act (3rd Party)</option>
+                                      <option value="COMP">Comprehensive</option>
+                                      <option value="COMPPLUS">Comprehensive Plus</option>
+                                    </select>
+                            </div>
+                            <div id="vehicleValueDiv" style="display: none;" class="form-group col-md-4 text-center">
+                                    <label class="">Enter Value</label>
+                                     <input  class="form-control" type="number" name="vehicleValueFiled" id="vehicleValueFiled" value="0">
+                                  </div>
+                                <div class="form-group col-md-4">				
+                                        <label>Insurance Period</label>
+                                        <select  id="insurancePeriodSelect" name="insurancePeriodSelect" class="select2 form-control" style="width: 100%;" >
+                                  <option value="0"selected="selected"  style="display: none;">Choose Period of Cover</option>
+                                  <option value="4"><b>4 Months</b></option>
+                                  <option value="5">5 Months</option>
+                                  <option value="6">6 Months</option>
+                                  <option value="7">7 Months</option>
+                                  <option value="8">8 Months</option>
+                                  <option value="9">9 Months</option>
+                                  <option value="10">10 Months</option>
+                                  <option value="11">11 Months</option>
+                                  <option value="12">12 Months</option>
+                                        </select>
+                                      </div>
+                <div class="form-group col-md-4 ">
+                  <label>ZINARA Licence?</label>
+                  <div class="TriSea-technologies-Switch pull-left">
+                      <input id="zinaraToggle" name="TriSea1" type="checkbox"/>
+                      <label for="zinaraToggle" class="label-primary"></label>
+                                  </div>
+                                  
+              </div>            
+              <div id="zinaraPeriodDiv" class="form-group col-md-4" style="display:none">				
+                      <label>Licence Period</label>
+                      <select  id="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
+                        <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
+                <option value="4"><b>4 Months</b></option>
+                <option value="6">6 Months</option>
+                <option value="8">8 Months</option>
+                <option value="10">10 Months</option>
+                <option value="12">12 Months</option>
+                      </select>
+                    </div>
+            <div class="form-group col-md-4 ">
+              <label>ZBC Licence?</label>
+             <div class="TriSea-technologies-Switch pull-left">
+                                  <input id="zbcToggle" name="TriSea1" type="checkbox"/>
+                                  <label for="zbcToggle" class="label-warning"></label>
+                              </div>
+           
+          </div>
+              <div id="zbcPeriodDiv" class="form-group col-md-4" style="display:none">				
+                      <label>Licence Period</label>
+                      <select id="zbcPeriodSelect" name="zbcPeriodSelect" class="select2 form-control" style="width: 100%">
+                        <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
+                <option value="4"><b>4 Months</b></option>
+                <option value="5">5 Months</option>
+                <option value="6">6 Months</option>
+                <option value="7">7 Months</option>
+                <option value="8">8 Months</option>
+                <option value="9">9 Months</option>
+                <option value="10">10 Months</option>
+                <option value="11">11 Months</option>
+                <option value="12">12 Months</option>
+                      </select>
+                    </div>
+            <div class="form-group col-md-4 ">
+              <label>Pick Up Disk...</label>
+           <div class="TriSea-technologies-Switch pull-left">
+                                  <input id="pickUpToggle" name="TriSea1" type="checkbox"/>
+                                  <label for="pickUpToggle" class="label-info"></label>
+                              </div>
+            
+          </div>            
+              <div id="pickUpPointDiv" class="form-group col-md-4" style="display:none">				
+                      <label>Collection Point</label>
+                
+                      <select id="pickUpPointSelect" name="pickUpPointSelect" class= " select2 form-control" style="width: 100%;" >
+                <option value="NA" selected="selected"  style="display: none;">Choose Where to Collect Disk</option>
+                <hr>
+                      <option value=""></option>
+                      </select>
+                    </div>
+          <div class="form-group col-md-4 ">
+          <label>Delivery...</label>
+          <div class="TriSea-technologies-Switch pull-left">
+                            <input id="deliveryToggle" name="TriSea1" type="checkbox"/>
+                            <label for="deliveryToggle" class="label-danger"></label>
+                        </div>
+
+          </div>
+
+          <div id="deliveryLocDiv" class="form-group col-md-4" style="display: none;" >				
+                <label>Delivery Location</label>
+          <textarea id="deliveryAddress" name="deliveryAddress" class="form-control" rows="2" ></textarea>
+              </div>
+
+          <div class="form-group col-md-4 text-center">
+      <label  class="">Number to Recieve ECONET Airtime</label>
+            <input  class="form-control" type="number" name="airtimeNumber" required>
+          </div>
+          </div>
+          <!-- /.box-body -->
+    
+          <div class="box-footer">
+            <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
+            <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
+          </div>
+          </div>
+        </section>
+        </div>
+        <swal
+        #successSwal
+        title="Success"
+        text="Vehicle Submitted. Registration will be complete afer Verification."
+        type="success"
+        [showCancelButton]="false"
+        [focusCancel]="false">
+      </swal>
+      <swal
+        #failedSwal
+        title="Failed"
+        text="An error occured while processing your request"
+        type="warning"
+        [showCancelButton]="false"
+        [focusCancel]="false">
+      </swal>
+    
+    
+    
+    

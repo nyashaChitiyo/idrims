@@ -22,7 +22,7 @@ export class ViewAgentsComponent implements OnInit {
     let d = this.users[0];
     let data : NavigationExtras = {
       queryParams: d
-    }
+    } 
     console.log(data)
 
     this.router.navigate(['/userManagement/'+this.users[0].phoneNumber],data);

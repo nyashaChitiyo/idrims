@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef,Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
@@ -12,8 +12,9 @@ import{Router,NavigationExtras} from '@angular/router';
 export class ViewCustomersComponent implements OnInit {
 
   customers= [];
+  dataTable: any;
 
-  constructor(private httpClient: HttpClient,private router: Router,private demo: DemoService) { 
+  constructor(private httpClient: HttpClient,private chRef: ChangeDetectorRef,private router: Router,private demo: DemoService) { 
     this.getCustomers();
   }
 
@@ -30,6 +31,9 @@ export class ViewCustomersComponent implements OnInit {
           let arr = [];
           arr.push(data)
           this.customers = arr[0];
+          this.chRef.detectChanges();
+          const table: any = $('table#customers');
+          this.dataTable = table.DataTable();
           console.log(arr[0]);
         }
       ) 

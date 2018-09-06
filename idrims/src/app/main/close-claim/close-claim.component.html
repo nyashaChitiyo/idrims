@@ -1,0 +1,49 @@
+					<!--manage vehicle-->
+          <div class="content-wrapper">
+              <section class="content">
+                  <div align="center" class="box">
+                      <div class="box-header">
+                        <br>
+                        <h3 class="box-title"><b>Claim ID: <strong>{{claimID}}</strong></b></h3>
+                  </div>
+                  <br>
+                  <hr>
+        <div class="box-body">  
+            <!-- <div class="row"> 
+              
+          <div class="col-md-9">
+              <label>Claim ID:</label><input  type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder = "{{claimId}}">
+              <label>Claim Date:</label><input  type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder="">
+              <label>First Name:</label><input type="text" [(ngModel)]="firstName" name="firstName" class="form-control"placeholder="">
+              <label>Last Name:</label><input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
+              <label>Nature of Claim:</label><input type="text" [(ngModel)]="natureOfClaim" name="natureOfClaim" class="form-control">
+              <label>Vehicle Reg Number:</label><input  type="text" [(ngModel)]="vehicleRegistrationNumber" name="vehicleRegistrationNumber" class="form-control">
+            </div>
+            </div> -->
+            <br>
+            <div class="row">
+            <div class="box-footer"  align="center">
+                <button style="align-content: space-between" name="closeClaim" class="btn btn-primary" (click)="closeClaim()">Close Claim</button>
+                
+            <button class="btn btn-warning" aria-hidden="true" routerLink ="/openClaims"> Cancel</button>
+              </div>
+            </div>
+        </div>
+        <swal
+#successSwal 
+title="Success"
+text="Successfully Closed Claim"
+type="success"
+[showCancelButton]="false"
+[focusCancel]="false">
+</swal>
+<swal
+#failedSwal
+title="Failed"
+text="An error occured while processing your request"
+type="warning"
+[showCancelButton]="false"
+[focusCancel]="false">
+</swal>
+
+

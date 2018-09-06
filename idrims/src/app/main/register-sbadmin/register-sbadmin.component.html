@@ -1,0 +1,73 @@
+
+<div class="content-wrapper">
+    <section class="content col-md-10">
+    <div class="box col-md-4" >
+    <div align="center" class="box-header with-border">
+      <h3 class="box-title"><b>REGISTER STEWARD-BANK BACK-OFFICE ADMIN</b></h3>
+    </div>
+    <!-- /.box-header -->
+    <!-- form start -->
+      <div class="box-body">
+          <div class="row">
+        <div class="form-group col-md-6">
+          <label for="firstName">First Name</label>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="firstname" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="surname">Surname</label>
+          <input type="text" class="form-control" id="surname" [(ngModel)]="surname" placeholder="Last Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="nationalId">NationalId</label>
+          <input type="text" class="form-control" id="nationalId" [(ngModel)]="nationalID" placeholder="First Name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="number" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="email">Email address</label>
+          <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Station</label>
+            <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
+                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
+              </select>
+        </div> 
+      </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+
+      <div class="box-footer" align="center">
+        <button (click)="postProfile()" type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/userManagement"> Cancel</button>
+      </div>
+    </section>
+    <swal
+    #successSwal
+    title="Success"
+    text="Successfully Registered SB Admin"
+    type="success"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+  <swal
+    #failedSwal
+    title="Failed"
+    text="An error occured while processing your request"
+    type="warning"
+    [showCancelButton]="false"
+    [focusCancel]="false">
+  </swal>
+
+ <script>
+   $(document).ready(function() {
+    $('.formselect').select2();
+});
+ </script>

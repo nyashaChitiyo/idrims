@@ -59,6 +59,15 @@ import { RegisterAgentComponent } from './main/register-agent/register-agent.com
 import { CustomerManagementComponent } from './main/customer-management/customer-management.component';
 import { AgentManagementComponent } from './main/agent-management/agent-management.component';
 import {CustomerAgentManagementComponent } from './main/customer-agent-management/customer-agent-management.component';
+import { RegisterSBadminComponent} from './main/register-sbadmin/register-sbadmin.component';
+import { TransactionsComponent} from './main/transactions/transactions.component';
+import {CloseClaimComponent} from './main/close-claim/close-claim.component';
+import { ViewSBadminComponent } from './main/view-sbadmin/view-sbadmin.component';
+import { RegisterComponent } from './main/register/register.component';
+import{AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
+import { MyVehiclesComponent} from './main/my-vehicles/my-vehicles.component';
+import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
+
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -115,7 +124,15 @@ import {CustomerAgentManagementComponent } from './main/customer-agent-managemen
     RegisterAgentComponent,
     CustomerManagementComponent,
     AgentManagementComponent,
-    CustomerAgentManagementComponent
+    CustomerAgentManagementComponent,
+    RegisterSBadminComponent,
+    TransactionsComponent,
+    CloseClaimComponent,
+    ViewSBadminComponent,
+    RegisterComponent,
+    AddVehicleComponent,
+    MyVehiclesComponent,
+    GetIdriveComponent
 
 
 

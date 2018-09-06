@@ -34,6 +34,16 @@ import { RegisterAgentComponent } from './register-agent/register-agent.componen
 import { CustomerManagementComponent } from './customer-management/customer-management.component';
 import { AgentManagementComponent } from './agent-management/agent-management.component';
 import { CustomerAgentManagementComponent } from './customer-agent-management/customer-agent-management.component';
+import { ReportsComponent } from './reports/reports.component';
+import { TransactionsComponent } from './transactions/transactions.component';
+import { RegisterSBadminComponent } from './register-sbadmin/register-sbadmin.component';
+import { CloseClaimComponent } from './close-claim/close-claim.component';
+import { ViewSBadminComponent } from './view-sbadmin/view-sbadmin.component';
+import { RegisterComponent } from './register/register.component';
+import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
+import { MyVehiclesComponent } from './my-vehicles/my-vehicles.component';
+import { GetIdriveComponent } from './get-idrive/get-idrive.component';
+
 
 
 @NgModule({
@@ -72,6 +82,15 @@ import { CustomerAgentManagementComponent } from './customer-agent-management/cu
   RegisterAgentComponent,
   CustomerManagementComponent,
   AgentManagementComponent,
-  CustomerAgentManagementComponent]
+  CustomerAgentManagementComponent,
+  ReportsComponent,
+  TransactionsComponent,
+  RegisterSBadminComponent,
+  CloseClaimComponent,
+  ViewSBadminComponent,
+  RegisterComponent,
+  AddVehicleComponent,
+  MyVehiclesComponent,
+  GetIdriveComponent]
 })
 export class MainModule { }

@@ -39,17 +39,28 @@ import { RegisterAgentComponent } from './main/register-agent/register-agent.com
 import { CustomerManagementComponent } from './main/customer-management/customer-management.component';
 import { AgentManagementComponent } from './main/agent-management/agent-management.component';
 import {CustomerAgentManagementComponent} from './main/customer-agent-management/customer-agent-management.component';
+import { RegisterSBadminComponent } from './main/register-sbadmin/register-sbadmin.component';
+import { TransactionsComponent} from './main/transactions/transactions.component';
+import {CloseClaimComponent} from './main/close-claim/close-claim.component';
+import {ViewSBadminComponent } from './main/view-sbadmin/view-sbadmin.component';
+import {RegisterComponent} from './main/register/register.component';
+import{AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
+import { MyVehiclesComponent} from './main/my-vehicles/my-vehicles.component';
+import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
+
 
 
 //import { NgxPermissionsGuard } from 'ngx-permissions';
  
 
 const appRoutes: Routes = [
-  {path: 'login', component: LoginComponent}, 
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent}, 
   {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/registerSBadmin', component: RegisterSBadminComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
@@ -59,6 +70,8 @@ const appRoutes: Routes = [
   {path: 'admin/locations/collectionPoints', component: CollectionPointsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/InsCompanies', component: InsuranceCompaniesComponent, canActivate:[AuthGuardRouteService]},
   {path: 'Products', component: ProductsComponent, canActivate: [AuthGuard]},
+  {path: 'CloseClaim/:claimId', component: CloseClaimComponent, canActivate: [AuthGuard]},
+  {path: 'CloseClaim', component: CloseClaimComponent, canActivate: [AuthGuard]},
   {path: 'verifyVehicle', component: VerifyVehicleComponent, canActivate: [AuthGuard]},
   {path: 'admin/locations/collectionPoints/addColPoint', component: AddCollectionPointComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/InsCompanies/addInsComp', component: AddInsuranceCompanyComponent, canActivate:[AuthGuardRouteService]},
@@ -82,6 +95,13 @@ const appRoutes: Routes = [
   {path: 'CustomerManagement', component: CustomerManagementComponent, canActivate: [AuthGuard]},
   {path: 'AgentManagement', component: AgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'customerAgentManagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/transactions', component: TransactionsComponent, canActivate: [AuthGuard]},
+  {path: 'admin/userManagement/viewSBadmin', component: ViewSBadminComponent, canActivate: [AuthGuard]},
+  {path: 'customer/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
+  {path: 'customer/myVehicles', component: MyVehiclesComponent, canActivate: [AuthGuard]},
+  {path: 'customer/getIdrive', component: GetIdriveComponent, canActivate: [AuthGuard]},
+ 
+ 
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 
