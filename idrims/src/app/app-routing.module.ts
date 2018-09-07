@@ -56,7 +56,6 @@ import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
-  {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
@@ -64,6 +63,7 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
+  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent},
   {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},

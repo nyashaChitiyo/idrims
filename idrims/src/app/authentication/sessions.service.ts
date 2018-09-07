@@ -42,7 +42,9 @@ export class SessionsService {
         localStorage.setItem('firstname', data['firstname']);
         localStorage.setItem('fullName', data['firstname']);
         localStorage.setItem('userGroup', data['userGroup'])
+        localStorage.setItem('userId', data['userId']);
         console.log('User status is '+data['userGroup']);
+        
         this.isLoggedIn = true;
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
