@@ -1,0 +1,56 @@
+
+  <div class="content-wrapper">
+    <br>
+      <section align= "center" class="content">
+      <div class="box">
+      <div class="box-header with-border">
+        <br>
+        <h3 class="box-title"><b>SUBMIT CLAIM</b></h3> 
+      </div>
+      <hr>
+      <!-- /.box-header -->
+      <!-- form start -->
+        <div class="box-body"> 
+          <div class="form-group col-md-6">
+            <label for="email">Select Vehicle</label>
+            <select [(ngModel)]="selectedValue" class="form-control" name="Vehicle" required>
+                <option *ngFor="let vehicle of vehicles" [value]="reg.id">{{vehicle.vehicleRegistrationNumber}}</option>
+              </select>
+        </div>
+              <div class="form-group col-md-6">
+                <label for="email">Select Nature of Claim</label>
+                <select [(ngModel)]="selectedValue" class="form-control" name="claimNature" required>
+                  <option>Accident</option>
+                  <option>Theft</option>
+                  <option>Windscreen</option>
+                  </select>
+            </div>
+        </div>
+        </div>
+        <!-- /.box-body -->
+  
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
+          <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myClaims"> Cancel</button>
+        </div>
+      </section>
+      <swal
+      #successSwal
+      title="Success"
+      text="Claim Submitted.You will be contacted soon."
+      type="success"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
+    <swal
+      #failedSwal
+      title="Failed"
+      text="An error occured while processing your request"
+      type="warning"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
+  
+  
+  
+  

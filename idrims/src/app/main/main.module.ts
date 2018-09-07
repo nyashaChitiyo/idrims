@@ -43,6 +43,13 @@ import { RegisterComponent } from './register/register.component';
 import { AddVehicleComponent } from './add-vehicle/add-vehicle.component';
 import { MyVehiclesComponent } from './my-vehicles/my-vehicles.component';
 import { GetIdriveComponent } from './get-idrive/get-idrive.component';
+import { AddClaimComponent } from './add-claim/add-claim.component';
+import { MypendingVerificationComponent } from './mypending-verification/mypending-verification.component';
+import { MyVerifiedVehiclesComponent } from './my-verified-vehicles/my-verified-vehicles.component';
+import { MyTransactionsComponent } from './my-transactions/my-transactions.component';
+import { MyClaimsComponent } from './my-claims/my-claims.component';
+import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
+import { ViewMyClaimsComponent } from './view-my-claims/view-my-claims.component';
 
 
 
@@ -91,6 +98,13 @@ import { GetIdriveComponent } from './get-idrive/get-idrive.component';
   RegisterComponent,
   AddVehicleComponent,
   MyVehiclesComponent,
-  GetIdriveComponent]
+  GetIdriveComponent,
+  AddClaimComponent,
+  MypendingVerificationComponent,
+  MyVerifiedVehiclesComponent,
+  MyTransactionsComponent,
+  MyClaimsComponent,
+  SubmitClaimComponent,
+  ViewMyClaimsComponent]
 })
 export class MainModule { }

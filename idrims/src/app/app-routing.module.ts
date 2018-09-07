@@ -47,6 +47,12 @@ import {RegisterComponent} from './main/register/register.component';
 import{AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
 import { MyVehiclesComponent} from './main/my-vehicles/my-vehicles.component';
 import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
+import { MypendingVerificationComponent} from './main/mypending-verification/mypending-verification.component';
+import{MyVerifiedVehiclesComponent } from './main/my-verified-vehicles/my-verified-vehicles.component';
+import { MyTransactionsComponent } from './main/my-transactions/my-transactions.component';
+import {MyClaimsComponent} from './main/my-claims/my-claims.component';
+import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
+import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
 
 
 
@@ -100,6 +106,12 @@ const appRoutes: Routes = [
   {path: 'customer/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
   {path: 'customer/myVehicles', component: MyVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'customer/getIdrive', component: GetIdriveComponent, canActivate: [AuthGuard]},
+  {path: 'customer/myPendingVehicles', component: MypendingVerificationComponent, canActivate: [AuthGuard]},
+  {path: 'customer/myVerifiedVehicles', component: MyVerifiedVehiclesComponent, canActivate: [AuthGuard]},
+  {path: 'customer/myTransactions', component: MyTransactionsComponent, canActivate: [AuthGuard]},
+  {path: 'customer/myClaims', component: MyClaimsComponent, canActivate: [AuthGuard]},
+  {path: 'customer/submitmyClaim', component: SubmitClaimComponent, canActivate: [AuthGuard]},
+  {path: 'customer/viewMyClaims', component: ViewMyClaimsComponent, canActivate: [AuthGuard]},
  
  
  

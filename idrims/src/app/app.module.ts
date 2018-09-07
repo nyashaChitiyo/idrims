@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { DataTablesModule } from 'angular-datatables';
+
 import { AppComponent } from './app.component';
 import {DemoService}from './demo.service';
 import {FrameComponent} from './main/frame/frame.component';
@@ -67,7 +68,13 @@ import { RegisterComponent } from './main/register/register.component';
 import{AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
 import { MyVehiclesComponent} from './main/my-vehicles/my-vehicles.component';
 import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
-
+import { MypendingVerificationComponent} from './main/mypending-verification/mypending-verification.component';
+import {MyVerifiedVehiclesComponent} from './main/my-verified-vehicles/my-verified-vehicles.component';
+import { MyTransactionsComponent } from './main/my-transactions/my-transactions.component';
+import {MyClaimsComponent} from './main/my-claims/my-claims.component';
+import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
+import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
+import {UiSwitchModule} from 'ngx-ui-switch';
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -132,7 +139,13 @@ import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
     RegisterComponent,
     AddVehicleComponent,
     MyVehiclesComponent,
-    GetIdriveComponent
+    GetIdriveComponent,
+    MypendingVerificationComponent,
+    MyVerifiedVehiclesComponent,
+    MyTransactionsComponent,
+    MyClaimsComponent,
+    SubmitClaimComponent,
+    ViewMyClaimsComponent
 
 
 
@@ -143,6 +156,13 @@ import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
     DataTablesModule,
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
+    UiSwitchModule.forRoot({
+      size: 'medium',
+      color: '#00ACFF',
+      switchColor: '#fff',
+      defaultBgColor: '#777',
+      defaultBoColor : '#476EFF',
+    }),
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
