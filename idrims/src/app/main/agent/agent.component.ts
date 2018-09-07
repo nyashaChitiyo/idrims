@@ -27,7 +27,7 @@ export class AgentComponent implements OnInit {
     console.log(this.agents);
   }
  
-  ngOnInit() {
+  ngOnInit() { 
     
     this.activatedRoute.queryParams.subscribe(params =>{
      // this.vehicleVRN = params['phoneNumber'];

@@ -4,13 +4,12 @@ import {Router} from '@angular/router';
 
 
 @Component({
-  selector: 'app-verified-vehicles',
-  templateUrl: './verified-vehicles.component.html',
-  styleUrls: ['./verified-vehicles.component.css']
+  selector: 'app-my-verified-vehicles',
+  templateUrl: './my-verified-vehicles.component.html',
+  styleUrls: ['./my-verified-vehicles.component.css']
 })
-export class VerifiedVehiclesComponent implements OnInit {
-
- dtOptions: DataTables.Settings = {};
+export class MyVerifiedVehiclesComponent implements OnInit {
+  dtOptions: DataTables.Settings = {};
   public vehicles= [];
   public temp_var: Object = false;
 
@@ -26,8 +25,8 @@ export class VerifiedVehiclesComponent implements OnInit {
   }
 
   getVehicle(){
-    this.demo.post('http://108.61.174.41:7070/api/vehicles/view/verificationStatus',{
-      "bool": true
+    this.demo.post('http://108.61.174.41:7070/api/subscriptions/view/unverified',{
+      "id": 0
     })
     .subscribe(
       (data: Response)=> {
