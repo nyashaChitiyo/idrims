@@ -76,6 +76,11 @@ import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
 import {ViewPrintedDiscsComponent} from './main/view-printed-discs/view-printed-discs.component';
 import {CustomersComponent} from './main/customers/customers.component';
+import { AgentRegisterCustomerComponent } from './main/agent-register-customer/agent-register-customer.component';
+import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/agent-register-vehicle.component';
+import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
+import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
+
 import {UiSwitchModule} from 'ngx-ui-switch';
 
 
@@ -150,7 +155,11 @@ import {UiSwitchModule} from 'ngx-ui-switch';
     SubmitClaimComponent,
     ViewMyClaimsComponent,
     ViewPrintedDiscsComponent,
-    CustomersComponent
+    CustomersComponent,
+    AgentRegisterCustomerComponent,
+    AgentRegisterVehicleComponent,
+    AgentSubmitClaimComponent,
+    AgentTransactionsComponent
 
 
 

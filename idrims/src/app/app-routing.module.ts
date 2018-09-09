@@ -56,6 +56,11 @@ import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.comp
 import { MailboxComponent} from './main/mailbox/mailbox.component';
 import {ViewPrintedDiscsComponent} from './main/view-printed-discs/view-printed-discs.component';
 import {CustomersComponent} from './main/customers/customers.component';
+import { AgentRegisterCustomerComponent } from './main/agent-register-customer/agent-register-customer.component';
+import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/agent-register-vehicle.component';
+import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
+import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
+
 
 
 
@@ -118,7 +123,11 @@ const appRoutes: Routes = [
   {path: 'agent/mailbox', component: MailboxComponent, canActivate: [AuthGuard]},
   {path: 'agent/ViewPrintedDiscs', component: ViewPrintedDiscsComponent, canActivate: [AuthGuard]},
   {path: 'agent/Customers', component: CustomersComponent, canActivate: [AuthGuard]},
- 
+  {path: 'agent/regCustomer', component: AgentRegisterCustomerComponent, canActivate: [AuthGuard]},
+  {path: 'agent/regVehicle', component: AgentRegisterVehicleComponent, canActivate: [AuthGuard]},
+  {path: 'agent/addClaim', component: AgentSubmitClaimComponent, canActivate: [AuthGuard]},
+  {path: 'agent/agentTransactions', component: AgentTransactionsComponent, canActivate: [AuthGuard]},
+  
  
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
