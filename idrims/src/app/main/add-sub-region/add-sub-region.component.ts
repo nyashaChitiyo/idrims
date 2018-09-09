@@ -24,29 +24,12 @@ export class AddSubRegionComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private demo: DemoService,private router: Location) {
-    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
-    .subscribe(data => {
-      if (data['success'] === true) {        
-        //this.successSwal.show();
-        setTimeout(function(){ this.successSwal.showAlert(); },0)
-        console.log(data['message'], + data['message']);
-        this.reset();
-      } else {
-        console.log('failed',+ data);
-        //this.failedSwal.show();
-        
-      }
-    }, error => {
-      console.log(Response);
-      this.failedSwal.show();
-    }); 
-  
+    this.getRegionName();
    }
 
   ngOnInit() {
   }
   getRegionName(){
-/// take the value of onselected region name and assign it to region
 
 this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     .subscribe(data => {
@@ -57,7 +40,8 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
       this.allRegionNames = arr[0];
       
       console.log(this.allRegionNames);
-    }); }
+    });
+   }
 
   postSubRegion(){
   this.demo.post('http://108.61.174.41:7070/api/location/create/SubRegion',

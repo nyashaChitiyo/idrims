@@ -24,16 +24,17 @@ export class MyVerifiedVehiclesComponent implements OnInit {
     };
   }
 
-  getVehicle(){
-    this.demo.post('http://108.61.174.41:7070/api/subscriptions/view/unverified',{
-      "id": 0
+  getVehicle(){ 
+    var userId: number = +localStorage.getItem('userId');
+    this.demo.post('http://108.61.174.41:7070/api/subscriptions/view/verified',{
+      "id": userId
     })
     .subscribe(
-      (data: Response)=> {
+      (data)=> {
+        console.log(data);
         let arr = [];
         arr.push(data)
         this.vehicles = arr[0];
-        console.log(this.vehicles);
         this.temp_var=true;
       }
     ) 

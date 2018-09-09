@@ -35,10 +35,7 @@ export class AddVehicleComponent implements OnInit {
     'vehicleRegistrationNumber': this.regVRN
   })
   .subscribe(data => {
-    if (data['success'] === true) {        
-      this.successSwal.show();
-      setTimeout(function(){ this.successSwal.showAlert(); },0)
-      console.log(data['message'], + data['message']);
+    if (data) {        
       this.successSwal.show();
       this.reset();
     } else {

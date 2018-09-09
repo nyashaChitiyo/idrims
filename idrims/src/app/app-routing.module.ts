@@ -53,10 +53,7 @@ import { MyTransactionsComponent } from './main/my-transactions/my-transactions.
 import {MyClaimsComponent} from './main/my-claims/my-claims.component';
 import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
-
-
-
-//import { NgxPermissionsGuard } from 'ngx-permissions';
+import{ProfileComponent} from './main/profile/profile.component';
  
 
 const appRoutes: Routes = [
@@ -112,7 +109,7 @@ const appRoutes: Routes = [
   {path: 'customer/myClaims', component: MyClaimsComponent, canActivate: [AuthGuard]},
   {path: 'customer/submitmyClaim', component: SubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'customer/viewMyClaims', component: ViewMyClaimsComponent, canActivate: [AuthGuard]},
- 
+  {path: 'customer/profile', component: ProfileComponent, canActivate: [AuthGuard]},
  
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},

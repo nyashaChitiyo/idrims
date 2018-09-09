@@ -15,100 +15,158 @@ import{Router,NavigationExtras} from '@angular/router';
 })
 export class GetIdriveComponent implements OnInit {
 
-  // Top fields
-  vehicleRegistrationNumber: string;
-  phoneNumber: string;
-  selectInsuranceCompany: string;
-  selectInsurancePeriod: string;
-  selectInsuranceType: string;
-  vehicleValue: number;
-///// Toggle Switches
-  hasSelectedZinara: boolean;
-  hasSelectedZBC: boolean;
-  hasSelectedPickup: boolean;
-  hasSelectedDelivery: boolean;
-  /////////// Toggle Variables
-  zinaraPeriod: 0;
-  zbcPeriod: 0;
-  pickUpPoint: '';
-  region: number;
-  subregion: number;
-  city: number;
-  surburb: number;
-  collectionPoint: number;
-  /// App variables
-  regions: any[];
-  cities: any[];
-  subRegions: any[];
-  suburbs: any[];
-  collectionPoints: any[];
-  constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) { }
+  allRegionNames = [];
+  selectedValue: number;
+  allSubRegions = [];
+  selectedReg: number;
+  allColPoints = [];
+  changeState;
+  selectedCol: number;
+  isCollection: boolean = false;
+  isDelivery: boolean = false;
+
+  vehicleNames= [];
+  airtimeNumber: string = '';
+  companies= [];
+  insuranceCompanySelect:string;
+  insurancePeriodSelect: string;
+  insuranceTypeSelect: string;
+  vehicle:string;
+  zinaraPeriodSelect:string;
+  zbcPeriodSelect:string;
+  constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+    var id: number = +localStorage.getItem('userId');
+    this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
+    {
+      'id':id
+    })
+    .subscribe(data => {
+     
+      if (data) {        
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        let vehicleId = arr[0].map(a => a.id);
+        this.vehicleNames = arr[0];
+      } else {
+        
+      }
+    });
+
+    this.httpClient.get('http://108.61.174.41:7070/api/companies/view/all')
+    .subscribe(
+      (data:any[])=> { 
+        let arr = [];
+        arr.push(data)
+        this.companies = arr[0];
+      }
+    ) 
+   }
 
   ngOnInit() {
-    this.httpClient.get('http://108.61.174.41:7070/api/location/view/allRegions')
-      .subscribe((data: any[]) => {
-        this.regions = data;
-      });
-  }
-  selectDelivery () {this.hasSelectedPickup = false; }
-  selectPickup () {this.hasSelectedDelivery = false; }
 
-  getSubRegions (value) {
-    this.region = value;
-    this.httpClient.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion', { 'id': value })
-      .subscribe((data: any[]) => {
-        this.subRegions = data;
-      });
+    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
+    .subscribe(data => {
+      let arr = [];
+      arr.push(data);
+      let arr1 = arr[0].map(a => a.name);
+      let regionIds = arr[0].map(a => a.id);
+      this.allRegionNames = arr[0];
+    })
   }
-  getSurburbs (value) {
-    this.region = value;
-    this.httpClient.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion', { 'id': value })
-      .subscribe((data: any[]) => {
-        this.cities = data;
-      });
+  getColPoints(){
+    console.log(this.selectedReg)
+    this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
+    {
+      "id": this.selectedReg
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allColPoints = arr[0];
+        
+        console.log(this.allRegionNames);
+      })
   }
-  // getSurburbs (value) {
-  //   this.city = value;
-  //   this.http.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion', { 'id': value })
-  //     .subscribe((data: any[]) => {
-  //       this.suburbs = data;
-  //     });
-  // }
-  getCollectionPoint (value) {
-    this.subregion = value;
-    this.httpClient.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion', { 'id': value })
-      .subscribe((data: any[]) => {
-        this.collectionPoints = data;
-      });
-  }
-  setCollectionPoint(value) {
-    this.collectionPoint = value;
-  }
-  setZinara(value) {
-    this.zinaraPeriod = value;
-  }
-  setZbc(value) {
-    this.zbcPeriod = value;
-  }
-  setSurburb(value) {
-    this.surburb = value;
+
+    onEditClick(){
+    this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
+    {
+      "id": this.selectedValue
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allSubRegions = arr[0];
+        
+        console.log(this.allRegionNames);
+      })
   }
   getIdrive() {
-    const data = {
-      'collectionType': (this.hasSelectedDelivery ? 'D' : 'C'),
-      'insuranceCompany': this.selectInsuranceCompany,
-      'insurancePeriod': this.selectInsurancePeriod,
-      'insuranceType': this.selectInsuranceType,
-      'requestChannel': 'web',
-      'vehicleRegistrationNumber': this.vehicleRegistrationNumber,
-      'vehicleValue': this.vehicleValue,
-      'zbcPeriod': this.zbcPeriod,
-      'zinaraPeriod': this.zinaraPeriod
+    var id: number = +localStorage.getItem('userId');
+    console.log('dfhgshbvvvvvvvvvdjfvbhdjdf'+this.selectedCol)
+    /*this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
+    {
+      "airtimeNumber": this.airtimeNumber,
+      "colPointId": this.selectedReg,
+      "collectionDelAdd": "string",
+      "collectionType": this.changeState,
+      "insuranceCompany": this.insuranceCompanySelect,
+      "insurancePeriod": this.insurancePeriodSelect,
+      "insuranceType": this.insuranceTypeSelect,
+      "processedBy": "string",
+      "requestChannel": "string",
+      "requestedFor": "string",
+      "userId": id,
+      "vehicleRegistrationNumber": this.vehicle,
+      "vehicleValue": 0,
+      "zbcPeriod": this.zbcPeriodSelect,
+      "zinaraPeriod": this.zinaraPeriodSelect
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allSubRegions = arr[0];
+        
+        console.log(this.allRegionNames);
+      });*/
+      let a =     {
+        "airtimeNumber": this.airtimeNumber,
+        "colPointId": this.selectedReg,
+        "collectionDelAdd": "string",
+        "collectionType": this.changeState,
+        "insuranceCompany": this.insuranceCompanySelect,
+        "insurancePeriod": this.insurancePeriodSelect,
+        "insuranceType": this.insuranceTypeSelect,
+        "processedBy": "string",
+        "requestChannel": "string",
+        "requestedFor": "string",
+        "userId": id,
+        "vehicleRegistrationNumber": this.vehicle,
+        "vehicleValue": 0,
+        "zbcPeriod": this.zbcPeriodSelect,
+        "zinaraPeriod": this.zinaraPeriodSelect
+      }
+      console.log(a)
+      }
+  changeStatus(){
+    if(this.changeState ==="delivery"){
+      this.isCollection = false;
+      this.isDelivery = true;
     }
-    ;
-    this.httpClient.post('http://108.61.174.41:7070/api/orders/create/quoatation', data)
-      .subscribe((response: any[]) => {
-        console.log(response);
-      });
+    else if(this.changeState === "collection"){
+      this.isDelivery = false;
+      this.isCollection = true;
+    }
+    else{
+      this.isDelivery = false;
+      this.isCollection = false;
+    }
   }
 }

@@ -44,6 +44,7 @@ import { AddRegionComponent} from './main/add-region/add-region.component';
 import { AddSubRegionComponent } from './main/add-sub-region/add-sub-region.component';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {AdminComponent} from './main/admin/admin.component';
+import{ProfileComponent} from './main/profile/profile.component';
 //import { NgxPermissionsModule } from 'ngx-permissions';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router'; 
 import { JwtModule } from '@auth0/angular-jwt';
@@ -74,7 +75,6 @@ import { MyTransactionsComponent } from './main/my-transactions/my-transactions.
 import {MyClaimsComponent} from './main/my-claims/my-claims.component';
 import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
-import {UiSwitchModule} from 'ngx-ui-switch';
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -114,6 +114,7 @@ import {UiSwitchModule} from 'ngx-ui-switch';
     VerifiedVehiclesComponent,
     ViewVehicleComponent,
     ViewVehicleComponent,
+    ProfileComponent,
     LocationsComponent,
     RegionsComponent,
     SubRegionsComponent,
@@ -156,13 +157,6 @@ import {UiSwitchModule} from 'ngx-ui-switch';
     DataTablesModule,
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
-    UiSwitchModule.forRoot({
-      size: 'medium',
-      color: '#00ACFF',
-      switchColor: '#fff',
-      defaultBgColor: '#777',
-      defaultBoColor : '#476EFF',
-    }),
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',

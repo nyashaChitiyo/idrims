@@ -50,6 +50,7 @@ import { MyTransactionsComponent } from './my-transactions/my-transactions.compo
 import { MyClaimsComponent } from './my-claims/my-claims.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './view-my-claims/view-my-claims.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -105,6 +106,7 @@ import { ViewMyClaimsComponent } from './view-my-claims/view-my-claims.component
   MyTransactionsComponent,
   MyClaimsComponent,
   SubmitClaimComponent,
-  ViewMyClaimsComponent]
+  ViewMyClaimsComponent,
+  ProfileComponent]
 })
 export class MainModule { }

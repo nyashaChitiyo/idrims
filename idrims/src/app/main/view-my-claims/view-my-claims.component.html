@@ -24,7 +24,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let claim of claims">
-      <td>{{claim.updatedAt}}</td>      
+      <td>{{claim.claimDate | date:'short'}}</td>      
       <td>{{claim.vehicleRegistrationNumber}}</td>
       <td>{{claim.natureOfClaim}}</td>
       <td>{{claim.claimStatus}}</td>
