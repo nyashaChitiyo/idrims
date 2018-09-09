@@ -33,7 +33,7 @@ export class ViewAgentsComponent implements OnInit {
   // // this.found = false;
   // }
   getUsers(){
-    this.httpClient.post('http://108.61.174.41:7070/api/view/group',
+    this.httpClient.post('http://108.61.174.41:7070/api/user/view/group',
   {
     
       'searchString': 'AGENT01'

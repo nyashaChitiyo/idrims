@@ -7,19 +7,28 @@
           <br>
           <h3 class="box-title"><b>SUBMIT CLAIM</b></h3> 
         </div>
-        <hr>
+        <hr> 
         <!-- /.box-header -->
         <!-- form start -->
           <div class="box-body"> 
               <div class="form-group col-md-4">
                   <label for="email">Customer Phone Number</label>
-                  <input type="text" class="form-control" id="phoneNumber" placeholder="Customer Phone Number"required>
+                  <input type="text" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber"  placeholder="Customer Phone Number"required>
               </div>
-            <div class="form-group col-md-4">
-              <label for="email">Vehicle Reg Number</label>
-              <input type="text" class="form-control" id="VRN" placeholder="VRN" required>
-
+          <div class="form-group col-md-4">
+              <label for="email">Customer First Name</label>
+              <input type="text" class="form-control" id="firstName" [(ngModel)]= "firstName"  placeholder="Customer First Name"required>
           </div>
+        <div class="form-group col-md-4">
+          <label for="email">Customer Last Name</label>
+          <input type="text" class="form-control" id="lastName" [(ngModel)]= "lastName"  placeholder="Last Name" required>
+      </div>
+
+      <div class="form-group col-md-4">
+          <label for="email">Vehicle Reg Number</label>
+          <input type="text" class="form-control" id="VRN" [(ngModel)]= "VRN"  placeholder="VRN" required>
+
+      </div> 
                 <div class="form-group col-md-4">
                   <label for="email">Select Nature of Claim</label>
                   <select [(ngModel)]="selectedValue" class="form-control" name="claimNature" placeholder="Select" required>
@@ -33,14 +42,14 @@
           <!-- /.box-body -->
     
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
+            <button type="submit" class="btn btn-primary" (click)="submitClaim()">Submit</button>
             <button class="btn btn-warning" aria-hidden="true" routerLink ="/agent/Customers"> Cancel</button>
           </div>
         </section>
         <swal
         #successSwal
         title="Success"
-        text="Claim Submitted.You will be contacted soon."
+        text="Claim Submitted.Customer will be contacted soon."
         type="success"
         [showCancelButton]="false"
         [focusCancel]="false">

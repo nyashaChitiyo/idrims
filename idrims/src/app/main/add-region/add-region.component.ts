@@ -10,10 +10,11 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class AddRegionComponent implements OnInit {
 
-
+ 
   id: 0;
   name: string;
   code: string;
+
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
@@ -30,9 +31,6 @@ export class AddRegionComponent implements OnInit {
   })
   .subscribe(data => {
     if (data['success'] === true) {        
-      this.successSwal.show();
-      setTimeout(function(){ this.successSwal.showAlert(); },0)
-      console.log(data['message'], + data['message']);
       this.successSwal.show();
       this.reset();
     } else {

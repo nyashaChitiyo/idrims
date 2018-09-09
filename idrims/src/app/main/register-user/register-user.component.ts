@@ -12,7 +12,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 export class RegisterUserComponent implements OnInit {
 
     
-  selectedValue: string;
+  selectedValue: string; 
   allColPointNames= [];
   colPoint = '';
   colPointIds = '';

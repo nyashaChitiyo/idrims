@@ -34,7 +34,7 @@ constructor(private router: Router, private httpClient: HttpClient, private demo
   // // this.found = false;
   // }
   getUsers(){
-    this.httpClient.post('http://108.61.174.41:7070/api/view/group',
+    this.httpClient.post('http://108.61.174.41:7070/api/user/view/group',
   {
     
       'searchString': 'ADMIN01'
