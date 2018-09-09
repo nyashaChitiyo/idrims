@@ -56,7 +56,7 @@ export class RegisterSBadminComponent implements OnInit {
         'description': 'ADMIN03',
         'id': 1,
         'lastModified': new Date(),
-        'roleName': 'ADMIN01'
+        'roleName': 'ADMIN03'
       }
     ],
       'userStation': +this.selectedValue,

@@ -81,6 +81,7 @@ import { AgentRegisterCustomerComponent } from './main/agent-register-customer/a
 import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/agent-register-vehicle.component';
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
+import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
 
 
 //import { AdminComponent } from './admin/admin.component';
@@ -159,7 +160,8 @@ import { AgentTransactionsComponent } from './main/agent-transactions/agent-tran
     AgentRegisterCustomerComponent,
     AgentRegisterVehicleComponent,
     AgentSubmitClaimComponent,
-    AgentTransactionsComponent
+    AgentTransactionsComponent,
+    AgentGetIdriveComponent
 
 
 

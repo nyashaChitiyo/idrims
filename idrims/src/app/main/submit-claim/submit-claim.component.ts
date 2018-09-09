@@ -38,7 +38,7 @@ export class SubmitClaimComponent implements OnInit {
   onEditClick(){
     
   }
-  postVehicle(){
+  postClaim(){
 
     this.httpClient.post('http://108.61.174.41:7070/api/claims/create',
     {
