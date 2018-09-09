@@ -3,25 +3,16 @@
   <!-- Content Header (Page header) -->
   <section  class="content-header">
     <h1 align= "center">
-      <strong>Disc Management</strong>
+      <strong>Printed Discs</strong>
     </h1>
+    <p><button align="left" class="btn btn-warning" routerLink ="/agent/mailbox">Back to Disc Managemnt</button></p>   
  
   </section>
   <hr>
   <!-- Main content --> 
   <section class="content">
 
-<!--Mailbox Div-->
-<div class="row">
-  <div class="col-md-12">
-      <form method="post">
-        <button type="submit" name="getMessages" id="getMessages" class="btn btn-primary btn-block margin-bottom" routerLink="/agent/ViewPrintedDiscs">View Printed Discs</button>
-      </form>
-    </div>
-</div> <hr>
-<h4 align="center">
-    <strong>Transaction Print Requests</strong>
-</h4>  
+<!--Mailbox Div--> 
  
 <!--general-->
 <div class="box">
@@ -32,28 +23,27 @@
         <thead>
           <tr>
             <th>Transaction Date</th>
+            <th>Order ID</th>
             <th>Vehicle Registration Number</th>
-            <th>National ID</th>
             <th>Insurance Company</th>
             <th>Insurance Type</th>
-            <th>Vehicle Value</th> 
             <th>Insurance Period</th>
             <th>Zinara Period</th>
             <th>ZBC Period</th>
+            <th>Printed On</th>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let request of requests">
             <td>{{request.createdAt}}</td>
+            <td>{{request.orderId}}</td>
             <td>{{request.vehicleRegistrationNumber}}</td>
-            <td>{{request.userId}}</td>
             <td>{{request.insuranceCompany}}</td>
             <td>{{request.insuranceType}}</td>
-            <td>{{request.vehicleValue}}</td>
             <td>{{request.insurancePeriod}}</td>
             <td>{{request.zinaraPeriod}}</td>
             <td>{{request.zbcPeriod}}</td>
-            <td><button class="btn btn-primary btn-block margin-bottom">Complete</button></td>
+            <td>{{request.transactionCloseDate}}</td>
 
 
           </tr>
@@ -66,3 +56,6 @@
 </div>
 
 
+<p>
+  view-printed-discs works!
+</p>

@@ -74,7 +74,10 @@ import { MyTransactionsComponent } from './main/my-transactions/my-transactions.
 import {MyClaimsComponent} from './main/my-claims/my-claims.component';
 import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
+import {ViewPrintedDiscsComponent} from './main/view-printed-discs/view-printed-discs.component';
+import {CustomersComponent} from './main/customers/customers.component';
 import {UiSwitchModule} from 'ngx-ui-switch';
+
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -145,7 +148,9 @@ import {UiSwitchModule} from 'ngx-ui-switch';
     MyTransactionsComponent,
     MyClaimsComponent,
     SubmitClaimComponent,
-    ViewMyClaimsComponent
+    ViewMyClaimsComponent,
+    ViewPrintedDiscsComponent,
+    CustomersComponent
 
 
 

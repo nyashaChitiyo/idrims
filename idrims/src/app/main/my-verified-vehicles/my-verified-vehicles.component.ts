@@ -15,7 +15,7 @@ export class MyVerifiedVehiclesComponent implements OnInit {
 
   constructor( private demo: DemoService,private router: Router) { 
     this.getVehicle();
-  }
+  } 
 
   ngOnInit() {
     this.dtOptions = {

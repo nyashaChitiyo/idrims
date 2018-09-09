@@ -109,5 +109,8 @@ export class SessionsService {
   isCustomer() {
     return localStorage.getItem('userGroup') === 'CUST01';
   }
+  isAgent() {
+    return localStorage.getItem('userGroup') === 'AGENT01';
+  }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';
