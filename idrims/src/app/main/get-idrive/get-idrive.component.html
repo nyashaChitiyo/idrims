@@ -6,28 +6,26 @@
       <br>
       <h3 class="box-title"><b>Get iDriveSure</b></h3> 
     </div>
-    <hr>
-    <!-- /.box-header -->
-    <!-- form start -->
       <div class="box-body"> 
-                    <div class="form-group col-md-4 text-center">
-                      <label class="">Select Vehicle</label>
-                      <select name="vrnSelect" class="select2 form-control" style="width: 100%;" >
-                        <option value="NA" selected="selected" style="display: none;" >Select Vehicle</option>
-                      <option value=""></option>
-                      </select>
+        <div class="box-title"><h2>Insurance</h2></div>
+        <hr>
+                    <div class="form-group col-md-6 text-center">
+                        <label for="email">Select Vehicle</label>
+                        <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" (change)="onEditClick()" required>
+                            <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.vehicleRegistrationNumber">{{vehicle.vehicleRegistrationNumber}}</option>
+                          </select>
                     </div>
-                      <div class="form-group col-md-4 text-center">
+                    <div class="form-group col-md-6 text-center">
                         <label class="">Select Insurance Company</label>
-                  <select class="select2 form-control " name="insuranceCompanySelect"  tabindex="1" required>
-                      <option  style="display: none;"  >Select Insurance Company</option>
-                        <option></option>
+                        <select [(ngModel)]="insuranceCompanySelect" class="form-control" name="insuranceCompanySelect" required>
+          
+                        <option *ngFor="let company of companies" [value]="company.name">{{company.name}}</option>
                     </select>
                       </div>
-                      <div class="form-group col-md-4 text-center">
+                      <div class="form-group col-md-6 text-center">
                                 <label class="">Insurance Type</label>
-                                <select id="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
-                                  <option value="0" selected="selected" >Choose Type of Cover</option>
+                                <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
+                                  <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
                         <option value="RTA">Road Traffic Act (3rd Party)</option>
                                   <option value="COMP">Comprehensive</option>
                                   <option value="COMPPLUS">Comprehensive Plus</option>
@@ -38,9 +36,9 @@
                                 <label class="">Enter Value</label>
                                  <input  class="form-control" type="number" name="vehicleValueFiled" id="vehicleValueFiled" value="0">
                               </div>
-                            <div class="form-group col-md-4">				
+                            <div class="form-group col-md-6">				
                                     <label>Insurance Period</label>
-                                    <select  id="insurancePeriodSelect" name="insurancePeriodSelect" class="select2 form-control" style="width: 100%;" >
+                                    <select [(ngModel)]="insurancePeriodSelect"  id="insurancePeriodSelect" name="insurancePeriodSelect" class="select2 form-control" style="width: 100%;" >
                               <option value="0"selected="selected"  style="display: none;">Choose Period of Cover</option>
                               <option value="4"><b>4 Months</b></option>
                               <option value="5">5 Months</option>
@@ -52,37 +50,22 @@
                               <option value="11">11 Months</option>
                               <option value="12">12 Months</option>
                                     </select>
-                                  </div>
-            <!-- <div class="form-group col-md-4 "> -->
-              <!-- <label>ZINARA Licence?</label>
-              <div class="TriSea-technologies-Switch pull-left">
-                  <input id="zinaraToggle" name="TriSea1" type="checkbox"/>
-                  <label for="zinaraToggle" class="label-primary"></label>
-                              </div>
-                              
-          </div>             -->
-          <div class="form-group col-md-4 text-center">				
-                  <label>Zinara Licence Period</label>
-                  <select  id="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
+                                  </div>        
+                <!--<div id="zinaraPeriodDiv" class="form-group col-md-4" style="display:none">				
+                  <label>Licence Period</label>
+                  <select  id="zinaraPeriodSelect" [(ngModel)]="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
                     <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
-            <option value="4"><b>4 Months</b></option>
-            <option value="6">6 Months</option>
-            <option value="8">8 Months</option>
-            <option value="10">10 Months</option>
-            <option value="12">12 Months</option>
+                    <option value="4"><b>4 Months</b></option>
+                    <option value="6">6 Months</option>
+                    <option value="8">8 Months</option>
+                    <option value="10">10 Months</option>
+                    <option value="12">12 Months</option>
                   </select>
                 </div>
-        <!-- <div class="form-group col-md-4 ">
-          <label>ZBC Licence?</label>
-         <div class="TriSea-technologies-Switch pull-left">
-                              <input id="zbcToggle" name="TriSea1" type="checkbox"/>
-                              <label for="zbcToggle" class="label-warning"></label>
-                          </div>
-       
-      </div> -->
-          <div class="form-group col-md-4 text-center">								
-                  <label>ZBC Licence Period</label>
-                  <select id="zbcPeriodSelect" name="zbcPeriodSelect" class="select2 form-control" style="width: 100%">
+   
+          <div id="zbcPeriodDiv" class="form-group col-md-4" style="display:none">				
+                  <label>Licence Period</label>
+                  <select id="zbcPeriodSelect" name="zbcPeriodSelect" [(ngModel)]="zbcPeriodSelect" class="select2 form-control" style="width: 100%">
                     <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
             <option value="4"><b>4 Months</b></option>
             <option value="5">5 Months</option>
@@ -94,50 +77,107 @@
             <option value="11">11 Months</option>
             <option value="12">12 Months</option>
                   </select>
-                </div>
-        <div class="form-group col-md-4 ">
-          <label>Pick Up Disk...</label>
-       <div class="TriSea-technologies-Switch pull-left">
-                              <input id="pickUpToggle" name="TriSea1" type="checkbox"/>
-                              <label for="pickUpToggle" class="label-info"></label>
-                          </div>
-        
-      </div>            
-          <div id="pickUpPointDiv" class="form-group col-md-4" style="display:none">				
-                  <label>Collection Point</label>
-            
-                  <select id="pickUpPointSelect" name="pickUpPointSelect" class= " select2 form-control" style="width: 100%;" >
-            <option value="NA" selected="selected"  style="display: none;">Choose Where to Collect Disk</option>
-            <hr>
-                  <option value=""></option>
-                  </select>
-                </div>
-      <div class="form-group col-md-4 ">
-      <label>Delivery...</label>
-      <div class="TriSea-technologies-Switch pull-left">
-                        <input id="deliveryToggle" name="TriSea1" type="checkbox"/>
-                        <label for="deliveryToggle" class="label-danger"></label>
-                    </div>
-
+                </div>-->
+       <br>
+       <br>
+       <br>
+       <br>
       </div>
 
-      <div id="deliveryLocDiv" class="form-group col-md-4" style="display: none;" >				
-            <label>Delivery Location</label>
-      <textarea id="deliveryAddress" name="deliveryAddress" class="form-control" rows="2" ></textarea>
+      <div class="box-body"> 
+          <div class="box-title"><h2>ZINARA & ZBC</h2></div>
+          <hr>
+           <div class="form-group col-md-6">				
+                    <label>ZBC Licence Period</label>
+                      <select  id="zbcPeriodSelect" [(ngModel)]="zbcPeriodSelect" name="zbcPeriodSelect" class="select2 form-control" style="width: 100%;" >
+                        <option value="0"selected="selected"  style="display: none;">Choose Period of Cover</option>
+                        <option value="4"><b>4 Months</b></option>
+                        <option value="5">5 Months</option>
+                        <option value="6">6 Months</option>
+                        <option value="7">7 Months</option>
+                        <option value="8">8 Months</option>
+                        <option value="9">9 Months</option>
+                        <option value="10">10 Months</option>
+                        <option value="11">11 Months</option>
+                        <option value="12">12 Months</option>
+                      </select>
+                    </div>        
+            <div class="form-group col-md-6">				
+                    <label>Zinara Licence Period</label>
+                    <select  id="zinaraPeriodSelect" [(ngModel)]="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
+                      <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
+                      <option value="4"><b>4 Months</b></option>
+                      <option value="5">5 Months</option>
+                      <option value="6">6 Months</option>
+                      <option value="7">7 Months</option>
+                      <option value="8">8 Months</option>
+                      <option value="9">9 Months</option>
+                      <option value="10">10 Months</option>
+                      <option value="11">11 Months</option>
+                      <option value="12">12 Months</option>
+                    </select>
+                  </div>
+      </div>
+      <div class="box-body"> 
+          <div class="box-title"><h2>COLLECTION / DELIVERY</h2></div>
+          <hr>
+          <div class="form-group col-md-12">
+              <label for="email">Collection or Delivery </label>
+              <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
+                  <option selected  style="display: none;" >Select Option</option>
+                  <option value="delivery">Get product delivered to your door step</option>
+                  <option value="collection">Collect product from collection points</option>
+                </select>
+          </div>        
+     
+          <div *ngIf="isCollection" class="form-group col-md-4">
+              <label for="email">Region</label>
+              <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                  <option selected  style="display: none;" >Select Region</option>
+                  <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                </select>
+          </div>
+          <div *ngIf="isCollection" class="form-group col-md-4">
+              <label for="email">Sub-Region</label>
+              <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
+                  <option selected  style="display: none;" >Select Sub-Region</option>
+                  <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                </select>
+          </div>
+          <div *ngIf="isCollection" class="form-group col-md-4">
+              <label for="email">Collection Point</label>
+              <select [(ngModel)]="selectedCol" class="form-control" name="colPoint" required>
+                  <option selected  style="display: none;" >Select Collection-Point</option>
+                  <option  *ngFor="let col of allColPoints" [value]="col.id">{{col.name}}</option>
+                </select>
           </div>
 
-      <div class="form-group col-md-4 text-center">
-  <label  class="">Number to Recieve ECONET Airtime</label>
-        <input  class="form-control" type="number" name="airtimeNumber" required>
+
+          <div *ngIf="isDelivery" class="form-group col-md-6">
+              <label for="email">Suburb</label>
+              <select [(ngModel)]="selectedSurb" class="form-control" name="suburb" required>
+                  <option selected  style="display: none;" >Select Suburb</option>
+                  <option  *ngFor="let sub of allSuburbs" [value]="sub.id">{{sub.name}}</option>
+                </select>
+          </div>
+
+          <div *ngIf="isDelivery" class="form-group col-md-6">
+              <div class="form-group">
+                  <label for="comment">Enter Address:</label>
+                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+          </div>
+      
+          <div class="form-group col-md-6">
+              <label>Number to Recieve ECONET Airtime</label>
+                    <input [(ngModel)] = "airtimeNumber" class="form-control" type="number" name="airtimeNumber" required>
+                
+              </div>
       </div>
 
-
-
-      </div>
       <!-- /.box-body -->
-
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="getIdrive()">Submit</button>
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
       </div>
       </div>

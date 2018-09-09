@@ -38,11 +38,13 @@ export class SessionsService {
       if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
-        localStorage.setItem('phoneNumberOrEmail', username);
+        localStorage.setItem('phoneNumber', data['phoneNumber']);
         localStorage.setItem('firstname', data['firstname']);
-        localStorage.setItem('fullName', data['firstname']);
+        localStorage.setItem('lastname', data['lastname']);
         localStorage.setItem('userGroup', data['userGroup'])
+        localStorage.setItem('userId', data['userId']);
         console.log('User status is '+data['userGroup']);
+        
         this.isLoggedIn = true;
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');

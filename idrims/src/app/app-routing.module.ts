@@ -53,6 +53,7 @@ import { MyTransactionsComponent } from './main/my-transactions/my-transactions.
 import {MyClaimsComponent} from './main/my-claims/my-claims.component';
 import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
+import{ProfileComponent} from './main/profile/profile.component';
 import { MailboxComponent} from './main/mailbox/mailbox.component';
 import {ViewPrintedDiscsComponent} from './main/view-printed-discs/view-printed-discs.component';
 import {CustomersComponent} from './main/customers/customers.component';
@@ -70,7 +71,6 @@ import { AgentTransactionsComponent } from './main/agent-transactions/agent-tran
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
-  {path: 'admin', component: AdminComponent},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
@@ -78,6 +78,7 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
+  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent},
   {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
@@ -120,6 +121,7 @@ const appRoutes: Routes = [
   {path: 'customer/myClaims', component: MyClaimsComponent, canActivate: [AuthGuard]},
   {path: 'customer/submitmyClaim', component: SubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'customer/viewMyClaims', component: ViewMyClaimsComponent, canActivate: [AuthGuard]},
+  {path: 'customer/profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'agent/mailbox', component: MailboxComponent, canActivate: [AuthGuard]},
   {path: 'agent/ViewPrintedDiscs', component: ViewPrintedDiscsComponent, canActivate: [AuthGuard]},
   {path: 'agent/Customers', component: CustomersComponent, canActivate: [AuthGuard]},

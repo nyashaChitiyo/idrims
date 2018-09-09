@@ -1,3 +1,40 @@
-<p>
-  admin works!
-</p>
+<div class="content-wrapper">
+
+    <section align= "center" class="content">
+    <div class="box">
+    <!-- /.box-header -->
+    <div class="box-header with-border">
+        <br>
+        <h3 class="box-title"><b>{{firstname}}&nbsp;{{lastname}}</b></h3>
+      </div>
+    <!-- form start --> 
+    <hr>
+      <div class="box-body">
+          <div class="col-sm-3">
+              <img src="../../../assets/avatar.png" class="img-rounded" alt="img">
+          </div>
+
+          <div class="col-sm-9">
+          <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
+          <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control">
+          <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
+          <label>Role:</label><input [disabled]="isEdit" type="text" [(ngModel)]="role" name="firstNa" class="form-control">
+          <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
+          <label for="type">Status</label>
+          <select class="form-control" name="type" required>
+              <option selected  style="display: none;" >Change Status</option>
+              <option value="false"[disabled]="isEdit"  [(ngModel)]="userStatus" ngDefaultControl>Deactivate</option>
+            </select>
+        </div>
+      </div>
+      </div>
+      <!-- /.box-body -->
+  
+      <div class="box-footer">
+          <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
+          <button class="btn btn-warning" >save</button>
+          <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/ViewAdmins"> Cancel</button></div>
+    </section>
+  
+  
+  

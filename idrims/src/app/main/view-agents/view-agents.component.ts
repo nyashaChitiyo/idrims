@@ -26,7 +26,7 @@ export class ViewAgentsComponent implements OnInit {
     } 
     console.log(data)
 
-    this.router.navigate(['/userManagement/'+this.users[0].phoneNumber],data);
+    this.router.navigate(['admin/userManagement/viewAgents/'+this.users[0].phoneNumber],data);
   }
   // onNameKeyUp(event:any){
   // this.name = event.target.value;
@@ -35,7 +35,6 @@ export class ViewAgentsComponent implements OnInit {
   getUsers(){
     this.httpClient.post('http://108.61.174.41:7070/api/user/view/group',
   {
-    
       'searchString': 'AGENT01'
   })
     .subscribe(

@@ -40,29 +40,18 @@ export class RegisterUserComponent implements OnInit {
     })
   }
  
-  postProfile(){ 
-    this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
+  postProfile(){
+  this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
-    'firstname' : this.firstname,
-    'email' : this.email,
-    'nationalId':  this.nationalID,
-    'password' : this.password,
-    'phoneNumber': this.phoneNumber,
-    'lastname': this.surname,
-    'userGroup':'ADMIN01',
-    'roles': [ 
-      {
-        'created': new Date(),
-        'description': 'ADMIN01',
-        'id': 1,
-        'lastModified': new Date(),
-        'roleName': 'ADMIN01'
-      }
-    ],
-      'userStation': +this.selectedValue,
-      'userStatus': true,
-      'userType': 'ADMIN01',
 
+      "email": this.email,
+      "firstname": this.firstname,
+      "lastname": this.surname,
+      "nationalId": this.nationalID,
+      "password": this.password,
+      "phoneNumber": ""+this.phoneNumber,
+      "userGroup": "ADMIN01",
+      "userStation": +this.selectedValue
   })
   .subscribe(data => {
     if (data['success'] === true) {  
@@ -74,7 +63,7 @@ export class RegisterUserComponent implements OnInit {
   }, error => {
     console.log(Response);
     this.failedSwal.show();
-  }); 
+  });
   }
   reset() {
     this.firstname = '';

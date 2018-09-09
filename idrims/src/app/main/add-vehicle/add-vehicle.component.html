@@ -13,13 +13,13 @@
           <div class="box-body"> 
               <div class="input-group col-md-offset-1 col-md-10">
                   <span class="input-group-addon"><b>Vehicle Reg Number&emsp;&emsp;&emsp;&emsp;</b></span>
-                  <input type="text" name="regVRN" id="regVRN" class="form-control" style="text-transform: uppercase">                
+                  <input type="text" [(ngModel)]= "regVRN" name="regVRN" id="regVRN" class="form-control" style="text-transform: uppercase">                
                   <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 </div>
                 <br>
                 <div class="input-group col-md-offset-1 col-md-10">
                     <span class="input-group-addon"><b>Confirm Vehicle Reg Number</b></span>
-                    <input type="text" name="confirmRegVRN" id="confirmRegVRN" class="form-control"style="text-transform: uppercase">                
+                    <input type="text" [(ngModel)]= "confirmRegVRN" name="confirmRegVRN" id="confirmRegVRN" class="form-control"style="text-transform: uppercase">                
                     <span class="input-group-addon"><i class="fa fa-street-view"></i></span>
                   </div>
           </div>
@@ -47,6 +47,14 @@
         [showCancelButton]="false"
         [focusCancel]="false">
       </swal>
+      <swal
+      #failedEq
+      title="Failed"
+      text="An error occured while processing your request"
+      type="warning"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
     
     
     

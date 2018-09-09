@@ -50,6 +50,7 @@ import { MyTransactionsComponent } from './my-transactions/my-transactions.compo
 import { MyClaimsComponent } from './my-claims/my-claims.component';
 import { SubmitClaimComponent } from './submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './view-my-claims/view-my-claims.component';
+import { ProfileComponent } from './profile/profile.component';
 import { ViewPrintedDiscsComponent } from './view-printed-discs/view-printed-discs.component';
 import { CustomersComponent } from './customers/customers.component';
 import { AgentRegisterCustomerComponent } from './agent-register-customer/agent-register-customer.component';
@@ -112,6 +113,7 @@ import { AgentTransactionsComponent } from './agent-transactions/agent-transacti
   MyClaimsComponent,
   SubmitClaimComponent,
   ViewMyClaimsComponent,
+  ProfileComponent,
   ViewPrintedDiscsComponent,
   CustomersComponent,
   AgentRegisterCustomerComponent,

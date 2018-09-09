@@ -21,18 +21,15 @@ constructor(private router: Router, private httpClient: HttpClient, private demo
   
   getAdmin(user){
     console.log(user.phoneNumber);
-   let d = this.users[0];
+   let d = user;
     let data : NavigationExtras = {
       queryParams: d
     }
     console.log(data)
 
-    //this.router.navigate(['admin/userManagement/ViewAdmins/'+this.users[0].phoneNumber],data);
+    this.router.navigate(['admin/userManagement/ViewAdmins/'+user.phoneNumber],data);
   }
-  // onNameKeyUp(event:any){
-  // this.name = event.target.value;
-  // // this.found = false;
-  // }
+
   getUsers(){
     this.httpClient.post('http://108.61.174.41:7070/api/user/view/group',
   {

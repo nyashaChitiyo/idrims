@@ -9,25 +9,25 @@
       </div>
       <hr>
       <!-- /.box-header -->
-      <!-- form start -->
-        <div class="box-body"> 
+      <!-- form start 
+        <div class="box-body"> -->
           <div class="form-group col-md-6">
             <label for="email">Select Vehicle</label>
-            <select [(ngModel)]="selectedValue" class="form-control" name="Vehicle" required>
-                <option *ngFor="let vehicle of vehicles" [value]="reg.id">{{vehicle.vehicleRegistrationNumber}}</option>
+            <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" (change)="onEditClick()" required>
+                <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.id">{{vehicle.vehicleRegistrationNumber}}</option>
               </select>
-        </div>
+         </div>
               <div class="form-group col-md-6">
                 <label for="email">Select Nature of Claim</label>
-                <select [(ngModel)]="selectedValue" class="form-control" name="claimNature" required>
+                <select [(ngModel)]="claimNature" class="form-control" name="claimNature" required>
                   <option>Accident</option>
                   <option>Theft</option>
                   <option>Windscreen</option>
                   </select>
             </div>
         </div>
-        </div>
-        <!-- /.box-body -->
+       <!-- </div>
+         /.box-body -->
   
         <div class="box-footer">
           <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>

@@ -8,7 +8,6 @@ export class AuthGuardRouteService {
   constructor(private router: Router) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if(localStorage.getItem('accessToken')){
-      console.log(localStorage.getItem('userGroup')+'ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss')
     var userGroup:string = localStorage.getItem('userGroup');
     if(userGroup == 'ADMIN02'){
       return state.url.startsWith('/admin')
