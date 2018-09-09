@@ -1,0 +1,51 @@
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1 align= "center">
+        <strong>Transactions</strong>
+      </h1>
+     <!-- <p><button align="left" class="btn btn-warning" routerLink ="/admin/userManagement">Back to User Managemnt</button></p>    -->
+    </section>
+    
+    <hr>
+  
+    <!-- Main content -->
+    <section class="content">
+  <div class="box">
+      <table datatable class="table table-striped table-bordered" cellspacing="0" width="100%">
+      <thead> 
+      <tr>
+        <th>Date</th>
+        <th>VRN</th>
+        <th>Insurance Type</th>
+        <th>Transaction Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.updatedAt}}</td>      
+        <td>{{transaction.vehicleRegistrationNumber}}</td>
+        <td>{{transaction.insuranceType}}</td>
+        <td>{{transaction.transactionStatus}}</td>
+      </tr>
+      </tbody>
+    </table>
+  
+  </div>
+    </section>
+  
+  
+  </div>
+  
+  <!-- <script> 
+  $(document).ready(function() {
+    $('#customers').DataTable(
+      {
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]]
+      }
+    );
+  } );
+  </script> -->
+  
+  

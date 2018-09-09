@@ -53,6 +53,10 @@ import { ViewMyClaimsComponent } from './view-my-claims/view-my-claims.component
 import { ProfileComponent } from './profile/profile.component';
 import { ViewPrintedDiscsComponent } from './view-printed-discs/view-printed-discs.component';
 import { CustomersComponent } from './customers/customers.component';
+import { AgentRegisterCustomerComponent } from './agent-register-customer/agent-register-customer.component';
+import { AgentRegisterVehicleComponent } from './agent-register-vehicle/agent-register-vehicle.component';
+import { AgentSubmitClaimComponent } from './agent-submit-claim/agent-submit-claim.component';
+import { AgentTransactionsComponent } from './agent-transactions/agent-transactions.component';
 
 
 
@@ -111,6 +115,10 @@ import { CustomersComponent } from './customers/customers.component';
   ViewMyClaimsComponent,
   ProfileComponent,
   ViewPrintedDiscsComponent,
-  CustomersComponent]
+  CustomersComponent,
+  AgentRegisterCustomerComponent,
+  AgentRegisterVehicleComponent,
+  AgentSubmitClaimComponent,
+  AgentTransactionsComponent]
 })
 export class MainModule { }
