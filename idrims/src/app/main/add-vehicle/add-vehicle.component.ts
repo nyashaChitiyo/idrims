@@ -6,7 +6,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 @Component({
   selector: 'app-add-vehicle',
   templateUrl: './add-vehicle.component.html',
-  styleUrls: ['./add-vehicle.component.css']
+  styleUrls: ['./add-vehicle.component.css'] 
 })
 export class AddVehicleComponent implements OnInit {
 

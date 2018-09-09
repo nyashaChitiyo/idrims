@@ -7,14 +7,12 @@ import {SessionsService} from '../../authentication/sessions.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import{Router,NavigationExtras} from '@angular/router';
 
-
 @Component({
-  selector: 'app-get-idrive',
-  templateUrl: './get-idrive.component.html',
-  styleUrls: ['./get-idrive.component.css']
+  selector: 'app-agent-get-idrive',
+  templateUrl: './agent-get-idrive.component.html',
+  styleUrls: ['./agent-get-idrive.component.css']
 })
-export class GetIdriveComponent implements OnInit {
-
+export class AgentGetIdriveComponent implements OnInit {
   allRegionNames = [];
   selectedValue: number;
   allSubRegions = [];
@@ -34,6 +32,9 @@ export class GetIdriveComponent implements OnInit {
   vehicle:string;
   zinaraPeriodSelect:string;
   zbcPeriodSelect:string;
+  nationalID: string;
+
+
   constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     var id: number = +localStorage.getItem('userId');
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
@@ -121,7 +122,7 @@ export class GetIdriveComponent implements OnInit {
       "processedBy": "string",
       "requestChannel": "string",
       "requestedFor": "string",
-      "userId": id,
+      "userId": this.nationalID,
       "vehicleRegistrationNumber": this.vehicle,
       "vehicleValue": 0,
       "zbcPeriod": this.zbcPeriodSelect,
@@ -147,7 +148,7 @@ export class GetIdriveComponent implements OnInit {
         "processedBy": "string",
         "requestChannel": "string",
         "requestedFor": "string",
-        "userId": id,
+        "userId": this.nationalID,
         "vehicleRegistrationNumber": this.vehicle,
         "vehicleValue": 0,
         "zbcPeriod": this.zbcPeriodSelect,

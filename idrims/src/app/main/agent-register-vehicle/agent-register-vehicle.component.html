@@ -9,23 +9,23 @@
       </div>
       <hr>
       <!-- /.box-header -->
-      <!-- form start -->
+      <!-- form start --> 
         <div class="box-body">     
         <div class="input-group col-md-offset-1 col-md-10">
           <span class="input-group-addon"><b>Customer National ID&emsp;&emsp;&emsp;&emsp;</b></span>
-          <input type="text" name="nationalID" id="nationalID" class="form-control" style="text-transform: uppercase">                
+          <input type="text" name="nationalID" [(ngModel)]= "nationalID"  id="nationalID" class="form-control" style="text-transform: uppercase">                
           <span class="input-group-addon"><i class="fa fa-user"></i></span>
         </div>
         <br>
             <div class="input-group col-md-offset-1 col-md-10">
                 <span class="input-group-addon"><b>Vehicle Reg Number&emsp;&emsp;&emsp;&emsp;</b></span>
-                <input type="text" name="regVRN" id="regVRN" class="form-control" style="text-transform: uppercase">                
+                <input type="text" name="regVRN" [(ngModel)]= "regVRN"  id="regVRN" class="form-control" style="text-transform: uppercase">                
                 <span class="input-group-addon"><i class="fa fa-bus"></i></span>
               </div>
               <br>
               <div class="input-group col-md-offset-1 col-md-10">
                   <span class="input-group-addon"><b>Confirm Vehicle Reg Number</b></span>
-                  <input type="text" name="confirmRegVRN" id="confirmRegVRN" class="form-control"style="text-transform: uppercase">                
+                  <input type="text" name="confirmRegVRN" [(ngModel)]= "confirmRegVRN"  id="confirmRegVRN" class="form-control"style="text-transform: uppercase">                
                   <span class="input-group-addon"><i class="fa fa-bus"></i></span>
                 </div>
         </div>

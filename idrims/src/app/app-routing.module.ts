@@ -61,6 +61,7 @@ import { AgentRegisterCustomerComponent } from './main/agent-register-customer/a
 import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/agent-register-vehicle.component';
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
+import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
 
 
 
@@ -129,8 +130,9 @@ const appRoutes: Routes = [
   {path: 'agent/regVehicle', component: AgentRegisterVehicleComponent, canActivate: [AuthGuard]},
   {path: 'agent/addClaim', component: AgentSubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'agent/agentTransactions', component: AgentTransactionsComponent, canActivate: [AuthGuard]},
+  {path: 'agent/agentGetIdrive', component: AgentGetIdriveComponent, canActivate: [AuthGuard]},
   
- 
+  
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 

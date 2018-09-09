@@ -122,11 +122,10 @@
           <div class="box-title"><h2>COLLECTION / DELIVERY</h2></div>
           <hr>
           <div class="form-group col-md-12">
-              <label for="email">Collection or Delivery </label>
               <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
                   <option selected  style="display: none;" >Select Option</option>
-                  <option value="delivery">Get product delivered to your door step</option>
-                  <option value="collection">Collect product from collection points</option>
+                  <option value="delivery">Delivery</option>
+                  <option value="collection">Collection</option>
                 </select>
           </div>        
      
