@@ -47,7 +47,7 @@ export class RegisterAgentComponent implements OnInit {
     'nationalId':  this.nationalID,
     'password' : this.password,
     'phoneNumber': this.phoneNumber,
-    'surname': this.surname,
+    'lastname': this.surname,
     'userGroup':'AGENT01',
     'roles': [ 
       {

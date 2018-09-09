@@ -14,6 +14,8 @@ export class MyTransactionsComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
   transactions= [];
   userGroup:string;
+  checked:any;
+
   public temp_var: Object = false;
 
   constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
@@ -41,5 +43,19 @@ export class MyTransactionsComponent implements OnInit {
     ) 
   }
 
+//   myFunction(){
+//     // Get the checkbox
+//     var checkBox = document.getElementById("myCheck");
+//     // Get the output text
+//     var text = document.getElementById("text");
+  
+//     // If the checkbox is checked, display the output text
+//     if (checkBox.checked == true){
+//       text.style.display = "block";
+//     } else {
+//       text.style.display = "none";
+//     }
+//   }
+// }
+
 } 
- 

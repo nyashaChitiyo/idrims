@@ -44,16 +44,23 @@ import { TransactionsComponent} from './main/transactions/transactions.component
 import {CloseClaimComponent} from './main/close-claim/close-claim.component';
 import {ViewSBadminComponent } from './main/view-sbadmin/view-sbadmin.component';
 import {RegisterComponent} from './main/register/register.component';
-import{AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
+import {AddVehicleComponent} from './main/add-vehicle/add-vehicle.component';
 import { MyVehiclesComponent} from './main/my-vehicles/my-vehicles.component';
 import {GetIdriveComponent} from './main/get-idrive/get-idrive.component';
 import { MypendingVerificationComponent} from './main/mypending-verification/mypending-verification.component';
-import{MyVerifiedVehiclesComponent } from './main/my-verified-vehicles/my-verified-vehicles.component';
+import {MyVerifiedVehiclesComponent } from './main/my-verified-vehicles/my-verified-vehicles.component';
 import { MyTransactionsComponent } from './main/my-transactions/my-transactions.component';
 import {MyClaimsComponent} from './main/my-claims/my-claims.component';
 import { SubmitClaimComponent } from './main/submit-claim/submit-claim.component';
 import { ViewMyClaimsComponent } from './main/view-my-claims/view-my-claims.component';
 import{ProfileComponent} from './main/profile/profile.component';
+import { MailboxComponent} from './main/mailbox/mailbox.component';
+import {ViewPrintedDiscsComponent} from './main/view-printed-discs/view-printed-discs.component';
+import {CustomersComponent} from './main/customers/customers.component';
+
+
+
+//import { NgxPermissionsGuard } from 'ngx-permissions';
  
 
 const appRoutes: Routes = [
@@ -110,6 +117,10 @@ const appRoutes: Routes = [
   {path: 'customer/submitmyClaim', component: SubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'customer/viewMyClaims', component: ViewMyClaimsComponent, canActivate: [AuthGuard]},
   {path: 'customer/profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'agent/mailbox', component: MailboxComponent, canActivate: [AuthGuard]},
+  {path: 'agent/ViewPrintedDiscs', component: ViewPrintedDiscsComponent, canActivate: [AuthGuard]},
+  {path: 'agent/Customers', component: CustomersComponent, canActivate: [AuthGuard]},
+ 
  
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
