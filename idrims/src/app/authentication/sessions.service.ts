@@ -43,6 +43,8 @@ export class SessionsService {
         localStorage.setItem('lastname', data['lastname']);
         localStorage.setItem('userGroup', data['userGroup'])
         localStorage.setItem('userId', data['userId']);
+        localStorage.setItem('email',data['email']);
+        localStorage.setItem('nationalId',data['nationalId']);
         console.log('User status is '+data['userGroup']);
         
         this.isLoggedIn = true;

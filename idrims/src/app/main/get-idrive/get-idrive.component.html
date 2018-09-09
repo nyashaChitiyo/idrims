@@ -24,12 +24,16 @@
                       </div>
                       <div class="form-group col-md-6 text-center">
                                 <label class="">Insurance Type</label>
-                                <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
+                                <select id="insuranceTypeSelect" (change)="setInsType()" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
                                   <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
-                        <option value="RTA">Road Traffic Act (3rd Party)</option>
+                                  <option value="RTA">Road Traffic Act (3rd Party)</option>
                                   <option value="COMP">Comprehensive</option>
                                   <option value="COMPPLUS">Comprehensive Plus</option>
                                 </select>
+                                <div *ngIf="isComprehensive">
+                                <label>Vehicle value</label>
+                                <input [(ngModel)] = "vehicleValue" class="form-control" type="number" name="vehicleValue" required>
+                              </div>
                         </div>
                         
                         <div id="vehicleValueDiv" style="display: none;" class="form-group col-md-4 text-center">
@@ -164,7 +168,7 @@
           <div *ngIf="isDelivery" class="form-group col-md-6">
               <div class="form-group">
                   <label for="comment">Enter Address:</label>
-                  <textarea class="form-control" rows="5" id="comment"></textarea>
+                  <textarea class="form-control" rows="5" id="comment" [(ngModel)][="delAddress"></textarea>
                 </div>
           </div>
       
@@ -177,7 +181,7 @@
 
       <!-- /.box-body -->
       <div class="box-footer">
-        <button type="submit" class="btn btn-primary" (click)="getIdrive()">Submit</button>
+        <button type="submit" class="btn btn-primary" (click)="getIdrive()">Generate Quotation</button>
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
       </div>
       </div>

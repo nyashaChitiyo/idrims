@@ -15,7 +15,11 @@ import{Router,NavigationExtras} from '@angular/router';
 })
 export class GetIdriveComponent implements OnInit {
 
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
+
   allRegionNames = [];
+  delAddress:string = "";
   selectedValue: number;
   allSubRegions = [];
   selectedReg: number;
@@ -25,6 +29,7 @@ export class GetIdriveComponent implements OnInit {
   isCollection: boolean = false;
   isDelivery: boolean = false;
 
+  isComprehensive:boolean = false;
   vehicleNames= [];
   airtimeNumber: string = '';
   companies= [];
@@ -34,6 +39,7 @@ export class GetIdriveComponent implements OnInit {
   vehicle:string;
   zinaraPeriodSelect:string;
   zbcPeriodSelect:string;
+  vehicleValue:number=0;
   constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     var id: number = +localStorage.getItem('userId');
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
@@ -108,52 +114,45 @@ export class GetIdriveComponent implements OnInit {
   }
   getIdrive() {
     var id: number = +localStorage.getItem('userId');
-    console.log('dfhgshbvvvvvvvvvdjfvbhdjdf'+this.selectedCol)
-    /*this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
+    
+    this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": this.selectedReg,
-      "collectionDelAdd": "string",
+      "colPointId": +this.selectedReg,
+      "collectionDelAdd": this.delAddress,
       "collectionType": this.changeState,
       "insuranceCompany": this.insuranceCompanySelect,
-      "insurancePeriod": this.insurancePeriodSelect,
+      "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,
-      "processedBy": "string",
-      "requestChannel": "string",
-      "requestedFor": "string",
+      "processedBy": "",
+      "requestChannel": "Web",
+      "requestedFor": localStorage.getItem('phoneNumber'),
       "userId": id,
       "vehicleRegistrationNumber": this.vehicle,
-      "vehicleValue": 0,
-      "zbcPeriod": this.zbcPeriodSelect,
-      "zinaraPeriod": this.zinaraPeriodSelect
+      "vehicleValue": this.vehicleValue,
+      "zbcPeriod": +this.zbcPeriodSelect,
+      "zinaraPeriod": +this.zinaraPeriodSelect
     })
       .subscribe(data => {
-        let arr = [];
-        arr.push(data);
-        let arr1 = arr[0].map(a => a.name);
-        //let regionIds = arr[0].map(a => a.id);
-        this.allSubRegions = arr[0];
-        
-        console.log(this.allRegionNames);
-      });*/
-      let a =     {
-        "airtimeNumber": this.airtimeNumber,
-        "colPointId": this.selectedReg,
-        "collectionDelAdd": "string",
-        "collectionType": this.changeState,
-        "insuranceCompany": this.insuranceCompanySelect,
-        "insurancePeriod": this.insurancePeriodSelect,
-        "insuranceType": this.insuranceTypeSelect,
-        "processedBy": "string",
-        "requestChannel": "string",
-        "requestedFor": "string",
-        "userId": id,
-        "vehicleRegistrationNumber": this.vehicle,
-        "vehicleValue": 0,
-        "zbcPeriod": this.zbcPeriodSelect,
-        "zinaraPeriod": this.zinaraPeriodSelect
+        if(data){
+          this.successSwal.show();
+        }
+        else
+        this.failedSwal.show();
+      });
       }
-      console.log(a)
+      setInsType(){
+        if(this.insuranceTypeSelect =="COMP"){
+          this.isComprehensive = true;
+        }
+        else if(this.insuranceTypeSelect == "COMPPLUS"){
+          this.isComprehensive = true;
+        }
+        else{
+          this.isComprehensive = false;
+          this.vehicleValue = 0;
+        }
+        
       }
   changeStatus(){
     if(this.changeState ==="delivery"){

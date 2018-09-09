@@ -53,9 +53,13 @@ export class SubmitClaimComponent implements OnInit {
     })
     .subscribe(data => {
      
-      if (data) {        
+      if (data) {   
+        this.vehicle=+"";
+        this.claimNature="";
         this.successSwal.show();
       } else {
+        this.vehicle=+"";
+        this.claimNature="";
         this.failedSwal.show();
       }
     })
