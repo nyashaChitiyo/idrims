@@ -43,7 +43,7 @@ export class CloseClaimComponent implements OnInit {
   closeClaim(){
     const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update",{
       "claimDate": this.claimDATE,
-      "claimId": this.claimId,
+      "claimId": this.claimID,
       "claimStatus": false,
       "firstName": this.fName,
       "lastName": this.lName,
