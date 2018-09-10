@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {PageNotFoundComponent} from './main/page-not-found/page-not-found.component';
+import { CustomerDashboardComponent } from './main/customer-dashboard/customer-dashboard.component';
 import {DashboardComponent} from './main/dashboard/dashboard.component';
 import {LoginComponent} from './main/login/login.component';
 import {AuthGuard} from './authentication/auth.guard';
@@ -62,7 +63,9 @@ import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/age
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
 import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
-
+import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
+//import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
+import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
 
 
 
@@ -72,6 +75,7 @@ import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idriv
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
+  {path: 'customer/Dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard]},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
@@ -79,7 +83,7 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
-  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent},
+  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
@@ -131,8 +135,13 @@ const appRoutes: Routes = [
   {path: 'agent/addClaim', component: AgentSubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'agent/agentTransactions', component: AgentTransactionsComponent, canActivate: [AuthGuard]},
   {path: 'agent/agentGetIdrive', component: AgentGetIdriveComponent, canActivate: [AuthGuard]},
+  {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
+  {path: 'agent/dashboard', component: AgentDashboardComponent, canActivate: [AuthGuard]},
+  // {path: 'userManagement', component: BackofficeDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/dashboard', component: SBbackofficeDashboardComponent, canActivate: [AuthGuard]},
+
   
-  
+
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 

@@ -17,12 +17,15 @@ export class ViewMyClaimsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.demo.get('http://108.61.174.41:7070/api/claims/view/all')
+    var userId: number = +localStorage.getItem('userId');
+    this.demo.post('http://108.61.174.41:7070/api/claims/view/userId',{
+      "id": userId
+    })
     .subscribe(
       (data: Response)=> {
         let arr = [];
         arr.push(data)
-        this.claims = arr[0];
+        this.claims = arr[0]; 
         console.log(this.claims);
         this.temp_var=true;
       }

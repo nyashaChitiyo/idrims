@@ -51,7 +51,17 @@ export class SessionsService {
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
-        
+        var userGroup:string = localStorage.getItem('userGroup');
+    if(userGroup == 'CUST01'){
+      this.router.navigate(['/customer/Dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'AGENT01'){
+      this.router.navigate(['/agent/dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'ADMIN03'){
+      this.router.navigate(['/sbadmin/dashboard'], { replaceUrl: true });
+    }
+    else
         this.router.navigate(['/'], { replaceUrl: true });
         // this.getUserInformation(username);
       }

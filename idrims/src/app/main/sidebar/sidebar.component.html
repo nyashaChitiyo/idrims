@@ -7,7 +7,11 @@
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
     <li class="header main-header">MAIN NAVIGATION</li>
-     <li routerLinkActive="active"><a routerLink="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li *ngIf="isTest" routerLinkActive="active"><a routerLink="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li  *ngIf="isCustomer"routerLinkActive="active"><a routerLink="/customer/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="/agent/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/userManagement"><i class="fa fa-user-plus"></i> User Management</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
      <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
@@ -21,10 +25,10 @@
      <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/customerAgentManagement"><i class="fa fa-shopping-cart"></i> User Management</a></li>
      <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="sbadmin/transactions"><i class="fa fa-shopping-cart"></i> Transactions</a></li>
      <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/myVehicles"><i class="fa fa-car"></i> My Vehicles</a></li>
-     <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/getIdrive"><i class="fa fa-address-card"></i> Get iDriveSure</a></li>
+     <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/getIdrive"><i class="fa fa-shopping-cart"></i> Get iDriveSure</a></li>
      <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/myTransactions"><i class="fa fa-shopping-cart"></i> Transactions</a></li>
      <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/myClaims"><i class="fa fa-shopping-cart"></i> Claims</a></li>
-     <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/profile"><i class="fa fa-user"></i> Profile</a></li>
+     <!-- <li *ngIf="isCustomer" routerLinkActive="active"><a routerLink="customer/profile"><i class="fa fa-user"></i> Profile</a></li> -->
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/mailbox"><i class="fa fa-shopping-cart"></i> Mailbox</a></li>
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/agentGetIdrive"><i class="fa fa-shopping-cart"></i> Get iDriveSure</a></li>
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/Customers"><i class="fa fa-shopping-cart"></i> Customers</a></li>

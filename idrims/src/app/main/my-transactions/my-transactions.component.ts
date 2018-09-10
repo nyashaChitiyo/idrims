@@ -25,10 +25,11 @@ export class MyTransactionsComponent implements OnInit {
     this.dtOptions = {
     pagingType: 'full_numbers',
     pageLength: 5
-  };
+  }; 
   }
   
   gettransactions(){
+    var userId: number = +localStorage.getItem('userId');
     this.httpClient.post('http://108.61.174.41:7070/api/orders/view/userId',
     {
       "id": 0

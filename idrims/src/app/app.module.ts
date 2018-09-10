@@ -82,7 +82,10 @@ import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/age
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
 import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
-
+import { CustomerDashboardComponent } from './main/customer-dashboard/customer-dashboard.component';
+import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
+import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
+import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -161,7 +164,11 @@ import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idriv
     AgentRegisterVehicleComponent,
     AgentSubmitClaimComponent,
     AgentTransactionsComponent,
-    AgentGetIdriveComponent
+    AgentGetIdriveComponent,
+    CustomerDashboardComponent,
+    AgentDashboardComponent,
+    BackofficeDashboardComponent,
+    SBbackofficeDashboardComponent
 
 
 

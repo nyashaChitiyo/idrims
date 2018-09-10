@@ -42,6 +42,8 @@ export class GetIdriveComponent implements OnInit {
   vehicleValue:number=0;
   constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     var id: number = +localStorage.getItem('userId');
+    // this.getIdrive();
+
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
     {
       'id':id
@@ -112,6 +114,17 @@ export class GetIdriveComponent implements OnInit {
         console.log(this.allRegionNames);
       })
   }
+
+  // postIdrive(){
+  //   let d = this.id[0];
+  //   let data : NavigationExtras = {
+  //     queryParams: d
+  //   } 
+  //   console.log(data)
+
+  //   this.router.navigate(['admin/userManagement/viewAgents/'+this.users[0].phoneNumber],data);
+  // }
+  
   getIdrive() {
     var id: number = +localStorage.getItem('userId');
     
@@ -125,7 +138,7 @@ export class GetIdriveComponent implements OnInit {
       "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,
       "processedBy": "",
-      "requestChannel": "Web",
+      "requestChannel": "WEB",
       "requestedFor": localStorage.getItem('phoneNumber'),
       "userId": id,
       "vehicleRegistrationNumber": this.vehicle,
