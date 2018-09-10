@@ -47,20 +47,20 @@ export class OpenClaimsComponent implements OnInit {
     ) 
   }
 
-  getClaim(){
-    let d = this.claims[0];
+  getClaim(claim){
+    let d = claim;
     let data : NavigationExtras = {
       queryParams: d
     }
     console.log(data)
 
-    this.router.navigate(['CloseClaim/'+this.claims[0].claimId],data);
+    this.router.navigate(['CloseClaim/'+claim.claimId],data);
   }
 
   updateClaim(){  
     const data = this.httpClient.post('http://108.61.174.41:7070/api/claims/update',{
       "claimId" : this.claimID,
-      "claimStatus": false,
+      "claimStatus": false
       
   })
 

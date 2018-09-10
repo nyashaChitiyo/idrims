@@ -1,7 +1,9 @@
-import { Component, OnInit,ViewChild} from '@angular/core';
-import { ServicesService } from '../../services.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router'; 
+import { DemoService } from '../../demo.service';
+import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-closed-claims',
@@ -10,26 +12,41 @@ import {ActivatedRoute} from '@angular/router';
 }) 
 export class ClosedClaimsComponent implements OnInit {
 
-  claims =[];
+  claims: any;
+  claimID : string;
+  vehicleVRN:string;
+  claimDATE:string;
+  claimId:string;
+  fName: string;
+  lName: string;
+  natureOfClaim:string;
+  vehicleRegistrationNumber:string; 
 
-  constructor(private httpClient: HttpClient,private activatedRoute: ActivatedRoute) { 
-    this.getClossedClaims();
-  }
+
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
+  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) {
+    const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/view/status",{
+      "bool": false,
+  })
+
+  .subscribe(data => {
+    if (data['status'] === "success ") {  
+     this.successSwal.show();
+    } else {
+      this.failedSwal.show();
+    }
+  }, error => {
+    console.log(Response); 
+    this.failedSwal.show();
+  }); 
+   }
 
   ngOnInit() {
-  }
 
-  getClossedClaims(){
-    this.httpClient.post('http://108.61.174.41:7070/api/claims/view/status',
-    {
-        'bool': false
-          })
-    .subscribe(
-      (data:any[])=> { 
-        let arr = [];
-        arr.push(data)
-        this.claims = arr[0];
-      }
-    ) 
+  }
+  
+  closeClaim(){
+ 
   }
 }

@@ -14,7 +14,7 @@
           <div class="form-group col-md-6">
             <label for="email">Select Vehicle</label>
             <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" (change)="onEditClick()" required>
-                <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.id">{{vehicle.vehicleRegistrationNumber}}</option>
+                <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.vehicleRegistrationNumber">{{vehicle.vehicleRegistrationNumber}}</option>
               </select>
          </div>
               <div class="form-group col-md-6">

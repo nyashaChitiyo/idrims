@@ -10,17 +10,7 @@
   <hr>
       <!-- Main content -->
       <section class="content">
-  
-    <!--Mailbox Div
-    <div class="row">
-      <div class="col-md-12">
-        <form method="post">
-          <button type="button" name="Products" id="Products" class="btn btn-primary btn-block margin-bottom" routerLink="/addProduct">Add New Product</button>
-        </form>
-  
-      </div>
-    </div>-->
-    <!--general-->
+
     <div class="box">
         <!-- /.box-header -->
         <div class="box-body">
@@ -46,8 +36,8 @@
               <td>{{claim.natureOfClaim}}</td>
               <td>{{claim.vehicleRegistrationNumber}}</td>
               
-              <!-- <td><button class="btn btn-primary" (click)="getClaim()">View</button></td> -->
-              <td><button class="btn btn-primary"  routerLink="/CloseClaim/{{claim.claimId}}">View</button></td>
+              <!--<td><button class="btn btn-primary"  routerLink="/CloseClaim/{{claim.claimId}}">View</button></td>-->
+              <td><button class="btn btn-primary" (click)="getClaim(claim)">View</button></td>
             </tr>
             </tbody> 
           </table>

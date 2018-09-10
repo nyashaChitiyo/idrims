@@ -28,32 +28,31 @@ export class CloseClaimComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe(res =>{
+    this.activatedRoute.queryParams.subscribe(res =>{
       this.claimID = res['claimId'];       
        this.claimDATE = res['claimDate'];
        this.vehicleVRN= res['vehicleRegistrationNumber'];
        this.fName= res['firstName'];
        this.lName= res['lastName'];
-       this.natureOfClaim= res['natureOfClaim'];
-
-      console.log(res); 
+       this.natureOfClaim= res['natureOfClaim']; 
+       console.log(res)
     })
   }
   
   closeClaim(){
     const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update",{
       "claimDate": this.claimDATE,
-      "claimId": this.claimId,
+      "claimId": this.claimID,
       "claimStatus": false,
       "firstName": this.fName,
       "lastName": this.lName,
       "natureOfClaim": this.natureOfClaim,
-      "userId": 0,
+      "userId": +localStorage.getItem('userId'),
       "vehicleRegistrationNumber": this.vehicleVRN
   })
 
   .subscribe(data => {
-    if (data['status'] === "success ") {  
+    if (data) {  
      this.successSwal.show();
     } else {
       this.failedSwal.show();
@@ -63,4 +62,4 @@ export class CloseClaimComponent implements OnInit {
     this.failedSwal.show();
   }); 
   }
-  };
+  }
