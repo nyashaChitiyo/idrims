@@ -11,8 +11,8 @@ export class AuthGuardRouteService {
     var userGroup:string = localStorage.getItem('userGroup');
     if(userGroup == 'ADMIN02'){
       return state.url.startsWith('/admin')
-      ? true: (this.router.navigate(['/']), false);
-    }
+      ? true: (this.router.navigate(['/admin/dashboard']), false);
+    } 
    else if(userGroup == 'ADMIN03'){
       return state.url.startsWith('/sbadmin')
       ? true: (this.router.navigate(['/sbadmin/dashboard']), false);
@@ -24,6 +24,10 @@ export class AuthGuardRouteService {
     else if(userGroup == 'AGENT01'){
       return state.url.startsWith('/agent')
       ? true: (this.router.navigate(['/agent/dashboard']), false);
+    }
+    else if(userGroup == 'ADMIN01'){
+      return state.url.startsWith('/')
+      ? true: (this.router.navigate(['/backOffice/dashboard']), false);
     }
     // else{
     //   return state.url.startsWith('/sbadmin')

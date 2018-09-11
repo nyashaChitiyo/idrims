@@ -66,6 +66,10 @@ import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idriv
 import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
 //import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
 import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
+import { SystemAdminDashboardComponent } from './main/system-admin-dashboard/system-admin-dashboard.component';
+import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dashboard/back-office-admin-dashboard.component';
+
+
 
 
 
@@ -116,6 +120,7 @@ const appRoutes: Routes = [
   {path: 'AgentManagement', component: AgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'customerAgentManagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'sbadmin/transactions', component: TransactionsComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/usermanagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement/viewSBadmin', component: ViewSBadminComponent, canActivate: [AuthGuard]},
   {path: 'customer/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
   {path: 'customer/myVehicles', component: MyVehiclesComponent, canActivate: [AuthGuard]},
@@ -139,6 +144,8 @@ const appRoutes: Routes = [
   {path: 'agent/dashboard', component: AgentDashboardComponent, canActivate: [AuthGuard]},
   // {path: 'userManagement', component: BackofficeDashboardComponent, canActivate: [AuthGuard]},
   {path: 'sbadmin/dashboard', component: SBbackofficeDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'admin/dashboard', component: SystemAdminDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'backOffice/dashboard', component: BackOfficeAdminDashboardComponent, canActivate: [AuthGuard]},
 
   
 

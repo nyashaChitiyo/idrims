@@ -61,6 +61,9 @@ export class SessionsService {
     else if(userGroup == 'ADMIN03'){
       this.router.navigate(['/sbadmin/dashboard'], { replaceUrl: true });
     }
+    else if(userGroup == 'ADMIN02'){
+      this.router.navigate(['/admin/dashboard'], { replaceUrl: true });
+    }
     else
         this.router.navigate(['/'], { replaceUrl: true });
         // this.getUserInformation(username);

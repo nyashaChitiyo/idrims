@@ -86,6 +86,9 @@ import { CustomerDashboardComponent } from './main/customer-dashboard/customer-d
 import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
 import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
 import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
+import { SystemAdminDashboardComponent } from './main/system-admin-dashboard/system-admin-dashboard.component';
+import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dashboard/back-office-admin-dashboard.component';
+
 
 //import { AdminComponent } from './admin/admin.component';
 // import { AdminModule } from './admin/admin.module';
@@ -168,7 +171,9 @@ import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sb
     CustomerDashboardComponent,
     AgentDashboardComponent,
     BackofficeDashboardComponent,
-    SBbackofficeDashboardComponent
+    SBbackofficeDashboardComponent,
+    SystemAdminDashboardComponent,
+    BackOfficeAdminDashboardComponent
 
 
 
