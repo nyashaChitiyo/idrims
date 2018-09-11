@@ -69,6 +69,10 @@ import { SbSupervisorsComponent } from './sb-supervisors/sb-supervisors.componen
 import { RegisterSupervisorComponent } from './register-supervisor/register-supervisor.component';
 import { SupervisorReportsComponent } from './supervisor-reports/supervisor-reports.component';
 import { SupervisorDashBoardComponent } from './supervisor-dash-board/supervisor-dash-board.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
+import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
+import { DailyReportComponent } from './daily-report/daily-report.component';
+import { TransactionReportsComponent } from './transaction-reports/transaction-reports.component';
 
 
 
@@ -143,6 +147,10 @@ import { SupervisorDashBoardComponent } from './supervisor-dash-board/supervisor
   SbSupervisorsComponent,
   RegisterSupervisorComponent,
   SupervisorReportsComponent,
-  SupervisorDashBoardComponent]
+  SupervisorDashBoardComponent,
+  MonthlyReportComponent,
+  WeeklyReportComponent,
+  DailyReportComponent,
+  TransactionReportsComponent]
 })
 export class MainModule { }
