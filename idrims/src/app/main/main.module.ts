@@ -73,6 +73,7 @@ import { MonthlyReportComponent } from './monthly-report/monthly-report.componen
 import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
 import { DailyReportComponent } from './daily-report/daily-report.component';
 import { TransactionReportsComponent } from './transaction-reports/transaction-reports.component';
+import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-report.component';
 
 
 
@@ -151,6 +152,7 @@ import { TransactionReportsComponent } from './transaction-reports/transaction-r
   MonthlyReportComponent,
   WeeklyReportComponent,
   DailyReportComponent,
-  TransactionReportsComponent]
+  TransactionReportsComponent,
+  ViewMonthlyReportComponent]
 })
 export class MainModule { }

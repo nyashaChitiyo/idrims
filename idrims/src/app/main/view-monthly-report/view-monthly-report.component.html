@@ -1,0 +1,54 @@
+<div class="content-wrapper">
+    
+    <section  class="content-header">
+     
+        <h1 align= "center">
+           <strong>Monthly Reports</strong>
+         </h1>
+         <p><button align="left" class="btn btn-warning" routerLink ="/supervisor/transactionReports">Back to Transaction Reports</button></p> 
+       </section>
+  
+    <section class="content">
+  <hr>
+   
+  
+  <div class="box"> 
+  
+      <div class="box-body">
+          <label>Search By:</label><input type="text"  [(ngModel)]="collectionPoint" [value]="colPoint.colId" > <button (click)="getByCollectionPoint()">Collection Point</button> &nbsp;&nbsp;<b>OR</b>&nbsp; &nbsp;<input type="text"> <button>User ID</button>
+    
+        <!-- <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" *ngIf="this.temp_var"> -->
+            <table class="table table-hover " id="transactions" cellspacing="0"> 
+          
+              <thead>
+
+            <br>
+          <tr>
+              <th>Date</th>
+              <th>Product</th>
+              <th>VRN</th> 
+              <th>Location</th>
+              <th>Agent</th>
+              <th>Payment Ref Code</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let month of monthly">  
+             <td>{{transaction.updatedAt}}</td>
+            <td>{{transaction.insuranceType}}</td>
+            <td>{{vehicleRegistrationNumber.lastname}}</td>
+            <td>{{transaction.colPointId}}</td>
+            <td>{{transaction.processedBy}}</td>
+            <td>{{transaction.ecocashPaymentReference}}</td>
+           
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+  
+  
+  </div>
+  
+  

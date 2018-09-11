@@ -76,6 +76,7 @@ import { MonthlyReportComponent } from './main/monthly-report/monthly-report.com
 import { WeeklyReportComponent } from './main/weekly-report/weekly-report.component';
 import { DailyReportComponent } from './main/daily-report/daily-report.component';
 import { TransactionReportsComponent } from './main/transaction-reports/transaction-reports.component';
+import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-monthly-report.component';
 
 
 
@@ -161,8 +162,9 @@ const appRoutes: Routes = [
   {path: 'supervisor/weeklyReport', component:  WeeklyReportComponent, canActivate: [AuthGuard]},
   {path: 'supervisor/dailyReport', component:  DailyReportComponent, canActivate: [AuthGuard]},
   {path: 'supervisor/transactionReports', component:  TransactionReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/viewMonthlyReports', component:  ViewMonthlyReportComponent, canActivate: [AuthGuard]},
  
-
+  
   
   
  
