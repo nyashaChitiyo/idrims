@@ -64,8 +64,11 @@ export class SessionsService {
     else if(userGroup == 'ADMIN02'){
       this.router.navigate(['/admin/dashboard'], { replaceUrl: true });
     }
+    else if(userGroup == 'ADMIN04'){
+      this.router.navigate(['/supervisor/dashboard'], { replaceUrl: true });
+    }
     else
-        this.router.navigate(['/'], { replaceUrl: true });
+        this.router.navigate(['/backOffice/dashboard'], { replaceUrl: true });
         // this.getUserInformation(username);
       }
     },
@@ -128,6 +131,9 @@ export class SessionsService {
   }
   isAgent() {
     return localStorage.getItem('userGroup') === 'AGENT01';
+  }
+  isSupervisor() {
+    return localStorage.getItem('userGroup') === 'ADMIN04';
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';

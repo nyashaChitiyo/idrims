@@ -65,6 +65,10 @@ import { BackofficeDashboardComponent } from './backoffice-dashboard/backoffice-
 import { SBbackofficeDashboardComponent } from './sbbackoffice-dashboard/sbbackoffice-dashboard.component';
 import { SystemAdminDashboardComponent } from './system-admin-dashboard/system-admin-dashboard.component';
 import { BackOfficeAdminDashboardComponent } from './back-office-admin-dashboard/back-office-admin-dashboard.component';
+import { SbSupervisorsComponent } from './sb-supervisors/sb-supervisors.component';
+import { RegisterSupervisorComponent } from './register-supervisor/register-supervisor.component';
+import { SupervisorReportsComponent } from './supervisor-reports/supervisor-reports.component';
+import { SupervisorDashBoardComponent } from './supervisor-dash-board/supervisor-dash-board.component';
 
 
 
@@ -135,6 +139,10 @@ import { BackOfficeAdminDashboardComponent } from './back-office-admin-dashboard
   BackofficeDashboardComponent,
   SBbackofficeDashboardComponent,
   SystemAdminDashboardComponent,
-  BackOfficeAdminDashboardComponent]
+  BackOfficeAdminDashboardComponent,
+  SbSupervisorsComponent,
+  RegisterSupervisorComponent,
+  SupervisorReportsComponent,
+  SupervisorDashBoardComponent]
 })
 export class MainModule { }

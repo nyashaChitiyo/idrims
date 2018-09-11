@@ -88,6 +88,11 @@ import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backof
 import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
 import { SystemAdminDashboardComponent } from './main/system-admin-dashboard/system-admin-dashboard.component';
 import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dashboard/back-office-admin-dashboard.component';
+import { SbSupervisorsComponent } from './main/sb-supervisors/sb-supervisors.component';
+import { RegisterSupervisorComponent } from './main/register-supervisor/register-supervisor.component';
+import { SupervisorReportsComponent } from './main/supervisor-reports/supervisor-reports.component';
+import { SupervisorDashBoardComponent } from './main/supervisor-dash-board/supervisor-dash-board.component';
+
 
 
 //import { AdminComponent } from './admin/admin.component';
@@ -173,7 +178,11 @@ import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dash
     BackofficeDashboardComponent,
     SBbackofficeDashboardComponent,
     SystemAdminDashboardComponent,
-    BackOfficeAdminDashboardComponent
+    BackOfficeAdminDashboardComponent,
+    SbSupervisorsComponent,
+    RegisterSupervisorComponent,
+    SupervisorReportsComponent,
+    SupervisorDashBoardComponent
 
 
 

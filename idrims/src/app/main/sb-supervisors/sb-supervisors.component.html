@@ -1,0 +1,50 @@
+<div class="content-wrapper">
+
+    <hr>
+      <section  class="content-header">
+          <h1 align="center">
+            <strong>Steward Bank Supervisors Management</strong>
+          </h1>
+          <p><button align="left" class="btn btn-warning" routerLink ="/customerAgentManagement">Back to User Managemnt</button></p>   
+        </section>
+        <hr>
+      <!-- Main content -->
+      <section class="content">
+          <div class="row">
+              <div class="col-md-12">
+                <form method="post">
+                  <button type="button" name="addSupervisor" id="addSupervisor" class="btn btn-primary btn-block margin-bottom" routerLink="/sbadmin/registerSupervisor">Add Steward Bank Supervisor</button>
+                </form>
+          
+              </div>
+            </div>
+          <div class="box">
+            <table class="table table-hover" id="users" cellspacing="0">
+              <thead>
+              <tr>
+                <th>Phone Number</th>
+                <th>First Name</th>
+                <th>Surname</th>
+                <th>Station</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let supervisor of supervisors">
+                <td>{{supervisor.phoneNumber}}</td>
+                <td>{{supervisor.firstname}}</td>
+                <td>{{supervisor.lastname}}</td>
+                <td>{{supervisor.colPoint}}</td>
+                <!-- <td><button (click)="getCustomer()" class="btn btn-primary btn-block margin-bottom">view</button></td> -->
+              </tr>
+              </tbody>
+            </table>
+        
+          </div>
+            </section>
+  
+  
+    </div>
+  <script>
+   </script>
+  
+  

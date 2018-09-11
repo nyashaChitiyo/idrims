@@ -10,7 +10,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class DashboardComponent implements OnInit {
 
 
-
+ 
   agentcount = [];
   unverifiedcount = [];
   count: string;

@@ -68,6 +68,10 @@ import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.
 import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
 import { SystemAdminDashboardComponent } from './main/system-admin-dashboard/system-admin-dashboard.component';
 import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dashboard/back-office-admin-dashboard.component';
+import { SbSupervisorsComponent } from './main/sb-supervisors/sb-supervisors.component';
+import { RegisterSupervisorComponent } from './main/register-supervisor/register-supervisor.component';
+import { SupervisorReportsComponent } from './main/supervisor-reports/supervisor-reports.component';
+import { SupervisorDashBoardComponent } from './main/supervisor-dash-board/supervisor-dash-board.component';
 
 
 
@@ -146,11 +150,16 @@ const appRoutes: Routes = [
   {path: 'sbadmin/dashboard', component: SBbackofficeDashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/dashboard', component: SystemAdminDashboardComponent, canActivate: [AuthGuard]},
   {path: 'backOffice/dashboard', component: BackOfficeAdminDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/SbSupervisors', component: SbSupervisorsComponent , canActivate: [AuthGuard]},
+  {path: 'sbadmin/registerSupervisor', component:  RegisterSupervisorComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/reports', component: SupervisorReportsComponent , canActivate: [AuthGuard]},
+  {path: 'supervisor/dashboard', component:  SupervisorDashBoardComponent, canActivate: [AuthGuard]},
 
   
-
+  
+  
  
-  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
+  {path: '', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: PageNotFoundComponent}
 ]; 

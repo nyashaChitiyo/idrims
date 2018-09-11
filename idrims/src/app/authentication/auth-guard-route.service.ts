@@ -19,7 +19,7 @@ export class AuthGuardRouteService {
     }
     else if(userGroup == 'CUST01'){
       return state.url.startsWith('/customer')
-      ? true: (this.router.navigate(['/customer/Dashboard']), false);
+      ? true: (this.router.navigate(['/customer/Dashboard']), false); 
     }
     else if(userGroup == 'AGENT01'){
       return state.url.startsWith('/agent')
@@ -28,6 +28,10 @@ export class AuthGuardRouteService {
     else if(userGroup == 'ADMIN01'){
       return state.url.startsWith('/')
       ? true: (this.router.navigate(['/backOffice/dashboard']), false);
+    }
+    else if(userGroup == 'ADMIN04'){
+      return state.url.startsWith('/supervisor')
+      ? true: (this.router.navigate(['/supervisor/dashboard']), false);
     }
     // else{
     //   return state.url.startsWith('/sbadmin')

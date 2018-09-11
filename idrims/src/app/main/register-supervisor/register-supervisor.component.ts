@@ -5,13 +5,12 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
-  selector: 'app-register-sbadmin',
-  templateUrl: './register-sbadmin.component.html',
-  styleUrls: ['./register-sbadmin.component.css']
+  selector: 'app-register-supervisor',
+  templateUrl: './register-supervisor.component.html',
+  styleUrls: ['./register-supervisor.component.css']
 })
-export class RegisterSBadminComponent implements OnInit {
- 
-    
+export class RegisterSupervisorComponent implements OnInit {
+  
   selectedValue: string;
   allColPointNames= [];
   colPoint = '';
@@ -19,10 +18,10 @@ export class RegisterSBadminComponent implements OnInit {
   email: string;
   firstname: string;
   nationalID: string;
-  password: string;
   phoneNumber: string;
   surname: string;
   userGroup: string;
+  password: string;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
@@ -47,10 +46,10 @@ export class RegisterSBadminComponent implements OnInit {
     'firstname' : this.firstname,
     'email' : this.email,
     'nationalId':  this.nationalID,
-    'password' : this.password,
     'phoneNumber': this.phoneNumber,
     'lastname': this.surname,
-    'userGroup':'ADMIN03',
+    'password':this.password,
+    'userGroup':'ADMIN04',
     'userStation': +this.selectedValue,
     'userStatus': true,
 
@@ -73,7 +72,6 @@ export class RegisterSBadminComponent implements OnInit {
     this.phoneNumber = '';
     this.email = '';
     this.surname = '';
-    this.password = '';
     this.selectedValue = '';
   }
   ngOnInit() {
