@@ -9,8 +9,8 @@
       </div>
       <hr>
       <!-- /.box-header -->
-      <!-- form start 
-        <div class="box-body"> -->
+      <!-- form start -->
+        <div class="box-body">
           <div class="form-group col-md-6">
             <label for="email">Select Vehicle</label>
             <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" (change)="onEditClick()" required>
@@ -26,14 +26,14 @@
                   </select>
             </div>
         </div>
-       <!-- </div>
-         /.box-body -->
-  
+       </div>
+         <!-- /.box-body -->  
+
         <div class="box-footer">
           <button type="submit" class="btn btn-primary" (click)="postClaim()">Submit</button>
           <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myClaims"> Cancel</button>
         </div>
-      </section>
+        </section>
       <swal
       #successSwal
       title="Success"

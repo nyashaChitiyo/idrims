@@ -11,7 +11,7 @@ import{Router,NavigationExtras} from '@angular/router';
 })
 export class CustomerManagementComponent implements OnInit {
  
- 
+  
   customers= [];
 
   constructor(private httpClient: HttpClient,private router: Router,private demo: DemoService) { 
@@ -20,7 +20,7 @@ export class CustomerManagementComponent implements OnInit {
 
 //add URL allCustomers
   getCustomers(){
-    this.httpClient.post('http://108.61.174.41:7070/api/view/group',
+    this.httpClient.post('http://108.61.174.41:7070/api/user/view/group',
     {
       
         'searchString': 'CUST01'

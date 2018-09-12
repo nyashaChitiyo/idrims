@@ -51,8 +51,24 @@ export class SessionsService {
         // localStorage.setItem('userType', 'AGENT01');
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
-        
-        this.router.navigate(['/'], { replaceUrl: true });
+        var userGroup:string = localStorage.getItem('userGroup');
+    if(userGroup == 'CUST01'){
+      this.router.navigate(['/customer/Dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'AGENT01'){
+      this.router.navigate(['/agent/dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'ADMIN03'){
+      this.router.navigate(['/sbadmin/dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'ADMIN02'){
+      this.router.navigate(['/admin/dashboard'], { replaceUrl: true });
+    }
+    else if(userGroup == 'ADMIN04'){
+      this.router.navigate(['/supervisor/dashboard'], { replaceUrl: true });
+    }
+    else
+        this.router.navigate(['/backOffice/dashboard'], { replaceUrl: true });
         // this.getUserInformation(username);
       }
     },
@@ -115,6 +131,9 @@ export class SessionsService {
   }
   isAgent() {
     return localStorage.getItem('userGroup') === 'AGENT01';
+  }
+  isSupervisor() {
+    return localStorage.getItem('userGroup') === 'ADMIN04';
   }
 }
 export const InterceptorSkipHeader = 'X-Skip-Interceptor';

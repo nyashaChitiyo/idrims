@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {PageNotFoundComponent} from './main/page-not-found/page-not-found.component';
+import { CustomerDashboardComponent } from './main/customer-dashboard/customer-dashboard.component';
 import {DashboardComponent} from './main/dashboard/dashboard.component';
 import {LoginComponent} from './main/login/login.component';
 import {AuthGuard} from './authentication/auth.guard';
@@ -65,6 +66,23 @@ import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idriv
 import {QuotationDetailsComponent} from './main/quotation-details/quotation-details.component';
 import {ProcessPaymentComponent} from './main/process-payment/process-payment.component';
 
+import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
+//import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
+import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
+import { SystemAdminDashboardComponent } from './main/system-admin-dashboard/system-admin-dashboard.component';
+import { BackOfficeAdminDashboardComponent } from './main/back-office-admin-dashboard/back-office-admin-dashboard.component';
+import { SbSupervisorsComponent } from './main/sb-supervisors/sb-supervisors.component';
+import { RegisterSupervisorComponent } from './main/register-supervisor/register-supervisor.component';
+import { SupervisorReportsComponent } from './main/supervisor-reports/supervisor-reports.component';
+import { SupervisorDashBoardComponent } from './main/supervisor-dash-board/supervisor-dash-board.component';
+import { MonthlyReportComponent } from './main/monthly-report/monthly-report.component';
+import { WeeklyReportComponent } from './main/weekly-report/weekly-report.component';
+import { DailyReportComponent } from './main/daily-report/daily-report.component';
+import { TransactionReportsComponent } from './main/transaction-reports/transaction-reports.component';
+import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-monthly-report.component';
+import { InsuranceReportsComponent } from './main/insurance-reports/insurance-reports.component';
+import { ZbcReportsComponent } from './main/zbc-reports/zbc-reports.component';
+import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
 
 
 
@@ -74,6 +92,7 @@ import {ProcessPaymentComponent} from './main/process-payment/process-payment.co
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
+  {path: 'customer/Dashboard', component: CustomerDashboardComponent, canActivate: [AuthGuard]},
   {path: 'Dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/registerUser', component: RegisterUserComponent, canActivate:[AuthGuardRouteService]},
@@ -81,7 +100,7 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate: [AuthGuard]},
-  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent},
+  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate: [AuthGuard] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate: [AuthGuard]},
@@ -114,6 +133,7 @@ const appRoutes: Routes = [
   {path: 'AgentManagement', component: AgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'customerAgentManagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'sbadmin/transactions', component: TransactionsComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/usermanagement', component: CustomerAgentManagementComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement/viewSBadmin', component: ViewSBadminComponent, canActivate: [AuthGuard]},
   {path: 'customer/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
   {path: 'agent/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
@@ -136,8 +156,30 @@ const appRoutes: Routes = [
   {path: 'agent/addClaim', component: AgentSubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'agent/agentTransactions', component: AgentTransactionsComponent, canActivate: [AuthGuard]},
   {path: 'agent/getIdrive/:vehicleRegistrationNumber', component: GetIdriveComponent, canActivate: [AuthGuard]},
+  {path: 'agent/agentGetIdrive', component: AgentGetIdriveComponent, canActivate: [AuthGuard]},
+  {path: 'userManagement', component: UserManagementComponent, canActivate: [AuthGuard]},
+  {path: 'agent/dashboard', component: AgentDashboardComponent, canActivate: [AuthGuard]},
+  // {path: 'userManagement', component: BackofficeDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/dashboard', component: SBbackofficeDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'admin/dashboard', component: SystemAdminDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'backOffice/dashboard', component: BackOfficeAdminDashboardComponent, canActivate: [AuthGuard]},
+  {path: 'sbadmin/SbSupervisors', component: SbSupervisorsComponent , canActivate: [AuthGuard]},
+  {path: 'sbadmin/registerSupervisor', component:  RegisterSupervisorComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/reports', component: SupervisorReportsComponent , canActivate: [AuthGuard]},
+  {path: 'supervisor/dashboard', component:  SupervisorDashBoardComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/mothlyReport', component:  MonthlyReportComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/weeklyReport', component:  WeeklyReportComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/dailyReport', component:  DailyReportComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/transactionReports', component:  TransactionReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/viewMonthlyReports', component:  ViewMonthlyReportComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/insuranceReports', component:  InsuranceReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/zbcReports', component:  ZbcReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/zinaraReports', component:  ZinaraReportsComponent, canActivate: [AuthGuard]},
  
-  {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
+
+  
+ 
+  {path: '', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard]},
 
   {path: '**', component: PageNotFoundComponent}
 ]; 

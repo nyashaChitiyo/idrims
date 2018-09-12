@@ -1,11 +1,10 @@
 <div class="content-wrapper">
   <br>
-    <section align= "center" class="content">
+    <section class="content">
     <div class="box">
-    <div class="box-header with-border">
-      <br>
-      <h3 class="box-title"><b>Get iDriveSure</b></h3> 
-    </div>
+        <div class="box-header with-border" align= "center">
+            <h3 class="box-title" ><b>Get iDriveSure</b></h3> 
+        </div>
       <div class="box-body"> 
         <div class="box-title"><h1>Insurance</h1></div>
         <hr>
@@ -25,16 +24,12 @@
                       </div>
                       <div class="form-group col-md-6 text-center">
                                 <label class="">Insurance Type</label>
-                                <select id="insuranceTypeSelect" (change)="setInsType()" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
+                                <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
                                   <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
-                                  <option value="RTA">Road Traffic Act (3rd Party)</option>
+                        <option value="RTA">Road Traffic Act (3rd Party)</option>
                                   <option value="COMP">Comprehensive</option>
                                   <option value="COMPPLUS">Comprehensive Plus</option>
                                 </select>
-                                <div *ngIf="isComprehensive">
-                                <label>Vehicle value</label>
-                                <input [(ngModel)] = "vehicleValue" class="form-control" type="number" name="vehicleValue" required>
-                              </div>
                         </div>
                         
                         <div id="vehicleValueDiv" style="display: none;" class="form-group col-md-4 text-center">
@@ -106,9 +101,10 @@
                   </div>
       </div>
       <div class="box-body"> 
-          <div class="box-title"><h1>COLLECTION / DELIVERY</h1></div>
+          <div class="box-title" align= "left"><h4><strong> Collection/ Delivery</strong></h4></div>
           <hr>
           <div class="form-group col-md-12">
+              <label for="email">Collection or Delivery </label>
               <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
                   <option selected  style="display: none;" >Select Option</option>
                   <option value="delivery">Delivery</option>
@@ -161,7 +157,7 @@
       </div>
 
       <!-- /.box-body -->
-      <div class="box-footer">
+      <div class="box-footer" align = "center">
         <button type="submit" class="btn btn-primary" (click)="getIdrive()">Generate Quotation</button>
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
       </div>

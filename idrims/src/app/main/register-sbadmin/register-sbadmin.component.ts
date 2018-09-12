@@ -43,6 +43,7 @@ export class RegisterSBadminComponent implements OnInit {
   postProfile(){ 
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
+
     'firstname' : this.firstname,
     'email' : this.email,
     'nationalId':  this.nationalID,
@@ -50,18 +51,8 @@ export class RegisterSBadminComponent implements OnInit {
     'phoneNumber': this.phoneNumber,
     'lastname': this.surname,
     'userGroup':'ADMIN03',
-    'roles': [ 
-      {
-        'created': new Date(),
-        'description': 'ADMIN03',
-        'id': 1,
-        'lastModified': new Date(),
-        'roleName': 'ADMIN03'
-      }
-    ],
-      'userStation': +this.selectedValue,
-      'userStatus': true,
-      'userType': 'ADMIN03',
+    'userStation': +this.selectedValue,
+    'userStatus': true,
 
   })
   .subscribe(data => {
@@ -83,6 +74,7 @@ export class RegisterSBadminComponent implements OnInit {
     this.email = '';
     this.surname = '';
     this.password = '';
+    this.selectedValue = '';
   }
   ngOnInit() {
   }

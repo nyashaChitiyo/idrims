@@ -60,6 +60,25 @@ import { AgentTransactionsComponent } from './agent-transactions/agent-transacti
 import { AgentGetIdriveComponent } from './agent-get-idrive/agent-get-idrive.component';
 import { QuotationDetailsComponent } from './quotation-details/quotation-details.component';
 import { ProcessPaymentComponent } from './process-payment/process-payment.component';
+import { QuotationComponent } from './quotation/quotation.component';
+import { CustomerDashboardComponent } from './customer-dashboard/customer-dashboard.component';
+import { AgentDashboardComponent } from './agent-dashboard/agent-dashboard.component';
+import { BackofficeDashboardComponent } from './backoffice-dashboard/backoffice-dashboard.component';
+import { SBbackofficeDashboardComponent } from './sbbackoffice-dashboard/sbbackoffice-dashboard.component';
+import { SystemAdminDashboardComponent } from './system-admin-dashboard/system-admin-dashboard.component';
+import { BackOfficeAdminDashboardComponent } from './back-office-admin-dashboard/back-office-admin-dashboard.component';
+import { SbSupervisorsComponent } from './sb-supervisors/sb-supervisors.component';
+import { RegisterSupervisorComponent } from './register-supervisor/register-supervisor.component';
+import { SupervisorReportsComponent } from './supervisor-reports/supervisor-reports.component';
+import { SupervisorDashBoardComponent } from './supervisor-dash-board/supervisor-dash-board.component';
+import { MonthlyReportComponent } from './monthly-report/monthly-report.component';
+import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
+import { DailyReportComponent } from './daily-report/daily-report.component';
+import { TransactionReportsComponent } from './transaction-reports/transaction-reports.component';
+import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-report.component';
+import { InsuranceReportsComponent } from './insurance-reports/insurance-reports.component';
+import { ZbcReportsComponent } from './zbc-reports/zbc-reports.component';
+import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.component';
 
 
 
@@ -125,6 +144,25 @@ import { ProcessPaymentComponent } from './process-payment/process-payment.compo
   AgentTransactionsComponent,
   AgentGetIdriveComponent,
   QuotationDetailsComponent,
-  ProcessPaymentComponent]
+  ProcessPaymentComponent,
+  QuotationComponent,
+  CustomerDashboardComponent,
+  AgentDashboardComponent,
+  BackofficeDashboardComponent,
+  SBbackofficeDashboardComponent,
+  SystemAdminDashboardComponent,
+  BackOfficeAdminDashboardComponent,
+  SbSupervisorsComponent,
+  RegisterSupervisorComponent,
+  SupervisorReportsComponent,
+  SupervisorDashBoardComponent,
+  MonthlyReportComponent,
+  WeeklyReportComponent,
+  DailyReportComponent,
+  TransactionReportsComponent,
+  ViewMonthlyReportComponent,
+  InsuranceReportsComponent,
+  ZbcReportsComponent,
+  ZinaraReportsComponent]
 })
 export class MainModule { }

@@ -5,7 +5,7 @@
     <div align="center" class="box-header with-border">
       <h3 class="box-title"><b>REGISTER STEWARD-BANK BACK-OFFICE ADMIN</b></h3>
     </div>
-    <!-- /.box-header -->
+    <!-- /.box-header --> 
     <!-- form start -->
       <div class="box-body">
           <div class="row">
@@ -36,7 +36,7 @@
         <div class="form-group col-md-6">
             <label for="email">Station</label>
             <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
-                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
+                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.colId">{{colPoint.name}}</option>
               </select>
         </div> 
       </div>
