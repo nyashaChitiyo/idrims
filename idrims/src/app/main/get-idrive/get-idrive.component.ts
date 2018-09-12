@@ -5,8 +5,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { ServicesService } from '../../services.service';
 import {SessionsService} from '../../authentication/sessions.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
-import{Router,NavigationExtras} from '@angular/router';
-
+import{Router,NavigationExtras,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-get-idrive',
@@ -28,6 +27,8 @@ export class GetIdriveComponent implements OnInit {
   selectedCol: number;
   isCollection: boolean = false;
   isDelivery: boolean = false;
+  isAgent;
+  isCustomer;
 
   isComprehensive:boolean = false;
   vehicleNames= [];
@@ -40,7 +41,24 @@ export class GetIdriveComponent implements OnInit {
   zinaraPeriodSelect:string;
   zbcPeriodSelect:string;
   vehicleValue:number=0;
-  constructor(public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+  vehicleRegistrationNumber1;
+  customerId
+
+  constructor(private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+    this.activatedRoute.params.subscribe(params =>{
+      this.vehicleRegistrationNumber1 = params['vehicleRegistrationNumber'];
+    })
+    if(localStorage.getItem('userGroup')==='CUST01'){
+      this.isCustomer = true;
+    }
+    else if(localStorage.getItem('userGroup')==='AGENT01'){
+      this.isAgent= true;
+    }
+
+   }
+
+  ngOnInit() {
+
     var id: number = +localStorage.getItem('userId');
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
     {
@@ -67,10 +85,6 @@ export class GetIdriveComponent implements OnInit {
         this.companies = arr[0];
       }
     ) 
-   }
-
-  ngOnInit() {
-
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     .subscribe(data => {
       let arr = [];
@@ -80,6 +94,42 @@ export class GetIdriveComponent implements OnInit {
       this.allRegionNames = arr[0];
     })
   }
+
+  getCustomerIdrive() {
+    var id: number = +localStorage.getItem('userId');
+    
+    this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
+    {
+      "airtimeNumber": this.airtimeNumber,
+      "colPointId": +this.selectedReg,
+      "collectionDelAdd": this.delAddress,
+      "collectionType": this.changeState,
+      "insuranceCompany": this.insuranceCompanySelect,
+      "insurancePeriod": +this.insurancePeriodSelect,
+      "insuranceType": this.insuranceTypeSelect,
+      "processedBy": "",
+      "requestChannel": "Web",
+      "requestedFor": this.customerId,
+      "userId": +localStorage.getItem('phoneNumber'),
+      "vehicleRegistrationNumber": this.vehicleRegistrationNumber1,
+      "vehicleValue": this.vehicleValue,
+      "zbcPeriod": +this.zbcPeriodSelect,
+      "zinaraPeriod": +this.zinaraPeriodSelect
+    })
+      .subscribe(data1 => {
+        if(data1){
+          this.successSwal.show();
+          
+          let d = data1
+          let data : NavigationExtras = {
+            queryParams: d
+          }
+          this.router.navigate(['customer/getIdrive/'+this.vehicle],data);
+        }
+        else
+        this.failedSwal.show();
+      });
+      }
   getColPoints(){
     console.log(this.selectedReg)
     this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
@@ -113,6 +163,7 @@ export class GetIdriveComponent implements OnInit {
       })
   }
   getIdrive() {
+    if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
     
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
@@ -133,13 +184,22 @@ export class GetIdriveComponent implements OnInit {
       "zbcPeriod": +this.zbcPeriodSelect,
       "zinaraPeriod": +this.zinaraPeriodSelect
     })
-      .subscribe(data => {
-        if(data){
+      .subscribe(data1 => {
+        if(data1){
           this.successSwal.show();
+          
+          let d = data1
+          let data : NavigationExtras = {
+            queryParams: d
+          }
+          this.router.navigate(['customer/getIdrive/'+this.vehicle],data);
         }
         else
         this.failedSwal.show();
-      });
+      });}
+      else if(localStorage.getItem('userGroup')==='AGENT01'){
+        this.getCustomerIdrive();
+      }
       }
       setInsType(){
         if(this.insuranceTypeSelect =="COMP"){

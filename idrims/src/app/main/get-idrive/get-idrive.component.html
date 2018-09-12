@@ -7,14 +7,15 @@
       <h3 class="box-title"><b>Get iDriveSure</b></h3> 
     </div>
       <div class="box-body"> 
-        <div class="box-title"><h2>Insurance</h2></div>
+        <div class="box-title"><h1>Insurance</h1></div>
         <hr>
-                    <div class="form-group col-md-6 text-center">
+                    <div *ngIf="isCustomer" class="form-group col-md-6 text-center">
                         <label for="email">Select Vehicle</label>
                         <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" (change)="onEditClick()" required>
                             <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.vehicleRegistrationNumber">{{vehicle.vehicleRegistrationNumber}}</option>
                           </select>
                     </div>
+
                     <div class="form-group col-md-6 text-center">
                         <label class="">Select Insurance Company</label>
                         <select [(ngModel)]="insuranceCompanySelect" class="form-control" name="insuranceCompanySelect" required>
@@ -55,33 +56,15 @@
                               <option value="12">12 Months</option>
                                     </select>
                                   </div>        
-                <!--<div id="zinaraPeriodDiv" class="form-group col-md-4" style="display:none">				
-                  <label>Licence Period</label>
-                  <select  id="zinaraPeriodSelect" [(ngModel)]="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
-                    <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
-                    <option value="4"><b>4 Months</b></option>
-                    <option value="6">6 Months</option>
-                    <option value="8">8 Months</option>
-                    <option value="10">10 Months</option>
-                    <option value="12">12 Months</option>
-                  </select>
-                </div>
-   
-          <div id="zbcPeriodDiv" class="form-group col-md-4" style="display:none">				
-                  <label>Licence Period</label>
-                  <select id="zbcPeriodSelect" name="zbcPeriodSelect" [(ngModel)]="zbcPeriodSelect" class="select2 form-control" style="width: 100%">
-                    <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
-            <option value="4"><b>4 Months</b></option>
-            <option value="5">5 Months</option>
-            <option value="6">6 Months</option>
-            <option value="7">7 Months</option>
-            <option value="8">8 Months</option>
-            <option value="9">9 Months</option>
-            <option value="10">10 Months</option>
-            <option value="11">11 Months</option>
-            <option value="12">12 Months</option>
-                  </select>
-                </div>-->
+                                  <div *ngIf="isAgent" class="form-group col-md-6 text-center">
+                                    <label for="email">Vehicle Registration Number</label> <br>
+                                    {{vehicleRegistrationNumber1}}
+                                </div>
+              
+                                <div *ngIf="isAgent" class="form-group col-md-6 text-center">
+                                  <label for="email">Customer National I.D</label>
+                                  <input [(ngModel)] = "customerId" class="form-control" type="text" name="customerId" required>
+                              </div>
        <br>
        <br>
        <br>
@@ -89,7 +72,7 @@
       </div>
 
       <div class="box-body"> 
-          <div class="box-title"><h2>ZINARA & ZBC</h2></div>
+          <div class="box-title"><h1>ZINARA & ZBC</h1></div>
           <hr>
            <div class="form-group col-md-6">				
                     <label>ZBC Licence Period</label>
@@ -123,7 +106,7 @@
                   </div>
       </div>
       <div class="box-body"> 
-          <div class="box-title"><h2>COLLECTION / DELIVERY</h2></div>
+          <div class="box-title"><h1>COLLECTION / DELIVERY</h1></div>
           <hr>
           <div class="form-group col-md-12">
               <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
@@ -167,15 +150,14 @@
           <div *ngIf="isDelivery" class="form-group col-md-6">
               <div class="form-group">
                   <label for="comment">Enter Address:</label>
-                  <textarea class="form-control" rows="5" id="comment" [(ngModel)][="delAddress"></textarea>
+                  <textarea class="form-control" rows="5" id="comment" [(ngModel)]="delAddress"></textarea>
                 </div>
           </div>
       
-          <div class="form-group col-md-6">
+          <div *ngIf="isCollection" class="form-group col-md-6">
               <label>Number to Recieve ECONET Airtime</label>
                     <input [(ngModel)] = "airtimeNumber" class="form-control" type="number" name="airtimeNumber" required>
-                
-              </div>
+          </div>
       </div>
 
       <!-- /.box-body -->
@@ -184,15 +166,17 @@
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
       </div>
       </div>
-    </section>
-    
+    </section> 
     </div>
 
+   
+    
+    <hr>
 
     <swal
     #successSwal
     title="Success"
-    text="Vehicle Submitted. Registration will be complete afer Verification."
+    text="Quotation successfully generated press ok to continue ."
     type="success"
     [showCancelButton]="false"
     [focusCancel]="false">

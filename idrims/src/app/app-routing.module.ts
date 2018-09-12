@@ -62,6 +62,8 @@ import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/age
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
 import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
+import {QuotationDetailsComponent} from './main/quotation-details/quotation-details.component';
+import {ProcessPaymentComponent} from './main/process-payment/process-payment.component';
 
 
 
@@ -114,8 +116,11 @@ const appRoutes: Routes = [
   {path: 'sbadmin/transactions', component: TransactionsComponent, canActivate: [AuthGuard]},
   {path: 'admin/userManagement/viewSBadmin', component: ViewSBadminComponent, canActivate: [AuthGuard]},
   {path: 'customer/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
+  {path: 'agent/addVehicle', component: AddVehicleComponent, canActivate: [AuthGuard]},
   {path: 'customer/myVehicles', component: MyVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'customer/getIdrive', component: GetIdriveComponent, canActivate: [AuthGuard]},
+  {path: 'customer/getIdrive/:vehicleRegistrationNumber', component: QuotationDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'customer/getIdrive/:vehicleRegistrationNumber/:quotationId/:grandTotal', component: ProcessPaymentComponent}, 
   {path: 'customer/myPendingVehicles', component: MypendingVerificationComponent, canActivate: [AuthGuard]},
   {path: 'customer/myVerifiedVehicles', component: MyVerifiedVehiclesComponent, canActivate: [AuthGuard]},
   {path: 'customer/myTransactions', component: MyTransactionsComponent, canActivate: [AuthGuard]},
@@ -130,9 +135,7 @@ const appRoutes: Routes = [
   {path: 'agent/regVehicle', component: AgentRegisterVehicleComponent, canActivate: [AuthGuard]},
   {path: 'agent/addClaim', component: AgentSubmitClaimComponent, canActivate: [AuthGuard]},
   {path: 'agent/agentTransactions', component: AgentTransactionsComponent, canActivate: [AuthGuard]},
-  {path: 'agent/agentGetIdrive', component: AgentGetIdriveComponent, canActivate: [AuthGuard]},
-  
-  
+  {path: 'agent/getIdrive/:vehicleRegistrationNumber', component: GetIdriveComponent, canActivate: [AuthGuard]},
  
   {path: '', redirectTo: '/Dashboard', pathMatch: 'full', canActivate: [AuthGuard]},
 

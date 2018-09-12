@@ -31,10 +31,11 @@ export class ClosedClaimsComponent implements OnInit {
   })
 
   .subscribe(data => {
-    if (data['status'] === "success ") {  
-     this.successSwal.show();
+    if (data) {  
+     this.claims = data
+     console.log(data)
     } else {
-      this.failedSwal.show();
+   
     }
   }, error => {
     console.log(Response); 

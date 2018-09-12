@@ -82,6 +82,8 @@ import { AgentRegisterVehicleComponent } from './main/agent-register-vehicle/age
 import { AgentSubmitClaimComponent } from './main/agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './main/agent-transactions/agent-transactions.component';
 import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
+import{ QuotationDetailsComponent} from './main/quotation-details/quotation-details.component';
+import{ ProcessPaymentComponent} from './main/process-payment/process-payment.component';
 
 
 //import { AdminComponent } from './admin/admin.component';
@@ -161,9 +163,9 @@ import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idriv
     AgentRegisterVehicleComponent,
     AgentSubmitClaimComponent,
     AgentTransactionsComponent,
-    AgentGetIdriveComponent
-
-
+    AgentGetIdriveComponent,
+    QuotationDetailsComponent,
+    ProcessPaymentComponent
 
   ],
   imports: [

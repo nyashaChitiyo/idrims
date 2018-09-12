@@ -58,6 +58,8 @@ import { AgentRegisterVehicleComponent } from './agent-register-vehicle/agent-re
 import { AgentSubmitClaimComponent } from './agent-submit-claim/agent-submit-claim.component';
 import { AgentTransactionsComponent } from './agent-transactions/agent-transactions.component';
 import { AgentGetIdriveComponent } from './agent-get-idrive/agent-get-idrive.component';
+import { QuotationDetailsComponent } from './quotation-details/quotation-details.component';
+import { ProcessPaymentComponent } from './process-payment/process-payment.component';
 
 
 
@@ -121,6 +123,8 @@ import { AgentGetIdriveComponent } from './agent-get-idrive/agent-get-idrive.com
   AgentRegisterVehicleComponent,
   AgentSubmitClaimComponent,
   AgentTransactionsComponent,
-  AgentGetIdriveComponent]
+  AgentGetIdriveComponent,
+  QuotationDetailsComponent,
+  ProcessPaymentComponent]
 })
 export class MainModule { }

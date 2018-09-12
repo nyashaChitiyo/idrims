@@ -1,0 +1,82 @@
+<div class="content-wrapper">
+  <div class="row">
+      <div class="col-md-5">
+      </div> 
+          <div class="panel panel-info">
+            <div class="panel-heading">
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class="col-md-2 col-lg-2"> </div>
+      
+                <div class=" col-md-9 col-lg-9 "> 
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Policy Rate:</td>
+                        <td>{{policyRate}}</td> 
+                      </tr>
+                      <tr>
+                        <td>Premium Due:</td>
+                        <td>{{premiumDue}}</td>
+                      </tr>
+                      <tr>
+                        <td>Insurance Premium</td>
+                        <td>{{insurancePremium}}</td>
+                      </tr>
+                   
+                      <tr>
+                        <td>Zinara Premium</td>
+                        <td>{{zinaraPremium}}</td>
+                      </tr>
+                      <tr>
+                        <td>ZBC Premium</td>
+                        <td><a>{{zbcPremium}}</a></td>
+                      </tr>
+                      <tr>
+                        <td>Delivery Fee</td>
+                        <td><a>{{deliveryFee}}</a></td>
+                      </tr>
+                      <tr>
+                        <td>Grand Total</td>
+                        <td><a>{{grandTotal}}</a></td>
+                      </tr>
+                      <tr>
+                        <td>Start Date</td>
+                        <td><a>{{startDate}}</a></td>
+                      </tr> 
+
+                      <tr>
+                        <td>End Date</td>
+                        <td><a>{{endDate}}</a></td>
+                      </tr> 
+                      <tr>
+                        <td>Policy Rate</td>
+                        <td><a>{{policyRate}}</a></td>
+                      </tr> 
+                      <tr>
+                        <td>Government Levy</td>
+                        <td><a>{{governmentLevy}}</a></td>
+                      </tr> 
+                      <tr>
+                        <td>Stamp Duty</td>
+                        <td><a>{{stampDuty}}</a></td>
+                      </tr> 
+                      <tr>
+                        <td>Zinara Arrears</td>
+                        <td><a>{{zinaraArrears}}</a></td>
+                      </tr> 
+                    </tbody>
+                  </table>             
+                  <button class="btn btn-primary" (click)="makePayment()">Proceed to payment    {{grandTotal | currency}}</button>
+                </div>
+                <div class="col-md-2 col-lg-2"> </div>
+              </div>
+            </div>
+                 <div class="panel-footer">
+      
+                    </div>
+            </div>
+          </div>
+          
+      </div>

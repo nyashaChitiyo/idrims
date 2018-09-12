@@ -31,14 +31,14 @@ export class MyTransactionsComponent implements OnInit {
   gettransactions(){
     this.httpClient.post('http://108.61.174.41:7070/api/orders/view/userId',
     {
-      "id": 0
+      "id": +localStorage.getItem('userId')
     })
     .subscribe(
       (data:any[])=> {
         let arr = [];
         arr.push(data)
         this.transactions = arr[0];
-        console.log(arr[0]);
+        console.log(data);
       }
     ) 
   }

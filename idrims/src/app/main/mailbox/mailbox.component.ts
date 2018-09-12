@@ -27,13 +27,15 @@ export class MailboxComponent implements OnInit {
   }
 
   getRequests(){
-    var userId: number = +localStorage.getItem('colId');
+ 
     //console.log(userId+'user id is this')
-    this.demo.post('http://108.61.174.41:7070/api/orders/view/collectionPoint',{
-      "id": userId
+    this.demo.post('http://108.61.174.41:7070/api/orders/view/userId',
+    {
+      "id": localStorage.getItem('phoneNumber')
     })
     .subscribe(
       (data: Response)=> {
+        console.log(data)
         let arr = [];
         arr.push(data)
         this.requests = arr[0];
