@@ -77,7 +77,9 @@ import { WeeklyReportComponent } from './main/weekly-report/weekly-report.compon
 import { DailyReportComponent } from './main/daily-report/daily-report.component';
 import { TransactionReportsComponent } from './main/transaction-reports/transaction-reports.component';
 import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-monthly-report.component';
-
+import { InsuranceReportsComponent } from './main/insurance-reports/insurance-reports.component';
+import { ZbcReportsComponent } from './main/zbc-reports/zbc-reports.component';
+import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
 
 
 
@@ -163,9 +165,11 @@ const appRoutes: Routes = [
   {path: 'supervisor/dailyReport', component:  DailyReportComponent, canActivate: [AuthGuard]},
   {path: 'supervisor/transactionReports', component:  TransactionReportsComponent, canActivate: [AuthGuard]},
   {path: 'supervisor/viewMonthlyReports', component:  ViewMonthlyReportComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/insuranceReports', component:  InsuranceReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/zbcReports', component:  ZbcReportsComponent, canActivate: [AuthGuard]},
+  {path: 'supervisor/zinaraReports', component:  ZinaraReportsComponent, canActivate: [AuthGuard]},
  
-  
-  
+
   
  
   {path: '', redirectTo: '/', pathMatch: 'full', canActivate: [AuthGuard]},

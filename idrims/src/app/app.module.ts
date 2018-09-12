@@ -97,6 +97,10 @@ import { WeeklyReportComponent } from './main/weekly-report/weekly-report.compon
 import { DailyReportComponent } from './main/daily-report/daily-report.component';
 import { TransactionReportsComponent } from './main/transaction-reports/transaction-reports.component';
 import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-monthly-report.component';
+import { InsuranceReportsComponent } from './main/insurance-reports/insurance-reports.component';
+import { ZbcReportsComponent } from './main/zbc-reports/zbc-reports.component';
+import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
+
 
 
 
@@ -192,7 +196,10 @@ import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-mont
     WeeklyReportComponent,
     DailyReportComponent,
     TransactionReportsComponent,
-    ViewMonthlyReportComponent
+    ViewMonthlyReportComponent,
+    InsuranceReportsComponent,
+    ZbcReportsComponent,
+    ZinaraReportsComponent
 
 
 

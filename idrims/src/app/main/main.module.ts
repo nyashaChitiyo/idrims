@@ -74,6 +74,9 @@ import { WeeklyReportComponent } from './weekly-report/weekly-report.component';
 import { DailyReportComponent } from './daily-report/daily-report.component';
 import { TransactionReportsComponent } from './transaction-reports/transaction-reports.component';
 import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-report.component';
+import { InsuranceReportsComponent } from './insurance-reports/insurance-reports.component';
+import { ZbcReportsComponent } from './zbc-reports/zbc-reports.component';
+import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.component';
 
 
 
@@ -153,6 +156,9 @@ import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-r
   WeeklyReportComponent,
   DailyReportComponent,
   TransactionReportsComponent,
-  ViewMonthlyReportComponent]
+  ViewMonthlyReportComponent,
+  InsuranceReportsComponent,
+  ZbcReportsComponent,
+  ZinaraReportsComponent]
 })
 export class MainModule { }
