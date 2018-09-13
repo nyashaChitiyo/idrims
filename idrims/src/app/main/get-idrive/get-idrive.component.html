@@ -19,23 +19,19 @@
                         <label class="">Select Insurance Company</label>
                         <select [(ngModel)]="insuranceCompanySelect" class="form-control" name="insuranceCompanySelect" required>
           
-                        <option *ngFor="let company of companies" [value]="company.name">{{company.name}}</option>
+                        <option *ngFor="let company of companies" [value]="company.code">{{company.name}}</option>
                     </select>
                       </div>
                       <div class="form-group col-md-6 text-center">
                                 <label class="">Insurance Type</label>
-                                <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" class="select2 form-control" style="width: 100%;" >
+                                <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" (change)="setInsType()"class="select2 form-control" style="width: 100%;" >
                                   <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
                         <option value="RTA">Road Traffic Act (3rd Party)</option>
                                   <option value="COMP">Comprehensive</option>
                                   <option value="COMPPLUS">Comprehensive Plus</option>
                                 </select>
                         </div>
-                        
-                        <div id="vehicleValueDiv" style="display: none;" class="form-group col-md-4 text-center">
-                                <label class="">Enter Value</label>
-                                 <input  class="form-control" type="number" name="vehicleValueFiled" id="vehicleValueFiled" value="0">
-                              </div>
+                      
                             <div class="form-group col-md-6">				
                                     <label>Insurance Period</label>
                                     <select [(ngModel)]="insurancePeriodSelect"  id="insurancePeriodSelect" name="insurancePeriodSelect" class="select2 form-control" style="width: 100%;" >
@@ -59,6 +55,10 @@
                                 <div *ngIf="isAgent" class="form-group col-md-6 text-center">
                                   <label for="email">Customer National I.D</label>
                                   <input [(ngModel)] = "customerId" class="form-control" type="text" name="customerId" required>
+                              </div>
+                              <div *ngIf="isComprehensive" id="vehicleValue" class="form-group col-md-6">
+                                <label class="">Enter Vehicle Value</label>
+                                 <input [(ngModel)]="vehicleValue" class="form-control" type="number" name="vehicleValue" id="vehicleValue" value="0">
                               </div>
        <br>
        <br>

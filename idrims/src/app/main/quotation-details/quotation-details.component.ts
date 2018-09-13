@@ -65,7 +65,12 @@ export class QuotationDetailsComponent implements OnInit {
     let data : NavigationExtras = {
       queryParams: d
     }*/
-    this.router.navigate(['customer/getIdrive/'+this.vehicleRegistrationNumber+'/'+this.quotationId+'/'+this.grandTotal]);
+    if(localStorage.getItem('userGroup')==='CUST01'){
+      this.router.navigate(['customer/getIdrive/'+this.vehicleRegistrationNumber+'/'+this.quotationId+'/'+this.grandTotal]);
+    }
+    else if(localStorage.getItem('userGroup')==='AGENT01'){
+      this.router.navigate(['agent/getIdrive/'+this.vehicleRegistrationNumber+'/'+this.quotationId+'/'+this.grandTotal]);
+    }
   }
 
 }

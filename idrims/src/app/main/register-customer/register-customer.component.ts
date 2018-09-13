@@ -30,7 +30,7 @@ export class RegisterCustomerComponent implements OnInit {
   constructor(private httpClient: HttpClient) {}
  
   postProfile(){ 
-    this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
+this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
   {
     'email' : this.email,
     'firstname' : this.firstname,
@@ -38,7 +38,7 @@ export class RegisterCustomerComponent implements OnInit {
     'nationalId':  this.nationalID,
     'phoneNumber': this.phoneNumber,
     'userGroup':'CUST01',
-    'userStation': +this.selectedValue,
+    'userStation': 0,
   })
   .subscribe(data => {
     if (data['success'] === true) {  

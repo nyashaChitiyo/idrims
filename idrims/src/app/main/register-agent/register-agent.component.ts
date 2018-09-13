@@ -49,18 +49,7 @@ export class RegisterAgentComponent implements OnInit {
     'phoneNumber': this.phoneNumber,
     'lastname': this.surname,
     'userGroup':'AGENT01',
-    'roles': [ 
-      {
-        'created': new Date(),
-        'description': 'AGENT01',
-        'id': 1,
-        'lastModified': new Date(),
-        'roleName': 'AGENT01'
-      }
-    ],
-      'userStation': +this.selectedValue,
-      'userStatus': true,
-      'userType': 'AGENT01',
+    'userStation': +this.selectedValue,
 
   })
   .subscribe(data => {
@@ -69,7 +58,9 @@ export class RegisterAgentComponent implements OnInit {
       this.reset();
     } else {
       this.failedSwal.show();
-    }
+    
+    
+  }
   }, error => {
     console.log(Response);
     this.failedSwal.show();

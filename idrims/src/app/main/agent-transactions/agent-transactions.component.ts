@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 export class AgentTransactionsComponent implements OnInit {
   
   dtOptions: DataTables.Settings = {};
-  public requests= [];
+  public transactions= [];
   public temp_var: Object = false;
 
   constructor( private demo: DemoService,private router: Router) { 
@@ -36,8 +36,8 @@ export class AgentTransactionsComponent implements OnInit {
       (data: Response)=> {
         let arr = [];
         arr.push(data)
-        this.requests = arr[0];
-        console.log(this.requests);
+        this.transactions = arr[0];
+        console.log(this.transactions);
         this.temp_var=true;
       }
     ) 
