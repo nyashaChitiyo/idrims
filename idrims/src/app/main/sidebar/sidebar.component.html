@@ -2,7 +2,7 @@
 <aside class="main-sidebar">
   <!-- sidebar: style can be found in sidebar.less -->
 
-  <section class="sidebar">
+  <section class="sidebar"> 
 
   <!-- sidebar menu: : style can be found in sidebar.less -->
   <ul class="sidebar-menu">
@@ -14,7 +14,7 @@
     <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="/agent/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li *ngIf="isSupervisor" routerLinkActive="active"><a routerLink="/supervisor/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li> 
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/userManagement"><i class="fa fa-user-plus"></i> User Management</a></li>
-     <li *ngIf="isTest" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
+     <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
      <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
      <li  *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/locations"><i class="fa fa-map"></i> Locations</a></li>

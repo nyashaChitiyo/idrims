@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
     this.countUnverified();
   }
 
-  ngOnInit() {
+  ngOnInit() { 
   }
 
   countUnverified(){
