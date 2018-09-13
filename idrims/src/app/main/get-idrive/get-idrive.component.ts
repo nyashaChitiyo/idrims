@@ -37,7 +37,7 @@ export class GetIdriveComponent implements OnInit {
   insuranceCompanySelect:string;
   insurancePeriodSelect: string;
   insuranceTypeSelect: string;
-  vehicle:string;
+
   zinaraPeriodSelect:string;
   zbcPeriodSelect:string;
   vehicleValue:number=0;
@@ -126,7 +126,7 @@ export class GetIdriveComponent implements OnInit {
           let data : NavigationExtras = {
             queryParams: d
           }
-          this.router.navigate(['customer/getIdrive/'+this.vehicle],data);
+          this.router.navigate(['agent/getidrive/'+this.vehicleRegistrationNumber1],data);
         }
         else
         this.failedSwal.show();
@@ -192,7 +192,7 @@ export class GetIdriveComponent implements OnInit {
       "requestChannel": "WEB",
       "requestedFor": localStorage.getItem('phoneNumber'),
       "userId": id,
-      "vehicleRegistrationNumber": this.vehicle,
+      "vehicleRegistrationNumber": this.vehicleRegistrationNumber1,
       "vehicleValue": this.vehicleValue,
       "zbcPeriod": +this.zbcPeriodSelect,
       "zinaraPeriod": +this.zinaraPeriodSelect
@@ -205,7 +205,7 @@ export class GetIdriveComponent implements OnInit {
           let data : NavigationExtras = {
             queryParams: d
           }
-          this.router.navigate(['customer/getIdrive/'+this.vehicle],data);
+          this.router.navigate(['customer/getIdrive/'+this.vehicleRegistrationNumber1],data);
         }
         else
         this.failedSwal.show();

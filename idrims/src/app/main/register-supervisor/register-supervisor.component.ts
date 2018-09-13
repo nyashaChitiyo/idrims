@@ -51,7 +51,6 @@ export class RegisterSupervisorComponent implements OnInit {
     'password':this.password,
     'userGroup':'ADMIN04',
     'userStation': +this.selectedValue,
-    'userStatus': true,
 
   })
   .subscribe(data => {
