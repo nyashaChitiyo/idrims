@@ -15,9 +15,9 @@ export class HeaderComponent implements OnInit {
   unverifiedcount = [];
 
   constructor(private session: SessionsService, private router: Router,private httpClient: HttpClient) {
-    this.fullName = localStorage.getItem('fullName');
-    this.userType = localStorage.getItem('userType');
-    this.userStation = localStorage.getItem('userStation');
+    this.fullName = localStorage.getItem('firstname');
+    this.userType = localStorage.getItem('userGroup');
+    this.userStation = localStorage.getItem('userStationName');
     this.countUnverified();
   }
 

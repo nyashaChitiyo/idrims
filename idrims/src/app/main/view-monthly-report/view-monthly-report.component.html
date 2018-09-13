@@ -16,69 +16,81 @@
   
       <div class="box-body">
           <div class="box-body"> 
-              <div class="form-group col-md-4">
-                  <label for="email">Filter by Collection Point/ User ID</label>
+              <div class="form-group col-md-12">
+                  <label for="email">Filter </label>
                   <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
                       <option selected  style="display: none;" >Select Option</option>
-                      <option value="delivery">Delivery</option>
-                      <option value="collection">Collection</option>
+                      <option value="collectionID">Collection Point</option>
+                      <option value="userID">User ID</option>
                     </select>
-              </div>        
+              </div>  
+              <br>      
          
-              <div *ngIf="isCollection" class="form-group col-md-4">
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
                   <label for="email">Region</label>
                   <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
                       <option selected  style="display: none;" >Select Region</option>
                       <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
                     </select>
               </div>
-              <div *ngIf="isCollection" class="form-group col-md-4">
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
                   <label for="email">Sub-Region</label>
                   <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
                       <option selected  style="display: none;" >Select Sub-Region</option>
                       <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
                     </select>
               </div>
-              <div *ngIf="isCollection" class="form-group col-md-4">
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
                   <label for="email">Collection Point</label>
                   <select [(ngModel)]="selectedCol" class="form-control" name="colPoint" required>
                       <option selected  style="display: none;" >Select Collection-Point</option>
                       <option  *ngFor="let col of allColPoints" [value]="col.id">{{col.name}}</option>
                     </select>
+                    <button class="primary"(click)="getByCollectionPoint()">Go</button>
               </div>
-    
-    
-              <div *ngIf="isDelivery" class="form-group col-md-6">
-                  <label for="email">Suburb</label>
-                  <select [(ngModel)]="selectedSurb" class="form-control" name="suburb" required>
-                      <option selected  style="display: none;" >Select Suburb</option>
-                      <option  *ngFor="let sub of allSuburbs" [value]="sub.id">{{sub.name}}</option>
+              <!-- <div *ngIf="isCollectionPoint" class="form-group col-md-4">
+                  <label for="email">Collection Point</label>
+                  <input [(ngModel)]= "colpointID"  class="form-control" type="test" id="colpointID">
+                  <br>
+                  <button class="primary"(click)="getByCollectionPoint()">Go</button>
+              </div> -->
+              
+ 
+              <!-- <div *ngIf="isUserId" class="form-group col-md-4">
+                  <label for="email">Region</label>
+                  <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                      <option selected  style="display: none;" >Select Region</option>
+                      <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
                     </select>
               </div>
-    
-              <div *ngIf="isDelivery" class="form-group col-md-6">
-                  <div class="form-group">
-                      <label for="comment">Enter Address:</label>
-                      <textarea class="form-control" rows="5" id="comment" [(ngModel)]="delAddress"></textarea>
-                    </div>
+              <div *ngIf="isUserId" class="form-group col-md-4">
+                  <label for="email">Sub-Region</label>
+                  <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
+                      <option selected  style="display: none;" >Select Sub-Region</option>
+                      <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                    </select>
+              </div> -->
+              <div *ngIf="isUserId" class="form-group col-md-3">
+                  <label for="email">User ID</label>
+                  <input [(ngModel)]= "userid" class="form-control" type="test" id="userid">
+                  <br>
+                  <button class="primary"(click)="getByUserID()">Go</button>
               </div>
-          
-              <div *ngIf="isCollection" class="form-group col-md-6">
-                  <label>Number to Recieve ECONET Airtime</label>
-                        <input [(ngModel)] = "airtimeNumber" class="form-control" type="number" name="airtimeNumber" required>
-              </div>
+             
           </div>
  
-        <!-- <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" *ngIf="this.temp_var"> -->
-            <table class="table table-hover " id="monthly" cellspacing="0"> 
+        <table datatable [dtOptions]="dtOptions" id="monthly" class="table table-striped table-bordered" *ngIf="this.temp_var">
+            <!-- <table class="table table-hover " id="monthly" cellspacing="0">  -->
           
               <thead>
   
             <br>
           <tr>
               <th>Date</th>
+            <th>Order Number</th>
               <th>Product</th>
               <th>VRN</th> 
+              <th>Customer</th> 
               <th>Agent</th>
               <th>Insurance Fee</th>
               <th>Zinara Fee</th>
@@ -89,13 +101,15 @@
           <tbody>
           <tr *ngFor="let month of monthly">  
              <td>{{month.updatedAt}}</td>
+             <td>{{month.orderNumber}}</td>
             <td>{{month.insuranceType}}</td>
-            <td>{{month.lastname}}</td>
+            <td>{{month.vehicleRegistrationNumber}}</td>
+            <td>{{month.requestedFor}}</td>
             <td>{{month.processedBy}}</td>
-            <td>{{month.insurancePremium}}</td>
-            <td>{{month.zinaraPremium}}</td>
-            <td>{{month.zbcPremium}}</td>
-            <td>{{month.grandTotal}}</td>
+            <td>{{month.insurancePremium | number}}</td>
+            <td>{{month.zinaraPremium | number}}</td>
+            <td>{{month.zbcPremium | number}}</td>
+            <td>{{month.grandTotal | number}}</td>
             
            
            

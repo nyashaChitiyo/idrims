@@ -1,6 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { DemoService } from '../../demo.service';
-import {Router} from '@angular/router';
+import { Component, OnInit ,ViewChild} from '@angular/core';
+import * as $ from "jquery";
+import {DemoService} from '../../demo.service';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { ServicesService } from '../../services.service';
+import {SessionsService} from '../../authentication/sessions.service';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import{Router,NavigationExtras,ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -14,14 +19,34 @@ export class ViewMonthlyReportComponent implements OnInit {
   public monthly= [];
   public temp_var: Object = false;
 
+  changeState;
+  isCollectionPoint: boolean = false;
+  isUserId: boolean = false;
+
   colpointID : string;
   userid : string;
 
-  constructor( private demo: DemoService,private router: Router) { 
+  allRegionNames = [];  
+  selectedValue: number;
+  allSubRegions = [];
+  selectedReg: number;
+  allColPoints = [];
+
+  constructor(private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+ 
     this.getAll();
   }
 
   ngOnInit() {
+
+    this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
+    .subscribe(data => {
+      let arr = [];
+      arr.push(data);
+      let arr1 = arr[0].map(a => a.name);
+      let regionIds = arr[0].map(a => a.id);
+      this.allRegionNames = arr[0];
+    })
  
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -37,6 +62,7 @@ export class ViewMonthlyReportComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.monthly = arr[0];
+        this.temp_var=true;
       }
     )
   }
@@ -45,7 +71,8 @@ export class ViewMonthlyReportComponent implements OnInit {
 
     //console.log(userId+'user id is this')
     this.demo.post('http://108.61.174.41:7070/api/reports/view/all/month/collectionPointId',{
-      "id": this.colpointID
+      // "id": this.colpointID
+      "id": +this.selectedReg
     })
     .subscribe(
       (data: Response)=> {
@@ -71,6 +98,53 @@ export class ViewMonthlyReportComponent implements OnInit {
         this.temp_var=true;
       }
     ) 
+  }
+
+  getColPoints(){
+    console.log(this.selectedReg)
+    this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
+    {
+      "id": this.selectedReg
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allColPoints = arr[0];
+        
+        console.log(this.allRegionNames);
+      })
+  }
+
+    onEditClick(){
+    this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
+    {
+      "id": this.selectedValue
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allSubRegions = arr[0];
+        
+        console.log(this.allRegionNames);
+      })
+  }
+  changeStatus(){
+    if(this.changeState ==="userID"){
+      this.isCollectionPoint = false;
+      this.isUserId = true;
+    }
+    else if(this.changeState === "collectionID"){
+      this.isUserId = false;
+      this.isCollectionPoint = true;
+    }
+    else{
+      this.isUserId = false;
+      this.isCollectionPoint = false;
+    }
   }
 
 

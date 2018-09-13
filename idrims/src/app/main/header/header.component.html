@@ -29,7 +29,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="assets/img/avatar.png" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{fullName}}</span>
+              <span class="hidden-xs">{{firstname}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -37,8 +37,8 @@
                 <img src="assets/img/avatar.png" class="img-circle" alt="User Image">
   
                 <p>
-                  {{fullName}} - {{userGroup}}
-                  <small>Stationed at station {{userStation}}</small>
+                  {{firstname}} - {{userGroup}}
+                  <small>Stationed at {{userStationName}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
@@ -66,10 +66,6 @@
                 </div>
               </li>
             </ul>
-          </li>
-          <!-- Control Sidebar Toggle Button -->
-          <li>
-            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
           </li>
         </ul>
       </div>

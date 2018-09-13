@@ -17,7 +17,7 @@ export class ViewAdminsComponent implements OnInit {
   public temp_var: Object = false;
 constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
  this.getUsers()
-  }
+  } 
   
   getAdmin(user){
     console.log(user.phoneNumber);
