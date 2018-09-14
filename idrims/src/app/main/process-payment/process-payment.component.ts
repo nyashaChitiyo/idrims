@@ -36,7 +36,7 @@ export class ProcessPaymentComponent implements OnInit {
   {
   "accountNumber": this.ecocashNumber,
   "quotationId": +quotationId,
-  "quoteAmmount": +grandTotal,
+  "quoteAmmount": +grandTotal, 
   "vehicleRegistrationNumber": vehicleRegistrationNumber
 }
     )
