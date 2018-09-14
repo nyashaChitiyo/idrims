@@ -17,6 +17,7 @@ export class AddVehicleComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   @ViewChild('failedEq') private failedEq: SwalComponent;
+  @ViewChild('failedAgentReg') private failedAgentReg: SwalComponent;
 
 
   constructor(private router: Router, private httpClient: HttpClient) { 
@@ -68,15 +69,15 @@ export class AddVehicleComponent implements OnInit {
         this.router.navigate(['agent/getIdrive/'+this.regVRN],data);
       } else {
         console.log('failed',+ data);
-        this.failedSwal.show();
+        this.failedAgentReg.show();
         
       }
     }, error => {
       console.log(Response);
-      this.failedSwal.show();
+      this.failedAgentReg.show();
     }); }
     else{
-      this.failedEq.show();
+      this.failedAgentReg.show();
     }
   }
   reset(){
