@@ -1,4 +1,9 @@
 <div class="content-wrapper">
+    <section  class="content-header">
+        <h1 align="center">
+          <strong>Get iDriveSure Quotation</strong>
+        </h1>
+      </section>
   <div class="row">
       <div class="col-md-5">
       </div> 
@@ -10,6 +15,7 @@
                 <div class="col-md-2 col-lg-2"> </div>
       
                 <div class=" col-md-9 col-lg-9 "> 
+
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
@@ -17,54 +23,50 @@
                         <td>{{policyRate}}</td> 
                       </tr>
                       <tr>
-                        <td>Premium Due:</td>
-                        <td>{{premiumDue}}</td>
-                      </tr>
-                      <tr>
                         <td>Insurance Premium</td>
-                        <td>{{insurancePremium}}</td>
+                        <td>${{insurancePremium}}</td>
                       </tr>
                    
                       <tr>
                         <td>Zinara Premium</td>
-                        <td>{{zinaraPremium}}</td>
+                        <td>${{zinaraPremium}}</td>
                       </tr>
                       <tr>
                         <td>ZBC Premium</td>
-                        <td><a>{{zbcPremium}}</a></td>
+                        <td>{{zbcPremium |currency}}</td>
                       </tr>
                       <tr>
                         <td>Delivery Fee</td>
-                        <td><a>{{deliveryFee}}</a></td>
+                        <td>{{deliveryFee |currency}}</td>
                       </tr>
                       <tr>
-                        <td>Grand Total</td>
-                        <td><a>{{grandTotal}}</a></td>
+                        <td><b>Grand Total</b></td>
+                        <td><b><a>${{grandTotal}}</a></b></td>
                       </tr>
                       <tr>
                         <td>Start Date</td>
-                        <td><a>{{startDate}}</a></td>
+                        <td>{{startDate}}</td>
                       </tr> 
 
                       <tr>
                         <td>End Date</td>
-                        <td><a>{{endDate}}</a></td>
+                        <td>{{endDate}}</td>
                       </tr> 
                       <tr>
                         <td>Policy Rate</td>
-                        <td><a>{{policyRate}}</a></td>
+                        <td>{{policyRate}}</td>
                       </tr> 
                       <tr>
                         <td>Government Levy</td>
-                        <td><a>{{governmentLevy}}</a></td>
+                        <td>{{governmentLevy |currency}}</td>
                       </tr> 
                       <tr>
                         <td>Stamp Duty</td>
-                        <td><a>{{stampDuty}}</a></td>
+                        <td>{{stampDuty |currency}}</td>
                       </tr> 
                       <tr>
                         <td>Zinara Arrears</td>
-                        <td><a>{{zinaraArrears}}</a></td>
+                        <td>{{zinaraArrears |currency}}</td>
                       </tr> 
                     </tbody>
                   </table>             

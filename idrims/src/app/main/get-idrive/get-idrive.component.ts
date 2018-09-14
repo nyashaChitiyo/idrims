@@ -223,7 +223,7 @@ export class GetIdriveComponent implements OnInit {
         }
         else{
           this.isComprehensive = false;
-          this.vehicleValue = 0;
+          this.vehicleValue = 0; 
         }
         
       }

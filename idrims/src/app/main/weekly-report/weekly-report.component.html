@@ -12,34 +12,109 @@
   <hr>
    
   
+   
   <div class="box"> 
   
       <div class="box-body">
-          <label>Search By:</label><input type="text"  [(ngModel)]="collectionPoint" [value]="colPoint.colId" > <button (click)="getByCollectionPoint()">Collection Point</button> &nbsp;&nbsp;<b>OR</b>&nbsp; &nbsp;<input type="text"> <button>User ID</button>
+          <div class="box-body"> 
+              <div class="form-group col-md-12">
+                  <label for="email">Filter by Collection Point/ User ID</label>
+                  <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
+                      <option selected  style="display: none;" >Select Option</option>
+                      <option value="collectionID">Collection Point</option>
+                      <option value="userID">User ID</option>
+                    </select>
+              </div>  
+              <br>      
+         
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
+                  <label for="email">Region</label>
+                  <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                      <option selected  style="display: none;" >Select Region</option>
+                      <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                    </select>
+              </div>
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
+                  <label for="email">Sub-Region</label>
+                  <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
+                      <option selected  style="display: none;" >Select Sub-Region</option>
+                      <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                    </select>
+              </div>
+              <div *ngIf="isCollectionPoint" class="form-group col-md-4">
+                  <label for="email">Collection Point</label>
+                  <select [(ngModel)]="selectedCol" class="form-control" name="colPoint" required>
+                      <option selected  style="display: none;" >Select Collection-Point</option>
+                      <option  *ngFor="let col of allColPoints" [value]="col.id">{{col.name}}</option>
+                    </select>
+                    <button class="primary"(click)="getByCollectionPoint()">Go</button>
+              </div>
+              <!-- <div *ngIf="isCollectionPoint" class="form-group col-md-4">
+                  <label for="email">Collection Point</label>
+                  <input [(ngModel)]= "colpointID"  class="form-control" type="test" id="colpointID">
+                  <br>
+                  <button class="primary"(click)="getByCollectionPoint()">Go</button>
+              </div> -->
+              
     
-        <!-- <table datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" *ngIf="this.temp_var"> -->
-            <table class="table table-hover " id="transactions" cellspacing="0"> 
+    
+         
+              <div *ngIf="isUserId" class="form-group col-md-4">
+                  <label for="email">Region</label>
+                  <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                      <option selected  style="display: none;" >Select Region</option>
+                      <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                    </select>
+              </div>
+              <div *ngIf="isUserId" class="form-group col-md-4">
+                  <label for="email">Sub-Region</label>
+                  <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
+                      <option selected  style="display: none;" >Select Sub-Region</option>
+                      <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                    </select>
+              </div>
+              <div *ngIf="isUserId" class="form-group col-md-3">
+                  <label for="email">User ID</label>
+                  <input [(ngModel)]= "userid" class="form-control" type="test" id="userid">
+                  <br>
+                  <button class="primary"(click)="getByUserID()">Go</button>
+              </div>
+          
+          </div>
+ 
+        <table datatable [dtOptions]="dtOptions" id="weekly" class="table table-striped table-bordered" *ngIf="this.temp_var">
+            <!-- <table class="table table-hover " id="weekly" cellspacing="0">  -->
           
               <thead>
-
+  
             <br>
           <tr>
               <th>Date</th>
+              <th>Order Number</th>
               <th>Product</th>
               <th>VRN</th> 
-              <th>Location</th>
+              <th>Customer</th> 
               <th>Agent</th>
-              <th>Payment Ref Code</th>
+              <th>Insurance Fee</th>
+              <th>Zinara Fee</th>
+              <th>ZBC Fee</th>
+              <th> Total Fee</th>
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let month of monthly">  
-             <td>{{transaction.updatedAt}}</td>
-            <td>{{transaction.insuranceType}}</td>
-            <td>{{vehicleRegistrationNumber.lastname}}</td>
-            <td>{{transaction.colPointId}}</td>
-            <td>{{transaction.processedBy}}</td>
-            <td>{{transaction.ecocashPaymentReference}}</td>
+          <tr *ngFor="let week of weekly">  
+             <td>{{week.updatedAt}}</td>
+             <td>{{week.orderNumber}}</td>
+            <td>{{week.insuranceType}}</td>
+            <td>{{week.vehicleRegistrationNumber}}</td>
+            <td>{{week.requestedFor}}</td>
+            <td>{{week.processedBy}}</td>
+            <td>{{week.insurancePremium | number}}</td>
+            <td>{{week.zinaraPremium | number}}</td>
+            <td>{{week.zbcPremium | number}}</td>
+            <td>{{week.grandTotal | number}}</td>
+            
+           
            
           </tr>
           </tbody>
