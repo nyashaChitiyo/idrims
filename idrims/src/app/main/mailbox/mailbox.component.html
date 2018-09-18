@@ -32,6 +32,7 @@
         <thead>
           <tr>
             <th>Transaction Date</th>
+            <th>Order Number</th>
             <th>Vehicle Registration Number</th>
             <th>National ID</th>
             <th>Insurance Company</th>
@@ -45,6 +46,7 @@
         <tbody>
           <tr *ngFor="let request of requests">
             <td>{{request.createdAt}}</td>
+            <td>{{request.orderNumber}}</td>
             <td>{{request.vehicleRegistrationNumber}}</td>
             <td>{{request.userId}}</td>
             <td>{{request.insuranceCompany}}</td>
@@ -53,7 +55,7 @@
             <td>{{request.insurancePeriod}}</td>
             <td>{{request.zinaraPeriod}}</td> 
             <td>{{request.zbcPeriod}}</td>
-            <td><button class="btn btn-primary btn-block margin-bottom" (click)=printDisk(request)>print disk</button></td>
+            <td><button class="btn btn-primary btn-block margin-bottom" (click)=printDisk(request)>Complete</button></td>
 
 
           </tr>
@@ -68,7 +70,7 @@
 <swal
 #successSwal
 title="Success"
-text="Quotation successfully generated press ok to continue ."
+text="Successfully updated, disc waiting for collection."
 type="success"
 [showCancelButton]="false"
 [focusCancel]="false">

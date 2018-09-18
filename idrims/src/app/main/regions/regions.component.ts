@@ -8,8 +8,12 @@ import { DemoService } from '../../demo.service';
 })
 export class RegionsComponent implements OnInit {
 
+  allPrints=[];
   public regions= [];
-  constructor(private demo: DemoService) { }
+  constructor(private demo: DemoService) { 
+
+    this.getPrintLocations()
+  }
 
 
   ngOnInit() {
@@ -24,5 +28,19 @@ export class RegionsComponent implements OnInit {
       }
     ) 
   }
+
+  getPrintLocations(){
+
+    this.demo.get('http://108.61.174.41:7070/api/centralPrinting/view/all')
+        .subscribe(data => {
+          let arr = [];
+          arr.push(data);
+          let arr1 = arr[0].map(a => a.name);
+          let regionIds = arr[0].map(a => a.id);
+          this.allPrints = arr[0];
+          
+          console.log(this.allPrints);
+        });
+       }
 
 }

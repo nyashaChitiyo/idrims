@@ -60,7 +60,7 @@
                                 <label class="">Enter Vehicle Value</label>
                                  <input [(ngModel)]="vehicleValue" class="form-control" type="number" name="vehicleValue" id="vehicleValue" value="0">
                               </div>
-       <br>
+       <br> 
        <br>
        <br>
        <br>
@@ -135,7 +135,23 @@
           </div>
 
 
-          <div *ngIf="isDelivery" class="form-group col-md-6">
+          <div *ngIf="isDelivery" class="form-group col-md-4">
+              <label for="email">Region</label>
+              <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                  <option selected  style="display: none;" >Select Region</option>
+                  <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                </select>
+          </div>
+          <div *ngIf="isDelivery" class="form-group col-md-4">
+              <label for="email">Sub-Region</label>
+              <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getSuburbs()" required>
+                  <option selected  style="display: none;" >Select Sub-Region</option>
+                  <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                </select>
+          </div>
+
+
+          <div *ngIf="isDelivery" class="form-group col-md-4">
               <label for="email">Suburb</label>
               <select [(ngModel)]="selectedSurb" class="form-control" name="suburb" required>
                   <option selected  style="display: none;" >Select Suburb</option>
@@ -143,7 +159,7 @@
                 </select>
           </div>
 
-          <div *ngIf="isDelivery" class="form-group col-md-6">
+          <div *ngIf="isDelivery" class="form-group col-md-4">
               <div class="form-group">
                   <label for="comment">Enter Address:</label>
                   <textarea class="form-control" rows="5" id="comment" [(ngModel)]="delAddress"></textarea>

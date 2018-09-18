@@ -10,9 +10,14 @@ import {Router} from '@angular/router';
 export class VehiclesComponent implements OnInit {
 
   public vehicles= [];
+  isBackOffice;
  
   constructor(private httpClient: HttpClient, private demo: DemoService,private router: Router) { 
     this.getVehicle();
+
+    if(localStorage.getItem('userGroup')==='ADMIN01'){
+      this.isBackOffice = true;
+    }
   }
   
   getId(vehicle){
@@ -22,7 +27,7 @@ export class VehiclesComponent implements OnInit {
 
   ngOnInit() { 
   }
-
+ 
   getVehicle(){
     this.demo.post('http://108.61.174.41:7070/api/vehicles/view/verificationStatus',{
       "bool": false

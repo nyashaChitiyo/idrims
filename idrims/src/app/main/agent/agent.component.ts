@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
   selector: 'app-agent',
@@ -21,6 +22,9 @@ export class AgentComponent implements OnInit {
   station: string;
   userStatus: boolean ;
   isEdit: boolean = true;
+  
+  @ViewChild('successSwal') private successSwal: SwalComponent;
+  @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
     //this.inputText = "nyasha"
@@ -36,8 +40,7 @@ export class AgentComponent implements OnInit {
       this.firstname= params['firstname'];
       this.surname= params['lastname'];
       this.role= params['userGroup'];
-      this.station= params['userStation'];
-      this.userStatus = params['userStatus'];
+      this.station= params['userStationName'];
     })
   } 
 
@@ -61,4 +64,29 @@ export class AgentComponent implements OnInit {
      console.log(['error']);
     }
   }
+
+  saveProfile(){
+
+    this.httpClient.post('http://108.61.174.41:7070/api/user/activation',{
+    'phoneNumberOrEmail' : this.phoneNumber,
+    'status' : false
+
+    })
+    
+    .subscribe(data => {
+      console.log(this.saveProfile);
+      if (data['success'] === true) {        
+        this.successSwal.show();
+      } else {
+        console.log('failed',+ data);
+        this.failedSwal.show();
+        
+      }
+    }, error => {
+      console.log(Response);
+      this.failedSwal.show();
+    }); 
+  
+  }
+
 }

@@ -79,6 +79,11 @@ import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-r
 import { InsuranceReportsComponent } from './insurance-reports/insurance-reports.component';
 import { ZbcReportsComponent } from './zbc-reports/zbc-reports.component';
 import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.component';
+import { SBadminReportsComponent } from './sbadmin-reports/sbadmin-reports.component';
+import { SupervisorAgentsManagementComponent } from './supervisor-agents-management/supervisor-agents-management.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { CentralPrintingComponent } from './central-printing/central-printing.component';
+import { CreateCentralPrintingComponent } from './create-central-printing/create-central-printing.component';
 
 
 
@@ -163,6 +168,11 @@ import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.componen
   ViewMonthlyReportComponent,
   InsuranceReportsComponent,
   ZbcReportsComponent,
-  ZinaraReportsComponent]
+  ZinaraReportsComponent,
+  SBadminReportsComponent,
+  SupervisorAgentsManagementComponent,
+  ForgotPasswordComponent,
+  CentralPrintingComponent,
+  CreateCentralPrintingComponent]
 })
 export class MainModule { }

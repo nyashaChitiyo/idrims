@@ -39,7 +39,7 @@ export class AdminComponent implements OnInit {
       this.firstname= params['firstname'];
       this.surname= params['lastname'];
       this.role= params['userGroup'];
-      this.station= params['userStation'];
+      this.station= params['userStationName'];
       this.userStatus = params['userStatus'];
     })
   } 

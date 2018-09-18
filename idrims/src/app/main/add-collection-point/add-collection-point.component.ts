@@ -13,7 +13,7 @@ export class AddCollectionPointComponent implements OnInit {
   regions = [];
 
   colName = '';
-  Address = '';
+  Address = ''; 
   code = '';
   contactDetails='';
   phoneNumber

@@ -10,17 +10,17 @@
     <li *ngIf="isTest" routerLinkActive="active"><a routerLink="/admin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/backOffice/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/sbadmin/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-    <li  *ngIf="isCustomer"routerLinkActive="active"><a routerLink="/customer/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+    <li *ngIf="isCustomer"routerLinkActive="active"><a routerLink="/customer/Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="/agent/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
     <li *ngIf="isSupervisor" routerLinkActive="active"><a routerLink="/supervisor/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li> 
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/userManagement"><i class="fa fa-user-plus"></i> User Management</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
      <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
-     <li  *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li>
+     <!-- <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/vehicles"><i class="fa fa-truck"></i> Vehicles</a></li> -->
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/locations"><i class="fa fa-map"></i> Locations</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/InsCompanies"><i class="fa fa-building"></i> Insurance Companies</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="/Products"><i class="fa fa-shopping-cart"></i> Claims</a></li>
-     <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/Products"><i class="fa fa-shopping-cart"></i> Claims</a></li>
+     <!-- <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/Products"><i class="fa fa-shopping-cart"></i> Claims</a></li> -->
      <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="/Products"><i class="fa fa-shopping-cart"></i> Claims</a></li>
      <li *ngIf="isTest" routerLinkActive="active"><a routerLink="admin/PricingScheme"><i class="fa fa-shopping-cart"></i> Pricing Schemes</a></li>
      <li *ngIf="isAdmin" routerLinkActive="active"><a routerLink="/customerAgentManagement"><i class="fa fa-shopping-cart"></i> User Management</a></li>
@@ -35,7 +35,9 @@
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/addVehicle"><i class="fa fa-shopping-cart"></i> Get iDriveSure</a></li>
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/Customers"><i class="fa fa-shopping-cart"></i> Customers</a></li>
      <li *ngIf="isAgent" routerLinkActive="active"><a routerLink="agent/agentTransactions"><i class="fa fa-shopping-cart"></i> Transactions</a></li>
-     <li *ngIf="isSupervisor" routerLinkActive="active"><a routerLink="supervisor/reports"><i class="fa fa-graph"></i> Reports</a></li>
+     <li *ngIf="isSupervisor" routerLinkActive="active"><a routerLink="supervisor/reports"><i class="fa fa-book"></i> Reports</a></li>
+     <li *ngIf="isSupervisor" routerLinkActive="active"><a routerLink="supervisor/AgentManagement"><i class="fa fa-users"></i> Agent Management</a></li>
+     <li *ngIf="isSBadmin" routerLinkActive="active"><a routerLink="sbadmin/reports"><i class="fa fa-book"></i> Reports</a></li>
      <!--<li routerLinkActive="active"><a routerLink="/Claims"><i class="fa fa-shopping-cart"></i> Claims</a></li>-->
      
   </ul>
