@@ -26,7 +26,7 @@
                 </form>
           
               </div>
-              <div class="col-md-4">
+              <div class="col-md-4" *ngIf="isSbAdmin">
                   <form method="post">
                     <button name="addUser" id="addUser" class="btn btn-primary btn-block margin-bottom" routerLink="/sbadmin/SbSupervisors">Steward Bank Supervisors</button>
                   </form>

@@ -23,7 +23,7 @@
           <label for="type">Status</label>
           <select class="form-control" name="type" required>
               <option selected  style="display: none;" >Change Status</option>
-              <option value="false"[disabled]="isEdit"  [(ngModel)]="userStatus">Deactivate</option>
+              <option value="false"[disabled]="isEdit" >Deactivate</option>
             </select>
         </div>
       </div>
@@ -32,7 +32,7 @@
   
       <div class="box-footer">
           <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
-          <button class="btn btn-warning" >save</button>
+          <button class="btn btn-warning" (click)="updateProfile()">save</button>
           <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/ViewAdmins"> Cancel</button></div>
     </section>
   

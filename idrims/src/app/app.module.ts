@@ -101,8 +101,11 @@ import { TransactionReportsComponent } from './main/transaction-reports/transact
 import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-monthly-report.component';
 import { InsuranceReportsComponent } from './main/insurance-reports/insurance-reports.component';
 import { ZbcReportsComponent } from './main/zbc-reports/zbc-reports.component';
+import {MessageComponent} from './main/message/message.component';
+import {DataService} from './main/data.service';
 import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {WebsocketService} from './websocket.service';
 
 
 
@@ -140,6 +143,7 @@ import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.com
     AddInsuranceCompanyComponent,
     AddProductComponent,
     ViewAgentsComponent,
+    MessageComponent,
     ViewCustomersComponent,
     VerifiedVehiclesComponent,
     ViewVehicleComponent,
@@ -214,6 +218,7 @@ import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.com
     DataTablesModule,
     FormsModule, ReactiveFormsModule,
     AppRoutingModule,
+    NgbModule.forRoot(),
     SweetAlert2Module.forRoot({
       buttonsStyling: false,
       customClass: 'modal-content',
@@ -227,6 +232,8 @@ import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.com
     AuthGuard,
     AuthGuardRouteService,
     DemoService,
+    WebsocketService,
+    DataService,
     SessionsService,
     {
       provide: HTTP_INTERCEPTORS,

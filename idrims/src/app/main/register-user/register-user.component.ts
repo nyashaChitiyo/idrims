@@ -43,7 +43,6 @@ export class RegisterUserComponent implements OnInit {
   postProfile(){
   this.httpClient.post('http://108.61.174.41:7070/api/auth/signup',
   {
-
       "email": this.email,
       "firstname": this.firstname,
       "lastname": this.surname,
@@ -75,5 +74,4 @@ export class RegisterUserComponent implements OnInit {
   }
   ngOnInit() {
   }
-
 }

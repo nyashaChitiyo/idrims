@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 @Component({
   selector: 'app-back-office-admin-dashboard',
   templateUrl: './back-office-admin-dashboard.component.html',
@@ -12,7 +13,8 @@ export class BackOfficeAdminDashboardComponent implements OnInit {
   unverifiedcount = [];
   count: string;
 
-  constructor( private httpClient: HttpClient ) { 
+  constructor( private httpClient: HttpClient) { 
+
     this.countAgents();
     this.countUnverified();
    

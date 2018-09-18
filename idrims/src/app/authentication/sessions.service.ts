@@ -135,6 +135,9 @@
 // }
 // export const InterceptorSkipHeader = 'X-Skip-Interceptor';
 
+import * as Stomp from 'stompjs';
+import * as socketIo from 'socket.io-client';
+import * as SockJS from 'sockjs-client';
 import { Injectable } from '@angular/core';
 import {Router, RouterEvent, Event} from '@angular/router';
 import 'rxjs/add/operator/filter';
@@ -150,7 +153,8 @@ export class SessionsService {
   isTest: boolean = false;
   currentUrl: string;
   redirectUrl: string;
-
+  private stompClient;
+  private serverUrl = 'http://108.61.174.41:7070/ws';
 
   constructor(private router: Router, private httpClient: HttpClient, private loading: LoadingIndicatorService) {
     
@@ -168,7 +172,7 @@ export class SessionsService {
       'phoneNumberOrEmail' : username,
       'password' : password
     };
-    this.loading.onRequestStarted();
+    
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
       console.log('accessToken: ' + data['accessToken']);
@@ -181,7 +185,9 @@ export class SessionsService {
         localStorage.setItem('userGroup', data['userGroup'])
         localStorage.setItem('userId', data['userId']);
         localStorage.setItem('email',data['email']);
+        localStorage.setItem('message', data['message']);   
         localStorage.setItem('nationalId',data['nationalId']);
+        //this.conSockets();
         console.log('User status is '+data['userGroup']);
         
         this.isLoggedIn = true;
@@ -189,6 +195,7 @@ export class SessionsService {
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
         var userGroup:string = localStorage.getItem('userGroup');
+        this.loading.onRequestStarted();
     if(userGroup == 'CUST01'){
       this.router.navigate(['/customer/Dashboard'], { replaceUrl: true });
     }
@@ -208,12 +215,48 @@ export class SessionsService {
         this.router.navigate(['/backOffice/dashboard'], { replaceUrl: true });
         // this.getUserInformation(username);
       }
+      else
+        localStorage.setItem('message', data['message']);
     },
         error => {
           this.loading.onRequestFinished();
           console.log(error.message);
         });
   }
+  /*async conSockets(){
+    const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
+   /* let httpOptions = {
+      headers: new HttpHeaders({
+        'authorization': 'Bearer '+localStorage.getItem('accessToken')
+      })
+    };*/
+    /*var headers = {
+      'authorization': 'Bearer '+localStorage.getItem('accessToken')
+};*//*
+    console.log('in web socket connecting lolsdhfvbshdfvbhsdf ')
+    let ws = new SockJS(this.serverUrl);
+    let stompClient = Stomp.over(ws);
+    let that = this;
+    stompClient.connect(headers, function(frame) {
+      console.log(frame)
+     /* this.stompClient.subscribe('/user/queue/notify',(message) => {
+        if(message.body) {
+     //     $(".chat").append("<div class='message'>"+message.body+"</div>")
+
+          console.log(message.body);
+        }
+      })*/
+      /*stompClient.subscribe('/user/queue/notify', (message) =>{
+        console.log('connected to server detailss')
+        console.log(message);
+        this.notifications = JSON.parse(message.body);
+        console.log( JSON.parse(message.body))
+      });
+    });
+  }*/
+onMessage(message){
+console.log(message)
+}
   isAuthenticated(roles: string[]): Observable<boolean> {
     console.log('auth status: ' + this.isLoggedIn);
     this.loading.onRequestFinished();

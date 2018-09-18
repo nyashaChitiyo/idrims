@@ -4,6 +4,7 @@ import {SessionsService} from '../../authentication/sessions.service';
 import { Router} from '@angular/router';
 import {LoadingIndicatorService} from '../../loading-indicator.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-login',
@@ -13,12 +14,16 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 export class LoginComponent implements OnInit, AfterViewInit {
   username: string;
   password: string;
+
   private innerHeight: any;
   // tslint:disable-next-line:max-line-length
+
+  
   constructor(private router: Router, 
     private formBuilder: FormBuilder, 
     private session: SessionsService,
-    public loading: LoadingIndicatorService) {
+    public loading: LoadingIndicatorService,
+  private data: DataService) {
   }
  
   
@@ -30,6 +35,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     element.classList.add('login-page');
     element.classList.remove('sidebar-mini');
     element.classList.remove('skin-blue');
+    
   }
   ngAfterViewInit() {
     this.innerHeight = window.innerHeight;
@@ -38,12 +44,28 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login() {
-    if (this.username != null && this.password != null) {
+    if (this.validate()) {
       this.session.login(this.username, this.password);
     }
     else {
-      this.failedSwal.show();
-      
+      //this.data.error(localStorage.getItem('message'));
+      console.log('gucii gang gucci gang gucci fake gang murisei')
+      console.log(localStorage.getItem('message'))
     }
   }
+
+  validate(){
+    if(this.username){
+      if(this.password){
+        return true;
+      } 
+      else{
+        this.data.error('please enter password');
+      }
+    }
+    else{
+      this.data.error('please enter username');
+    }
+  }
+
 }

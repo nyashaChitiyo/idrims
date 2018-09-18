@@ -166,6 +166,7 @@ const appRoutes: Routes = [
   {path: 'sbadmin/dashboard', component: SBbackofficeDashboardComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/dashboard', component: SystemAdminDashboardComponent, canActivate:[AuthGuardRouteService]},
   {path: 'backOffice/dashboard', component: BackOfficeAdminDashboardComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'backOffice/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'sbadmin/SbSupervisors', component: SbSupervisorsComponent , canActivate:[AuthGuardRouteService]},
   {path: 'sbadmin/registerSupervisor', component:  RegisterSupervisorComponent, canActivate:[AuthGuardRouteService]},
   {path: 'supervisor/reports', component: SupervisorReportsComponent , canActivate:[AuthGuardRouteService]},

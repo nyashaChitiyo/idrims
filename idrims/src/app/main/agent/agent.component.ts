@@ -15,7 +15,7 @@ export class AgentComponent implements OnInit {
   vehicle:any;
   page=1;
   phoneNumber: string;
-  firstname: string;
+  firstName: string;
   surname: string;
   role: string;
   station: string;
@@ -33,14 +33,17 @@ export class AgentComponent implements OnInit {
       this.agents = params;
       console.log(params);
       this.phoneNumber = params['phoneNumber'];
-      this.firstname= params['firstname'];
+      this.firstName= params['firstname'];
       this.surname= params['lastname'];
       this.role= params['userGroup'];
-      this.station= params['userStation'];
+      this.station= params['userStationId'];
       this.userStatus = params['userStatus'];
     })
   } 
 
+  updateProfile(){
+    
+  }
   isDisabled(){
     console.log(this.isEdit)
     this.isEdit = false;

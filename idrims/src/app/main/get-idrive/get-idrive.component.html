@@ -112,14 +112,14 @@
                 </select>
           </div>        
      
-          <div *ngIf="isCollection" class="form-group col-md-4">
+          <div *ngIf="isCollection || isDelivery" class="form-group col-md-4">
               <label for="email">Region</label>
               <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
                   <option selected  style="display: none;" >Select Region</option>
                   <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
                 </select>
           </div>
-          <div *ngIf="isCollection" class="form-group col-md-4">
+          <div *ngIf="isCollection || isDelivery" class="form-group col-md-4">
               <label for="email">Sub-Region</label>
               <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
                   <option selected  style="display: none;" >Select Sub-Region</option>
@@ -128,7 +128,7 @@
           </div>
           <div *ngIf="isCollection" class="form-group col-md-4">
               <label for="email">Collection Point</label>
-              <select [(ngModel)]="selectedCol" class="form-control" name="colPoint" required>
+              <select [(ngModel)]="selectedCol" class="form-control" name="colPoint"required>
                   <option selected  style="display: none;" >Select Collection-Point</option>
                   <option  *ngFor="let col of allColPoints" [value]="col.id">{{col.name}}</option>
                 </select>

@@ -10,7 +10,8 @@ import {Router} from '@angular/router';
 export class VehiclesComponent implements OnInit {
 
   public vehicles= [];
- 
+  dtOptions: DataTables.Settings = {};
+  public temp_var: Object = false;
   constructor(private httpClient: HttpClient, private demo: DemoService,private router: Router) { 
     this.getVehicle();
   }
@@ -21,6 +22,10 @@ export class VehiclesComponent implements OnInit {
   }
 
   ngOnInit() { 
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
   }
 
   getVehicle(){
@@ -32,7 +37,7 @@ export class VehiclesComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.vehicles = arr[0];
-
+        this.temp_var=true;
       }
     ) 
   }

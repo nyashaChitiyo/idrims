@@ -34,7 +34,6 @@ export class VerifiedVehiclesComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.vehicles = arr[0];
-        console.log(this.vehicles);
         this.temp_var=true;
       }
     ) 

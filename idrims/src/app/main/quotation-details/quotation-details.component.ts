@@ -32,8 +32,8 @@ export class QuotationDetailsComponent implements OnInit {
   }
  
   ngOnInit() { 
-    this.activatedRoute.params.subscribe(params =>{
-      this.vehicleRegistrationNumber = params['vehicleRegistrationNumber'];
+    this.activatedRoute.params.subscribe(param =>{
+      this.vehicleRegistrationNumber = param['vehicleRegistrationNumber'];
     })
 
     this.activatedRoute.queryParams.subscribe(params =>{
@@ -57,6 +57,7 @@ export class QuotationDetailsComponent implements OnInit {
       this.zinaraArrears= params['zinaraArrears'];
       this.quotationId = params['quotationId'];
     })
+    console.log(this.data)
   } 
 
   makePayment(){

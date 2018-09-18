@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-agent-management.component.css']
 })
 export class CustomerAgentManagementComponent implements OnInit {
-
-  constructor() { }
+   isSbAdmin;
+  constructor() { 
+    if(localStorage.getItem('userGroup') === 'ADMIN03'){
+      this.isSbAdmin = true;
+    }
+  }
 
   ngOnInit() {
   }

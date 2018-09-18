@@ -28,7 +28,6 @@ export class ProcessPaymentComponent implements OnInit {
   }
 
   buyInsurance(){
-    
     var vehicleRegistrationNumber: string = this.para['vehicleRegistrationNumber'];
     var quotationId: string = this.para['quotationId'];
     var grandTotal: string = this.para['grandTotal'];

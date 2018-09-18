@@ -19,17 +19,19 @@ export class GetIdriveComponent implements OnInit {
 
   allRegionNames = [];
   delAddress:string = "";
-  selectedValue: number;
+  selectedValue: string="";
   allSubRegions = [];
-  selectedReg: number;
+  selectedReg: string="";
   allColPoints = [];
+  allSuburbs = [];
   changeState;
-  selectedCol: number;
+  selectedCol: string="";
+  selectedSurb:string="";
   isCollection: boolean = false;
   isDelivery: boolean = false;
   isAgent;
   isCustomer;
-
+  vehicle: string="";
   isComprehensive:boolean = false;
   vehicleNames= [];
   airtimeNumber: string = '';
@@ -133,10 +135,10 @@ export class GetIdriveComponent implements OnInit {
       });
       }
   getColPoints(){
-    console.log(this.selectedReg)
+    if(this.isCollection){
     this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
     {
-      "id": this.selectedReg
+      "id": +this.selectedReg
     })
       .subscribe(data => {
         let arr = [];
@@ -146,13 +148,27 @@ export class GetIdriveComponent implements OnInit {
         this.allColPoints = arr[0];
         
         console.log(this.allRegionNames);
-      })
+      })}
+      else if(this.isDelivery){
+        this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
+        {
+          "id": +this.selectedReg
+        })
+          .subscribe(data => {
+            let arr = [];
+            arr.push(data);
+            let arr1 = arr[0].map(a => a.name);
+            //let regionIds = arr[0].map(a => a.id);
+            this.allSuburbs = arr[0];
+            
+            console.log(this.allRegionNames);
+      })}
   }
 
     onEditClick(){
     this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
     {
-      "id": this.selectedValue
+      "id": +this.selectedValue
     })
       .subscribe(data => {
         let arr = [];
@@ -176,15 +192,16 @@ export class GetIdriveComponent implements OnInit {
   // }
   
   getIdrive() {
-    if(localStorage.getItem('userGroup')==='CUST01'){
+    console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
+   if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
     
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
       "colPointId": +this.selectedReg,
-      "collectionDelAdd": this.delAddress,
       "collectionType": this.changeState,
+      "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,
@@ -192,7 +209,7 @@ export class GetIdriveComponent implements OnInit {
       "requestChannel": "WEB",
       "requestedFor": localStorage.getItem('phoneNumber'),
       "userId": id,
-      "vehicleRegistrationNumber": this.vehicleRegistrationNumber1,
+      "vehicleRegistrationNumber": this.vehicle,
       "vehicleValue": this.vehicleValue,
       "zbcPeriod": +this.zbcPeriodSelect,
       "zinaraPeriod": +this.zinaraPeriodSelect
@@ -205,7 +222,7 @@ export class GetIdriveComponent implements OnInit {
           let data : NavigationExtras = {
             queryParams: d
           }
-          this.router.navigate(['customer/getIdrive/'+this.vehicleRegistrationNumber1],data);
+          this.router.navigate(['customer/getIdrive/'+this.vehicle],data);
         }
         else
         this.failedSwal.show();
@@ -225,7 +242,6 @@ export class GetIdriveComponent implements OnInit {
           this.isComprehensive = false;
           this.vehicleValue = 0; 
         }
-        
       }
   changeStatus(){
     if(this.changeState ==="delivery"){

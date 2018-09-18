@@ -79,6 +79,7 @@ import { ViewMonthlyReportComponent } from './view-monthly-report/view-monthly-r
 import { InsuranceReportsComponent } from './insurance-reports/insurance-reports.component';
 import { ZbcReportsComponent } from './zbc-reports/zbc-reports.component';
 import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.component';
+import { MessageComponent } from './message/message.component';
 
 
 
@@ -163,6 +164,7 @@ import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.componen
   ViewMonthlyReportComponent,
   InsuranceReportsComponent,
   ZbcReportsComponent,
-  ZinaraReportsComponent]
+  ZinaraReportsComponent,
+  MessageComponent]
 })
 export class MainModule { }

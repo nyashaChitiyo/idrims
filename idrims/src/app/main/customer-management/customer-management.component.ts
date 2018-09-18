@@ -13,7 +13,8 @@ export class CustomerManagementComponent implements OnInit {
  
   
   customers= [];
-
+  dtOptions: DataTables.Settings = {};
+  public temp_var: Object = false;
   constructor(private httpClient: HttpClient,private router: Router,private demo: DemoService) { 
     this.getCustomers();
   }
@@ -32,6 +33,7 @@ export class CustomerManagementComponent implements OnInit {
           arr.push(data)
           this.customers = arr[0];
           console.log(arr[0]);
+          this.temp_var = true
         }
       ) 
     }
@@ -46,6 +48,10 @@ export class CustomerManagementComponent implements OnInit {
       this.router.navigate(['/userManagement/'+this.customers[0].phoneNumber],data);
     }
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
   }
 
 }
