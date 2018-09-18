@@ -1,0 +1,57 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section align="center" class="content-header">
+      <h1>
+        <strong>Central Printing Locations</strong>
+      </h1>
+    </section>
+    <p><button align="left" class="btn btn-warning" routerLink ="/admin/locations">Back to Location Management</button></p> 
+    <hr>
+
+    <!-- Main content -->
+    <section class="content">
+  
+  <!--Mailbox Div-->
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+        <button type="button" name="addColPoint" id="addColPoint" class="btn btn-primary btn-block margin-bottom" routerLink="createCentralPrinting">Add Central Printing Location</button>
+      </form>
+  
+    </div>
+  </div>
+  <!--general-->
+  <div class="box">
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-hover" id="" cellspacing="0">
+          <thead>
+
+          <tr>
+            <th>Name</th>
+            <th>Code</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Address</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let print of prints">
+            <td>{{print.name}}</td>
+            <td>{{print.code}}</td>
+            <td>{{print.email}}</td>
+            <td>{{print.phoneNumber}}</td>
+            <td>{{print.address}}</td>
+            <!-- <button type="submit" routerLinkActive="active" name="centralPrinting"><a routerLink="/verifyVehicle"></a>View</button> -->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+  
+  
+  </div>
+  
+  
+  

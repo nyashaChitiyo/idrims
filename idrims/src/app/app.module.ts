@@ -106,6 +106,11 @@ import {DataService} from './main/data.service';
 import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {WebsocketService} from './websocket.service';
+import { SBadminReportsComponent } from './main/sbadmin-reports/sbadmin-reports.component';
+import { SupervisorAgentsManagementComponent } from './main/supervisor-agents-management/supervisor-agents-management.component';
+import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.component';
+import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
+import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
 
 
 
@@ -207,7 +212,12 @@ import {WebsocketService} from './websocket.service';
     ViewMonthlyReportComponent,
     InsuranceReportsComponent,
     ZbcReportsComponent,
-    ZinaraReportsComponent
+    ZinaraReportsComponent,
+    SBadminReportsComponent,
+    SupervisorAgentsManagementComponent,
+    ForgotPasswordComponent,
+    CentralPrintingComponent,
+    CreateCentralPrintingComponent
 
 
 

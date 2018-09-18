@@ -83,7 +83,11 @@ import { ViewMonthlyReportComponent } from './main/view-monthly-report/view-mont
 import { InsuranceReportsComponent } from './main/insurance-reports/insurance-reports.component';
 import { ZbcReportsComponent } from './main/zbc-reports/zbc-reports.component';
 import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
-
+import { SBadminReportsComponent } from './main/sbadmin-reports/sbadmin-reports.component';
+import { SupervisorAgentsManagementComponent } from './main/supervisor-agents-management/supervisor-agents-management.component';
+import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.component';
+import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
+import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
 
 
 //import { NgxPermissionsGuard } from 'ngx-permissions';
@@ -92,6 +96,7 @@ import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.com
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
+  {path: 'forgotPassword', component: ForgotPasswordComponent},  
   {path: 'customer/Dashboard', component: CustomerDashboardComponent, canActivate:[AuthGuardRouteService]},
   {path: 'Dashboard', component: DashboardComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement', component: UserManagementComponent, canActivate:[AuthGuardRouteService]},
@@ -100,8 +105,8 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/viewAgents', component: ViewAgentsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewCustomers', component: ViewCustomersComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AdminComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AdminComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate:[AuthGuardRouteService] },
   {path: 'admin/vehicles', component: VehiclesComponent,canActivate:[AuthGuardRouteService] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate:[AuthGuardRouteService]},
@@ -171,14 +176,20 @@ const appRoutes: Routes = [
   {path: 'sbadmin/registerSupervisor', component:  RegisterSupervisorComponent, canActivate:[AuthGuardRouteService]},
   {path: 'supervisor/reports', component: SupervisorReportsComponent , canActivate:[AuthGuardRouteService]},
   {path: 'supervisor/dashboard', component:  SupervisorDashBoardComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/mothlyReport', component:  MonthlyReportComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/weeklyReport', component:  WeeklyReportComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/dailyReport', component:  DailyReportComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/transactionReports', component:  TransactionReportsComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/viewMonthlyReports', component:  ViewMonthlyReportComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/insuranceReports', component:  InsuranceReportsComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/zbcReports', component:  ZbcReportsComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'supervisor/zinaraReports', component:  ZinaraReportsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/mothlyReport', component:  MonthlyReportComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/weeklyReport', component:  WeeklyReportComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/dailyReport', component:  DailyReportComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/transactionReports', component:  TransactionReportsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/viewMonthlyReports', component:  ViewMonthlyReportComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/insuranceReports', component:  InsuranceReportsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/zbcReports', component:  ZbcReportsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/zinaraReports', component:  ZinaraReportsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'sbadmin/reports', component:  SBadminReportsComponent, canActivate:[AuthGuardRouteService]}, 
+  {path: 'supervisor/AgentManagement', component:  SupervisorAgentsManagementComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'supervisor/RegisterAgent', component: RegisterAgentComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/centralPrinting', component: CentralPrintingComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/centralPrinting/createCentralPrinting', component: CreateCentralPrintingComponent, canActivate:[AuthGuardRouteService]},
+  
  
 
   

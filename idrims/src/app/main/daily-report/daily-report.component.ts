@@ -24,6 +24,8 @@ export class DailyReportComponent implements OnInit {
 
   colpointID : string;
   userid : string;
+  isSBsupervisor;
+  isSBadmin;
 
   allRegionNames = [];  
   selectedValue: number;
@@ -32,7 +34,14 @@ export class DailyReportComponent implements OnInit {
   allColPoints = [];
 
   constructor(private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
- 
+    if(localStorage.getItem('userGroup')==='ADMIN03'){
+      this.isSBadmin = true;
+    }
+    else if(localStorage.getItem('userGroup')==='ADMIN04'){
+      this.isSBsupervisor= true;
+    }
+
+
     this.getAll();
   }
 

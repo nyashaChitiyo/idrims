@@ -11,7 +11,7 @@ import{Router,NavigationExtras} from '@angular/router';
 })
 export class SbSupervisorsComponent implements OnInit {
 
-  supervisor= [];
+  supervisors= [];
 
   constructor(private httpClient: HttpClient,private router: Router,private demo: DemoService) { 
     this.getsupervisors();
@@ -29,20 +29,20 @@ export class SbSupervisorsComponent implements OnInit {
         (data:any[])=> {
           let arr = [];
           arr.push(data)
-          this.supervisor = arr[0];
+          this.supervisors = arr[0];
           console.log(arr[0]);
         }
       ) 
     }
 
     getSupervisor(){
-      let d = this.supervisor[0];
+      let d = this.supervisors[0];
       let data : NavigationExtras = {
         queryParams: d
       }
       console.log(data)
   
-      this.router.navigate(['/userManagement/'+this.supervisor[0].phoneNumber],data);
+      this.router.navigate(['/userManagement/'+this.supervisors[0].phoneNumber],data);
     }
   ngOnInit() {
   }

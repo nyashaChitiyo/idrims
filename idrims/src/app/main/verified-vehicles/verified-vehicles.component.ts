@@ -14,8 +14,19 @@ export class VerifiedVehiclesComponent implements OnInit {
   public vehicles= [];
   public temp_var: Object = false;
 
+  isBackOffice;
+  isSystem;
+
   constructor( private demo: DemoService,private router: Router) { 
     this.getVehicle();
+
+    if(localStorage.getItem('userGroup')==='ADMIN01'){
+      this.isBackOffice = true;
+    }   
+    if(localStorage.getItem('userGroup')==='ADMIN02'){
+      this.isSystem = true;
+    }
+
   }
 
   ngOnInit() {

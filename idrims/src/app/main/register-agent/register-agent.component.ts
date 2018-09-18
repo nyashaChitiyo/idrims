@@ -22,10 +22,21 @@ export class RegisterAgentComponent implements OnInit {
   phoneNumber: string;
   surname: string;
   userGroup: string;
+
+  isSBsupervisor;
+  isSBadmin;
+
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   constructor(private httpClient: HttpClient) {
+
+    if(localStorage.getItem('userGroup')==='ADMIN03'){
+      this.isSBadmin = true;
+    }
+    else if(localStorage.getItem('userGroup')==='ADMIN04'){
+      this.isSBsupervisor= true;
+    }
     
     this.httpClient.get('http://108.61.174.41:7070/api/location/view/allCollectionPoints')
     .subscribe(data => {

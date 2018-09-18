@@ -5,7 +5,9 @@
         <h1 align= "center">
            <strong>Verified Vehicles</strong>
          </h1>
-         <p><button align="left" class="btn btn-warning" routerLink ="/vehicles">Back to Vehicle Management</button></p> 
+         
+         <div *ngIf = "isBackOffice"><p><button align="left" class="btn btn-warning" routerLink ="/vehicles">Back to Vehicle Management</button></p></div> 
+         <div *ngIf="isSystem"><p><button align="left" class="btn btn-warning" routerLink ="/admin/vehicles">Back to Vehicle Management</button></p></div> 
        </section>
   
     <section class="content">

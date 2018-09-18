@@ -19,12 +19,16 @@
                   <table class="table table-user-information">
                     <tbody>
                       <tr>
-                        <td>Policy Rate:</td>
-                        <td>{{policyRate}}</td> 
+                        <td>Insurance Company:</td>
+                        <td>{{insuranceCompany}}</td> 
                       </tr>
                       <tr>
+                          <td>Insurance Type:</td>
+                          <td>{{insuranceType}}</td> 
+                        </tr>
+                      <tr>
                         <td>Insurance Premium</td>
-                        <td>${{insurancePremium}}</td>
+                        <td>${{insurancePremium}} </td>
                       </tr>
                    
                       <tr>
@@ -41,7 +45,7 @@
                       </tr>
                       <tr>
                         <td><b>Grand Total</b></td>
-                        <td><b><a>${{grandTotal}}</a></b></td>
+                        <td><b><a>{{grandTotal | currency}}</a></b></td>
                       </tr>
                       <tr>
                         <td>Start Date</td>

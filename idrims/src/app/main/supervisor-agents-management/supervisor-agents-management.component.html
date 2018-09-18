@@ -1,0 +1,51 @@
+<div class="content-wrapper">
+
+    <hr>
+      <section  class="content-header">
+          <h1 align="center">
+            <strong>Agent Management</strong>
+          </h1>
+          <!-- <p><button align="left" class="btn btn-warning" routerLink ="/customerAgentManagement">Back to User Managemnt</button></p>    -->
+        </section>
+        <hr>
+      <!-- Main content -->
+      <section class="content">
+          <!-- <div class="row">
+              <div class="col-md-12">
+                <form method="post">
+                  <button type="button" name="addAgent" id="addAgent" class="btn btn-primary btn-block margin-bottom" routerLink="/supervisor/RegisterAgent">Add Agent</button>
+                </form>
+          
+              </div>
+            </div> -->
+          <div class="box">
+              <table class="table table-striped table-bordered" id="users" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Phone Number</th> 
+                      <th>First Name</th>
+                      <th>Surname</th> 
+                      <th>Station</th> 
+                    </tr>  
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let user of users">
+                      <td>{{user.phoneNumber}}</td>
+                      <td>{{user.firstname}}</td>
+                      <td>{{user.lastname}}</td>
+                      <td>{{user.userStatus}}</td>
+                      <!--<td><button routerLink="/userManagement/{{user.phoneNumber}}" class="btn btn-primary btn-block margin-bottom">view</button></td>-->
+                      <td><button (click)="getAgent()" class="btn btn-primary btn-block margin-bottom">view</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+        
+          </div>
+            </section>
+  
+  
+    </div>
+  <script>
+   </script>
+  
+  

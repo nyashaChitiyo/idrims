@@ -43,6 +43,7 @@ export class OpenClaimsComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.claims = arr[0];
+        console.log(data);
       }
     ) 
   }

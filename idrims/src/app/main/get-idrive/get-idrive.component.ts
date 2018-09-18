@@ -105,8 +105,16 @@ export class GetIdriveComponent implements OnInit {
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +this.selectedReg,
+      "colPointId": +this.selectedReg,  
       "collectionDelAdd": this.delAddress,
+      
+      // "fullDeliveryAddress": [
+      //   this.selectedValue,
+      //   this.selectedReg,
+      //   this.selectedSurb,
+      //   this.delAddress
+
+      // ],
       "collectionType": this.changeState,
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
@@ -165,6 +173,22 @@ export class GetIdriveComponent implements OnInit {
       })}
   }
 
+  getSuburbs(){
+    console.log(this.selectedReg)
+    this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
+    {
+      "id": this.selectedReg
+    })
+      .subscribe(data => {
+        let arr = [];
+        arr.push(data);
+        let arr1 = arr[0].map(a => a.name);
+        //let regionIds = arr[0].map(a => a.id);
+        this.allSuburbs = arr[0];
+        
+        console.log(this.allSuburbs);
+      })
+  }
     onEditClick(){
     this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
     {
@@ -180,7 +204,7 @@ export class GetIdriveComponent implements OnInit {
         console.log(this.allRegionNames);
       })
   }
-
+ 
   // postIdrive(){
   //   let d = this.id[0];
   //   let data : NavigationExtras = {

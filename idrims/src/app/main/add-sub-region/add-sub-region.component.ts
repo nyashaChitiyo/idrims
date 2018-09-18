@@ -19,7 +19,6 @@ export class AddSubRegionComponent implements OnInit {
   regionShortCode:string;
   regionName = '';
   regionIds = '';
-
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 

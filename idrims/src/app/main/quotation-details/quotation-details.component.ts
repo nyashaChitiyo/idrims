@@ -25,6 +25,8 @@ export class QuotationDetailsComponent implements OnInit {
   zinaraArrears;
   quotationId;
   vehicleRegistrationNumber;
+  insuranceCompany;
+  insuranceType;
 
   data:any=[];
   constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient,private router: Router) { 
@@ -40,6 +42,8 @@ export class QuotationDetailsComponent implements OnInit {
 
       this.data = params;
 
+      this.insuranceCompany = params['insuranceCompany'];
+      this.policyRate = params['insuranceType'];
       this.policyRate = params['policyRate'];
       this.premiumDue= params['premiumDue'];
       this.insurancePremium= params['insurancePremium'];

@@ -80,6 +80,11 @@ import { InsuranceReportsComponent } from './insurance-reports/insurance-reports
 import { ZbcReportsComponent } from './zbc-reports/zbc-reports.component';
 import { ZinaraReportsComponent } from './zinara-reports/zinara-reports.component';
 import { MessageComponent } from './message/message.component';
+import { SBadminReportsComponent } from './sbadmin-reports/sbadmin-reports.component';
+import { SupervisorAgentsManagementComponent } from './supervisor-agents-management/supervisor-agents-management.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { CentralPrintingComponent } from './central-printing/central-printing.component';
+import { CreateCentralPrintingComponent } from './create-central-printing/create-central-printing.component';
 
 
 
@@ -165,6 +170,11 @@ import { MessageComponent } from './message/message.component';
   InsuranceReportsComponent,
   ZbcReportsComponent,
   ZinaraReportsComponent,
-  MessageComponent]
+  MessageComponent,
+  SBadminReportsComponent,
+  SupervisorAgentsManagementComponent,
+  ForgotPasswordComponent,
+  CentralPrintingComponent,
+  CreateCentralPrintingComponent]
 })
 export class MainModule { }
