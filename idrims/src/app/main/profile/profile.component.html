@@ -12,12 +12,12 @@
               <div class=" col-md-9 col-lg-9 "> 
                 <table class="table table-user-information">
                   <tbody>
+                      <tr>
+                          <td><u><strong>Personal Details</strong></u></td>
+                      </tr>
                     <tr>
-                      <td>First name:</td>
+                      <td>Full name:</td>
                       <td>{{firstName}}</td> 
-                    </tr>
-                    <tr>
-                      <td>Last name:</td>
                       <td>{{lastName}}</td>
                     </tr>
                     <tr>
@@ -26,73 +26,133 @@
                     </tr>
                  
                     <tr>
-                      <td>Phone Number</td>
+                      <td>Contact details</td>
                       <td>{{phoneNumber}}</td>
-                    </tr>
-                    <tr>
-                      <td>Email</td>
                       <td><a>{{email}}</a></td>
                     </tr>
-                   
+                    <br>
+                    <tr>
+                        <td><u><strong>Address</strong></u></td>
+                    </tr>
+                    <tr>
+                        <td>Home Address</td>
+                        <td>{{streetAddress}}</td>
+                      </tr>
                   </tbody>
-                </table>             
-                <a routerLink ="/customer/Dashboard" class="btn btn-primary">Go back</a>
+                </table>              
+                <button type="submit" class="btn btn-primary" (click)="AddAddress()">Add / Update Address</button>
+                <button type="submit" class="btn btn-warning" (click)="ResetPassword()">Change Pin</button>
+                <!--<button type="submit" class="btn btn-warning" (click)="changePin()">Edit Address</button>-->
               </div>
             </div>
           </div>
                <div class="panel-footer">
     
-                  </div>
+               </div>
           </div>
+        </div>
+        <div class="row">
+          <app-message></app-message>
+        <div *ngIf = "isAddAddress"class="card">
+            <div class="col-md-3 col-lg-3 "></div>
+            <div class="col-md-3 col-lg-9 ">
+            <div class="card-body">
+              <h4 class="card-title">Change Address or Collection point</h4>
+
+              <br>
+              <br>
+              <div class="form-group">
+                  <div class="form-group col-md-12">
+                      <label for="email">Collection or Delivery </label>
+                      <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>
+                          <option selected  style="display: none;" >Select Option</option>
+                          <option value="D">Delivery</option>
+                          <option value="C">Collection</option>
+                        </select>
+                  </div>        
+             
+                  <div *ngIf="isCollection || isDelivery" class="form-group col-md-4">
+                      <label for="email">Region</label>
+                      <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                          <option selected  style="display: none;" >Select Region</option>
+                          <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                        </select>
+                  </div>
+                  <div *ngIf="isCollection || isDelivery" class="form-group col-md-4">
+                      <label for="email">Sub-Region</label>
+                      <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" (change)="getColPoints()" required>
+                          <option selected  style="display: none;" >Select Sub-Region</option>
+                          <option  *ngFor="let subReg of allSubRegions" [value]="subReg.id">{{subReg.name}}</option>
+                        </select>
+                  </div>
+                  <div *ngIf="isCollection" class="form-group col-md-4">
+                      <label for="email">Collection Point</label>
+                      <select [(ngModel)]="selectedCol" class="form-control" name="colPoint"required>
+                          <option selected  style="display: none;" >Select Collection-Point</option>
+                          <option  *ngFor="let col of allColPoints" [value]="col.id">{{col.name}}</option>
+                        </select>
+                  </div>
+        
+        
+        
+        
+                  <div *ngIf="isDelivery" class="form-group col-md-4">
+                      <label for="email">Suburb</label>
+                      <select [(ngModel)]="selectedSurb" class="form-control" name="suburb" required>
+                          <option selected  style="display: none;" >Select Suburb</option>
+                          <option  *ngFor="let sub of allSuburbs" [value]="sub.id">{{sub.name}}</option>
+                        </select>
+                  </div>
+        
+                  <div *ngIf="isDelivery" class="form-group col-md-4 col-lg-12">
+                      <div class="form-group">
+                          <label for="comment">Enter Address:</label>
+                          <textarea class="form-control" rows="5" id="comment" [(ngModel)]="delAddress"></textarea>
+                        </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary" (click)="changeLocation()">Add Address</button>
+                
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3 "></div>
         </div>
 
 
-        <div class="row">
-          <div class="col-md-5">
-          </div> 
-              <div class="panel panel-info">
-                <div class="panel-heading">
-                </div>
-                <div class="panel-body">
-                  <div class="row">
-                    <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../../assets/location.png" class="img-circle img-responsive"> </div>
-          
-                    <div class=" col-md-9 col-lg-9 "> 
-                      <table class="table table-user-information">
-                        <tbody>
-                          <tr>
-                            <td>First name:</td>
-                            <td>{{firstName}}</td> 
-                          </tr>
-                          <tr>
-                            <td>Last name:</td>
-                            <td>{{lastName}}</td>
-                          </tr>
-                          <tr>
-                            <td>National ID</td>
-                            <td>{{nationalId}}</td>
-                          </tr>
-                       
-                          <tr>
-                            <td>Phone Number</td>
-                            <td>{{phoneNumber}}</td>
-                          </tr>
-                          <tr>
-                            <td>Email</td>
-                            <td><a>{{email}}</a></td>
-                          </tr>
-                         
-                        </tbody>
-                      </table>             
-                      <a routerLink ="/customer/Dashboard" class="btn btn-primary">Go back</a>
+        <div *ngIf = "isResetPassword"class="card">
+            <div class="col-md-3 col-lg-3 "></div>
+            <div class="col-md-3 col-lg-9 ">
+            <div class="card-body">
+              <h4 class="card-title">Change Pin</h4>
+
+              <br>
+              <br>
+              <div class="form-group">    
+                  <div class="input-group col-md-offset-1 col-md-10">
+                      <span class="input-group-addon"><b>old pin&emsp;&emsp;&emsp;&emsp;</b></span>
+                      <input type="text" [(ngModel)]= "oldPin" name="oldPin" id="oldPin" class="form-control">                
+                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     </div>
-                  </div>
+                    <br>
+                    <div class="input-group col-md-offset-1 col-md-10">
+                      <span class="input-group-addon"><b>new pin&emsp;&emsp;&emsp;&emsp;</b></span>
+                      <input type="text" [(ngModel)]= "newPin" name="newPin" id="newPin" class="form-control">                
+                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    </div>
+                    <br>
+                    <div class="input-group col-md-offset-1 col-md-10">
+                      <span class="input-group-addon"><b>confirm pin</b></span>
+                      <input type="text" [(ngModel)]= "confirmPin" name="confirmPin" id="confirmPin" class="form-control">                
+                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                    </div>
                 </div>
-                     <div class="panel-footer">
-          
-                        </div>
-                </div>
-              </div>
+                <button type="submit" class="btn btn-primary" (click)="changePin()">Change pin</button>
+                
+            </div>
+          </div>
+          <div class="col-md-3 col-lg-3 "></div>
+        </div>
+          </div>
     </div>
 
     <swal

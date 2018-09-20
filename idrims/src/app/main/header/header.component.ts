@@ -16,9 +16,14 @@ export class HeaderComponent implements OnInit {
   unverifiedcount = [];
   pendingVerificationNotification = [];
   openClaims = [];
+  disks = [];
+  isAgent = false;
+  isAdmin = false;
 
   constructor(private session: SessionsService, private router: Router,private httpClient: HttpClient, private websocket: WebsocketService) {
 
+    if(localStorage.getItem('userGroup')==='ADMIN01' || localStorage.getItem('userGroup')==='AGENT01'){
+    this.verifyUser();
     let stompClient = this.websocket.connect();
     stompClient.connect({}, frame => {
 
@@ -32,8 +37,11 @@ export class HeaderComponent implements OnInit {
           else if(arr[0].type === "CLAIMS"){
             this.openClaims.push(notifications.body);
           }
+          else if(arr[0].type === "COVER"){
+            this.disks.push(notifications.body);
+          }
         })
-    });
+    });}
 
     this.fullName = localStorage.getItem('firstname');
     this.userType = localStorage.getItem('userGroup');
@@ -45,6 +53,16 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  verifyUser(){
+    if(localStorage.getItem('userGroup') ==='ADMIN01')
+      this.isAdmin = true;
+    else if(localStorage.getItem('userGroup') ==='AGENT01')
+      this.isAgent = true;
+  }
+  printDisks(){
+    this.disks = [];
+    this.router.navigate(['agent/mailbox']);
+  }
   viewAllRequest(){
     this.pendingVerificationNotification = [];
     this.router.navigate(['vehicles']);

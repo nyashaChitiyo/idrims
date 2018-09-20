@@ -30,7 +30,7 @@ export class AgentTransactionsComponent implements OnInit {
     var userId: number = +localStorage.getItem('userId');
     //console.log(userId+'user id is this')
     this.demo.post('http://108.61.174.41:7070/api/orders/view/processedBy',{
-      "phoneNumber": userId
+      "id": userId
     })
     .subscribe(
       (data: Response)=> {
