@@ -14,6 +14,10 @@ export class MypendingVerificationComponent implements OnInit {
   public vehicles= [];
   public temp_var: Object = false;
 
+  
+  isPending = false;
+  isVerified = false;
+
   constructor( private demo: DemoService,private router: Router) { 
     this.getVehicle();
   }
