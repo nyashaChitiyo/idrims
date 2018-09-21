@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import {DemoService} from '../../demo.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { DataService } from '../data.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 
 @Component({
@@ -26,9 +27,11 @@ export class CreateCentralPrintingComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private demo: DemoService) {}
+  constructor(private demo: DemoService, private data: DataService) {}
 
   postPrintLocation(){
+    if(this.validate()){
+      try{
    this.demo.post('http://108.61.174.41:7070/api/centralPrinting/create',
     {
       'address': this.Address,
@@ -53,8 +56,11 @@ export class CreateCentralPrintingComponent implements OnInit {
     }, error => {
       console.log(Response);
       this.failedSwal.show();
-    });  
-   }
+    });  }
+    catch(error){
+      this.data.error(''+error)
+    }
+   }}
    reset() {
     this.CentralPrintingName = '';
     this.Address = '';
@@ -63,8 +69,41 @@ export class CreateCentralPrintingComponent implements OnInit {
     this.phoneNumber
     this.email = '';
   }
-
-
+  validate(){
+    if(this.CentralPrintingName){
+      if(this.Address){
+        if(this.code)
+        {
+          if(this.cpcontactDetails)
+          {
+            if(this.phoneNumber){
+                if(this.email){
+                     return true;
+                }
+                else{
+                  this.data.error('please enter email');
+                }
+            }
+            else{
+              this.data.error('please enter phone number');
+            }
+          }
+          else{
+            this.data.error('please enter Contact Details');
+          }
+        }
+        else{
+          this.data.error('please enter Code');
+        }
+      } 
+      else{
+        this.data.error('please enter Address');
+      }
+    }
+    else{
+      this.data.error('please enter Central Printing Name');
+    }
+}
   ngOnInit() {
 
   }

@@ -212,13 +212,18 @@ export class GetIdriveComponent implements OnInit {
     console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
    if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
-    
+    let fullDeliveryAddress = [];
+    if(this.changeState == 'C'){
+      fullDeliveryAddress = [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress];
+    }
+    else if(this.changeState == 'D')
+    fullDeliveryAddress = null;
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
       "colPointId": +this.selectedCol,
       "collectionType": this.changeState,
-      "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
+      "fullDeliveryAddress": fullDeliveryAddress,
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,

@@ -25,7 +25,8 @@ export class AddInsuranceCompanyComponent implements OnInit {
   ngOnInit() {
   }
   addInsuranceCompany(){
-    this.httpClient.post('http://108.61.174.41:7070/api/companies/create',
+
+   this.httpClient.post('http://108.61.174.41:7070/api/companies/create',
     {
       'address': this.address,
       'code': this.code,

@@ -150,6 +150,7 @@ import {of} from 'rxjs';
 @Injectable()
 export class SessionsService {
   isLoggedIn: boolean;
+  message: string;
   isTest: boolean = false;
   currentUrl: string;
   redirectUrl: string;
@@ -167,15 +168,17 @@ export class SessionsService {
     this.getIsloggedIn();
   }
   
-  login(username: string, password: string) {
+   login(username: string, password: string) :string{
     const userCredentials = {
       'phoneNumberOrEmail' : username,
       'password' : password
     };
     
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
-    this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
-      console.log('accessToken: ' + data['accessToken']);
+    try{
+    const data = this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
+      console.log('accessToken: ' + data['message']);
+      
       if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
@@ -198,33 +201,42 @@ export class SessionsService {
         this.loading.onRequestStarted();
     if(userGroup == 'CUST01'){
       this.router.navigate(['/customer/Dashboard'], { replaceUrl: true });
+      //return this.message;
     }
     else if(userGroup == 'AGENT01'){
       this.router.navigate(['/agent/dashboard'], { replaceUrl: true });
+      
     }
     else if(userGroup == 'ADMIN03'){
       this.router.navigate(['/sbadmin/dashboard'], { replaceUrl: true });
+     
     }
     else if(userGroup == 'ADMIN02'){
       this.router.navigate(['/admin/dashboard'], { replaceUrl: true });
+      
     }
     else if(userGroup == 'ADMIN04'){
       this.router.navigate(['/supervisor/dashboard'], { replaceUrl: true });
+      
     }
     else
         this.router.navigate(['/backOffice/dashboard'], { replaceUrl: true });
+       
         // this.getUserInformation(username);
       }
-      else
-        localStorage.setItem('message', data['message']);
-    },
-        error => {
-
-          this.loading.onRequestFinished();
-          //return data['message'];
-        });
+      else{
+       return this.dispMessage();
+      }
+    });}
+    catch(error){
+      return "INTERNAL SERVER ERROR";
+    }
+    return this.dispMessage(); 
   }
 
+  dispMessage():string{
+    return "Invalid Username and password";
+  }
 onMessage(message){
 console.log(message)
 }

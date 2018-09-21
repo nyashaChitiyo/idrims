@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core'
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-add-region',
@@ -22,7 +23,7 @@ export class AddRegionComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, private data:DataService) { 
     this.getPrintLocations()
   }
 
@@ -44,6 +45,8 @@ export class AddRegionComponent implements OnInit {
        }
 
   postRegion(){
+    if(this.validate()){
+      try{
     this.httpClient.post('http://108.61.174.41:7070/api/location/create/Region',
   {
     'code':this.code,
@@ -64,6 +67,11 @@ export class AddRegionComponent implements OnInit {
     console.log(Response);
     this.failedSwal.show();
   }); 
+}
+catch(error){
+  this.data.error(''+error)
+}
+    }
 
   }
   reset(){
@@ -71,5 +79,25 @@ export class AddRegionComponent implements OnInit {
     this.code = '';
     this.selectedValue ='';
   }
+
+  validate(){
+    if(this.name){
+      if(this.code){
+        if(this.selectedValue)
+        {
+                     return true;
+          }
+          else{
+            this.data.error('please select printing Location');
+          }
+        }
+        else{
+          this.data.error('please enter Code');
+        }
+      }
+    else{
+      this.data.error('please enter Region Name');
+    }
+}
 
 }

@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import {DemoService} from '../../demo.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
-
+import { DataService } from '../data.service';
 @Component({
   selector: 'app-add-collection-point',
   templateUrl: './add-collection-point.component.html',
@@ -30,7 +30,7 @@ export class AddCollectionPointComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private demo: DemoService) {
+  constructor(private demo: DemoService, private data:DataService) {
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     .subscribe(data => {
       let arr = [];
@@ -42,6 +42,8 @@ export class AddCollectionPointComponent implements OnInit {
    }
 
    postColPoint(){
+     if(this.validate()){
+       try{
    this.demo.post('http://108.61.174.41:7070/api/location/create/CollectionPoint',
     {
       'address': this.Address,
@@ -57,7 +59,6 @@ export class AddCollectionPointComponent implements OnInit {
     .subscribe(data => {
       if (data['success'] === true) {        
         this.successSwal.show();
-        setTimeout(function(){ this.successSwal.showAlert(); },0)
         console.log(data['message'], + data['message']);
         this.reset();
       } else {
@@ -68,7 +69,10 @@ export class AddCollectionPointComponent implements OnInit {
     }, error => {
       console.log(Response);
       this.failedSwal.show();
-    });  
+    });  }
+    catch(error){
+      this.data.error(''+error)
+    }}
    }
    reset() {
     this.colName = '';
@@ -80,7 +84,52 @@ export class AddCollectionPointComponent implements OnInit {
     this.region = '';
     this.subRegion = '';
   }
-
+  validate(){
+    if(this.colName){
+      if(this.Address){
+        if(this.code)
+        {
+          if(this.contactDetails)
+          {
+            if(this.phoneNumber){
+              if(this.email){
+                if(this.selectedValue){
+                  if(this.selectedReg)
+                  {
+                     return true;
+                  }
+                  else{
+                    this.data.error('please enter Sub Region');
+                  }
+                }
+                else{
+                  this.data.error('please enter region');
+                }
+              }
+              else{
+                this.data.error('please enter Email');
+              }
+            }
+            else {
+              this.data.error('please enter Phone Number');
+            }
+          }
+          else{
+            this.data.error('please enter Contant Details');
+          }
+          }
+          else{
+            this.data.error('please enter Code');
+          }
+        }
+        else{
+          this.data.error('please enter Address');
+        }
+      }
+    else{
+      this.data.error('please enter Collection Point Name');
+    }
+}
   onEditClick(){
     this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
     {

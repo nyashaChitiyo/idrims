@@ -45,12 +45,15 @@ export class LoginComponent implements OnInit, AfterViewInit {
 
   login() {
     if (this.validate()) {
-      this.session.login(this.username, this.password);
+      if(this.session.login(this.username, this.password) =='Invalid Username and password'){
+        console.log('Invalid Username and password')
+        this.data.error('Invalid Username and password');
+      }
+      else
+      console.log('success')
     }
     else {
-      //this.data.error(localStorage.getItem('message'));
-      console.log('gucii gang gucci gang gucci fake gang murisei')
-      console.log(localStorage.getItem('message'))
+     // this.data.error(this.session.dispMessage());
     }
   }
 

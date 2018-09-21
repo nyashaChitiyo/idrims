@@ -29,11 +29,10 @@ export class AgentRegisterVehicleComponent implements OnInit {
   postVehicle(){
     console.log(this.regVRN+"yet yet yet "+this.confirmRegVRN)
   if(this.regVRN == this.confirmRegVRN){
-    this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/create',
-  {
-    'userId':this.nationalID,
-    'vehicleRegistrationNumber': this.regVRN
-  })
+    this.httpClient.post('http://108.61.174.41:7070/api/vehicles/create',
+    {
+      "vehicleRegistrationNumber": this.regVRN
+    })
   .subscribe(data => {
     if (data) {        
       this.successSwal.show();

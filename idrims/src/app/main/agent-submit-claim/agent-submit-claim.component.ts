@@ -32,7 +32,7 @@ export class AgentSubmitClaimComponent implements OnInit {
         "lastName": this.lastName,
         "natureOfClaim": this.selectedValue,
         "phoneNumber": this.phoneNumber,
-        "userId": 0,
+        "userId": +localStorage.getItem('userId'),
         "vehicleRegistrationNumber": this.VRN
        
       })

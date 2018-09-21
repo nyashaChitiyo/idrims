@@ -30,15 +30,26 @@
           <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
         </div>
         <div class="form-group col-md-6">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="email">Station</label>
-            <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
-                <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
+            <label for="email">Station Type</label>
+              <select [(ngModel)]="selectedStation" class="form-control" (change)="stationType()" name="selectedStation" required>
+                <option *ngFor="let colPoint of allPrintingLocation" [value]="colPoint.id">{{colPoint.name}}</option>
               </select>
         </div> 
+
+        <div *ngIf="isCollection" class="form-group col-md-6">
+          <label for="email">Collection Point</label>
+          <select [(ngModel)]="selectedValue" class="form-control" name="colPoint" required>
+              <option *ngFor="let colPoint of allColPointNames" [value]="colPoint.id">{{colPoint.name}}</option>
+            </select>
+        </div> 
+
+        <div *ngIf="isPrinting" class="form-group col-md-6">
+          <label for="email">Printing Station</label>
+          <select [(ngModel)]="selectedPrinting" class="form-control" name="selectedPrinting" required>
+              <option *ngFor="let locations of allPrintingStations" [value]="locations.id">{{locations.name}}</option>
+            </select>
+        </div> 
+
       </div>
       </div>
       </div>
