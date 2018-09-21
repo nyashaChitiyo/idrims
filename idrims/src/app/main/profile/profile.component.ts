@@ -160,8 +160,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changeLocation(){
-    
-    if(!(this.dataAddress.streetAdrress =="" || this.dataAddress.streetAddress.length >= 1)) {
+    if(!(this.dataAddress.streetAdrress =="" || this.dataAddress.streetAdrress.length >= 1)) {
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
       if(this.isCollection){
       this.demo.post('http://108.61.174.41:7070/api/user/create/deliveryAddress',

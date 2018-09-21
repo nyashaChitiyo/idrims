@@ -1,5 +1,6 @@
 import{Location} from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { DataService } from '../data.service';
 import {ActivatedRoute} from '@angular/router';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
@@ -22,7 +23,7 @@ export class AddSubRegionComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private demo: DemoService,private router: Location) {
+  constructor(private demo: DemoService,private router: Location, private data:DataService) {
     this.getRegionName();
    }
 
@@ -43,11 +44,14 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
    }
 
   postSubRegion(){
+    if(this.validate()){
+      try{
   this.demo.post('http://108.61.174.41:7070/api/location/create/SubRegion',
   {
     'code': this.regionShortCode,
+    "id": 0,
     'name': this.subRegionName,
-    'region': +this.selectedValue
+    'regionId': +this.selectedValue
   })
   .subscribe(data => {
     if (data['success'] === true) {        
@@ -63,7 +67,10 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     }
   }, error => {
     console.log(Response);
-  })
+  })}
+  catch(error){
+    this.data.error(''+error)
+  }}
 }
   reset() {
     this.regionShortCode = '';
@@ -71,5 +78,24 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     this.regionName = '';
     this.regionIds = '';
   }
+  validate(){
+    if(this.regionShortCode){
+      if(this.subRegionName){
+        if(this.selectedValue)
+        {
+                     return true;
+          }
+          else{
+            this.data.error('please select Region');
+          }
+        }
+        else{
+          this.data.error('please enter Sub-Region Name');
+        }
+      }
+    else{
+      this.data.error('please enter Region Short Code');
+    }
+}
 } 
  

@@ -37,26 +37,12 @@ export class MyTransactionsComponent implements OnInit {
     .subscribe(
       (data:any[])=> {
         let arr = [];
+        console.log(userId)
         arr.push(data)
         this.transactions = arr[0];
         console.log(data);
       }
     ) 
   }
-
-//   myFunction(){
-//     // Get the checkbox
-//     var checkBox = document.getElementById("myCheck");
-//     // Get the output text
-//     var text = document.getElementById("text");
-  
-//     // If the checkbox is checked, display the output text
-//     if (checkBox.checked == true){
-//       text.style.display = "block";
-//     } else {
-//       text.style.display = "none";
-//     }
-//   }
-// }
 
 } 

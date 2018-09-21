@@ -24,17 +24,7 @@ export class SubRegionsComponent implements OnInit {
         console.log(this.regions);
 
       }
-    ) ;
-    this.demo.get('http://108.61.174.41:7070/api/location/view/SbRegionsInSubRegions')
-    .subscribe(
-      (data)=> {
-        let arr = [];
-        arr.push(data)
-        this.regioNames = arr[0];
-        console.log(this.regioNames);
-
-      }
-    ) 
+    );
   }
 
 }
