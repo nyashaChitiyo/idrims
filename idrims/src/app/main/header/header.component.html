@@ -12,8 +12,9 @@
    
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
+          
           <!-- Notifications: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
+          <li *ngIf="isAdmin" class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-car" aria-hidden="true"></i>
               <span class="label label-warning">{{pendingVerificationNotification?.length}}</span>
@@ -24,9 +25,10 @@
               <li class="footer"><a (click)="viewAllRequest()">View all</a></li>
             </ul>
           </li>
-
-          
-          <li class="dropdown notifications-menu">
+        
+        
+        
+          <li *ngIf="isAdmin" class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-money" aria-hidden="true"></i>
               <span class="label label-warning">{{openClaims?.length}}</span>
@@ -38,7 +40,19 @@
             </ul>
           </li>
 
+        <div *ngIf="isAgent">
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-print" aria-hidden="true"></i>
+              <span class="label label-warning">{{disks?.length}}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have {{disks?.length}} new open claim</li>
 
+              <li class="footer"><a (click)="printDisks()">View all</a></li>
+            </ul>
+          </li>
+        </div>
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">

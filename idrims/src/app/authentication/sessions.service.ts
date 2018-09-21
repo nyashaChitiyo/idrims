@@ -219,41 +219,12 @@ export class SessionsService {
         localStorage.setItem('message', data['message']);
     },
         error => {
+
           this.loading.onRequestFinished();
-          console.log(error.message);
+          //return data['message'];
         });
   }
-  /*async conSockets(){
-    const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
-   /* let httpOptions = {
-      headers: new HttpHeaders({
-        'authorization': 'Bearer '+localStorage.getItem('accessToken')
-      })
-    };*/
-    /*var headers = {
-      'authorization': 'Bearer '+localStorage.getItem('accessToken')
-};*//*
-    console.log('in web socket connecting lolsdhfvbshdfvbhsdf ')
-    let ws = new SockJS(this.serverUrl);
-    let stompClient = Stomp.over(ws);
-    let that = this;
-    stompClient.connect(headers, function(frame) {
-      console.log(frame)
-     /* this.stompClient.subscribe('/user/queue/notify',(message) => {
-        if(message.body) {
-     //     $(".chat").append("<div class='message'>"+message.body+"</div>")
 
-          console.log(message.body);
-        }
-      })*/
-      /*stompClient.subscribe('/user/queue/notify', (message) =>{
-        console.log('connected to server detailss')
-        console.log(message);
-        this.notifications = JSON.parse(message.body);
-        console.log( JSON.parse(message.body))
-      });
-    });
-  }*/
 onMessage(message){
 console.log(message)
 }

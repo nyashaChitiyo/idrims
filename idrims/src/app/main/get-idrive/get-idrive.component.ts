@@ -25,7 +25,7 @@ export class GetIdriveComponent implements OnInit {
   allColPoints = [];
   allSuburbs = [];
   changeState;
-  selectedCol: string="";
+  selectedCol: number =0;
   selectedSurb:string="";
   isCollection: boolean = false;
   isDelivery: boolean = false;
@@ -105,16 +105,9 @@ export class GetIdriveComponent implements OnInit {
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +this.selectedReg,  
+      "colPointId": +this.selectedCol,  
       "collectionDelAdd": this.delAddress,
-      
-      // "fullDeliveryAddress": [
-      //   this.selectedValue,
-      //   this.selectedReg,
-      //   this.selectedSurb,
-      //   this.delAddress
-
-      // ],
+      "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
       "collectionType": this.changeState,
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
@@ -122,7 +115,7 @@ export class GetIdriveComponent implements OnInit {
       "processedBy": "",
       "requestChannel": "Web",
       "requestedFor": this.customerId,
-      "userId": +localStorage.getItem('phoneNumber'),
+      "userId": +localStorage.getItem('userId'),
       "vehicleRegistrationNumber": this.vehicleRegistrationNumber1,
       "vehicleValue": this.vehicleValue,
       "zbcPeriod": +this.zbcPeriodSelect,
@@ -223,7 +216,7 @@ export class GetIdriveComponent implements OnInit {
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +this.selectedReg,
+      "colPointId": +this.selectedCol,
       "collectionType": this.changeState,
       "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
       "insuranceCompany": this.insuranceCompanySelect,
@@ -268,11 +261,11 @@ export class GetIdriveComponent implements OnInit {
         }
       }
   changeStatus(){
-    if(this.changeState ==="delivery"){
+    if(this.changeState ==="D"){
       this.isCollection = false;
       this.isDelivery = true;
     }
-    else if(this.changeState === "collection"){
+    else if(this.changeState === "C"){
       this.isDelivery = false;
       this.isCollection = true;
     }
