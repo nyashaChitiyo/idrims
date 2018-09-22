@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-add-vehicle',
@@ -20,7 +21,7 @@ export class AddVehicleComponent implements OnInit {
   @ViewChild('failedAgentReg') private failedAgentReg: SwalComponent;
 
 
-  constructor(private router: Router, private httpClient: HttpClient) { 
+  constructor(private router: Router, private httpClient: HttpClient, private data:DataService) { 
     var id:string =localStorage.getItem('userId');
     this.id = id;
   }
@@ -30,8 +31,9 @@ export class AddVehicleComponent implements OnInit {
   }
 
   postVehicle(){
+    if(this.validate()){
     if(localStorage.getItem('userGroup')==='CUST01'){
-    console.log(this.regVRN+"yet yet yet "+this.confirmRegVRN)
+
   if(this.regVRN == this.confirmRegVRN){
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/create',
   {
@@ -52,12 +54,13 @@ export class AddVehicleComponent implements OnInit {
     this.failedSwal.show();
   }); }
   else{
-    this.failedEq.show();
+    this.data.error('Your vehicle registration numbers do not match')
   }}
   else if(localStorage.getItem('userGroup')==='AGENT01'){
     this.agentRegistry();
   }
   }
+}
   agentRegistry(){
     if(this.regVRN == this.confirmRegVRN){
       this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',
@@ -84,4 +87,18 @@ export class AddVehicleComponent implements OnInit {
     this.regVRN = '';
     this.confirmRegVRN = '';
   }
+  validate(){
+    if(this.regVRN){
+      if(this.confirmRegVRN){
+
+                     return true;
+        }
+        else{
+          this.data.error('please enter Vehicle Reg Number');
+        }
+      }
+    else{
+      this.data.error('please confirm Registration number');
+    }
+}
 }

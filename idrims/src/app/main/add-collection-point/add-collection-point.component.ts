@@ -16,7 +16,7 @@ export class AddCollectionPointComponent implements OnInit {
   Address = ''; 
   code = '';
   contactDetails='';
-  phoneNumber
+  phoneNumber;
   latitude: number;
   longitude: '';
   email = '';

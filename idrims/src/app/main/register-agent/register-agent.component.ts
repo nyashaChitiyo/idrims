@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 @Component({
   selector: 'app-register-agent',
@@ -32,7 +33,7 @@ export class RegisterAgentComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private data:DataService) {
 
     this.httpClient.get('http://108.61.174.41:7070/api/location/view/allCollectionPoints')
     .subscribe(data => {
@@ -65,6 +66,8 @@ export class RegisterAgentComponent implements OnInit {
   }
  
   postProfile(){ 
+    if(this.validate()){
+      try{
     if(this.selectedStation == "COLLECTION")
     {
     this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
@@ -122,6 +125,10 @@ export class RegisterAgentComponent implements OnInit {
   });
   }
 }
+catch(error){
+  this.data.error(''+error)
+}
+}}
 stationType(){
   if(this.selectedStation =="COLLECTION")
   {
@@ -143,5 +150,39 @@ stationType(){
   }
   ngOnInit() {
   }
-
+  validate(){
+    if(this.firstname){
+      if(this.surname){
+        if(this.nationalID)
+        {
+          if(this.phoneNumber)
+          {
+            if(this.email){
+              if(this.selectedStation){
+        return true;
+              }
+              else{
+                this.data.error('please select station type');
+              }
+            }
+            else{
+              this.data.error('please enter email');
+            }
+          }
+          else{
+            this.data.error('please enter phone number');
+          }
+        }
+        else{
+          this.data.error('please enter national ID');
+        }
+      } 
+      else{
+        this.data.error('please enter surname');
+      }
+    }
+    else{
+      this.data.error('please enter firstname');
+    }
+}
 }

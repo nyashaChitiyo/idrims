@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService}from '../data.service';
 
 @Component({
   selector: 'app-verify-vehicle',
@@ -22,6 +23,7 @@ export class VerifyVehicleComponent implements OnInit {
   vMake = '';
   vModel = ''; 
   vType = '';
+  selectedTaxClass;
   vUsage = '';
   InsExp = '';
   licExp = ''; 
@@ -34,7 +36,7 @@ export class VerifyVehicleComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   @ViewChild('verifiedSwal') private verifiedSwal: SwalComponent;
 
-  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { 
+  constructor(private data: DataService, private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { 
     this.getLicTaxClasses();
     this.getInsTaxClass();
   }
@@ -79,13 +81,15 @@ getStatus(): boolean{
 return false;
 }
   saveVehicle(){ 
+    if(this.validate()){
+      try{
     const data = this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',{
       "vehicleRegistrationNumber":this.vehicleVRN
     })
     .subscribe(data => {
       if(data['verificationStatus']===false){
           const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
-            "insuranceTaxClass": +this.selectedValue,
+            "insuranceTaxClass": +this.selectedTaxClass,
             "insuranceExpiry" : this.InsExp,
             "vehicleMake": this.vMake,
             "vehicleModel": this.vModel,
@@ -112,8 +116,11 @@ return false;
           this.verifiedSwal.show();
            this.reset();
     }
-  });
-
+  });}
+  catch(error){
+    this.data.error(''+error)
+  }
+    }
     }
     reset() {
       this.vMake = '';
@@ -127,5 +134,56 @@ return false;
       this.insTaxClass = '';
       this.vOwnership = '';
     }
+    validate(){
+      if(this.vMake){
+        if(this.vModel){
+          if(this.vType)
+          {
+            if(this.InsExp)
+            {
+              if(this.vUsage){
+                  if(this.licExp){
+
+                      if(this.selectedValue){
+                        if(this.selectedTaxClass){
+                          if(this.vOwnership){
+                       return true;
+                          }
+                          else{
+                            this.data.error('please enter Vehicle Ownership');
+                          }
+                        }
+                        else{
+                          this.data.error('please enter Insurance Tax Class');
+                        }
+                      }
+                      else{
+                        this.data.error('please enter Licence Tax Class');
+                      }
+                  }
+                  else{
+                    this.data.error('please enter Licence expiring');
+                  }
+              }
+              else{
+                this.data.error('please enter Vehicle Usage');
+              }
+            }
+            else{
+              this.data.error('please enter Insurance Exp');
+            }
+          }
+          else{
+            this.data.error('please enter Vehicle Type');
+          }
+        } 
+        else{
+          this.data.error('please enter Vehicle Model');
+        }
+      }
+      else{
+        this.data.error('please enter Vehicle Make');
+      }
+  }
 }
 

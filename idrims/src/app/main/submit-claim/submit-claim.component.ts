@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core'
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-submit-claim',
@@ -14,7 +15,7 @@ export class SubmitClaimComponent implements OnInit {
   vehicleNames= [];
   vehicle:number;
   claimNature;
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private data:DataService) { }
 
   ngOnInit() {
     var id: number = +localStorage.getItem('userId');
@@ -39,7 +40,7 @@ export class SubmitClaimComponent implements OnInit {
     
   }
   postClaim(){
-
+    if(this.validate()){
     this.httpClient.post('http://108.61.174.41:7070/api/claims/create',
     {
       "claimDate": ""+new Date(),
@@ -62,6 +63,22 @@ export class SubmitClaimComponent implements OnInit {
         this.claimNature="";
         this.failedSwal.show();
       }
-    })
+    })}
   }
+
+  validate(){
+          if(this.vehicle)
+          {
+            if(this.claimNature){
+                     return true;
+                        }
+                      
+                      else{
+                        this.data.error('please nature of claim');
+                      }}
+                        else{
+                          this.data.error('please select Vehicle');
+                        }
+
+}
 }
