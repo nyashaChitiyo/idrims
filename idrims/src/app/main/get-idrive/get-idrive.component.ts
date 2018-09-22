@@ -6,6 +6,7 @@ import { ServicesService } from '../../services.service';
 import {SessionsService} from '../../authentication/sessions.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import{Router,NavigationExtras,ActivatedRoute} from '@angular/router';
+import{DataService} from '../data.service';
 
 @Component({
   selector: 'app-get-idrive',
@@ -18,20 +19,20 @@ export class GetIdriveComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   allRegionNames = [];
-  delAddress:string = "";
-  selectedValue: string="";
+  delAddress:string;
+  selectedValue;
   allSubRegions = [];
-  selectedReg: string="";
+  selectedReg;
   allColPoints = [];
   allSuburbs = [];
   changeState;
   selectedCol: number =0;
-  selectedSurb:string="";
+  selectedSurb;
   isCollection: boolean = false;
   isDelivery: boolean = false;
   isAgent;
   isCustomer;
-  vehicle: string="";
+  vehicle;
   isComprehensive:boolean = false;
   vehicleNames= [];
   airtimeNumber: string = '';
@@ -46,7 +47,7 @@ export class GetIdriveComponent implements OnInit {
   vehicleRegistrationNumber1;
   customerId
 
-  constructor(private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+  constructor(private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     this.activatedRoute.params.subscribe(params =>{
       this.vehicleRegistrationNumber1 = params['vehicleRegistrationNumber'];
     })
@@ -198,22 +199,14 @@ export class GetIdriveComponent implements OnInit {
       })
   }
  
-  // postIdrive(){
-  //   let d = this.id[0];
-  //   let data : NavigationExtras = {
-  //     queryParams: d
-  //   } 
-  //   console.log(data)
-
-  //   this.router.navigate(['admin/userManagement/viewAgents/'+this.users[0].phoneNumber],data);
-  // }
   
   getIdrive() {
+    if(this.validateCustomer() && (this.validateIsCollection() || this.validateIsDelivery())){
     console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
    if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
     let fullDeliveryAddress = [];
-    if(this.changeState == 'C'){
+    if(this.changeState == 'C'){ 
       fullDeliveryAddress = [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress];
     }
     else if(this.changeState == 'D')
@@ -253,6 +246,7 @@ export class GetIdriveComponent implements OnInit {
         this.getCustomerIdrive();
       }
       }
+    }
       setInsType(){
         if(this.insuranceTypeSelect =="COMP"){
           this.isComprehensive = true;
@@ -279,4 +273,86 @@ export class GetIdriveComponent implements OnInit {
       this.isCollection = false;
     }
   }
+
+  validateCustomer(){
+    if(this.vehicle){
+      if(this.insuranceCompanySelect){
+        if(this.insuranceTypeSelect)
+        {
+          if(this.insurancePeriodSelect)
+          {
+                if(this.changeState){
+                     return true;
+                }
+                else{
+                  this.data.error('please select Collection or Delivery ');
+                }
+          }
+          else{
+            this.data.error('please select Insurance Period');
+          }
+          }
+          else{
+            this.data.error('please select Insurance Type');
+          }
+        }
+        else{
+          this.data.error('please select Insurance Company');
+        }
+      }
+    else{
+      this.data.error('please Select Vehicle');
+    }
+}
+validateIsCollection(){
+  if(this.selectedValue){
+    if(this.selectedReg){
+      if(this.selectedCol)
+      {
+        if(this.airtimeNumber)
+        {
+                   return true;
+        }
+        else{
+          this.data.error('please enter recievers airtime number');
+        }
+        }
+        else{
+          this.data.error('please select Collection Point');
+        }
+      }
+      else{
+        this.data.error('please select Sub Region');
+      }
+    }
+  else{
+    this.data.error('please Select Region');
+  }
+}
+
+validateIsDelivery(){
+  if(this.selectedValue){
+    if(this.selectedReg){
+      if(this.selectedSurb)
+      {
+        if(this.delAddress)
+        {
+                   return true;
+        }
+        else{
+          this.data.error('please enter delivery address');
+        }
+        }
+        else{
+          this.data.error('please select Surbub');
+        }
+      }
+      else{
+        this.data.error('please select Sub Region');
+      }
+    }
+  else{
+    this.data.error('please Select Region');
+  }
+}
 }

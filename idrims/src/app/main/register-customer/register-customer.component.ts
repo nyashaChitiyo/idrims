@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import{DataService} from '../data.service';
  
 @Component({
   selector: 'app-register-customer',
@@ -11,15 +12,10 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class RegisterCustomerComponent implements OnInit {
 
-  selectedValue: string;
-  allColPointNames= [];
-  colPoint = '';
-  colPointIds = '';
   email: string;
   address: string;
   firstname: string;
   nationalID: string;
-  password: string;
   phoneNumber: string;
   surname: string;
   userGroup: string; 
@@ -27,9 +23,11 @@ export class RegisterCustomerComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private data:DataService) {}
  
   postProfile(){ 
+  if(this.validate()){
+    try{
 this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
   {
     'email' : this.email,
@@ -50,7 +48,11 @@ this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
   }, error => {
     console.log(Response);
     this.failedSwal.show();
-  }); 
+  });}
+  catch(error){
+
+  }
+}
   }
   reset() {
     this.firstname = '';
@@ -58,8 +60,39 @@ this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
     this.phoneNumber = '';
     this.email = '';
     this.surname = '';
-    this.password = '';
   }
+  validate(){
+    if(this.firstname){
+      if(this.surname){
+        if(this.nationalID)
+        {
+          if(this.phoneNumber)
+          {
+            if(this.email){
+  
+        return true;
+        
+            }
+            else{
+              this.data.error('please enter email');
+            }
+          }
+          else{
+            this.data.error('please enter phone number');
+          }
+        }
+        else{
+          this.data.error('please enter national ID');
+        }
+      } 
+      else{
+        this.data.error('please enter surname');
+      }
+    }
+    else{
+      this.data.error('please enter firstname');
+    }
+}
   ngOnInit() {
   }
 

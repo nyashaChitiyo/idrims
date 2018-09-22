@@ -160,7 +160,8 @@ export class ProfileComponent implements OnInit {
   }
 
   changeLocation(){
-    if(!(this.dataAddress.streetAdrress =="" || this.dataAddress.streetAdrress.length >= 1)) {
+    if(this.validateAddress() && (this.validateCollection() || this.validateDelivery())){
+    if(!(this.dataAddress)) {
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
       if(this.isCollection){
       this.demo.post('http://108.61.174.41:7070/api/user/create/deliveryAddress',
@@ -191,12 +192,12 @@ export class ProfileComponent implements OnInit {
       console.log(this.dataAddress.id)
       }
     }
-
+  }
   changeDelivery(){
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
     this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
     {
-      "collectionPointId": this.dataAddress.collectionPointId,
+      "collectionPointId":  +this.selectedCol,
       "collectionPointName": this.dataAddress.collectionPointName,
       "id": this.dataAddress.id,
       "regionId": this.selectedValue,
@@ -216,7 +217,7 @@ export class ProfileComponent implements OnInit {
   }
 
   changePin(){
-    if(this.validate()){
+    if(this.validatePin()){
     if(this.newPin === this.confirmPin){
     this.demo.post('http://108.61.174.41:7070/api/user/profile/changePassword',
     {
@@ -251,7 +252,7 @@ export class ProfileComponent implements OnInit {
       this.isCollection = false;
     }
   }
-  validate(){
+  validatePin(){
     if(this.oldPin){
       if(this.newPin){
         if(this.confirmPin){
@@ -267,6 +268,47 @@ export class ProfileComponent implements OnInit {
     }
     else{
       this.data.error('please enter old pin');
+    }
+  }
+
+  validateAddress(){
+    if(this.changeState){
+      if(this.selectedValue){
+        if(this.selectedReg){
+          return true;
+        }
+        else{
+          this.data.error('please select sub region')
+        }
+      } 
+      else{
+        this.data.error('please select region');
+      }
+    }
+    else{
+      this.data.error('please select delivery or collection ');
+    } 
+  }
+  validateCollection(){
+    if(this.selectedCol){
+      return true;
+    }
+    else{
+      this.data.error('please select collection Point')
+    }
+  }
+
+  validateDelivery(){
+    if(this.selectedSurb){
+      if(this.delAddress){
+        return true;
+      }
+      else{
+        this.data.error('please enter Delivery Address')
+      }
+    } 
+    else{
+      this.data.error('please select surbub');
     }
   }
 }

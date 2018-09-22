@@ -13,13 +13,16 @@ export class MyTransactionsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   transactions= [];
+  quotations = [];
   userGroup:string;
   checked:any;
-
+  isTransaction = false;
+  isQuotation = false;
   public temp_var: Object = false;
 
   constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
- this.gettransactions()
+ this.gettransactions();
+ this.getQuotations();
   }
   ngOnInit() {  
     this.dtOptions = {
@@ -27,7 +30,18 @@ export class MyTransactionsComponent implements OnInit {
     pageLength: 5
   }; 
   }
-  
+  buyInsurance(quote){
+    console.log(quote.vehicleRegistrationNumber)
+    this.router.navigate(['customer/getIdrive/'+quote.vehicleRegistrationNumber+'/'+quote.quotationId+'/'+quote.grandTotal]);
+  }
+  isTransactions(){
+    this.isQuotation = false
+    this.isTransaction = true;
+  }
+  isQuotations(){
+    this.isTransaction = false;
+    this.isQuotation = true;
+  }
   gettransactions(){
     var userId: number = +localStorage.getItem('userId');
     this.httpClient.post('http://108.61.174.41:7070/api/orders/view/userId',
@@ -42,7 +56,23 @@ export class MyTransactionsComponent implements OnInit {
         this.transactions = arr[0];
         console.log(data);
       }
-    ) 
+    );  
   }
 
+  getQuotations(){
+    var userId: number = +localStorage.getItem('userId');
+    this.httpClient.post('http://108.61.174.41:7070/api/orders/view/quotation/id',
+    {
+      "id": +localStorage.getItem('userId')
+    })
+    .subscribe(
+      (data:any[])=> {
+        let arr = [];
+        console.log(userId)
+        arr.push(data)
+        this.quotations = arr[0];
+        console.log(data);
+      }
+    ) 
+  }
 } 
