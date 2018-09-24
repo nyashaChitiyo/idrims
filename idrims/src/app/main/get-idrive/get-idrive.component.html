@@ -100,10 +100,47 @@
                       <option value="12">12 Months</option>
                     </select>
                   </div>
+                  <div class="form-group col-md-12" *ngIf="isCustomer">
+
+                    <label for="email">Use Preffered or new Delivery or Collection Point </label>
+                    <select [(ngModel)]="changeStatePN" class="form-control" name="changeState" (change)="changeStatuPN()" required>
+                        <option selected  style="display: none;" >Select Option</option>
+                        <option value="P">Preffered Delivery or Collection</option>
+                        <option value="N">New Delivery or Collection</option>
+                      </select>
+                </div>   
       </div>
-      <div class="box-body"> 
+      <div class="box-body" *ngIf="isPreffered">
+          <div class="form-group col-md-12">
+              <label for="email">Preffered Collection or Delivery </label>
+              <select [(ngModel)]="changeStatePre" class="form-control" name="changeState" (change)="changeStatusPreffered()" required>
+                  <option selected  style="display: none;" >Select Option</option>
+                  <option value="PD">Preffered Delivery Address</option>
+                  <option value="PC">Preffered Collection</option>
+                </select>
+          </div> 
+          <br>
+          
+          <div *ngIf="isPrefD" class="card">
+              <div class="card-body">
+                  <h4 class="card-title">Preffered Address</h4>
+                  <p class="card-text">Your Disk will be delivered at : {{myAddress}}</p>
+              </div>
+              <div class="card-footer">Thank you for choosing iDriveSure</div>
+          </div>
+
+          <div *ngIf="isPrefC" class="card">
+              <div class="card-header">Preffered Collection Point</div>
+              <div class="card-body">Your Disk will be ready for collection at : {{myCollectionPoint}}</div>
+              <div class="card-footer">Thank you for choosing iDriveSure</div>
+          </div>
+      </div>
+
+      <div class="box-body" *ngIf="isNew || isAgent"> 
           <div class="box-title" align= "left"><h4><strong> Collection/ Delivery</strong></h4></div>
-          <hr>
+          <hr>    
+
+
           <div class="form-group col-md-12">
               <label for="email">Collection or Delivery </label>
               <select [(ngModel)]="changeState" class="form-control" name="changeState" (change)="changeStatus()" required>

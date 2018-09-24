@@ -63,22 +63,22 @@
     <table class="table table-hover " id="transactions" cellspacing="0">
       <thead> 
       <tr>
-        <th>Vehicle Reg Number</th>
-        <th>Insurance Company</th>
-        <th>Insurance Type</th>
-        <th>Generated Via</th>
+        <th>Zinara Arears</th>
+        <th>Insurance Premium</th>
+        <th>Premium Due</th>
+        <th>Delivery Fee</th>
         <th>ZBC Premium</th>
-        <th>Zinara Period</th>
+        <th>Zinara Premium</th>
         <th>Grand Total</th>
         <th>Make Payment</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let quotation of quotations">     
-        <td>{{quotation.vehicleRegistrationNumber}}</td>
-        <td>{{quotation.insuranceCompany}}</td>
-        <td>{{quotation.insuranceType}}</td>
-        <td>{{quotation.requestChannel}}</td>
+        <td>{{quotation.zinaraArrears}}</td>
+        <td>{{quotation.insurancePremium}}</td>
+        <td>{{quotation.premiumDue}}</td>
+        <td>{{quotation.deliveryFee}}</td>
         <td>{{quotation.zbcPremium}}</td>
         <td>{{quotation.zinaraPremium}}</td>
         <td>{{quotation.grandTotal}}</td>

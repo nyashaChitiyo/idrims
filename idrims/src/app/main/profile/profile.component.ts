@@ -2,6 +2,7 @@ import { Component, OnInit ,ViewChild} from '@angular/core';
 import * as $ from "jquery";
 import {DemoService} from '../../demo.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Location} from '@angular/common';
 import { ServicesService } from '../../services.service';
 import {SessionsService} from '../../authentication/sessions.service';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
@@ -49,7 +50,7 @@ export class ProfileComponent implements OnInit {
   isAddAddress= false;
   isResetPassword = false;
   dataAddress;
-  constructor(private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+  constructor(private location: Location, private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     var id: number = +localStorage.getItem('userId');
     console.log(id+'daKASLNNCJKSNKCNSDNkXN')
     this.httpClient.post('http://108.61.174.41:7070/api/user/view/deliveryAddress/userId',
@@ -100,7 +101,7 @@ export class ProfileComponent implements OnInit {
         let arr1 = arr[0].map(a => a.name);
         //let regionIds = arr[0].map(a => a.id);
         this.allColPoints = arr[0];       
-     
+      
       })} 
       else if(this.isDelivery){
         this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
@@ -184,7 +185,24 @@ export class ProfileComponent implements OnInit {
             })
         }
         else if(this.isDelivery){
-          this.changeDelivery();
+          this.demo.post('http://108.61.174.41:7070/api/user/create/deliveryAddress',
+          {
+            "collectionPointId": 0,
+            "collectionPointName": '',
+            "id": 0,
+            "regionId": this.selectedValue,
+            "streetAdrress": this.delAddress,
+            "subRegionId": this.selectedReg,
+            "suburbId": this.selectedSurb,
+            "userId": +localStorage.getItem('userId')
+          })
+                .subscribe(data => {
+                  if(data){
+                  this.successSwal.show();
+                  }
+                  else
+                  this.failedSwal.show();
+                })
         }
       }
       else{

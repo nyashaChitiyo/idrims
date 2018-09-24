@@ -31,8 +31,8 @@ export class MyTransactionsComponent implements OnInit {
   }; 
   }
   buyInsurance(quote){
-    console.log(quote.vehicleRegistrationNumber)
-    this.router.navigate(['customer/getIdrive/'+quote.vehicleRegistrationNumber+'/'+quote.quotationId+'/'+quote.grandTotal]);
+    console.log(quote.governmentLevy)
+    this.router.navigate(['customer/getIdrive/'+'1'+'/'+quote.quotationId+'/'+quote.grandTotal]);
   }
   isTransactions(){
     this.isQuotation = false
@@ -51,27 +51,26 @@ export class MyTransactionsComponent implements OnInit {
     .subscribe(
       (data:any[])=> {
         let arr = [];
-        console.log(userId)
+        console.log('my user id is '+userId)
         arr.push(data)
         this.transactions = arr[0];
-        console.log(data);
+        console.log(arr[0]);
       }
     );  
   }
 
   getQuotations(){
     var userId: number = +localStorage.getItem('userId');
-    this.httpClient.post('http://108.61.174.41:7070/api/orders/view/quotation/id',
+    this.httpClient.post('http://108.61.174.41:7070/api/orders/view/quotation/userId',
     {
       "id": +localStorage.getItem('userId')
     })
     .subscribe(
       (data:any[])=> {
         let arr = [];
-        console.log(userId)
         arr.push(data)
-        this.quotations = arr[0];
-        console.log(data);
+        this.quotations = arr;
+        console.log(this.quotations);
       }
     ) 
   }
