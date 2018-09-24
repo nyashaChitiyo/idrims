@@ -19,6 +19,8 @@ export class GetIdriveComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
   allRegionNames = [];
+  changeStatePN;
+  isNew
   delAddress:string;
   selectedValue;
   allSubRegions = [];
@@ -41,11 +43,19 @@ export class GetIdriveComponent implements OnInit {
   insurancePeriodSelect: string;
   insuranceTypeSelect: string;
 
+  isPrefC;
+  isPrefD;
+  isPreffered;
   zinaraPeriodSelect:string;
   zbcPeriodSelect:string;
   vehicleValue:number=0;
   vehicleRegistrationNumber1;
-  customerId
+  customerId;
+  myAddress;
+  myCollectionPoint;
+  changeStatePre;
+  prefData;
+
 
   constructor(private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     this.activatedRoute.params.subscribe(params =>{
@@ -57,9 +67,22 @@ export class GetIdriveComponent implements OnInit {
     else if(localStorage.getItem('userGroup')==='AGENT01'){
       this.isAgent= true;
     }
-
+    if(this.isCustomer){
+    var id = localStorage.getItem('userId');
+    this.httpClient.post('http://108.61.174.41:7070/api/user/view/deliveryAddress/userId',
+    {
+      "id": +id
+    })
+      .subscribe(data1 => {
+        if(data1){
+          this.prefData = data1;
+          this.myAddress = data1['streetAdrress'];
+          this.myCollectionPoint = data1['collectionPointName'];
+          console.log(data1)
+        }
+      });
    }
-
+  }
   ngOnInit() {
 
     var id: number = +localStorage.getItem('userId');
@@ -201,21 +224,42 @@ export class GetIdriveComponent implements OnInit {
  
   
   getIdrive() {
-    if(this.validateCustomer() && (this.validateIsCollection() || this.validateIsDelivery())){
+
+    if(this.isPreffered || (this.validateCustomer() && (this.validateIsCollection() || this.validateIsDelivery()))){
     console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
    if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
     let fullDeliveryAddress = [];
+    var colPointId:number;
+    var collectionType: string;
+
+    if(this.isPreffered){
+      if(this.isPrefC){
+       colPointId = this.prefData['collectionPointId']
+      collectionType = 'C';
+      fullDeliveryAddress = [this.prefData['regionId'], this.prefData['subRegionId'],this.prefData['suburbId'],this.prefData['streetAdrress']];
+      }
+      else if(this.isPrefD){
+        colPointId = this.prefData['collectionPointId'];
+        collectionType = 'D';
+        fullDeliveryAddress = null; 
+      }
+    }
+    else{
     if(this.changeState == 'C'){ 
+      colPointId = this.selectedCol;
+      collectionType = this.changeState;
       fullDeliveryAddress = [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress];
     }
-    else if(this.changeState == 'D')
-    fullDeliveryAddress = null;
+    else if(this.changeState == 'D'){
+      colPointId = this.selectedCol;
+    collectionType = this.changeState;
+    fullDeliveryAddress = null;}}
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +this.selectedCol,
-      "collectionType": this.changeState,
+      "colPointId": +colPointId,
+      "collectionType": collectionType,
       "fullDeliveryAddress": fullDeliveryAddress,
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
@@ -259,6 +303,26 @@ export class GetIdriveComponent implements OnInit {
           this.vehicleValue = 0; 
         }
       }
+      changeStatuPN(){
+        if(this.changeStatePN ==='N'){
+          this.isPreffered = false;
+          this.isNew = true;
+        }
+        else if(this.changeStatePN === 'P'){
+          this.isNew = false;
+          this.isPreffered = true;
+        }
+      }
+    changeStatusPreffered(){
+      if(this.changeStatePre ==='PD'){
+        this.isPrefC = false;
+        this.isPrefD = true;
+      }
+      else if(this.changeStatePre === 'PC'){
+        this.isPrefD = false;
+        this.isPrefC = true;
+      }
+    }
   changeStatus(){
     if(this.changeState ==="D"){
       this.isCollection = false;
