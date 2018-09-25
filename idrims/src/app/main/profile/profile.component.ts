@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
   newPin;
   confirmPin;
   
-  isAddAddress= false;
+  isAddAddress= false; 
   isResetPassword = false;
   dataAddress;
   constructor(private location: Location, private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {

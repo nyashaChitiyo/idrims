@@ -11,7 +11,8 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  email: string;
+  phonenumber: string;
+  nationalId: string;
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
@@ -20,7 +21,9 @@ export class ForgotPasswordComponent implements OnInit {
 
   resetPassword(){
     this.httpClient.post('http://108.61.174.41:7070/api/user/PinReset',{
-      "email": this.email
+      "phoneNumber": this.phonenumber,
+      "nationalId": this.nationalId
+
 
     })
     .subscribe(data => {
@@ -37,7 +40,8 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   reset() {
-    this.email = '';
+    this.phonenumber = '';
+    this.nationalId = '';
   }
   ngOnInit() {
   }

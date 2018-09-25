@@ -7,7 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReportsComponent implements OnInit {
 
-  constructor() { }
+  isBoAdmin;
+  isSbAdmin;
+
+  constructor() {
+    if(localStorage.getItem('userGroup')==='ADMIN01'){
+      this.isBoAdmin = true;
+    }
+    else if(localStorage.getItem('userGroup')==='ADMIN03'){
+      this.isSbAdmin= true;
+    }
+   }
 
   ngOnInit() {
   }

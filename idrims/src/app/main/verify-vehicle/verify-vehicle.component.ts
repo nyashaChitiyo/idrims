@@ -97,9 +97,10 @@ return false;
             "vehicleRegistrationNumber": this.vehicleVRN,
             "vehicleUsage": this.vUsage,
             "verifStatus": true,
+            "zbcTaxClass": "",
             "zinaraTaxClass": +this.selectedValue
         })
-      
+       
         .subscribe(data => {
           if (data['status'] === "Success ") {  
            this.successSwal.show();
