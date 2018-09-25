@@ -13,7 +13,6 @@ export class ViewMyClaimsComponent implements OnInit {
   public claims= [];
   public temp_var: Object = false;
   constructor( private demo: DemoService,private router: Router) { 
-
   }
 
   ngOnInit() {

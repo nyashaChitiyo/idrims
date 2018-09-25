@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import {DataService} from '../data.service';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-process-payment',
@@ -15,12 +16,18 @@ export class ProcessPaymentComponent implements OnInit {
   vehicleRegistrationNumber;
   quotationId;
   grandTotal;
+  message
   ecocashNumber;
   isEnabled = true;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   constructor(private activatedRoute: ActivatedRoute,private data: DataService, private httpClient: HttpClient,private router: Router) { 
-
+    Observable.interval(500)
+    .take(10).map((x) => x+1)
+    .subscribe((x) => {
+      this.message = x;
+    })
+    console.log(this.message);
   }
 
   ngOnInit() {
@@ -44,6 +51,7 @@ export class ProcessPaymentComponent implements OnInit {
       if (data['status'] =='success') {   
         this.data.success(data['message']);
         this.successSwal.show();
+        this.ecocashNumber = '';
       } else {
         this.failedSwal.show();
       }

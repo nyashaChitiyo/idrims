@@ -143,7 +143,7 @@ import {Router, RouterEvent, Event} from '@angular/router';
 import 'rxjs/add/operator/filter';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-//import {LoadingIndicatorService} from '../loading-indicator.service';
+import {LoadingIndicatorService} from '../loading-indicator.service';
 import 'rxjs/add/operator/catch';
 import {of} from 'rxjs';
 
@@ -157,7 +157,7 @@ export class SessionsService {
   private stompClient;
   private serverUrl = 'http://108.61.174.41:7070/ws';
 
-  constructor(private router: Router, private httpClient: HttpClient/*, private loading: LoadingIndicatorService*/) {
+  constructor(private router: Router, private httpClient: HttpClient, private loading: LoadingIndicatorService) {
     
     router.events.subscribe((event: Event) => {
       if (event instanceof RouterEvent ) {
@@ -170,15 +170,15 @@ export class SessionsService {
   
    login(username: string, password: string) :string{
     const userCredentials = {
-      'phoneNumberOrEmail' : username,
-      'password' : password
+      'password' : password,
+      'phoneNumber' : username
     };
     
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
     try{
     const data = this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
       console.log(data);
-      
+      this.loading.onRequestStarted();
       if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
@@ -198,7 +198,7 @@ export class SessionsService {
         // localStorage.setItem('userStation', '1');
         // localStorage.setItem('nationalId', '25000000Z91');
         var userGroup:string = localStorage.getItem('userGroup');
-        ////this.loading.onRequestStarted();
+   
     if(userGroup == 'CUST01'){
       this.router.navigate(['/customer/Dashboard'], { replaceUrl: true });
       //return this.message;

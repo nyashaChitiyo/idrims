@@ -133,12 +133,13 @@ export class GetIdriveComponent implements OnInit {
       "collectionDelAdd": this.delAddress,
       "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
       "collectionType": this.changeState,
+      "customerIdNumber": this.customerId,
+      "customerPhoneNumber": localStorage.getItem('phoneNumber'),
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,
       "processedBy": "",
       "requestChannel": "Web",
-      "requestedFor": this.customerId,
       "userId": +localStorage.getItem('userId'),
       "vehicleRegistrationNumber": this.vehicleRegistrationNumber1,
       "vehicleValue": this.vehicleValue,
@@ -260,13 +261,14 @@ export class GetIdriveComponent implements OnInit {
       "airtimeNumber": this.airtimeNumber,
       "colPointId": +colPointId,
       "collectionType": collectionType,
+      "customerIdNumber": localStorage.getItem('nationalId'),
+      "customerPhoneNumber": localStorage.getItem('phoneNumber'),
       "fullDeliveryAddress": fullDeliveryAddress,
       "insuranceCompany": this.insuranceCompanySelect,
       "insurancePeriod": +this.insurancePeriodSelect,
       "insuranceType": this.insuranceTypeSelect,
       "processedBy": "",
       "requestChannel": "WEB",
-      "requestedFor": localStorage.getItem('phoneNumber'),
       "userId": id,
       "vehicleRegistrationNumber": this.vehicle,
       "vehicleValue": this.vehicleValue,
@@ -303,7 +305,8 @@ export class GetIdriveComponent implements OnInit {
           this.vehicleValue = 0; 
         }
       }
-      changeStatuPN(){
+      changeStatuPN(){ 
+        if(this.prefData){
         if(this.changeStatePN ==='N'){
           this.isPreffered = false;
           this.isNew = true;
@@ -312,6 +315,10 @@ export class GetIdriveComponent implements OnInit {
           this.isNew = false;
           this.isPreffered = true;
         }
+      }
+      else{
+        this.data.error('Register Address to continue');
+      }
       }
     changeStatusPreffered(){
       if(this.changeStatePre ==='PD'){
@@ -339,7 +346,6 @@ export class GetIdriveComponent implements OnInit {
   }
 
   validateCustomer(){
-    if(this.vehicle){
       if(this.insuranceCompanySelect){
         if(this.insuranceTypeSelect)
         {
@@ -363,10 +369,6 @@ export class GetIdriveComponent implements OnInit {
         else{
           this.data.error('please select Insurance Company');
         }
-      }
-    else{
-      this.data.error('please Select Vehicle');
-    }
 }
 validateIsCollection(){
   if(this.selectedValue){

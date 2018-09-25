@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
     private session: SessionsService,
     public loading: LoadingIndicatorService,
   private data: DataService) {
+    this.loading.onRequestFinished();
   }
  
   
@@ -44,6 +45,7 @@ export class LoginComponent implements OnInit, AfterViewInit {
   }
 
   login() {
+   // this.loading.onRequestStarted();
     if (this.validate()) {
       this.session.login(this.username, this.password)
       /*if(this.session.login(this.username, this.password) =='Invalid Username and password'){

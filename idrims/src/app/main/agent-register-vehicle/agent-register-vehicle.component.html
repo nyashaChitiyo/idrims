@@ -2,6 +2,7 @@
   <div class="content-wrapper">
     <br>
       <section align= "center" class="content">
+        <app-message></app-message> 
       <div class="box">
       <div class="box-header with-border">
         <br>
@@ -43,7 +44,7 @@
     <swal
       #failedSwal
       title="Failed"
-      text="An error occured while processing your request"
+      text="This vehicle is already registered"
       type="warning"
       [showCancelButton]="false"
       [focusCancel]="false">

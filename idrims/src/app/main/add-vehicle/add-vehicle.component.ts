@@ -34,7 +34,6 @@ export class AddVehicleComponent implements OnInit {
     if(this.validate()){
     if(localStorage.getItem('userGroup')==='CUST01'){
 
-  if(this.regVRN == this.confirmRegVRN){
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/create',
   {
     'userId':+this.id,
@@ -55,14 +54,10 @@ export class AddVehicleComponent implements OnInit {
   }); }
   else{
     this.data.error('Your vehicle registration numbers do not match')
-  }}
-  else if(localStorage.getItem('userGroup')==='AGENT01'){
-    this.agentRegistry();
   }
   }
 }
   agentRegistry(){
-    if(this.regVRN == this.confirmRegVRN){
       this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',
     {
       'vehicleRegistrationNumber': this.regVRN
@@ -78,10 +73,7 @@ export class AddVehicleComponent implements OnInit {
     }, error => {
       console.log(Response);
       this.failedAgentReg.show();
-    }); }
-    else{
-      this.failedAgentReg.show();
-    }
+    }); 
   }
   reset(){
     this.regVRN = '';

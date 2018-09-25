@@ -20,6 +20,7 @@ export class VerifyVehicleComponent implements OnInit {
   taxClassId = '';
   licTaxClasses;
   insTaxClasses;
+  ZBCTaxClass;
   vMake = '';
   vModel = ''; 
   vType = '';
@@ -89,14 +90,14 @@ return false;
     .subscribe(data => {
       if(data['verificationStatus']===false){
           const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
+            "insuranceExpiry" : this.InsExp,  
             "insuranceTaxClass": +this.selectedTaxClass,
-            "insuranceExpiry" : this.InsExp,
             "vehicleMake": this.vMake,
             "vehicleModel": this.vModel,
             "vehicleOwnership": this.vType,
             "vehicleRegistrationNumber": this.vehicleVRN,
             "vehicleUsage": this.vUsage,
-            "verifStatus": true,
+            "zbcTaxClass": this.ZBCTaxClass,
             "zinaraTaxClass": +this.selectedValue
         })
       
