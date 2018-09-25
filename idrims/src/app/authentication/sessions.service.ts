@@ -170,7 +170,7 @@ export class SessionsService {
   
    login(username: string, password: string) :string{
     const userCredentials = {
-      'phoneNumberOrEmail' : username,
+      'phoneNumberS' : username,
       'password' : password
     };
     
