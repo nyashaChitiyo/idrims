@@ -42,6 +42,7 @@ export class AddVehicleComponent implements OnInit {
   .subscribe(data => {
     if (data) {        
       this.successSwal.show();
+      console.log(data);
       this.reset();
     } else {
       console.log('failed',+ data);

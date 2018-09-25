@@ -89,6 +89,7 @@
             <br>
           <tr>
               <th>Date</th>
+              <th>Order Number</th>
               <th>Product</th>
               <th>VRN</th> 
               <th>Customer</th> 
@@ -102,6 +103,7 @@
           <tbody>
           <tr *ngFor="let day of daily">  
              <td>{{day.updatedAt}}</td>
+             <td>{{day.orderNumber}}</td>             
             <td>{{day.insuranceType}}</td>
             <td>{{day.vehicleRegistrationNumber}}</td>
             <td>{{day.requestedFor}}</td>

@@ -100,7 +100,7 @@ return false;
             "zbcTaxClass": this.ZBCTaxClass,
             "zinaraTaxClass": +this.selectedValue
         })
-      
+       
         .subscribe(data => {
           if (data['status'] === "Success ") {  
            this.successSwal.show();

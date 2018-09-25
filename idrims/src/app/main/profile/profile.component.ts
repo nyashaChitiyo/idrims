@@ -47,7 +47,7 @@ export class ProfileComponent implements OnInit {
   newPin;
   confirmPin;
   
-  isAddAddress= false;
+  isAddAddress= false; 
   isResetPassword = false;
   dataAddress;
   constructor(private location: Location, private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
@@ -251,6 +251,7 @@ export class ProfileComponent implements OnInit {
           .subscribe(data => {
             if(data){
             this.successSwal.show();
+            this.reset();
             }
             else
              this.failedSwal.show();
@@ -258,7 +259,9 @@ export class ProfileComponent implements OnInit {
         } 
         else
         this.data.error('your new passwords do not match');
-  }}
+  }
+  
+}
   changeStatus(){
     if(this.changeState ==="D"){
       this.isCollection = false;
@@ -332,5 +335,11 @@ export class ProfileComponent implements OnInit {
     else{
       this.data.error('please select surbub');
     }
+  }
+  reset() {
+    this.newPin = '';
+    this.oldPin = '';
+    this.confirmPin = '';
+    
   }
 }

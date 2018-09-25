@@ -16,24 +16,20 @@
 
           <div class="col-sm-9">
           <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
-        
+          <!-- <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control"> -->
           <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
           <label>Role:</label><input [disabled]="isEdit" type="text" [(ngModel)]="role" name="firstNa" class="form-control">
           <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
-           <label for="type">Status</label>
-          <select class="form-control" name="type" required>
-              <option selected  style="display: none;" >Change Status</option>
-              <option value="false"[disabled]="isEdit" >Deactivate</option>
-            </select>
+ 
         </div>
       </div>
       </div>
-
+      <!-- /.box-body -->
   
       <div class="box-footer">
-          <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
-          <button class="btn btn-warning" (click)="updateProfile()">save</button>
-          <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/ViewAdmins"> Cancel</button></div>
+          <!-- <button class="btn btn-primary" (click)="isDisabled()">Edit</button> -->
+          <button class="btn btn-warning" (click)="saveProfile()" >De-Activate</button>
+          <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/viewAgents"> Cancel</button></div>
     </section>
     <swal
     #successSwal

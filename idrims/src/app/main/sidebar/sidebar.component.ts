@@ -13,7 +13,7 @@ export class SidebarComponent implements OnInit {
   isAdmin = false;
   isSBadmin = false;
   isCustomer = false;
-  isAgent = false;
+  isAgent = false; 
   isSupervisor = false;
 
   constructor(private router: Router, private httpClient: HttpClient) {

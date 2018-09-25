@@ -9,33 +9,39 @@
       <div class="box-body">
           <div class="row">
         <div class="input-group col-md-offset-1 col-md-10">
-          <label for="firstName">First Name</label>
-          <input type="text" class="form-control" id="firstName" [(ngModel)]="firstname" placeholder="First Name">
+          <label for="firstName">First Name</label>&nbsp;<font color = "red">*</font>
+          <input type="text" class="form-control" id="firstName" [(ngModel)]="firstname" placeholder="First Name" required>
         </div>
         <div class="input-group col-md-offset-1 col-md-10">
-          <label for="surname">Surname</label>
-          <input type="text" class="form-control" id="surname" [(ngModel)]="surname" placeholder="Last Name">
+          <label for="surname">Surname</label>&nbsp;<font color = "red">*</font>
+          <input type="text" class="form-control" id="surname" [(ngModel)]="surname" placeholder="Last Name"required>
         </div>
         <div class="input-group col-md-offset-1 col-md-10">
-          <label for="nationalId">NationalId</label>
-          <input type="text" class="form-control" id="nationalId" [(ngModel)]="nationalID" placeholder="First Name">
-        </div> 
+          <label for="nationalId">NationalId</label>&nbsp;<font color = "red">*</font>
+          <input type="text" class="form-control" id="nationalId" [(ngModel)]="nationalID" placeholder="..eg 25538954Y12" required>
+        </div>
         <div class="input-group col-md-offset-1 col-md-10">
-          <label for="phoneNumber">Phone Number</label>
-          <input type="text" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone">
+          <label for="phoneNumber">Phone Number</label>&nbsp;<font color = "red">*</font>
+          <input type="text" class="form-control" id="phoneNumber" [(ngModel)]= "phoneNumber" placeholder="Phone" required>
         </div>
         <div class="input-group col-md-offset-1 col-md-10">
           <label for="email">Email address</label>
           <input type="email" class="form-control" id="email" [(ngModel)]="email" placeholder="Enter email">
         </div>
         <div class="input-group col-md-offset-1 col-md-10">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password">
+            <label for="address"> Street Address</label>&nbsp;<font color = "red">*</font>
+            <input type="text" class="form-control" id="address" [(ngModel)]="address" placeholder="Enter address"required>
+          </div> 
+        <div class="input-group col-md-offset-1 col-md-10">
+          <label for="password">Password</label>&nbsp;<font color = "red">*</font>
+          <input type="password" class="form-control" id="password" [(ngModel)]="password" placeholder="Password"required>
         </div>      
         <div class="input-group col-md-offset-1 col-md-10">
-            <label for="password">Re-enter Password</label>
-            <input type="password" class="form-control" id="confirmpassword" [(ngModel)]="confirmpassword" placeholder="Re-enter Password">
+            <label for="password">Re-enter Password</label>&nbsp;<font color = "red">*</font>
+            <input type="password" class="form-control" id="confirmpassword" [(ngModel)]="confirmpassword" placeholder="Re-enter Password"required>
         </div>
+        <br><br>
+        <div class="input-group col-md-offset-1 col-md-10" ><font color = "red"> * Required Fields</font></div>
 
       </div>
       </div>
