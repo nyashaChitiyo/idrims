@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import {HttpClient,HttpHeaders,HttpErrorResponse} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +24,14 @@ export class DemoService {
 
   post(url:string,body: any){
     return this.http.post(url,body,this.httpOptions);
+  }
+
+  private handleError(errorResponse: HttpErrorResponse){
+    if(errorResponse.error instanceof ErrorEvent){
+      console.error('Client Side Error: ', errorResponse.error.message);
+    }
+    else{
+      console.log('Server side error: ', errorResponse)
+    }
   }
 }

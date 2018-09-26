@@ -24,10 +24,10 @@
     </thead>
     <tbody>
     <tr *ngFor="let claim of claims">
-      <td>{{claim.claimDate | date:'short'}}</td>      
+      <td>{{claim.createdAt | date:'short'}}</td>      
       <td>{{claim.vehicleRegistrationNumber}}</td>
       <td>{{claim.natureOfClaim}}</td>
-      <td>{{claim.claimStatus}}</td>
+      <td>{{claim.claimStatus ? 'open' : 'closed'}}</td>
       <!-- <td><button (click)="getCustomer()" class="btn btn-primary btn-block margin-bottom">view</button></td> -->
     </tr>
     </tbody>

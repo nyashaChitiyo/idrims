@@ -102,7 +102,7 @@
                   </div>
                   <div class="form-group col-md-12" *ngIf="isCustomer">
 
-                    <label for="email">Use Preffered or new Delivery or Collection Point </label>
+                    <label for="email">Use Preffered or new Delivery and Collection Point </label>
                     <select [(ngModel)]="changeStatePN" class="form-control" name="changeState" (change)="changeStatuPN()" required>
                         <option selected  style="display: none;" >Select Option</option>
                         <option value="P">Preffered Delivery or Collection</option>
@@ -110,7 +110,7 @@
                       </select>
                 </div>   
       </div>
-      <div class="box-body" *ngIf="isPreffered">
+      <div class="box-body" *ngIf="isPreffered && prefData">
           <div class="form-group col-md-12">
               <label for="email">Preffered Collection or Delivery </label>
               <select [(ngModel)]="changeStatePre" class="form-control" name="changeState" (change)="changeStatusPreffered()" required>

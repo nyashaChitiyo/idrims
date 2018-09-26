@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core'
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-agent-register-vehicle',
@@ -17,7 +18,7 @@ export class AgentRegisterVehicleComponent implements OnInit {
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   @ViewChild('failedEq') private failedEq: SwalComponent;
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, private data: DataService) { 
     var id:string =localStorage.getItem('userId');
     this.id = id;
   }
@@ -47,7 +48,7 @@ export class AgentRegisterVehicleComponent implements OnInit {
     this.failedSwal.show();
   }); }
   else{
-    this.failedEq.show();
+   this.data.error('Vehicle Reg and Confirm vehicle Reg do not match')
   }
   }
   reset(){

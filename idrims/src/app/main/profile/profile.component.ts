@@ -178,6 +178,7 @@ export class ProfileComponent implements OnInit {
       })
             .subscribe(data => {
               if(data){
+                this.router.navigate(['/customer/profile']);
               this.successSwal.show();
               }
               else
@@ -198,6 +199,7 @@ export class ProfileComponent implements OnInit {
           })
                 .subscribe(data => {
                   if(data){
+                    this.router.navigate(['/customer/profile']); 
                   this.successSwal.show();
                   }
                   else
@@ -226,6 +228,7 @@ export class ProfileComponent implements OnInit {
     })
           .subscribe(data => {
             if(data){
+              this.router.navigate(['/customer/profile']);
             this.successSwal.show();
             }
             else
@@ -315,7 +318,8 @@ export class ProfileComponent implements OnInit {
       return true;
     }
     else{
-      this.data.error('please select collection Point')
+      return false;
+     // this.data.error('please select collection Point')
     }
   }
 

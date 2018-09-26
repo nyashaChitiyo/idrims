@@ -62,7 +62,15 @@
                       </select>
                     </div> 
                     <br>
-                    <div class="form-group col-md-4"></div>
+                    <div class="form-group col-md-4">
+                      <label>ZBC Tax Class</label>
+                      <select [(ngModel)]="ZBCTaxClass" class="form-control" name="ZBCTaxClass" required>
+                        <option selected  style="display: none;" >choose usage</option>
+
+                        <option value="Private">Private</option>
+                        <option value="Commercial">Commercial</option>
+                        </select>
+                      </div> 
                     <div class="form-group col-md-4">
                         <label>Vehicle Ownership</label>
                         <select class="form-control" id="vOwnership" [(ngModel)]="vOwnership" name="vOwnership" required>

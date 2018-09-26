@@ -72,7 +72,7 @@ export class AgentComponent implements OnInit {
   saveProfile(){
 
     this.httpClient.post('http://108.61.174.41:7070/api/user/activation',{
-    'phoneNumberOrEmail' : this.phoneNumber,
+    'phoneNumber' : this.phoneNumber,
     'status' : false
 
     })

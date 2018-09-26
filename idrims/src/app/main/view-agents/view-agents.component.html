@@ -19,6 +19,7 @@
           <th>First Name</th>
           <th>Surname</th> 
           <th>Station</th> 
+          <th>Status</th> 
         </tr>  
       </thead> 
       <tbody>
@@ -27,6 +28,8 @@
           <td>{{user.firstname}}</td>
           <td>{{user.lastname}}</td>
           <td>{{user.userStationName}}</td>
+          <td>{{user.userStatus}}</td>
+          
           <!--<td><button routerLink="/userManagement/{{user.phoneNumber}}" class="btn btn-primary btn-block margin-bottom">view</button></td>-->
           <button (click)="getAgent(user)" class="btn btn-primary btn-block margin-bottom">view</button>
         </tr>

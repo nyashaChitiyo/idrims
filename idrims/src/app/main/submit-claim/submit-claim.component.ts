@@ -15,6 +15,7 @@ export class SubmitClaimComponent implements OnInit {
   vehicleNames= [];
   vehicle:number;
   claimNature;
+  lossDate;
   constructor(private httpClient: HttpClient, private data:DataService) { }
 
   ngOnInit() {
@@ -43,8 +44,7 @@ export class SubmitClaimComponent implements OnInit {
     if(this.validate()){
     this.httpClient.post('http://108.61.174.41:7070/api/claims/create',
     {
-      "claimDate": ""+new Date(),
-      "claimStatus": true,
+      "dateOfLoss": this.lossDate,
       "firstName": localStorage.getItem('firstname'),
       "lastName": localStorage.getItem('lastname'),
       "natureOfClaim": this.claimNature,
