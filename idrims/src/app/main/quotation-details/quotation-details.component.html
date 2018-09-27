@@ -43,19 +43,7 @@
                         <td>Delivery Fee</td>
                         <td>{{deliveryFee |currency}}</td>
                       </tr>
-                      <tr>
-                        <td><b>Grand Total</b></td>
-                        <td><b><a>{{grandTotal | currency}}</a></b></td>
-                      </tr>
-                      <tr>
-                        <td>Start Date</td>
-                        <td>{{startDate}}</td>
-                      </tr> 
-
-                      <tr>
-                        <td>End Date</td>
-                        <td>{{endDate}}</td>
-                      </tr> 
+                
                       <tr>
                         <td>Policy Rate</td>
                         <td>{{policyRate}}</td>
@@ -72,6 +60,10 @@
                         <td>Zinara Arrears</td>
                         <td>{{zinaraArrears |currency}}</td>
                       </tr> 
+                      <tr>
+                        <td><b>Grand Total</b></td>
+                        <td><b><a>{{grandTotal | currency}}</a></b></td>
+                      </tr>
                     </tbody>
                   </table>             
                   <button class="btn btn-primary" (click)="makePayment()">Proceed to payment    {{grandTotal | currency}}</button>
