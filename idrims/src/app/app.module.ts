@@ -114,14 +114,6 @@ import { CreateCentralPrintingComponent } from './main/create-central-printing/c
 import { CustomerComponent } from './main/customer/customer.component';
 
 
-
-//import { AdminComponent } from './admin/admin.component';
-// import { AdminModule } from './admin/admin.module';
-
-// const routes: Routes =[
-//   { path: 'Home', loadChildren:()=> System.import('./Home').then((comp: any) => comp.default) }
-// ]
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -237,7 +229,7 @@ import { CustomerComponent } from './main/customer/customer.component';
       confirmButtonClass: 'btn btn-primary',
       cancelButtonClass: 'btn'
     }),
-   // NgxPermissionsModule.forRoot()
+
     
   ],
   providers: [

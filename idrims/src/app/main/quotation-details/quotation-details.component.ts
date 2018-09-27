@@ -50,7 +50,7 @@ export class QuotationDetailsComponent implements OnInit {
       this.zinaraPremium= params['zinaraPremium'];
       this.zbcPremium= params['zbcPremium'];
       this.deliveryFee = params['deliveryFee'];
-
+      this.insuranceType = params['insuranceType'];
       this.grandTotal = params['grandTotal'];
       this.startDate= params['startDate'];
       this.endDate= params['endDate'];
