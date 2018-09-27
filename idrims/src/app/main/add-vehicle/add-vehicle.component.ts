@@ -13,8 +13,9 @@ import {DataService} from '../data.service';
 export class AddVehicleComponent implements OnInit {
 
   id: string;
-  regVRN = "";
-  confirmRegVRN = "";
+  regVRN;
+  confirmRegVRN;
+  isNew= false;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   @ViewChild('failedEq') private failedEq: SwalComponent;
@@ -54,9 +55,30 @@ export class AddVehicleComponent implements OnInit {
     this.failedSwal.show();
   }); }
   else{
-    this.data.error('Your vehicle registration numbers do not match')
+    this.agentRegistry()
   }
   }
+}
+postNewVehicle(){
+  this.httpClient.post('http://108.61.174.41:7070/api/vehicles/create',
+  {
+    'vehicleRegistrationNumber': this.regVRN
+  })
+  .subscribe(data => {
+    if (data) {        
+      this.successSwal.show();
+      this.data.success('Vehicle Successfully registered pending verification')
+      console.log(data);
+      this.reset();
+    } else {
+      console.log('failed',+ data);
+      this.failedSwal.show();
+      
+    }
+  }, error => {
+    console.log(Response);
+    this.failedSwal.show();
+  });
 }
   agentRegistry(){
       this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',
@@ -68,12 +90,13 @@ export class AddVehicleComponent implements OnInit {
         this.router.navigate(['agent/getIdrive/'+this.regVRN],data);
       } else {
         console.log('failed',+ data);
-        this.failedAgentReg.show();
-        
+        this.data.error('Vehicle not register press submit to register vehicle')
+        this.isNew = true;
       }
     }, error => {
-      console.log(Response);
-      this.failedAgentReg.show();
+    
+      this.data.error('Vehicle not register press submit to register vehicle')
+      this.isNew = true
     }); 
   }
   reset(){

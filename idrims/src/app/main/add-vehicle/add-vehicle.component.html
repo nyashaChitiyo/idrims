@@ -28,7 +28,8 @@
           <!-- /.box-body -->
     
           <div class="box-footer">
-            <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
+            <button *ngIf="isNew" type="submit" class="btn btn-primary" (click)="postNewVehicle()">Submit For Verification</button>
+            <button *ngIf="!isNew" type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
             <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/myVehicles"> Cancel</button>
           </div>
         </section>
@@ -46,6 +47,7 @@
         text="An error occured while processing your request"
         type="warning"
         [showCancelButton]="false"
+
         [focusCancel]="false">
       </swal>
       <swal
