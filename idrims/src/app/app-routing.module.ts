@@ -88,6 +88,7 @@ import { SupervisorAgentsManagementComponent } from './main/supervisor-agents-ma
 import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.component';
 import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
 import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
+import { CustomerComponent } from './main/customer/customer.component';
 
 
 //import { NgxPermissionsGuard } from 'ngx-permissions';
@@ -107,6 +108,7 @@ const appRoutes: Routes = [
   {path: 'admin/userManagement/ViewAdmins', component: ViewAdminsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/viewAgents/:phoneNumber', component: AgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/userManagement/ViewAdmins/:phoneNumber', component: AdminComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/userManagement/CustomerManagement/:phoneNumber', component: CustomerComponent, canActivate:[AuthGuardRouteService]},
   {path: 'vehicles', component: VehiclesComponent,canActivate:[AuthGuardRouteService] },
   {path: 'admin/vehicles', component: VehiclesComponent,canActivate:[AuthGuardRouteService] },
   {path: 'vehicles/:vehicleRegistrationNumber', component: VerifyVehicleComponent ,canActivate:[AuthGuardRouteService]},

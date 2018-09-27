@@ -86,7 +86,7 @@
                       </select>
                     </div>        
             <div class="form-group col-md-6">				
-                    <label>ZInARA Licence Period</label>
+                    <label>ZINARA Licence Period</label>
                     <select  id="zinaraPeriodSelect" [(ngModel)]="zinaraPeriodSelect" name="zinaraPeriodSelect" class="select2 form-control" style="width: 100%;" >
                       <option value="0" selected="selected"  style="display: none;">Choose Period of Cover</option>
                       <option value="4"><b>4 Months</b></option>
@@ -102,35 +102,35 @@
                   </div>
                   <div class="form-group col-md-12" *ngIf="isCustomer">
 
-                    <label for="email">Use Preffered or new Delivery and Collection Point </label>
+                    <label for="email">Use Preferred or new Delivery and Collection Point </label>
                     <select [(ngModel)]="changeStatePN" class="form-control" name="changeState" (change)="changeStatuPN()" required>
                         <option selected  style="display: none;" >Select Option</option>
-                        <option value="P">Preffered Delivery or Collection</option>
+                        <option value="P">Preferred Delivery or Collection</option>
                         <option value="N">New Delivery or Collection</option>
                       </select>
                 </div>   
       </div>
       <div class="box-body" *ngIf="isPreffered && prefData">
           <div class="form-group col-md-12">
-              <label for="email">Preffered Collection or Delivery </label>
+              <label for="email">Preferred Collection or Delivery </label>
               <select [(ngModel)]="changeStatePre" class="form-control" name="changeState" (change)="changeStatusPreffered()" required>
                   <option selected  style="display: none;" >Select Option</option>
-                  <option value="PD">Preffered Delivery Address</option>
-                  <option value="PC">Preffered Collection</option>
+                  <option value="PD">Preferred Delivery Address</option>
+                  <option value="PC">Preferred Collection</option>
                 </select>
           </div> 
           <br>
           
           <div *ngIf="isPrefD" class="card">
               <div class="card-body">
-                  <h4 class="card-title">Preffered Address</h4>
+                  <h4 class="card-title">Preferred Address</h4>
                   <p class="card-text">Your Disk will be delivered at : {{myAddress}}</p>
               </div>
               <div class="card-footer">Thank you for choosing iDriveSure</div>
           </div>
 
           <div *ngIf="isPrefC" class="card">
-              <div class="card-header">Preffered Collection Point</div>
+              <div class="card-header">Preferred Collection Point</div>
               <div class="card-body">Your Disk will be ready for collection at : {{myCollectionPoint}}</div>
               <div class="card-footer">Thank you for choosing iDriveSure</div>
           </div>

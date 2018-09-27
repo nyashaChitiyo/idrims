@@ -13,14 +13,16 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 export class CloseClaimComponent implements OnInit {
 
   claims: any;
-  claimID : string;
+  claimId : string;
   vehicleVRN:string;
-  claimDATE:string;
-  claimId:string;
-  fName: string;
-  lName: string;
+  claimDate:string;
+  firstName: string; 
+  lastName: string;
   natureOfClaim:string;
   vehicleRegistrationNumber:string; 
+  dateOfLoss: string;
+
+  isEdit: boolean = true;
 
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
@@ -29,26 +31,28 @@ export class CloseClaimComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParams.subscribe(res =>{
-      this.claimID = res['claimId'];       
-       this.claimDATE = res['claimDate'];
+      this.claimId = res['claimId'];       
+       this.claimDate = res['createdAt'];
        this.vehicleVRN= res['vehicleRegistrationNumber'];
-       this.fName= res['firstName'];
-       this.lName= res['lastName'];
+       this.firstName= res['firstName'];
+       this.lastName= res['lastName'];
        this.natureOfClaim= res['natureOfClaim']; 
+       this.dateOfLoss= res['dateOfLoss']; 
        console.log(res)
     })
   }
   
   closeClaim(){
     const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update",{
-      "claimDate": this.claimDATE,
-      "claimId": this.claimID,
+      "claimDate": this.claimDate,
+      "claimId": this.claimId,
       "claimStatus": false,
-      "firstName": this.fName,
-      "lastName": this.lName,
+      "firstName": this.firstName,
+      "lastName": this.lastName,
       "natureOfClaim": this.natureOfClaim,
       "userId": +localStorage.getItem('userId'),
-      "vehicleRegistrationNumber": this.vehicleVRN
+      "vehicleRegistrationNumber": this.vehicleVRN,
+      "dateOfLoss": this.vehicleVRN 
   })
 
   .subscribe(data => {
@@ -61,5 +65,9 @@ export class CloseClaimComponent implements OnInit {
     console.log(Response); 
     this.failedSwal.show();
   }); 
+  }
+  isDisabled(){
+    console.log(this.isEdit)
+    this.isEdit = false;
   }
   }

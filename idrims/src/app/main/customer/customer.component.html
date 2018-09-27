@@ -17,8 +17,8 @@
           <div class="col-md-9">
           <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
           <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control">
-          <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
-          <label>Address:</label><input [disabled]="isEdit" type="text" [(ngModel)]="Address" name="Address" class="form-control">
+          <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="lastname" name="fir" class="form-control">
+          <label>Address:</label><input [disabled]="isEdit" type="text" [(ngModel)]="streetAddress" name="Address" class="form-control">
 
         </div>
       </div>
@@ -28,8 +28,9 @@
       <div class="box-footer">
           <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
           <button class="btn btn-warning" >save</button>
-          <button class="btn btn-primary" aria-hidden="true" routerLink ="/viewCustomers"> Cancel</button></div>
+          <button class="btn btn-warning" (click)="saveProfile()" >De-Activate</button>          
+           <button class="btn btn-primary" aria-hidden="true" routerLink ="/viewCustomers"> Cancel</button></div>
     </section>
   
   
-  
+   

@@ -111,6 +111,7 @@ import { SupervisorAgentsManagementComponent } from './main/supervisor-agents-ma
 import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.component';
 import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
 import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
+import { CustomerComponent } from './main/customer/customer.component';
 
 
 
@@ -217,7 +218,8 @@ import { CreateCentralPrintingComponent } from './main/create-central-printing/c
     SupervisorAgentsManagementComponent,
     ForgotPasswordComponent,
     CentralPrintingComponent,
-    CreateCentralPrintingComponent
+    CreateCentralPrintingComponent,
+    CustomerComponent
 
 
 

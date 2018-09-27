@@ -27,8 +27,8 @@ export class ViewCustomersComponent implements OnInit {
       
     })
       .subscribe(
-        (data:any[])=> {
-          let arr = [];
+        (data:any[])=> { 
+          let arr = []; 
           arr.push(data)
           this.customers = arr[0];
           this.chRef.detectChanges();
@@ -39,14 +39,14 @@ export class ViewCustomersComponent implements OnInit {
       ) 
     }
 
-    getCustomer(){
-      let d = this.customers[0];
+    getCustomer(customer){
+      let d = customer;
       let data : NavigationExtras = {
         queryParams: d
       }
       console.log(data)
   
-      this.router.navigate(['/userManagement/'+this.customers[0].phoneNumber],data);
+      this.router.navigate(['/admin/userManagement/viewCustomers'+customer.phoneNumber],data);
     }
   ngOnInit() {
   }

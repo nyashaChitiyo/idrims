@@ -4,29 +4,33 @@
                   <div align="center" class="box">
                       <div class="box-header">
                         <br>
-                        <h3 class="box-title"><b>Claim ID: <strong>{{claimID}}</strong></b></h3>
+                        <h3 class="box-title"><b>Claim for VRN :&nbsp; <strong>{{vehicleVRN}}</strong></b></h3>
                   </div>
                   <br>
                   <hr>
         <div class="box-body">  
-            <!-- <div class="row"> 
+            <div class="row"> 
               
           <div class="col-md-9">
-              <label>Claim ID:</label><input  type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder = "{{claimId}}">
-              <label>Claim Date:</label><input  type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder="">
-              <label>First Name:</label><input type="text" [(ngModel)]="firstName" name="firstName" class="form-control"placeholder="">
-              <label>Last Name:</label><input type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
-              <label>Nature of Claim:</label><input type="text" [(ngModel)]="natureOfClaim" name="natureOfClaim" class="form-control">
-              <label>Vehicle Reg Number:</label><input  type="text" [(ngModel)]="vehicleRegistrationNumber" name="vehicleRegistrationNumber" class="form-control">
+              <label>Claim ID:</label><input [disabled]="true"  type="text" [(ngModel)]="claimId" name="claimId" class="form-control"placeholder = "{{claimId}}">
+              <label>Claim Date:</label><input [disabled]="true"   type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder="">
+              <label>First Name:</label><input [disabled]="true"  type="text" [(ngModel)]="firstName" name="firstName" class="form-control"placeholder="">
+              <label>Last Name:</label><input [disabled]="true" type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
+              <!-- <label>Vehicle Reg Number:</label><input [disabled]="true"  type="text" [(ngModel)]="vehicleVRN" name="vehicleRegistrationNumber" class="form-control">               -->
+              <label>Nature of Claim:</label><input [disabled]="isEdit"  type="text" [(ngModel)]="natureOfClaim" name="natureOfClaim" class="form-control">
+              <label>Date of Loss:</label><input [disabled]="isEdit"  type="date" [(ngModel)]="dateOfLoss" name="natureOfClaim" class="form-control">
+                
+            </div> 
             </div>
-            </div> -->
             <br>
             <div class="row">
             <div class="box-footer"  align="center">
-                    <button class="btn btn-warning" aria-hidden="true" routerLink ="/"> Edit</button>
-                
+                <button class="btn btn-primary" aria-hidden="true" (click)="isDisabled()" > Edit</button>
+                 &nbsp;
+                <button class="btn btn-warning" aria-hidden="true" (click)="updateClaim()" > Update Claim</button>
+                &nbsp;
                 <button style="align-content: space-between" name="closeClaim" class="btn btn-primary" (click)="closeClaim()">Close Claim</button>
-                
+                &nbsp;
                 <button class="btn btn-warning" aria-hidden="true" routerLink ="/openClaims"> Cancel</button>
               </div>
               

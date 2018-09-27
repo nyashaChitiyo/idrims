@@ -24,17 +24,19 @@
               <th>Phone Number</th> 
               <th>Nature of Claim</th>
               <th>Vehicle Reg Number</th>
+              <th>Date of Loss</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor ="let claim of claims">
               <td>{{claim.claimId}}</td>
-              <td>{{claim.claimDate}}</td>
+              <td>{{claim.createdAt | date : 'short'}}</td>
               <td>{{claim.firstName}}</td>
               <td>{{claim.lastName}}</td>
               <td>{{claim.phoneNumber}}</td>
               <td>{{claim.natureOfClaim}}</td>
               <td>{{claim.vehicleRegistrationNumber}}</td>
+              <td>{{claim.dateOfLoss}}</td>
               
               <!--<td><button class="btn btn-primary"  routerLink="/CloseClaim/{{claim.claimId}}">View</button></td>-->
               <td><button class="btn btn-primary" (click)="getClaim(claim)">View</button></td>
