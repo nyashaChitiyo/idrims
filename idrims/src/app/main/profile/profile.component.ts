@@ -52,7 +52,6 @@ export class ProfileComponent implements OnInit {
   dataAddress;
   constructor(private location: Location, private data: DataService, private activatedRoute: ActivatedRoute, public session: SessionsService,private router: Router, private httpClient: HttpClient, private demo: DemoService) {
     var id: number = +localStorage.getItem('userId');
-    console.log(id+'daKASLNNCJKSNKCNSDNkXN')
     this.httpClient.post('http://108.61.174.41:7070/api/user/view/deliveryAddress/userId',
     {
       "id": +id
@@ -161,11 +160,11 @@ export class ProfileComponent implements OnInit {
   }
 
   changeLocation(){
-    if(this.validateAddress() && (this.validateCollection() || this.validateDelivery())){
-    if(!(this.dataAddress)) {
-    let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
+    if(this.validateAddress() && (this.validateCollection() || this.validateDelivery())){     
+     if(this.allColPoints && !(this.dataAddress)) {
+      let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
       if(this.isCollection){
-      this.demo.post('http://108.61.174.41:7070/api/user/create/deliveryAddress',
+      this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
       {
         "collectionPointId": +this.selectedCol,
         "collectionPointName": arr1['name'],
@@ -185,8 +184,9 @@ export class ProfileComponent implements OnInit {
               this.failedSwal.show();
             })
         }
-        else if(this.isDelivery){
-          this.demo.post('http://108.61.174.41:7070/api/user/create/deliveryAddress',
+        else if((this.isDelivery || !(this.allColPoints)) || ( !(this.allColPoints) || !(this.isDelivery))){
+          console.log('in else')
+          this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
           {
             "collectionPointId": 0,
             "collectionPointName": '',
@@ -214,6 +214,8 @@ export class ProfileComponent implements OnInit {
     }
   }
   changeDelivery(){
+    console.log('in change');
+    console.log(this.dataAddress)
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
     this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
     {

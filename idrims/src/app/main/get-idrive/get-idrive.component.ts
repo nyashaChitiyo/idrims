@@ -306,18 +306,19 @@ export class GetIdriveComponent implements OnInit {
         }
       }
       changeStatuPN(){ 
-        if(this.prefData){
+        
         if(this.changeStatePN ==='N'){
           this.isPreffered = false;
           this.isNew = true;
         }
         else if(this.changeStatePN === 'P'){
+          if(this.prefData){
           this.isNew = false;
           this.isPreffered = true;
         }
-      }
-      else{
-        this.data.error('Register Address to continue');
+        else{
+          this.data.error('Register Address to continue');
+        }
       }
       }
     changeStatusPreffered(){
