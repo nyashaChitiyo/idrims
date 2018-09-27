@@ -43,7 +43,7 @@ export class QuotationDetailsComponent implements OnInit {
       this.data = params;
 
       this.insuranceCompany = params['insuranceCompany'];
-      this.policyRate = params['insuranceType'];
+      this.insuranceType = params['insuranceType'];
       this.policyRate = params['policyRate'];
       this.premiumDue= params['premiumDue'];
       this.insurancePremium= params['insurancePremium'];

@@ -28,7 +28,7 @@
                                 <select id="insuranceTypeSelect" [(ngModel)]="insuranceTypeSelect" name="insuranceTypeSelect" (change)="setInsType()"class="select2 form-control" style="width: 100%;" >
                                   <option value="0" selected="selected"  style="display: none;">Choose Type of Cover</option>
                         <option value="RTA">Road Traffic Act (3rd Party)</option>
-                                  <option value="COMP">Comprehensive</option>
+                                  <option value="COMP">Comprehensive Standard</option>
                                   <option value="COMPPLUS">Comprehensive Plus</option>
                                 </select>
                         </div>
@@ -191,7 +191,7 @@
           </div>
       
           <div *ngIf="isCollection" class="form-group col-md-6">
-              <label>Number to Recieve ECONET Airtime</label>
+              <label>Number to receive promotional airtime (Econet, Netone or Telecel)</label>
                     <input [(ngModel)] = "airtimeNumber" class="form-control" type="number" name="airtimeNumber" required>
           </div>
       </div>
