@@ -38,21 +38,20 @@ export class MailboxComponent implements OnInit {
     };
   }
 
-  async getRequests(){
- 
-    await this.demo.post('http://108.61.174.41:7070/api/orders/view/collectionPoint',
+ getRequests(){
+   this.demo.post('http://108.61.174.41:7070/api/orders/view/collectionPoint',
     {
       "id": +localStorage.getItem('userStation')
     })
     .subscribe(
-      (data: Response)=> {
-        
-
+      (data)=> {
+        console.log('sjdfbjskdbhcbaskbjabcbasdbcajcblasdbajbdcsasjdd')
+        console.log(data)
         let arr = [];
         arr.push(data)
         this.temp_var=true;
         this.requests = arr[0].filter(
-          order => order.transactionStatus === 'QUOTATION');
+          order => order.transactionStatus === 'ORDER');
       }
     ) 
     

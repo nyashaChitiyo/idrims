@@ -129,7 +129,7 @@ export class GetIdriveComponent implements OnInit {
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +this.selectedCol,  
+      "collectionPointId": +this.selectedCol,  
       "collectionDelAdd": this.delAddress,
       "fullDeliveryAddress": [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress],
       "collectionType": this.changeState,
@@ -247,19 +247,22 @@ export class GetIdriveComponent implements OnInit {
       }
     }
     else{
-    if(this.changeState == 'C'){ 
+    if(this.changeState == 'D'){ 
       colPointId = this.selectedCol;
       collectionType = this.changeState;
+      console.log(colPointId+'in C if statement')
       fullDeliveryAddress = [this.selectedValue,this.selectedReg,this.selectedSurb,this.delAddress];
     }
-    else if(this.changeState == 'D'){
+    else if(this.changeState == 'C'){
       colPointId = this.selectedCol;
     collectionType = this.changeState;
     fullDeliveryAddress = null;}}
+    console.log(fullDeliveryAddress)
+    console.log(colPointId)
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',
     {
       "airtimeNumber": this.airtimeNumber,
-      "colPointId": +colPointId,
+      "collectionPointId": +colPointId,
       "collectionType": collectionType,
       "customerIdNumber": localStorage.getItem('nationalId'),
       "customerPhoneNumber": localStorage.getItem('phoneNumber'),

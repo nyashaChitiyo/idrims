@@ -38,7 +38,7 @@
                     </select>
                     </div>
                     <div class="form-group col-md-4">
-                    <label>Insurance Expiry</label>
+                    <label>ZINARA Licence Expiry</label>
                     <input class="form-control" type="date" required id="InsExp" [(ngModel)]="InsExp" name="InsExp">
                     </div>
                     <div class="form-group col-md-4">
@@ -47,14 +47,6 @@
                         <option *ngFor="let TaxClass of licTaxClasses" [value]="TaxClass.taxClassId">{{TaxClass.taxClassDescription}}</option>
                       </select>
                     </div>  
-                    <div class="form-group col-md-4">
-                    <label>Licencing Expiry</label>
-                    <input class="form-control" type="date" required id="licExp" [(ngModel)]="licExp" name="licExp">
-                    </div>
-                    <div class="form-group col-md-4"> 
-                    <label>Licencing Arrears</label>
-                    <input class="form-control" type="number" id="licArreas" [(ngModel)]="licArreas" name="licArreas" placeholder="Licencing areas" required>
-                    </div>
                     <div class="form-group col-md-4">
                     <label>Insurance Tax Class</label>
                     <select [(ngModel)]="selectedTaxClass" class="form-control" name="selectedTaxClass" required>
@@ -80,6 +72,10 @@
                           <option value="Commercial">Business</option>
                         </select>
                         </div>
+                        <div class="form-group col-md-4"> 
+                          <label>ZINARA Arrears</label>
+                          <input class="form-control" type="number" id="ZinArreas" [(ngModel)]="ZinArreas" name="ZinArreas" placeholder="Licencing areas" required>
+                          </div>
                       </div>
                   <div class="row">
                   <div class="box-footer"  align="center">

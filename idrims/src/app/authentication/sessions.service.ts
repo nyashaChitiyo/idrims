@@ -49,6 +49,7 @@ export class SessionsService {
         localStorage.setItem('firstname', data['firstname']);
         localStorage.setItem('lastname', data['lastname']);
         localStorage.setItem('userGroup', data['userGroup'])
+        localStorage.setItem('userStation', data['userStation'])
         localStorage.setItem('userId', data['userId']);
         localStorage.setItem('email',data['email']);
         localStorage.setItem('message', data['message']);   
