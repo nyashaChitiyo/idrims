@@ -15,29 +15,26 @@ export class AdminComponent implements OnInit {
   page=1;
   phoneNumber: string;
   firstname: string;
-  surname: string;
+  lastname: string;
   role: string;
   station: string;
   userStatus: boolean ;
+  userStationName;
   isEdit: boolean = true;
 
   constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient) { 
-    //this.inputText = "nyasha"
     console.log(this.agents);
   }
  
   ngOnInit() {
     
     this.activatedRoute.queryParams.subscribe(params =>{
-     // this.vehicleVRN = params['phoneNumber'];
-     //this.inputText = params['phoneNumber'];
-     // console.log('Hello '+this.inputText);
-      //this.getVehicle();
       this.agents = params;
       console.log(params);
       this.phoneNumber = params['phoneNumber'];
       this.firstname= params['firstname'];
-      this.surname= params['lastname'];
+      this.lastname= params['lastname'];
+      this.userStationName = params['userStationName'];
       this.role= params['userGroup'];
       this.station= params['userStationName'];
       this.userStatus = params['userStatus'];

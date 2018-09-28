@@ -29,7 +29,7 @@ export class RegisterUserComponent implements OnInit {
   postProfile(){
     if(this.validate()){
       try{
-  this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
+  this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
   {
       "email": this.email,
       "firstname": this.firstname,
