@@ -1,40 +1,92 @@
 <div class="content-wrapper">
 
-    <section align= "center" class="content">
+        <div class="row">
+                <div class="col-md-5">
+                </div> 
+                    <div class="panel panel-info">
+                      <div class="panel-heading">
+                      </div>
+                      <div class="panel-body">
+                        <div class="row">
+                          <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="../../../assets/avatar.png" class="img-circle img-responsive"> </div>
+                
+                          <div class=" col-md-9 col-lg-9 "> 
+                            <table class="table table-user-information">
+                              <tbody>
+                                  <tr>
+                                      <td><u><strong>Personal Details</strong></u></td>
+                                  </tr>
+                                <tr>
+                                  <td>First name:</td>
+                                  <td><input [disabled]="isEdit" type="text" [(ngModel)]="firstname" name="firstN" class="form-control"></td> 
+
+                                </tr>
+                                <tr>
+                               <td>Last name:</td>
+                                  <td><input [disabled]="isEdit" type="text" [(ngModel)]="lastname" name="lastname" class="form-control"></td> 
+                              </tr>
+                                <br>
+                                <tr>
+                                    <td><u><strong>Station</strong></u></td>
+                                </tr>
+                                <tr>
+                                    <td>User Station</td>
+                                    <td>{{userStationName}}</td>
+                                  </tr>
+                                  <tr>
+                                        <td>Select Station</td>
+                                        <td>{{userStationName}}</td>
+                                      </tr>
+                              </tbody>
+                            </table>              
+                            <button type="submit" class="btn btn-primary" (click)="isDisabled()">Edit Profile</button>&nbsp;
+                            <button type="submit" class="btn btn-warning" (click)="ResetPassword()">Change Pin</button>
+                          </div>
+                        </div>
+                      </div>
+                           <div class="panel-footer">  
+                           </div>
+                      </div>
+        </div>
+</div>
+
+
+
+
+
+   <!-- <section align= "center" class="content">
     <div class="box">
-    <!-- /.box-header -->
+
     <div class="box-header with-border">
         <br>
         <h3 class="box-title"><b>{{firstname}}&nbsp;{{lastname}}</b></h3>
       </div>
-    <!-- form start --> 
     <hr>
       <div class="box-body">
-          <div class="col-sm-3">
+          <div class="col-md-6 col-sm-6 col-lg-3">
               <img src="../../../assets/avatar.png" class="img-rounded" alt="img">
           </div>
 
-          <div class="col-sm-9">
+          <div class="col-md-6 col-sm-6 col-lg-6">
           <label>Phone Number:</label> <input [disabled]="true" type="text" [(ngModel)]="phoneNumber" name="phoneN" class="form-control">
-          <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstName" name="firstN" class="form-control">
+          <label>First Name:</label><input [disabled]="isEdit" type="text" [(ngModel)]="firstname" name="firstN" class="form-control">
           <label>Surname:</label><input [disabled]="isEdit" type="text" [(ngModel)]="surname" name="fir" class="form-control">
           <label>Role:</label><input [disabled]="isEdit" type="text" [(ngModel)]="role" name="firstNa" class="form-control">
           <label>Station:</label><input [disabled]="isEdit" type="text" [(ngModel)]="station" name="something" class="form-control">
-          <!-- <label for="type">Status</label>
+          <label for="type">Status</label>
           <select class="form-control" name="type" required>
               <option selected  style="display: none;" >Change Status</option>
               <option value="false"[disabled]="isEdit"  [(ngModel)]="userStatus" ngDefaultControl>Deactivate</option>
-            </select> -->
+            </select> 
         </div>
       </div>
       </div>
-      <!-- /.box-body -->
   
       <div class="box-footer">
           <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
           <button class="btn btn-warning" (click)="deactivateProfile()"  >Deactivate</button>
           <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/ViewAdmins"> Cancel</button></div>
-    </section>
+    </section>-->
   
   
   

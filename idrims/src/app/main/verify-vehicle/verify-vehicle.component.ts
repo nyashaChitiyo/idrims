@@ -19,6 +19,7 @@ export class VerifyVehicleComponent implements OnInit {
   page=1;
   taxClassId = '';
   licTaxClasses;
+  ZinArreas;
   insTaxClasses;
   ZBCTaxClass;
   vMake = '';
@@ -27,7 +28,6 @@ export class VerifyVehicleComponent implements OnInit {
   selectedTaxClass;
   vUsage = '';
   InsExp = '';
-  licExp = ''; 
   licArrears = '';
   licTaxClass = '';
   insTaxClass = '';
@@ -81,7 +81,8 @@ getStatus(): boolean{
   
 return false;
 }
-  saveVehicle(){ 
+  saveVehicle(){
+
     if(this.validate()){
       try{
     const data = this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',{
@@ -89,8 +90,7 @@ return false;
     })
     .subscribe(data => {
       if(data['verificationStatus']===false){
-          const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{
-            "insuranceExpiry" : this.InsExp,  
+          const data = this.httpClient.post("http://108.61.174.41:7070/api/vehicles/update",{ 
             "insuranceTaxClass": +this.selectedTaxClass,
             "vehicleMake": this.vMake,
             "vehicleModel": this.vModel,
@@ -98,18 +98,20 @@ return false;
             "vehicleRegistrationNumber": this.vehicleVRN,
             "vehicleUsage": this.vUsage,
             "zbcTaxClass": this.ZBCTaxClass,
+            "zianraLicenceExpiry" : this.InsExp, 
+            "zinaraArrears": +this.ZinArreas,
             "zinaraTaxClass": +this.selectedValue
         })
-       
         .subscribe(data => {
           if (data['status'] === "Success ") {  
            this.successSwal.show();
             this.reset();
-          } else {
+          } else { 
             this.failedSwal.show();
           }
         }, error => {
-          console.log(Response); 
+          console.log(error[0])  
+          console.log(error) 
           this.failedSwal.show();
         }); 
         }
@@ -129,7 +131,6 @@ return false;
       this.vType = '';
       this.InsExp = '';
       this.vUsage = '';
-      this.licExp = '';
       this.licArrears = '';
       this.licTaxClass = '';
       this.insTaxClass = '';
@@ -143,7 +144,6 @@ return false;
             if(this.InsExp)
             {
               if(this.vUsage){
-                  if(this.licExp){
 
                       if(this.selectedValue){
                         if(this.selectedTaxClass){
@@ -161,10 +161,6 @@ return false;
                       else{
                         this.data.error('please enter Licence Tax Class');
                       }
-                  }
-                  else{
-                    this.data.error('please enter Licence expiring');
-                  }
               }
               else{
                 this.data.error('please enter Vehicle Usage');
