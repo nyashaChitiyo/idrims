@@ -89,7 +89,9 @@ import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.
 import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
 import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
 import { CustomerComponent } from './main/customer/customer.component';
-
+import { SuburbsComponent } from './main/suburbs/suburbs.component';
+import { CreateSuburbComponent } from './main/create-suburb/create-suburb.component';
+import { ViewSuburbsComponent } from './main/view-suburbs/view-suburbs.component';
 
 //import { NgxPermissionsGuard } from 'ngx-permissions';
  
@@ -192,8 +194,10 @@ const appRoutes: Routes = [
   {path: 'supervisor/RegisterAgent', component: RegisterAgentComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/locations/centralPrinting', component: CentralPrintingComponent, canActivate:[AuthGuardRouteService]},
   {path: 'admin/locations/centralPrinting/createCentralPrinting', component: CreateCentralPrintingComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/suburbs', component: SuburbsComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/suburbs/createSuburb', component: CreateSuburbComponent, canActivate:[AuthGuardRouteService]},
+  {path: 'admin/locations/suburbs/viewSuburb', component: ViewSuburbsComponent, canActivate:[AuthGuardRouteService]},
   
- 
 
   
  

@@ -1,0 +1,62 @@
+<div class="content-wrapper">
+    <br>
+      <section align= "center" class="content">
+        <app-message></app-message>
+      <div class="box">
+      <div class="box-header with-border">
+        <br>
+        <h3 class="box-title"><b>ADD SUBURB</b></h3>
+      </div>
+      <hr>
+      <!-- /.box-header -->
+      <!-- form start -->
+        <div class="box-body">
+            <div class="form-group col-md-6">
+              <label for="Code">Code</label>
+              <input type="text" class="form-control" id="code" [(ngModel)]="code" name="code" placeholder="code"required>
+            </div>
+          <div class="form-group col-md-6">
+            <label for="colName">Suburb Name</label>
+            <input type="text" class="form-control" id="suburbName" [(ngModel)]="suburbName" name="suburbName" placeholder="Suburb Name"required>
+          </div>
+          <div class="form-group col-md-6">
+              <label for="email">Region</label>
+              <select [(ngModel)]="selectedValue" class="form-control" name="region" (change)="onEditClick()" required>
+                  <option selected  style="display: none;" >Select Region</option>
+                  <option *ngFor="let reg of allRegionNames" [value]="reg.id">{{reg.name}}</option>
+                </select>
+          </div>
+          <div class="form-group col-md-6">
+              <label for="email">Sub-Region</label>
+              <select [(ngModel)]="selectedReg" class="form-control" name="subRegion" required>
+                  <option selected  style="display: none;" >Select Sub-Region</option>
+                  <option  *ngFor="let reg of allSubRegions" [value]="reg.id">{{reg.name}}</option>
+                </select>
+          </div>
+        </div>
+        </div>
+        <!-- /.box-body --> 
+  
+        <div class="box-footer">
+          <button type="submit" class="btn btn-primary" (click)="postSuburb()">Submit</button>
+          <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/locations/suburbs"> Cancel</button>
+        </div>
+      </section>
+      <swal
+      #successSwal
+      title="Success"
+      text="Successfully Registered Suburb"
+      type="success"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
+    <swal
+      #failedSwal
+      title="Failed"
+      text="An error occured while processing your request"
+      type="warning"
+      [showCancelButton]="false"
+      [focusCancel]="false">
+    </swal>
+  
+  

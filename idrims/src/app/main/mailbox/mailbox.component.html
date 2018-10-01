@@ -41,7 +41,7 @@
             <th>Insurance Period</th>
             <th>Zinara Period</th>
             <th>ZBC Period</th>
-            <th>Close Request</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -56,7 +56,7 @@
             <td>{{request.insurancePeriod}}</td>
             <td>{{request.zinaraPeriod}}</td> 
             <td>{{request.zbcPeriod}}</td>
-            <td><button class="btn btn-primary btn-block margin-bottom" (click)=printDisk(request)>Complete</button></td>
+            <td><button class="btn btn-primary btn-block margin-bottom" (click)=printDisk(request)>Close Request</button></td>
 
 
           </tr>
@@ -71,7 +71,7 @@
 <swal
 #successSwal
 title="Success"
-text="Successfully updated, disc waiting for collection."
+text="Successfully updated, disc awaiting collection."
 type="success"
 [showCancelButton]="false"
 [focusCancel]="false">

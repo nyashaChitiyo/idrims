@@ -12,7 +12,7 @@ export class AddCollectionPointComponent implements OnInit {
 
   regions = [];
 
-  colName = '';
+  colName = ''; 
   Address = ''; 
   code = '';
   contactDetails='';
@@ -99,35 +99,35 @@ export class AddCollectionPointComponent implements OnInit {
                      return true;
                   }
                   else{
-                    this.data.error('please enter Sub Region');
+                    this.data.error('Please enter Sub Region');
                   }
                 }
                 else{
-                  this.data.error('please enter region');
+                  this.data.error('Please enter region');
                 }
               }
               else{
-                this.data.error('please enter Email');
+                this.data.error('Please enter Email');
               }
             }
             else {
-              this.data.error('please enter Phone Number');
+              this.data.error('Please enter Phone Number');
             }
           }
           else{
-            this.data.error('please enter Contant Details');
+            this.data.error('Please enter Contant Details');
           }
           }
           else{
-            this.data.error('please enter Code');
+            this.data.error('Please enter Code');
           }
         }
         else{
-          this.data.error('please enter Address');
+          this.data.error('Please enter Address');
         }
       }
     else{
-      this.data.error('please enter Collection Point Name');
+      this.data.error('Please enter Collection Point Name');
     }
 }
   onEditClick(){

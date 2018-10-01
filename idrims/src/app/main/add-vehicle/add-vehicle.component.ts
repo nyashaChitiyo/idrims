@@ -67,7 +67,7 @@ postNewVehicle(){
   .subscribe(data => {
     if (data) {        
       this.successSwal.show();
-      this.data.success('Vehicle Successfully registered pending verification')
+      this.data.success('Vehicle successfully submitted for verification')
       console.log(data);
       this.reset();
     } else {
@@ -90,12 +90,12 @@ postNewVehicle(){
         this.router.navigate(['agent/getIdrive/'+this.regVRN],data);
       } else {
         console.log('failed',+ data);
-        this.data.error('Vehicle not register press submit to register vehicle')
+        this.data.error('Vehicle not registered on iDriveSure, press submit for registration.')
         this.isNew = true;
       }
     }, error => {
     
-      this.data.error('Vehicle not register press submit to register vehicle')
+      this.data.error('Vehicle not registered on iDriveSure, press submit for registration.')
       this.isNew = true
     }); 
   }
@@ -110,11 +110,11 @@ postNewVehicle(){
                      return true;
         }
         else{
-          this.data.error('please enter Vehicle Reg Number');
+          this.data.error('Please enter Vehicle Reg Number');
         }
       }
     else{
-      this.data.error('please confirm Registration number');
+      this.data.error('Please confirm Registration number');
     }
 }
 }

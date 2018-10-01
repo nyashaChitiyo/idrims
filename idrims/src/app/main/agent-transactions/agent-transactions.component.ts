@@ -17,7 +17,7 @@ export class AgentTransactionsComponent implements OnInit {
     this.getRequests();
   }
 
-  ngOnInit() {
+  ngOnInit() { 
 
     this.dtOptions = {
       pagingType: 'full_numbers',

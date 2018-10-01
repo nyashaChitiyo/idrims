@@ -16,6 +16,7 @@ export class AgentSubmitClaimComponent implements OnInit {
   selectedValue: string;
   lastName : string;
   firstName: string;
+  lossDate: string;
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
@@ -33,7 +34,8 @@ export class AgentSubmitClaimComponent implements OnInit {
         "natureOfClaim": this.selectedValue,
         "phoneNumber": this.phoneNumber,
         "userId": +localStorage.getItem('userId'),
-        "vehicleRegistrationNumber": this.VRN
+        "vehicleRegistrationNumber": this.VRN,
+        "dateOfLoss": this.lossDate
        
       })
       .subscribe(data => {
@@ -55,6 +57,7 @@ export class AgentSubmitClaimComponent implements OnInit {
         this.selectedValue = '';
         this.lastName = '';
         this.firstName = '';
+        this.lossDate = '';
       }
  ngOnInit() {
   }

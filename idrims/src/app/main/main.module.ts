@@ -85,6 +85,9 @@ import { SupervisorAgentsManagementComponent } from './supervisor-agents-managem
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { CentralPrintingComponent } from './central-printing/central-printing.component';
 import { CreateCentralPrintingComponent } from './create-central-printing/create-central-printing.component';
+import { SuburbsComponent } from './suburbs/suburbs.component';
+import { CreateSuburbComponent } from './create-suburb/create-suburb.component';
+import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
 
 
 
@@ -175,6 +178,9 @@ import { CreateCentralPrintingComponent } from './create-central-printing/create
   SupervisorAgentsManagementComponent,
   ForgotPasswordComponent,
   CentralPrintingComponent,
-  CreateCentralPrintingComponent]
+  CreateCentralPrintingComponent,
+  SuburbsComponent,
+  CreateSuburbComponent,
+  ViewSuburbsComponent]
 })
 export class MainModule { }
