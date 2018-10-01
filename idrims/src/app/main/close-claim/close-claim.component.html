@@ -10,28 +10,36 @@
                   <hr>
         <div class="box-body">  
             <div class="row"> 
-              
-          <div class="col-md-9">
+                <div class="col-md-2"></div>   
+          <div class="col-md-8">
               <label>Claim ID:</label><input [disabled]="true"  type="text" [(ngModel)]="claimId" name="claimId" class="form-control"placeholder = "{{claimId}}">
               <label>Claim Date:</label><input [disabled]="true"   type="text" [(ngModel)]="claimDate" name="claimDate" class="form-control"placeholder="">
               <label>First Name:</label><input [disabled]="true"  type="text" [(ngModel)]="firstName" name="firstName" class="form-control"placeholder="">
               <label>Last Name:</label><input [disabled]="true" type="text" [(ngModel)]="lastName" name="lastName" class="form-control">
-              <!-- <label>Vehicle Reg Number:</label><input [disabled]="true"  type="text" [(ngModel)]="vehicleVRN" name="vehicleRegistrationNumber" class="form-control">               -->
-              <label>Nature of Claim:</label><input [disabled]="isEdit"  type="text" [(ngModel)]="natureOfClaim" name="natureOfClaim" class="form-control">
+
+              <!--<div class="form-group col-md-4">-->
+                <label for="email">Select Nature of Claim</label>
+                <select [disabled]="isEdit" [(ngModel)]="selectedValue" class="form-control" name="claimNature" placeholder="Select" required>
+                  <option>Accident</option>
+                  <option>Theft</option>
+                  <option>Windscreen</option>
+                  </select>
+             <!-- </div>-->
               <label>Date of Loss:</label><input [disabled]="isEdit"  type="date" [(ngModel)]="dateOfLoss" name="natureOfClaim" class="form-control">
                 
             </div> 
+            <div class="col-md-2"></div>
             </div>
             <br>
             <div class="row">
             <div class="box-footer"  align="center">
-                <button class="btn btn-primary" aria-hidden="true" (click)="isDisabled()" > Edit</button>
+                <button *ngIf="isEditable" class="btn btn-warning" aria-hidden="true" (click)="isDisabled()" > Edit</button>
                  &nbsp;
-                <button class="btn btn-warning" aria-hidden="true" (click)="updateClaim()" > Update Claim</button>
+                <button *ngIf="isUpdatable" class="btn btn-warning" aria-hidden="true" (click)="updateClaim()" > Update Claim</button>
                 &nbsp;
                 <button style="align-content: space-between" name="closeClaim" class="btn btn-primary" (click)="closeClaim()">Close Claim</button>
                 &nbsp;
-                <button class="btn btn-warning" aria-hidden="true" routerLink ="/openClaims"> Cancel</button>
+               <!-- <button class="btn btn-warning" aria-hidden="true" routerLink ="/openClaims"> Cancel</button>-->
               </div>
               
             </div>

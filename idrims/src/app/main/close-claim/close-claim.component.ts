@@ -15,8 +15,10 @@ export class CloseClaimComponent implements OnInit {
   claims: any;
   claimId : string;
   vehicleVRN:string;
+  isUpdatable;
   claimDate:string;
   firstName: string; 
+  isEditable = true;
   lastName: string;
   natureOfClaim:string;
   vehicleRegistrationNumber:string; 
@@ -42,17 +44,11 @@ export class CloseClaimComponent implements OnInit {
     })
   }
   
-  closeClaim(){
-    const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update",{
-      "claimDate": this.claimDate,
+  updateClaim(){
+    const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update/details",{
       "claimId": this.claimId,
-      "claimStatus": false,
-      "firstName": this.firstName,
-      "lastName": this.lastName,
+      "dateOfLoss": this.dateOfLoss,
       "natureOfClaim": this.natureOfClaim,
-      "userId": +localStorage.getItem('userId'),
-      "vehicleRegistrationNumber": this.vehicleVRN,
-      "dateOfLoss": this.vehicleVRN 
   })
 
   .subscribe(data => {
@@ -64,10 +60,29 @@ export class CloseClaimComponent implements OnInit {
   }, error => {
     console.log(Response); 
     this.failedSwal.show();
-  }); 
+  });
+  }
+
+closeClaim(){
+ const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update/status",{
+      "claimId": +this.claimId,
+      "status": false
+  })
+
+  .subscribe(data => {
+    if (data) {  
+     this.successSwal.show();
+    } else {
+      this.failedSwal.show();
+    }
+  }, error => {
+    console.log(error); 
+    this.failedSwal.show();
+  });
   }
   isDisabled(){
-    console.log(this.isEdit)
+    this.isUpdatable = true;
+    this.isEditable = false
     this.isEdit = false;
   }
   }
