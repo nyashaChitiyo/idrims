@@ -3,7 +3,6 @@
     
     <img src="../../../assets/img/logo2.png">
   </div>
-  <!-- /.login-logo -->
   <div class="login-box-body">
       <app-message></app-message>
     <p class="login-box-msg">Sign in to start your session</p>
@@ -26,11 +25,9 @@
             </label>
           </div>
         </div>
-        <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat" (click)="login()">Sign In</button>
         </div>
-        <!-- /.col -->
       </div>
     </div>
 
@@ -38,7 +35,6 @@
     <a routerLink="/register" class="text-center">Register a new membership</a>
 
   </div>
-  <!-- /.login-box-body -->
 <app-loading *ngIf="loading.loading"></app-loading>
 <swal
 #successSwal
@@ -57,13 +53,12 @@ type="warning"
 [focusCancel]="false">
 </swal>
 
-<!-- /.login-box -->
 <script>
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
       radioClass: 'iradio_square-blue',
-      increaseArea: '20%' /* optional */
+      increaseArea: '20%' 
     });
   });
 </script>

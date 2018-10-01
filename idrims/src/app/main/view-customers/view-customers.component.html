@@ -1,6 +1,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      <app-message></app-message>
       <h1 align= "center">
         <strong>Customers</strong>
       </h1>
@@ -32,6 +33,7 @@
     </table>
 
   </div>
+  <div *ngIf="!customers"><app-loading></app-loading></div>
     </section>
 
 

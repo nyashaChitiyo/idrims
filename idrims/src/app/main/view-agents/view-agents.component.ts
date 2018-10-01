@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
-import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
+import {Router,NavigationExtras} from '@angular/router';
  
 @Component({
   selector: 'app-view-agents',
@@ -16,7 +17,7 @@ export class ViewAgentsComponent implements OnInit {
   
   public temp_var: Object = false;
 
-  constructor(private router: Router,  private demo: DemoService) {
+  constructor(private data: DataService, private router: Router,  private demo: DemoService) {
  this.getUsers()
   }
   
@@ -53,6 +54,8 @@ export class ViewAgentsComponent implements OnInit {
         this.users = arr[0];
         console.log(arr[0]);
         this.temp_var=true;
+      }, error =>{
+        this.data.error(error['message']);
       }
     ) 
   }

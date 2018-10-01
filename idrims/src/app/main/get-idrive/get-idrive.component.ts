@@ -208,7 +208,8 @@ export class GetIdriveComponent implements OnInit {
       })
   }
     onEditClick(){
-    this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
+    if(this.isPrefC || this.changeState == 'C')  {
+    this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegionWithCollection',
     {
       "id": +this.selectedValue
     })
@@ -221,6 +222,22 @@ export class GetIdriveComponent implements OnInit {
         
         console.log(this.allRegionNames);
       })
+    }
+    else{
+    
+      this.demo.post('http://108.61.174.41:7070/api/location/view/SubRegionsInRegion',
+      {
+        "id": +this.selectedValue
+      })
+        .subscribe(data => {
+          let arr = [];
+          arr.push(data);
+          let arr1 = arr[0].map(a => a.name);
+          //let regionIds = arr[0].map(a => a.id);
+          this.allSubRegions = arr[0];
+          
+          console.log(this.allRegionNames);
+        })}
   }
  
   

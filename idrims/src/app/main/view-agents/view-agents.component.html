@@ -1,6 +1,7 @@
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
+      <app-message></app-message>
       <h1 align= "center" >
         <strong>Agents</strong>
       </h1>
@@ -33,8 +34,8 @@
         </tr>
       </tbody>
     </table>
-
   </div>
+  <div *ngIf="!users"><app-loading></app-loading></div>
     </section>
 
 
