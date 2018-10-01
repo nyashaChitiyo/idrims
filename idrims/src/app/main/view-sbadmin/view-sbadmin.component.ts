@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-view-sbadmin',
@@ -14,7 +15,7 @@ export class ViewSBadminComponent implements OnInit {
   users= [];
   userGroup:string;
 
-  constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+  constructor(private data: DataService, private router: Router, private httpClient: HttpClient, private demo: DemoService) {
  this.getUsers()
   }
   
@@ -44,6 +45,8 @@ export class ViewSBadminComponent implements OnInit {
         arr.push(data)
         this.users = arr[0];
         console.log(arr[0]);
+      }, error =>{
+        this.data.error(error['message']);
       }
     ) 
   }

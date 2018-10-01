@@ -28,7 +28,6 @@ export class RegisterUserComponent implements OnInit {
  
   postProfile(){
     if(this.validate()){
-      try{
   this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
   {
       "email": this.email,
@@ -47,10 +46,11 @@ export class RegisterUserComponent implements OnInit {
     } else {
       this.data.error('internal server error');
     }
-      });}
-catch(error){
- this.data.error(' '+error)
-}}
+      }, 
+    error => {
+      console.log(error)
+      this.data.error(error['message']);
+    });}
   }
   reset() {
     this.firstname = '';

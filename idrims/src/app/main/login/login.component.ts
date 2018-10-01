@@ -44,19 +44,16 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log('Local height: ' + this.innerHeight);
   }
 
-  login() {
-   // this.loading.onRequestStarted();
+  async login() {
+    
     if (this.validate()) {
-      this.session.login(this.username, this.password)
-      /*if(this.session.login(this.username, this.password) =='Invalid Username and password'){
-        console.log('Invalid Username and password')
-        this.data.error('Invalid Username and password');
-      }
+      this.loading.onRequestStarted();
+      var msg: string = await this.session.login(this.username, this.password);
+      console.log(msg)
+     /* if(msg=="success") 
+      this.data.error(msg);
       else
-      console.log('success')*/
-    }
-    else {
-     // this.data.error(this.session.dispMessage());
+      this.data.success("login successful")*/
     }
   }
 
@@ -66,10 +63,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
         return true;
       } 
       else{
+        
         this.data.error('please enter password');
       }
     }
     else{
+      
       this.data.error('please enter username');
     }
   }

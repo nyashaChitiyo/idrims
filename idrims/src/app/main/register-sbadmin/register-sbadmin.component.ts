@@ -47,7 +47,7 @@ export class RegisterSBadminComponent implements OnInit {
       this.failedSwal.show();
     }
   }, error => {
-    console.log(Response);
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); }
   }

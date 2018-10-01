@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-view-customers',
@@ -14,7 +15,7 @@ export class ViewCustomersComponent implements OnInit {
   customers= [];
   dataTable: any;
 
-  constructor(private httpClient: HttpClient,private chRef: ChangeDetectorRef,private router: Router,private demo: DemoService) { 
+  constructor(private data: DataService, private httpClient: HttpClient,private chRef: ChangeDetectorRef,private router: Router,private demo: DemoService) { 
     this.getCustomers();
   }
 
@@ -35,6 +36,8 @@ export class ViewCustomersComponent implements OnInit {
           const table: any = $('table#customers');
           this.dataTable = table.DataTable();
           console.log(arr[0]);
+        }, error => {
+          this.data.error(error['message']);
         }
       ) 
     }

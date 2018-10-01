@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-view-admins',
@@ -15,7 +16,7 @@ export class ViewAdminsComponent implements OnInit {
   userGroup:string;
   dtOptions: DataTables.Settings = {};
   public temp_var: Object = false;
-constructor(private router: Router, private httpClient: HttpClient, private demo: DemoService) {
+constructor(private data: DataService, private router: Router, private httpClient: HttpClient, private demo: DemoService) {
  this.getUsers()
   } 
   
@@ -45,6 +46,8 @@ constructor(private router: Router, private httpClient: HttpClient, private demo
         this.users = arr[0];
         console.log(arr[0]);
         this.temp_var=true;
+      }, error => {
+        this.data.error(error['message'])
       }
     ) 
   }
