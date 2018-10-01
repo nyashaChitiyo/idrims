@@ -45,7 +45,7 @@ export class CustomerManagementComponent implements OnInit {
       }
       console.log(data)
   
-      this.router.navigate(['/userManagement/'+this.customers[0].phoneNumber],data);
+      this.router.navigate(['backOffice/userManagement/Viewcustomers/'+this.customers[0].phoneNumber],data);
     }
   ngOnInit() {
     this.dtOptions = {
@@ -53,5 +53,5 @@ export class CustomerManagementComponent implements OnInit {
       pageLength: 5
     };
   }
-
+  zylefip4
 }

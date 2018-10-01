@@ -23,7 +23,7 @@ export class ProcessPaymentComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   constructor(private loading: LoadingIndicatorService, private activatedRoute: ActivatedRoute,private data: DataService, private httpClient: HttpClient,private router: Router) { 
-
+   
   }
 
   ngOnInit() {
@@ -33,6 +33,8 @@ export class ProcessPaymentComponent implements OnInit {
   }
 
   buyInsurance(){
+    if(this.ecocashNumber){
+      this.loading.onRequestStarted();
     var vehicleRegistrationNumber: string = this.para['vehicleRegistrationNumber'];
     var quotationId: string = this.para['quotationId'];
     var grandTotal: string = this.para['grandTotal'];
@@ -48,14 +50,18 @@ export class ProcessPaymentComponent implements OnInit {
         this.data.success(data['message']);
         this.trackReference = data;
         this.successSwal.show();
-        this.loading.onRequestStarted();
         this.trackPayment();
         
         this.ecocashNumber = '';
       } else {
+        this.loading.onRequestFinished();
         this.failedSwal.show();
       }
     });
+  }
+  else{
+    this.data.error('Please enter ecoash number');
+  }
   }
   trackPayment(){
     console.log(this.trackReference['trackReference'])
@@ -74,13 +80,19 @@ export class ProcessPaymentComponent implements OnInit {
           console.log(data)
           if(data['status']=='SUCCESS'){
           console.log(data['status']);
+          this.loading.onRequestFinished();
           return;}
-          else if((data['status'])==('FAILURE'))
-          console.log(data['status']);
-          else if((data['status'])==('PENDING'))
-          console.log(data['status']);
+          else if((data['status'])==('FAILURE')){
+            this.data.error(data['status']);
+            this.loading.onRequestFinished();
+          }
+          else if((data['status'])==('PENDING')){
+            this.loading.onRequestStarted();
+            //this.data.error(data['status']);
+          }
           else
-          console.log('error in making payment');
+          this.data.error(data['status']);
+          this.loading.onRequestFinished();
         })
          
         //this.successSwal.show();
