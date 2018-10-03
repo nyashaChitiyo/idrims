@@ -42,7 +42,7 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
       
       console.log(this.allRegionNames);
     }, error=>{
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
       
     });
    }
@@ -72,7 +72,7 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
       
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.isClicked = false;
   })}
   catch(error){

@@ -29,7 +29,7 @@ export class ViewMyClaimsComponent implements OnInit {
         console.log(this.claims);
         this.temp_var=true;
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     )
   }

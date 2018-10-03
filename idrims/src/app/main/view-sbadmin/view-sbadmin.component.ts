@@ -46,7 +46,7 @@ export class ViewSBadminComponent implements OnInit {
         this.users = arr[0];
         console.log(arr[0]);
       }, error =>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

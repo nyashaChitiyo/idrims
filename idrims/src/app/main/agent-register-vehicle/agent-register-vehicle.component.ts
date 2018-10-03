@@ -46,7 +46,7 @@ export class AgentRegisterVehicleComponent implements OnInit {
       
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.isClick=false;
     this.failedSwal.show();
   }); }

@@ -52,7 +52,7 @@ export class AgentRegisterCustomerComponent implements OnInit {
         this.failedSwal.show();
       }
     }, error => {
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
       this.isClick=false;
       this.failedSwal.show();
     }); 

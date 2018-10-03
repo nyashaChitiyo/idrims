@@ -46,7 +46,7 @@ export class AgentSubmitClaimComponent implements OnInit {
         }
       }, error => {
         this.isClick=false;
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
         this.failedSwal.show();
       }); 
       }

@@ -152,6 +152,7 @@ const appRoutes: Routes = [
   {path: 'customer/getIdrive', component: GetIdriveComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/getIdrive/:vehicleRegistrationNumber', component: QuotationDetailsComponent},
   {path: 'customer/getIdrive/:vehicleRegistrationNumber/:quotationId/:grandTotal', component: ProcessPaymentComponent}, 
+  {path: 'customer/getIdrive/generate/quote', component: GetIdriveComponent}, 
   {path: 'customer/myPendingVehicles', component: MypendingVerificationComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myVerifiedVehicles', component: MyVerifiedVehiclesComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myTransactions', component: MyTransactionsComponent, canActivate:[AuthGuardRouteService]},

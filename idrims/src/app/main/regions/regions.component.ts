@@ -27,7 +27,7 @@ export class RegionsComponent implements OnInit {
         console.log(this.regions);
 
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }
@@ -44,7 +44,7 @@ export class RegionsComponent implements OnInit {
           
           console.log(this.allPrints);
         }, error =>{
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         });
        }
 

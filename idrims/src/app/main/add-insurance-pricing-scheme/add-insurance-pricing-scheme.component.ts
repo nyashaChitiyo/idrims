@@ -52,7 +52,7 @@ export class AddInsurancePricingSchemeComponent implements OnInit {
     }
   }, error => {
     this.isClicked=false;
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   }); 
  }

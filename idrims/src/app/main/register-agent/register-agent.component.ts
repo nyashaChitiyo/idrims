@@ -46,7 +46,7 @@ export class RegisterAgentComponent implements OnInit {
       
       console.log(this.allColPointNames);
     }, error=>{
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     })
 
     if(localStorage.getItem('userGroup')==='ADMIN03'){
@@ -66,7 +66,7 @@ export class RegisterAgentComponent implements OnInit {
       
       console.log(this.allPrintingStations);
     }, error=>{
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     })
   }
  
@@ -100,7 +100,7 @@ export class RegisterAgentComponent implements OnInit {
   }
   }, error => {
     this.isClicked=false;
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   }); 
   }
@@ -130,7 +130,7 @@ export class RegisterAgentComponent implements OnInit {
   }
   }, error => {
     this.isClicked=false;
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   });
   }

@@ -32,8 +32,13 @@ export class MyTransactionsComponent implements OnInit {
   }; 
   }
   buyInsurance(quote){
-    console.log(quote.governmentLevy)
-    this.router.navigate(['customer/getIdrive/'+'1'+'/'+quote.quotationId+'/'+quote.grandTotal]);
+    console.log(quote)
+    //this.router.navigate(['customer/getIdrive/'+'1'+'/'+quote.quotationId+'/'+quote.grandTotal]);
+    let d = quote
+    let data : NavigationExtras = {
+      queryParams: d
+    }
+    this.router.navigate(['customer/getIdrive/generate/quote'], data);
   }
   isTransactions(){
     this.isQuotation = false
@@ -57,7 +62,7 @@ export class MyTransactionsComponent implements OnInit {
         this.transactions = arr[0];
         console.log(arr[0]);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     );  
   }
@@ -75,7 +80,7 @@ export class MyTransactionsComponent implements OnInit {
         this.quotations = arr;
         console.log(this.quotations);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

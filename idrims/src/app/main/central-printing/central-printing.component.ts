@@ -30,7 +30,7 @@ export class CentralPrintingComponent implements OnInit {
       }
     ) }
     catch(error){
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     }
    }
 

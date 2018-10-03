@@ -55,7 +55,7 @@ export class ViewAgentsComponent implements OnInit {
         console.log(arr[0]);
         this.temp_var=true;
       }, error =>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

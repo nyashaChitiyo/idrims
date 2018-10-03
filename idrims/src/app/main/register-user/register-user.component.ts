@@ -53,7 +53,7 @@ export class RegisterUserComponent implements OnInit {
       }, 
     error => {
       this.isClicked = false;
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     });}
   }
   reset() {

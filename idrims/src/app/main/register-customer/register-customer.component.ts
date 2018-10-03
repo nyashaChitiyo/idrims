@@ -51,7 +51,7 @@ this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
     }
   }, error => {
     this.isClicked = false;  
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   });}
   catch(error){

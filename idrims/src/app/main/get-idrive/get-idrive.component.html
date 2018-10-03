@@ -11,7 +11,7 @@
         <hr>
                     <div *ngIf="isCustomer" class="form-group col-md-6 text-center">
                         <label for="email">Select Vehicle</label>
-                        <select [(ngModel)]="vehicle" class="form-control" name="Vehicle" required>
+                        <select [(ngModel)]="vehicle" class="form-control" name="vehicle" required>
                             <option *ngFor="let vehicle of vehicleNames" [value]="vehicle.vehicleRegistrationNumber">{{vehicle.vehicleRegistrationNumber}}</option>
                           </select>
                     </div>

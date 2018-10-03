@@ -56,7 +56,7 @@ export class VerifyVehicleComponent implements OnInit {
           
           console.log(this.licTaxClasses);
         }, error => {
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         }); 
       }
 
@@ -69,7 +69,7 @@ export class VerifyVehicleComponent implements OnInit {
 
               console.log(this.insTaxClasses);
             }, error=>{
-              this.data.error(error['message']);
+              this.data.error(error['error'].message);
             }
           ) 
         } 
@@ -120,7 +120,7 @@ return false;
           }
         }, error => {
           this.isClicked=false;
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
           this.failedSwal.show();
         }); 
         }
@@ -153,8 +153,6 @@ return false;
         if(this.vModel){
           if(this.vType)
           {
-            if(this.InsExp)
-            {
               if(this.vUsage){
 
                       if(this.selectedValue){
@@ -182,10 +180,6 @@ return false;
               else{
                 this.data.error('please enter Vehicle Usage');
               }
-            }
-            else{
-              this.data.error('please enter Insurance Exp');
-            }
           }
           else{
             this.data.error('please enter Vehicle Type');

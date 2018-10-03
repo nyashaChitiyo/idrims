@@ -64,7 +64,7 @@ export class CloseClaimComponent implements OnInit {
     }
   }, error => {
     this.isClicked=false;
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   });
   }
@@ -85,7 +85,7 @@ closeClaim(){
       this.failedSwal.show();
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.isClicked=false;
     this.failedSwal.show();
   });

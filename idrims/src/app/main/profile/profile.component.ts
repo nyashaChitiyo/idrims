@@ -85,7 +85,7 @@ export class ProfileComponent implements OnInit {
       let regionIds = arr[0].map(a => a.id);
       this.allRegionNames = arr[0];
     }, error=>{
-      this.data.error(error['message'])
+      this.data.error(error['error'].message)
     });
   }
 
@@ -104,7 +104,7 @@ export class ProfileComponent implements OnInit {
         this.allColPoints = arr[0];       
       
       },error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       })} 
       else if(this.isDelivery){
         this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
@@ -120,7 +120,7 @@ export class ProfileComponent implements OnInit {
             
             console.log(this.allRegionNames);
       },error=>{
-        this.data.error(error['message'])
+        this.data.error(error['error'].message)
       })}
   }
 
@@ -148,7 +148,7 @@ export class ProfileComponent implements OnInit {
         
         console.log(this.allSuburbs);
       },error=>{
-        this.data.error(error['message'])
+        this.data.error(error['error'].message)
       })
   }
     onEditClick(){
@@ -165,7 +165,7 @@ export class ProfileComponent implements OnInit {
         
         console.log(this.allRegionNames);
       }, error=>{
-        this.data.error(error['message'])
+        this.data.error(error['error'].message)
       })
   }
 
@@ -196,7 +196,7 @@ export class ProfileComponent implements OnInit {
               this.failedSwal.show();
             }, error=>{
               this.isClick=false;
-              this.data.error(error['message']);
+              this.data.error(error['error'].message);
             })
         }
         else if((this.isDelivery || !(this.allColPoints)) || ( !(this.allColPoints) || !(this.isDelivery))){
@@ -222,7 +222,7 @@ export class ProfileComponent implements OnInit {
                   this.failedSwal.show();
                 }, error=>{
                   this.isClick=false;
-                  this.data.error(error['message'])
+                  this.data.error(error['error'].message)
                 })
         }
       }
@@ -258,7 +258,7 @@ export class ProfileComponent implements OnInit {
              this.failedSwal.show();
           },error=>{
             this.isClick=false;
-            this.data.error(error['message']);
+            this.data.error(error['error'].message);
           })
     
   }
@@ -285,7 +285,7 @@ export class ProfileComponent implements OnInit {
              this.failedSwal.show();
           }, error=>{
             this.isClick= false;
-            this.data.error(error['message']);
+            this.data.error(error['error'].message);
           })
         } 
         else

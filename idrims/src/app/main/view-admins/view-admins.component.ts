@@ -47,7 +47,7 @@ constructor(private data: DataService, private router: Router, private httpClien
         console.log(arr[0]);
         this.temp_var=true;
       }, error => {
-        this.data.error(error['message'])
+        this.data.error(error['error'].message)
       }
     ) 
   }

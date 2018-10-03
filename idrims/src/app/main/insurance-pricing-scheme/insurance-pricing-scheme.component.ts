@@ -22,7 +22,7 @@ export class InsurancePricingSchemeComponent implements OnInit {
         this.insclasses = arr[0];
         console.log(insclasses);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

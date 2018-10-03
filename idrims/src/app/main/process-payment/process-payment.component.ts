@@ -60,7 +60,7 @@ export class ProcessPaymentComponent implements OnInit {
     }
     ,error => {
       this.isClick = false;
-      this.data.error(error['message'])
+      this.data.error(error['error'].message)
       }
     );
   }
@@ -98,7 +98,7 @@ export class ProcessPaymentComponent implements OnInit {
 
     }, error=>{
       this.isClick = false;
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     })
     ;
   }
