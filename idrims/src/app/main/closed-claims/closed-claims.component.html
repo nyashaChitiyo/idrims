@@ -30,7 +30,7 @@
             <tbody>
             <tr *ngFor ="let claim of claims">
               <td>{{claim.claimId}}</td>
-              <td>{{claim.claimDate}}</td>
+              <td>{{claim.updatedAt | date: 'medium'}}</td>
               <td>{{claim.firstName}}</td>
               <td>{{claim.lastName}}</td>
               <td>{{claim.natureOfClaim}}</td>

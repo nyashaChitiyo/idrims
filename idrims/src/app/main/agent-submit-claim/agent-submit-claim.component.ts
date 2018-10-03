@@ -56,6 +56,7 @@ export class AgentSubmitClaimComponent implements OnInit {
         this.selectedValue = '';
         this.lastName = '';
         this.firstName = '';
+        this.lossDate = '';
       }
  ngOnInit() {
   }

@@ -144,6 +144,9 @@ return false;
       this.licTaxClass = '';
       this.insTaxClass = '';
       this.vOwnership = '';
+      this.ZBCTaxClass = '';
+      this.ZinArreas = '';
+      this.selectedValue = '';
     }
     validate(){
       if(this.vMake){

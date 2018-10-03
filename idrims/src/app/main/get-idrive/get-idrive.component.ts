@@ -402,19 +402,19 @@ export class GetIdriveComponent implements OnInit {
                      return true;
                 }
                 else{
-                  this.data.error('please select Collection or Delivery ');
+                  this.data.error('Please select Collection or Delivery ');
                 }
           }
           else{
-            this.data.error('please select Insurance Period');
+            this.data.error('Please select Insurance Period');
           }
           }
           else{
-            this.data.error('please select Insurance Type');
+            this.data.error('Please select Insurance Type');
           }
         }
         else{
-          this.data.error('please select Insurance Company');
+          this.data.error('Please select Insurance Company');
         }
 }
 validateIsCollection(){
@@ -427,19 +427,19 @@ validateIsCollection(){
                    return true;
         }
         else{
-          this.data.error('please enter recievers airtime number');
+          this.data.error('Please enter airtime number');
         }
         }
         else{
-          this.data.error('please select Collection Point');
+          this.data.error('Please select Collection Point');
         }
       }
       else{
-        this.data.error('please select Sub Region');
+        this.data.error('Please select Sub Region');
       }
     }
   else{
-    this.data.error('please Select Region');
+    this.data.error('Please Select Region');
   }
 }
 
@@ -453,19 +453,19 @@ validateIsDelivery(){
                    return true;
         }
         else{
-          this.data.error('please enter delivery address');
+          this.data.error('Please enter delivery address');
         }
         }
         else{
-          this.data.error('please select Surbub');
+          this.data.error('Please select Surbub');
         }
       }
       else{
-        this.data.error('please select Sub Region');
+        this.data.error('Please select Sub Region');
       }
     }
   else{
-    this.data.error('please Select Region');
+    this.data.error('Please Select Region');
   }
 }
 }

@@ -112,7 +112,9 @@ import { ForgotPasswordComponent } from './main/forgot-password/forgot-password.
 import { CentralPrintingComponent } from './main/central-printing/central-printing.component';
 import { CreateCentralPrintingComponent } from './main/create-central-printing/create-central-printing.component';
 import { CustomerComponent } from './main/customer/customer.component';
-
+import { SuburbsComponent } from './main/suburbs/suburbs.component';
+import { CreateSuburbComponent } from './main/create-suburb/create-suburb.component';
+import { ViewSuburbsComponent } from './main/view-suburbs/view-suburbs.component';
 
 @NgModule({
   declarations: [
@@ -211,7 +213,10 @@ import { CustomerComponent } from './main/customer/customer.component';
     ForgotPasswordComponent,
     CentralPrintingComponent,
     CreateCentralPrintingComponent,
-    CustomerComponent
+    CustomerComponent,
+    SuburbsComponent,
+    CreateSuburbComponent,
+    ViewSuburbsComponent
 
 
 

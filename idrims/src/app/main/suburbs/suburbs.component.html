@@ -1,0 +1,49 @@
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section align="center" class="content-header">
+      <h1>
+        <strong>Suburbs Management</strong>
+      </h1>
+    </section>
+    <p><button align="left" class="btn btn-warning" routerLink ="/admin/locations">Back to Location Management</button></p> 
+    <hr>
+    <!-- Main content -->
+    <section class="content">
+  
+  <!--Mailbox Div-->
+  <div class="row">
+    <div class="col-md-12">
+      <form method="post">
+        <button type="button" name="createSuburb" id="createSuburb" class="btn btn-primary btn-block margin-bottom" routerLink="createSuburb">Add Suburb</button>
+      </form>
+  
+    </div>
+  </div>
+  <!--general-->
+  <div class="box">
+      <!-- /.box-header -->
+      <div class="box-body">
+        <table class="table table-hover" id="" cellspacing="0">
+          <thead>
+          <tr>
+            <th>Code</th>
+            <th>Suburb Name</th>
+          </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let suburb of suburbs">
+              <td>{{suburb.code}}</td>
+              <td>{{suburb.name}}</td>
+            <!-- <button type="submit" routerLinkActive="active" name="verifyVehicle"><a routerLink="/verifyVehicle"></a>View</button> -->
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    </section>
+  
+  
+  </div>
+  
+  
+  
