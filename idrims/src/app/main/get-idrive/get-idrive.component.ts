@@ -88,12 +88,16 @@ export class GetIdriveComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.activatedRoute.queryParams.subscribe(params =>{
+    /*this.activatedRoute.queryParams.subscribe(params =>{
       console.log(params)
       this.insuranceCompanySelect = params['insuranceCompany'];
       this.insuranceTypeSelect = params['insuranceType'];
-
-    })
+      this.insurancePeriodSelect = params['insurancePeriod'];
+      this.vehicleRegistrationNumber1 = params['vehicleRegistrationNumber'];
+      this.vehicle = params['vehicleRegistrationNumber'];
+      this.zbcPeriodSelect = params['zbcPeriod'];
+      this.zinaraPeriodSelect = params['zinaraPeriod']
+    })*/
     var id: number = +localStorage.getItem('userId');
     // this.getIdrive();
 
@@ -208,7 +212,7 @@ export class GetIdriveComponent implements OnInit {
             //let regionIds = arr[0].map(a => a.id);
             this.allSuburbs = arr[0];
             
-            console.log(this.allRegionNames);
+            console.log(data);
       },error=>{
         this.data.error(error['error'].message);
       })}
