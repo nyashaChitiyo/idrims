@@ -153,8 +153,6 @@ return false;
         if(this.vModel){
           if(this.vType)
           {
-            if(this.InsExp)
-            {
               if(this.vUsage){
 
                       if(this.selectedValue){
@@ -182,10 +180,6 @@ return false;
               else{
                 this.data.error('please enter Vehicle Usage');
               }
-            }
-            else{
-              this.data.error('please enter Insurance Exp');
-            }
           }
           else{
             this.data.error('please enter Vehicle Type');

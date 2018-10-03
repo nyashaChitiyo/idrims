@@ -44,7 +44,7 @@ export class SessionsService {
     
     const headers = new HttpHeaders().set(InterceptorSkipHeader, 'True');
     this.httpClient.post('http://108.61.174.41:7070/api/auth/signin', userCredentials, {headers}).subscribe(data => {
-      console.log(data);
+      
       if (data['accessToken'] != null ) {
         localStorage.setItem('accessToken', data['accessToken']);
         localStorage.setItem('loggedIn', 'true');
@@ -94,9 +94,9 @@ export class SessionsService {
       }
     }, error =>{
       //msg = "error";
-      console.error(error)
+      
       this.loading.onRequestFinished();
-      console.error(error['error'])
+     
       this.data.error(error['error'].message);
     } 
      );
