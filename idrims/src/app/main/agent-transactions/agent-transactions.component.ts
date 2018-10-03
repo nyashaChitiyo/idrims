@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
 import {Router} from '@angular/router';
+import { DataService } from '../data.service';
 
 @Component({
   selector: 'app-agent-transactions',
@@ -10,10 +11,10 @@ import {Router} from '@angular/router';
 export class AgentTransactionsComponent implements OnInit {
   
   dtOptions: DataTables.Settings = {};
-  public transactions= [];
+  public transactions;
   public temp_var: Object = false;
-
-  constructor( private demo: DemoService,private router: Router) { 
+ 
+  constructor( private demo: DemoService,private router: Router,private data:DataService) { 
     this.getRequests();
   }
 
@@ -39,6 +40,8 @@ export class AgentTransactionsComponent implements OnInit {
         this.transactions = arr[0];
         console.log(this.transactions);
         this.temp_var=true;
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }

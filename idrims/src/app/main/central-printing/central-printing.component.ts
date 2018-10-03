@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
-
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-central-printing',
@@ -9,8 +9,8 @@ import { DemoService } from '../../demo.service';
 })
 export class CentralPrintingComponent implements OnInit {
 
-  prints= [];
-  constructor(private demo: DemoService) {
+  prints;
+  constructor(private demo: DemoService, private data: DataService) {
     this.getCentralPrinting()
   }
 
@@ -19,16 +19,19 @@ export class CentralPrintingComponent implements OnInit {
 
   }
    getCentralPrinting(){
+     try{
     this.demo.get('http://108.61.174.41:7070/api/centralPrinting/view/all')
     .subscribe(
       (data)=> {
         let arr = [];
         arr.push(data)
         this.prints = arr[0];
-        console.log(this.prints);
 
       }
-    ) 
+    ) }
+    catch(error){
+      this.data.error(error['message']);
+    }
    }
 
 }

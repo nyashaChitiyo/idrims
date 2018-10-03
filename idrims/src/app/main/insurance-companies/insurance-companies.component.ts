@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-
+import {DataService}from '../data.service';
 @Component({
   selector: 'app-insurance-companies',
   templateUrl: './insurance-companies.component.html',
@@ -9,11 +9,11 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 })
 export class InsuranceCompaniesComponent implements OnInit {
 
-  companies= [];
+  companies;
     status: boolean; 
 
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient, private data: DataService) { 
     this.getCompany();
   }
 
@@ -24,6 +24,8 @@ export class InsuranceCompaniesComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.companies = arr[0];
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
 import {Router} from '@angular/router';
-
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-verified-vehicles',
@@ -11,13 +11,13 @@ import {Router} from '@angular/router';
 export class VerifiedVehiclesComponent implements OnInit {
 
  dtOptions: DataTables.Settings = {};
-  public vehicles= [];
+  public vehicles;
   public temp_var: Object = false;
 
   isBackOffice;
   isSystem;
 
-  constructor( private demo: DemoService,private router: Router) { 
+  constructor( private demo: DemoService,private router: Router, private data:DataService) { 
     this.getVehicle();
 
     if(localStorage.getItem('userGroup')==='ADMIN01'){
@@ -46,6 +46,8 @@ export class VerifiedVehiclesComponent implements OnInit {
         arr.push(data)
         this.vehicles = arr[0];
         this.temp_var=true;
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }

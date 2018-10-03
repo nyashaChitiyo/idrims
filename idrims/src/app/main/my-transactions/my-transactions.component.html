@@ -2,6 +2,7 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
+    <app-message></app-message>
     <div class="row">
       <div class="col-md-6">
           <form method="post">
@@ -52,10 +53,11 @@
       <td>{{transaction.grandTotal}}</td>
       <td>{{transaction.transactionStatus}}</td>
       <!-- <td><button (click)="getCustomer()" class="btn btn-primary btn-block margin-bottom">view</button></td> -->
+
     </tr>
     </tbody>
   </table>
-
+  <app-loading *ngIf="!transactions"></app-loading>
 </div>
 
 <!--Quotation Table-->
@@ -86,7 +88,7 @@
       </tr>
       </tbody>
     </table>
-  
+  <app-loading *ngIf="!quotations"></app-loading>
   </div>
   </section>
 

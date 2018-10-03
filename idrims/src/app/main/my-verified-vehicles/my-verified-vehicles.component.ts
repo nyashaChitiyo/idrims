@@ -10,7 +10,7 @@ import {Router} from '@angular/router';
 })
 export class MyVerifiedVehiclesComponent implements OnInit {
   dtOptions: DataTables.Settings = {};
-  public vehicles= [];
+  public vehicles;
   public temp_var: Object = false;
 
   constructor( private demo: DemoService,private router: Router) { 

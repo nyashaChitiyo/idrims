@@ -19,6 +19,7 @@ export class ProcessPaymentComponent implements OnInit {
   isPending = false;
   trackReference;
   ecocashNumber;
+  isClick = false;
   isEnabled = true;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
@@ -34,6 +35,7 @@ export class ProcessPaymentComponent implements OnInit {
 
   buyInsurance(){
     if(this.ecocashNumber){
+      this.isClick = true;
     var vehicleRegistrationNumber: string = this.para['vehicleRegistrationNumber'];
     var quotationId: string = this.para['quotationId'];
     var grandTotal: string = this.para['grandTotal'];
@@ -46,6 +48,7 @@ export class ProcessPaymentComponent implements OnInit {
     .subscribe(data => {
      
       if (data['status'] =='success') {   
+        this.isClick=false;
         this.data.warning('Please enter pin your mobile phone');
         this.trackReference = data;
         this.trackPayment();
@@ -56,7 +59,7 @@ export class ProcessPaymentComponent implements OnInit {
       }
     }
     ,error => {
-      console.log(error); 
+      this.isClick = false;
       this.data.error(error['message'])
       }
     );
@@ -81,19 +84,21 @@ export class ProcessPaymentComponent implements OnInit {
         .subscribe((x) => {
          
           if(data['status']=='SUCCESS'){
+            this.isClick=false;
           this.data.success(data['status']);
-          this.isPending =false;}
+         }
           else if((data['status'])==('PENDING')){
-          this.isPending = true;
+          this.isClick = true;
           }
           else{
           this.data.error(data['status']);
-          this.isPending = false;}
+          this.isClick = false;}
         })
-         
-        //this.successSwal.show();
         this.ecocashNumber = '';
 
+    }, error=>{
+      this.isClick = false;
+      this.data.error(error['message']);
     })
     ;
   }

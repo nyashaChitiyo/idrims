@@ -27,12 +27,12 @@
         <tr *ngFor="let vehicle of vehicles">
           <td>{{vehicle.createdAt}}</td>
           <td>{{vehicle.vehicleRegistrationNumber}}</td>
-         
         </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <app-loading *ngIf="!vehicles"></app-loading>
   </section>
 
 

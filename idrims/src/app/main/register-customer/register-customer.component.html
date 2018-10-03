@@ -40,6 +40,7 @@
         <button (click)="postProfile()" type="submit" class="btn btn-primary">Submit</button>
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/CustomerManagement"> Cancel</button>
       </div>
+      <app-loading *ngIf="isClicked"></app-loading>
     </section>
     <swal
     #successSwal

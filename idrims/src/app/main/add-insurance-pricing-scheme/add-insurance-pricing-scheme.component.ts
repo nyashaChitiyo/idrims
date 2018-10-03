@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 })
 export class AddInsurancePricingSchemeComponent implements OnInit {
  
+  isClicked = false;
   annualCompRate : string;
   annualCompRateMinimum: string;
   changedBy: string;
@@ -28,6 +29,7 @@ export class AddInsurancePricingSchemeComponent implements OnInit {
 
   postZinPricing(){
     if(this.validate()){
+      this.isClicked=true;
       try{
     this.httpClient.post('http://108.61.174.41:7070/api/zinaraPricing/create',
   {
@@ -40,7 +42,7 @@ export class AddInsurancePricingSchemeComponent implements OnInit {
   })
   .subscribe(data => { 
     if (data['status'] === 'success') {        
-      console.log(data['message'], + data['message']);
+      this.isClicked = false;
       this.successSwal.show();
       this.reset();
     } else {
@@ -49,11 +51,13 @@ export class AddInsurancePricingSchemeComponent implements OnInit {
       
     }
   }, error => {
-    console.log(Response);
+    this.isClicked=false;
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); 
  }
 catch(error){
+  this.isClicked = false;
   this.data.error(''+error)
 }}
 }

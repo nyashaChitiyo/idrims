@@ -12,7 +12,7 @@ import{Router,NavigationExtras} from '@angular/router';
 export class CustomerManagementComponent implements OnInit {
  
   
-  customers= [];
+  customers;
   dtOptions: DataTables.Settings = {};
   public temp_var: Object = false;
   constructor(private httpClient: HttpClient,private router: Router,private demo: DemoService) { 

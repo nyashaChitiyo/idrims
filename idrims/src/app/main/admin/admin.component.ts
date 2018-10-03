@@ -13,6 +13,7 @@ export class AdminComponent implements OnInit {
   agents:any;
   vehicle:any;
   page=1;
+  isClicked=false;
   phoneNumber: string;
   firstname: string;
   lastname: string;

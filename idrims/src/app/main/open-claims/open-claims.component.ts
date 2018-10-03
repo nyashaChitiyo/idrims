@@ -6,6 +6,7 @@ import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
 import { DemoService } from '../../demo.service';
 import{Router,NavigationExtras} from '@angular/router';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-open-claims',
@@ -13,13 +14,13 @@ import{Router,NavigationExtras} from '@angular/router';
   styleUrls: ['./open-claims.component.css']
 })
 export class OpenClaimsComponent implements OnInit {
-  claims =[];
+  claims;
   claimID : string;
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient,private activatedRoute: ActivatedRoute,private router: Router,  private demo: DemoService) {
+  constructor(private data:DataService, private httpClient: HttpClient,private activatedRoute: ActivatedRoute,private router: Router,  private demo: DemoService) {
   
     this.getClaims();
     console.log(this.getClaims);
@@ -44,6 +45,8 @@ export class OpenClaimsComponent implements OnInit {
         arr.push(data)
         this.claims = arr[0];
         console.log(data);
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }
@@ -75,7 +78,7 @@ export class OpenClaimsComponent implements OnInit {
       this.failedSwal.show();
     }
   }, error => {
-    console.log(Response); 
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); 
   }

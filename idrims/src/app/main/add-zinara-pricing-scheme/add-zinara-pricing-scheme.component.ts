@@ -16,6 +16,7 @@ export class AddZinaraPricingSchemeComponent implements OnInit {
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
+  isClicked = false;
   constructor(private httpClient: HttpClient,private data:DataService) { }
 
   ngOnInit() {
@@ -24,22 +25,24 @@ export class AddZinaraPricingSchemeComponent implements OnInit {
   postZinPricing(){
     try{
     if(this.taxClassDesc){
+      this.isClicked=true;
     this.httpClient.post('http://108.61.174.41:7070/api/zinaraPricing/create',
   {
     'taxClassDescription':this.taxClassDesc, 
   })
   .subscribe(data => {
     if (data['status'] === 'success') {        
-      console.log(data['message'], + data['message']);
+      this.isClicked=false;
       this.successSwal.show();
       this.reset();
     } else {
-      console.log('failed',+ data);
+      this.isClicked=false;
       this.failedSwal.show();
       
     }
   }, error => {
-    console.log(Response);
+    this.isClicked = false;
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); 
 }

@@ -27,6 +27,7 @@ export class QuotationDetailsComponent implements OnInit {
   vehicleRegistrationNumber;
   insuranceCompany;
   insuranceType;
+  isClick=false;
 
   data:any=[];
   constructor(private activatedRoute: ActivatedRoute,private httpClient: HttpClient,private router: Router) { 

@@ -48,6 +48,7 @@
       <button type="submit" (click)= "addInsuranceCompany()" class="btn btn-primary">Submit</button>
       <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/InsCompanies"> Cancel</button>
     </div>
+    <app-loading *ngIf="isClicked"></app-loading>
   </section>
 
   <swal

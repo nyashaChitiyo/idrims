@@ -12,7 +12,7 @@ import {DataService} from '../data.service';
 })
 export class ViewCustomersComponent implements OnInit {
 
-  customers= [];
+  customers;
   dataTable: any;
 
   constructor(private data: DataService, private httpClient: HttpClient,private chRef: ChangeDetectorRef,private router: Router,private demo: DemoService) { 

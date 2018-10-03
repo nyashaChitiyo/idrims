@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/timeout';
+import {DataService} from '../data.service';
 import { HttpClient, HttpHeaders, } from '@angular/common/http';
 
 @Component({
@@ -16,7 +17,8 @@ import { HttpClient, HttpHeaders, } from '@angular/common/http';
 export class MailboxComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  public requests= [];
+  public requests;
+  isClick = false;
   public temp_var: Object = false;
   responseData: any;
   filteredOrders = [];
@@ -25,7 +27,7 @@ export class MailboxComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor( private demo: DemoService,private router: Router,
+  constructor(private data:DataService, private demo: DemoService,private router: Router,
     private http: HttpClient) { 
     this.getRequests();
   }
@@ -52,12 +54,13 @@ export class MailboxComponent implements OnInit {
         this.temp_var=true;
         this.requests = arr[0].filter(
           order => order.transactionStatus === 'ORDER');
+      }, error =>{
+        this.data.error(error['message']);
       }
     ) 
-    
   }
   printDisk(request){
-
+    this.isClick=true;
     this.demo.post('http://108.61.174.41:7070/api/orders/close',
     {
       "closedBy": localStorage.getItem('userId'),
@@ -66,11 +69,16 @@ export class MailboxComponent implements OnInit {
     })
     .subscribe(
       (data)=> {
-        if (data) {       
+        if (data) {      
+          this.isClick = false; 
           this.successSwal.show();
         } else {
+          this.isClick = false; 
           this.failedSwal.show();
         }
+      }, error=>{
+        this.isClick = false; 
+        this.data.error(error['message']);
       }
     ) 
   }

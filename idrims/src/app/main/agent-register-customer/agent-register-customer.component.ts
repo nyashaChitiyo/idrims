@@ -3,6 +3,7 @@ import { ServicesService } from '../../services.service';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-agent-register-customer',
@@ -11,6 +12,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 })
 export class AgentRegisterCustomerComponent implements OnInit {
 
+  isClick = false;
   email: string;
   firstname: string;
   nationalID: string;
@@ -23,12 +25,13 @@ export class AgentRegisterCustomerComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private data:DataService) { }
 
   ngOnInit() {
   }
 
   registerCustomer(){ 
+    this.isClick=true;
     this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',{
 
       'email': this.email,
@@ -40,14 +43,17 @@ export class AgentRegisterCustomerComponent implements OnInit {
      'userStation' : 0
     })
     .subscribe(data => {
-      if (data['success'] === true) {  
+      if (data['success'] == true) {  
+        this.isClick=false;
+        this.data.success(data['message']);
        this.successSwal.show();
         this.reset();
       } else {
         this.failedSwal.show();
       }
     }, error => {
-      console.log(Response);
+      this.data.error(error['message']);
+      this.isClick=false;
       this.failedSwal.show();
     }); 
     }

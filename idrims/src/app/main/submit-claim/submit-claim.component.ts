@@ -13,6 +13,7 @@ export class SubmitClaimComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   vehicleNames= [];
+  isClick = false;
   vehicle:number;
   claimNature;
   lossDate;
@@ -35,6 +36,8 @@ export class SubmitClaimComponent implements OnInit {
       } else {
         
       }
+    },error=>{
+      this.data.error(error['message'])
     })
   }
   onEditClick(){
@@ -42,6 +45,7 @@ export class SubmitClaimComponent implements OnInit {
   }
   postClaim(){
     if(this.validate()){
+      this.isClick=true;
     this.httpClient.post('http://108.61.174.41:7070/api/claims/create',
     {
       "dateOfLoss": this.lossDate,
@@ -57,12 +61,17 @@ export class SubmitClaimComponent implements OnInit {
       if (data) {   
         this.vehicle=+"";
         this.claimNature="";
+        this.isClick=false;
         this.successSwal.show();
       } else {
         this.vehicle=+"";
         this.claimNature="";
+        this.isClick=false;
         this.failedSwal.show();
       }
+    }, error=>{
+      this.data.error(error['message']);
+      this.isClick=false;
     })}
   }
 

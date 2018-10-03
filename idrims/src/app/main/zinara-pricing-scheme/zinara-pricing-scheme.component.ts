@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
+import { DataService} from '../data.service';
 
 @Component({
   selector: 'app-zinara-pricing-scheme',
@@ -10,8 +11,8 @@ export class ZinaraPricingSchemeComponent implements OnInit {
 
 
 
-  taxclasses = [];
-  constructor(private demo: DemoService) { 
+  taxclasses;
+  constructor(private demo: DemoService,private data:DataService) { 
     this.getZinTaxClass();
   }
 
@@ -21,6 +22,8 @@ export class ZinaraPricingSchemeComponent implements OnInit {
       let arr = [];
         arr.push(taxclasses)
         this.taxclasses = arr[0];
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   } 

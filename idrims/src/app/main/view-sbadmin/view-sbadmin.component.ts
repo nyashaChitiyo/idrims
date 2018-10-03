@@ -12,7 +12,7 @@ import {DataService} from '../data.service';
 })
 export class ViewSBadminComponent implements OnInit {
 
-  users= [];
+  users;
   userGroup:string;
 
   constructor(private data: DataService, private router: Router, private httpClient: HttpClient, private demo: DemoService) {

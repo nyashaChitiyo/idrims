@@ -22,6 +22,7 @@ export class RegisterAgentComponent implements OnInit {
   email: string;
   firstname: string;
   nationalID: string;
+  isClicked
   phoneNumber: string;
   surname: string;
   userGroup: string;
@@ -44,6 +45,8 @@ export class RegisterAgentComponent implements OnInit {
       this.allColPointNames = arr[0];
       
       console.log(this.allColPointNames);
+    }, error=>{
+      this.data.error(error['message']);
     })
 
     if(localStorage.getItem('userGroup')==='ADMIN03'){
@@ -62,6 +65,8 @@ export class RegisterAgentComponent implements OnInit {
       this.allPrintingStations = arr[0];
       
       console.log(this.allPrintingStations);
+    }, error=>{
+      this.data.error(error['message']);
     })
   }
  
@@ -70,6 +75,7 @@ export class RegisterAgentComponent implements OnInit {
       try{
     if(this.selectedStation == "COLLECTION")
     {
+      this.isClicked=true;
     this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
   {
     'email' : this.email,
@@ -84,6 +90,7 @@ export class RegisterAgentComponent implements OnInit {
   })
   .subscribe(data => {
     if (data['success'] === true) {  
+      this.isClicked=false
      this.successSwal.show();
       this.reset();
     } else {
@@ -92,12 +99,13 @@ export class RegisterAgentComponent implements OnInit {
     
   }
   }, error => {
-    console.log(Response);
+    this.isClicked=false;
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); 
   }
   else if(this.selectedStation == "CENTRAL"){
-
+    this.isClicked = true;
     this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
   {
     'email' : this.email,
@@ -112,6 +120,7 @@ export class RegisterAgentComponent implements OnInit {
   })
   .subscribe(data => {
     if (data['success'] === true) {  
+      this.isClicked=false;
      this.successSwal.show();
       this.reset();
     } else {
@@ -120,7 +129,8 @@ export class RegisterAgentComponent implements OnInit {
     
   }
   }, error => {
-    console.log(Response);
+    this.isClicked=false;
+    this.data.error(error['message']);
     this.failedSwal.show();
   });
   }

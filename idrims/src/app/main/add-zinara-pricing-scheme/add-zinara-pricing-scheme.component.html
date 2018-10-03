@@ -27,6 +27,7 @@
           <button type="submit" class="btn btn-primary" (click)="postZinPricing()">Submit</button>
           <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/PricingScheme/ZinaraPricingScheme"> Cancel</button>
         </div>
+        <app-loading *ngIf="isClicked"></app-loading>
       </section>
       <swal
       #successSwal

@@ -12,7 +12,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 export class CreateCentralPrintingComponent implements OnInit {
 
   regions = [];
-
+  isClicked = false;
   CentralPrintingName = '';
   Address = ''; 
   code = '';
@@ -31,6 +31,7 @@ export class CreateCentralPrintingComponent implements OnInit {
 
   postPrintLocation(){
     if(this.validate()){
+      this.isClicked = true;
       try{
    this.demo.post('http://108.61.174.41:7070/api/centralPrinting/create',
     {
@@ -47,6 +48,7 @@ export class CreateCentralPrintingComponent implements OnInit {
     .subscribe(data => {
       if (data['success'] === true) {        
         this.successSwal.show();
+        this.isClicked = false;
         this.reset();
       } else {
         console.log('failed',+ data);
@@ -54,10 +56,12 @@ export class CreateCentralPrintingComponent implements OnInit {
         
       }
     }, error => {
-      console.log(Response);
+      this.data.error(error['message']);
+      this.isClicked=false;
       this.failedSwal.show();
     });  }
     catch(error){
+      this.isClicked = false;
       this.data.error(''+error)
     }
    }}

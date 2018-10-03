@@ -43,6 +43,7 @@ export class GetIdriveComponent implements OnInit {
   insurancePeriodSelect: string;
   insuranceTypeSelect: string;
 
+  isClick=false;
   isPrefC;
   isPrefD;
   isPreffered;
@@ -80,6 +81,8 @@ export class GetIdriveComponent implements OnInit {
           this.myCollectionPoint = data1['collectionPointName'];
           console.log(data1)
         }
+      }, error=>{
+        this.data.error(error['message']);
       });
    }
   }
@@ -103,6 +106,8 @@ export class GetIdriveComponent implements OnInit {
       } else {
         
       }
+    }, error=>{
+      this.data.error(error['mesage']);
     });
 
     this.httpClient.get('http://108.61.174.41:7070/api/companies/view/all')
@@ -111,6 +116,8 @@ export class GetIdriveComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.companies = arr[0];
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
@@ -120,6 +127,8 @@ export class GetIdriveComponent implements OnInit {
       let arr1 = arr[0].map(a => a.name);
       let regionIds = arr[0].map(a => a.id);
       this.allRegionNames = arr[0];
+    }, error=>{
+      this.data.error(error['message']);
     })
   }
 
@@ -149,7 +158,7 @@ export class GetIdriveComponent implements OnInit {
       .subscribe(data1 => {
         if(data1){
           this.successSwal.show();
-          
+          this.isClick = false;
           let d = data1
           let data : NavigationExtras = {
             queryParams: d
@@ -158,10 +167,13 @@ export class GetIdriveComponent implements OnInit {
         }
         else
         this.failedSwal.show();
+      },error=>{
+        this.data.error(error['message']);
       });
       }
   getColPoints(){
     if(this.isCollection){
+     
     this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
     {
       "id": +this.selectedReg
@@ -174,6 +186,9 @@ export class GetIdriveComponent implements OnInit {
         this.allColPoints = arr[0];
         
         console.log(this.allRegionNames);
+      }, error=>{
+        this.data.error(error['message']);
+        this.isClick=true;
       })}
       else if(this.isDelivery){
         this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
@@ -188,6 +203,8 @@ export class GetIdriveComponent implements OnInit {
             this.allSuburbs = arr[0];
             
             console.log(this.allRegionNames);
+      },error=>{
+        this.data.error(error['message']);
       })}
   }
 
@@ -205,6 +222,8 @@ export class GetIdriveComponent implements OnInit {
         this.allSuburbs = arr[0];
         
         console.log(this.allSuburbs);
+      }, error=>{
+        this.data.error(error['message']);
       })
   }
     onEditClick(){
@@ -221,6 +240,8 @@ export class GetIdriveComponent implements OnInit {
         this.allSubRegions = arr[0];
         
         console.log(this.allRegionNames);
+      },error=>{
+        this.data.error(error['message']);
       })
     }
     else{
@@ -237,12 +258,14 @@ export class GetIdriveComponent implements OnInit {
           this.allSubRegions = arr[0];
           
           console.log(this.allRegionNames);
+        }, error=>{
+          this.data.error(error['message']);
         })}
   }
  
   
   getIdrive() {
-
+    this.isClick = true;
     if(this.isPreffered || (this.validateCustomer() && (this.validateIsCollection() || this.validateIsDelivery()))){
     console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
    if(localStorage.getItem('userGroup')==='CUST01'){
@@ -295,7 +318,7 @@ export class GetIdriveComponent implements OnInit {
       "zbcPeriod": +this.zbcPeriodSelect,
       "zinaraPeriod": +this.zinaraPeriodSelect
     })
-      .subscribe(data1 => {
+      .subscribe(data1 =>{
         if(data1){
           this.successSwal.show();
           
@@ -307,6 +330,9 @@ export class GetIdriveComponent implements OnInit {
         }
         else
         this.failedSwal.show();
+      }, error=>{
+        this.isClick=false;
+        this.data.error(error['message']);
       });}
       else if(localStorage.getItem('userGroup')==='AGENT01'){
         this.getCustomerIdrive();

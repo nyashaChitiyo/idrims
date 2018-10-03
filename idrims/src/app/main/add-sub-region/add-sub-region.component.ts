@@ -23,6 +23,7 @@ export class AddSubRegionComponent implements OnInit {
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
+  isClicked;
   constructor(private demo: DemoService,private router: Location, private data:DataService) {
     this.getRegionName();
    }
@@ -40,11 +41,15 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
       this.allRegionNames = arr[0];
       
       console.log(this.allRegionNames);
+    }, error=>{
+      this.data.error(error['message']);
+      
     });
    }
 
   postSubRegion(){
     if(this.validate()){
+      this.isClicked=true;
       try{
   this.demo.post('http://108.61.174.41:7070/api/location/create/SubRegion',
   {
@@ -54,19 +59,21 @@ this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
     'regionId': +this.selectedValue
   })
   .subscribe(data => {
-    if (data['success'] === true) {        
+    if (data['success'] === true) {     
+      this.isClicked=false   
       console.log(data['message'], + data['message']);
       this.successSwal.show();
       this.router.back();
       
       
     } else {
-      console.log('failed',+ data);
+      this.isClicked=false;
       this.failedSwal.show();
       
     }
   }, error => {
-    console.log(Response);
+    this.data.error(error['message']);
+    this.isClicked = false;
   })}
   catch(error){
     this.data.error(''+error)

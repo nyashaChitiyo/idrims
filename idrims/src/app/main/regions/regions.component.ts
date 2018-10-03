@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
+import {DataService} from '../data.service'
 
 @Component({
   selector: 'app-regions',
@@ -9,8 +10,8 @@ import { DemoService } from '../../demo.service';
 export class RegionsComponent implements OnInit {
 
   allPrints=[];
-  public regions= [];
-  constructor(private demo: DemoService) { 
+  public regions;
+  constructor(private demo: DemoService, private data: DataService) { 
 
     this.getPrintLocations()
   }
@@ -25,6 +26,8 @@ export class RegionsComponent implements OnInit {
         this.regions = arr[0];
         console.log(this.regions);
 
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }
@@ -40,6 +43,8 @@ export class RegionsComponent implements OnInit {
           this.allPrints = arr[0];
           
           console.log(this.allPrints);
+        }, error =>{
+          this.data.error(error['message']);
         });
        }
 

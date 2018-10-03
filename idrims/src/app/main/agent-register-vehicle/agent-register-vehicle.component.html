@@ -32,6 +32,7 @@
           <button type="submit" class="btn btn-primary" (click)="postVehicle()">Submit</button>
           <button class="btn btn-warning" aria-hidden="true" routerLink ="/agent/Customers"> Cancel</button>
         </div>
+        <app-loading *ngIf="isClick"></app-loading>
       </section>
       <swal
       #successSwal

@@ -14,6 +14,7 @@ export class AgentRegisterVehicleComponent implements OnInit {
   regVRN = "";
   confirmRegVRN = "";
   nationalID ="";
+  isClick=false;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
   @ViewChild('failedEq') private failedEq: SwalComponent;
@@ -28,14 +29,15 @@ export class AgentRegisterVehicleComponent implements OnInit {
   }
 
   postVehicle(){
-    console.log(this.regVRN+"yet yet yet "+this.confirmRegVRN)
+   this.isClick=true;
   if(this.regVRN == this.confirmRegVRN){
     this.httpClient.post('http://108.61.174.41:7070/api/vehicles/create',
     {
       "vehicleRegistrationNumber": this.regVRN
     })
   .subscribe(data => {
-    if (data) {        
+    if (data) {   
+      this.isClick=false;     
       this.successSwal.show();
       this.reset();
     } else {
@@ -44,7 +46,8 @@ export class AgentRegisterVehicleComponent implements OnInit {
       
     }
   }, error => {
-    console.log(Response);
+    this.data.error(error['message']);
+    this.isClick=false;
     this.failedSwal.show();
   }); }
   else{

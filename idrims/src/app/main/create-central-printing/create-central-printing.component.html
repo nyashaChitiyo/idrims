@@ -35,7 +35,6 @@
             </div>
           <div class="form-group col-md-6">
             <label for="cpcontactDetails">Contact Person</label>
-              <th>Date</th>
               <input type="text" class="form-control" id="cpcontactDetails" [(ngModel)]="cpcontactDetails" name="cpcontactDetails" placeholder="Contact Person"required>
           </div>
 
@@ -47,6 +46,7 @@
           <button type="submit" class="btn btn-primary" (click)="postPrintLocation()">Submit</button>
           <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/locations/centralPrinting"> Cancel</button>
         </div>
+        <app-loading *ngIf="isClicked"></app-loading>
       </section>
       <swal
       #successSwal

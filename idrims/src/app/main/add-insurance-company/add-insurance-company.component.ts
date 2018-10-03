@@ -16,6 +16,7 @@ export class AddInsuranceCompanyComponent implements OnInit {
     contact: string;
     description: string;
     email: string;
+    isClicked=false;
     name: string; 
     type: string;
     @ViewChild('successSwal') private successSwal: SwalComponent;
@@ -28,6 +29,7 @@ export class AddInsuranceCompanyComponent implements OnInit {
   addInsuranceCompany(){
     if(this.validate()){
       if(this.code.length > 3){
+        this.isClicked = true;
       try{
    this.httpClient.post('http://108.61.174.41:7070/api/companies/create',
     {
@@ -40,7 +42,8 @@ export class AddInsuranceCompanyComponent implements OnInit {
       'type': this.type,
     })
     .subscribe(data => {
-      if (data['success'] === true) {        
+      if (data['success'] === true) {      
+        this.isClicked=false;  
         this.successSwal.show();
         console.log(data['message'], + data['message']);
         this.reset();
@@ -50,7 +53,8 @@ export class AddInsuranceCompanyComponent implements OnInit {
         
       }
     }, error => {
-      console.log(Response);
+      this.isClicked = false;
+      this.data.error(error['message']);
       this.failedSwal.show();
     }); 
     }

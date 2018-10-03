@@ -12,6 +12,7 @@ import{DataService} from '../data.service';
 })
 export class RegisterCustomerComponent implements OnInit {
 
+  isClicked=false;
   email: string;
   address: string;
   firstname: string;
@@ -27,6 +28,7 @@ export class RegisterCustomerComponent implements OnInit {
  
   postProfile(){ 
   if(this.validate()){
+    this.isClicked=true
     try{
 this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
   {
@@ -39,14 +41,17 @@ this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
     'userStation': 0,
   })
   .subscribe(data => {
-    if (data['success'] === true) {  
+    if (data['success'] == true) {  
+      this.isClicked=false;
+      this.data.success(data['message'])
      this.successSwal.show();
       this.reset();
     } else {
       this.failedSwal.show();
     }
   }, error => {
-    console.log(Response);
+    this.isClicked = false;  
+    this.data.error(error['message']);
     this.failedSwal.show();
   });}
   catch(error){

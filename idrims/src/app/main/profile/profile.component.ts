@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
   allSuburbs = [];
   changeState;
   selectedCol: number =0;
+  isClick;
   selectedSurb:string="";
   isCollection: boolean = false;
   isDelivery: boolean = false;
@@ -59,12 +60,11 @@ export class ProfileComponent implements OnInit {
       .subscribe(data1 => {
         if(data1){
           this.dataAddress = data1
-          console.log(this.dataAddress)
-          console.log(this.dataAddress.collectionPointName)
           this.streetAddress = this.dataAddress.streetAdrress
-          console.log(this.streetAddress)
-          console.log('nyashasnas'.length)
+   
         }
+      }, error=>{
+        this.data.error('Please add address to your profile')
       });
     this.firstName = localStorage.getItem('firstname');
     this.lastName = localStorage.getItem('lastname');
@@ -84,6 +84,8 @@ export class ProfileComponent implements OnInit {
       let arr1 = arr[0].map(a => a.name);
       let regionIds = arr[0].map(a => a.id);
       this.allRegionNames = arr[0];
+    }, error=>{
+      this.data.error(error['message'])
     });
   }
 
@@ -101,6 +103,8 @@ export class ProfileComponent implements OnInit {
         //let regionIds = arr[0].map(a => a.id);
         this.allColPoints = arr[0];       
       
+      },error=>{
+        this.data.error(error['message']);
       })} 
       else if(this.isDelivery){
         this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
@@ -115,6 +119,8 @@ export class ProfileComponent implements OnInit {
             this.allSuburbs = arr[0];
             
             console.log(this.allRegionNames);
+      },error=>{
+        this.data.error(error['message'])
       })}
   }
 
@@ -141,6 +147,8 @@ export class ProfileComponent implements OnInit {
         this.allSuburbs = arr[0];
         
         console.log(this.allSuburbs);
+      },error=>{
+        this.data.error(error['message'])
       })
   }
     onEditClick(){
@@ -156,12 +164,15 @@ export class ProfileComponent implements OnInit {
         this.allSubRegions = arr[0];
         
         console.log(this.allRegionNames);
+      }, error=>{
+        this.data.error(error['message'])
       })
   }
 
   changeLocation(){
     if(this.validateAddress() && (this.validateCollection() || this.validateDelivery())){     
      if(this.allColPoints && !(this.dataAddress)) {
+       this.isClick = true;
       let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
       if(this.isCollection){
       this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
@@ -177,15 +188,19 @@ export class ProfileComponent implements OnInit {
       })
             .subscribe(data => {
               if(data){
+                this.isClick=false;
                 this.router.navigate(['/customer/profile']);
               this.successSwal.show();
               }
               else
               this.failedSwal.show();
+            }, error=>{
+              this.isClick=false;
+              this.data.error(error['message']);
             })
         }
         else if((this.isDelivery || !(this.allColPoints)) || ( !(this.allColPoints) || !(this.isDelivery))){
-          console.log('in else')
+          this.isClick=true;
           this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
           {
             "collectionPointId": 0,
@@ -199,11 +214,15 @@ export class ProfileComponent implements OnInit {
           })
                 .subscribe(data => {
                   if(data){
+                    this.isClick = false;
                     this.router.navigate(['/customer/profile']); 
                   this.successSwal.show();
                   }
                   else
                   this.failedSwal.show();
+                }, error=>{
+                  this.isClick=false;
+                  this.data.error(error['message'])
                 })
         }
       }
@@ -217,6 +236,7 @@ export class ProfileComponent implements OnInit {
     console.log('in change');
     console.log(this.dataAddress)
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
+    this.isClick=true;
     this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
     {
       "collectionPointId":  +this.selectedCol,
@@ -230,11 +250,15 @@ export class ProfileComponent implements OnInit {
     })
           .subscribe(data => {
             if(data){
+              this.isClick=false;
               this.router.navigate(['/customer/profile']);
             this.successSwal.show();
             }
             else
              this.failedSwal.show();
+          },error=>{
+            this.isClick=false;
+            this.data.error(error['message']);
           })
     
   }
@@ -242,6 +266,7 @@ export class ProfileComponent implements OnInit {
   changePin(){
     if(this.validatePin()){
     if(this.newPin === this.confirmPin){
+      this.isClick=true;
     this.demo.post('http://108.61.174.41:7070/api/user/profile/changePassword',
     {
     
@@ -252,11 +277,15 @@ export class ProfileComponent implements OnInit {
     })
           .subscribe(data => {
             if(data){
+              this.isClick=false;
             this.successSwal.show();
             this.reset();
             }
             else
              this.failedSwal.show();
+          }, error=>{
+            this.isClick= false;
+            this.data.error(error['message']);
           })
         } 
         else

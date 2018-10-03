@@ -19,7 +19,7 @@ export class AddRegionComponent implements OnInit {
   name: string;
   code: string;
   centralPrintingID;
-
+  isClicked = false;
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
 
@@ -41,11 +41,14 @@ export class AddRegionComponent implements OnInit {
           this.allPrints = arr[0];
           
           console.log(this.allPrints);
+        }, error=>{
+          this.data.error(error['message']);
         });
        }
 
   postRegion(){
     if(this.validate()){
+      this.isClicked=true;
       try{
     this.httpClient.post('http://108.61.174.41:7070/api/location/create/Region',
   {
@@ -55,7 +58,8 @@ export class AddRegionComponent implements OnInit {
     'centralPrintingID' : +this.selectedValue
   })
   .subscribe(data => {
-    if (data['success'] === true) {        
+    if (data['success'] === true) {   
+      this.isClicked=false;     
       this.successSwal.show();
       this.reset();
     } else {
@@ -64,7 +68,8 @@ export class AddRegionComponent implements OnInit {
       
     }
   }, error => {
-    console.log(Response);
+    this.data.error(error['message']);
+    this.isClicked=false;
     this.failedSwal.show();
   }); 
 }

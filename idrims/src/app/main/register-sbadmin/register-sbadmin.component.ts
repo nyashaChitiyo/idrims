@@ -12,7 +12,7 @@ import { DataService } from '../data.service';
 })
 export class RegisterSBadminComponent implements OnInit {
  
-  
+  isClicked = false;
   email: string;
   firstname: string;
   nationalID: string;
@@ -28,6 +28,7 @@ export class RegisterSBadminComponent implements OnInit {
  
   postProfile(){ 
     if(this.validate()){
+      this.isClicked = true;
     this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/user',
   {
     'email' : this.email,
@@ -41,13 +42,16 @@ export class RegisterSBadminComponent implements OnInit {
   })
   .subscribe(data => {
     if (data['success'] === true) {  
+      this.isClicked = false;
      this.successSwal.show();
       this.reset();
     } else {
+      this.isClicked = false;
       this.failedSwal.show();
     }
   }, error => {
     this.data.error(error['message']);
+    this.isClicked=false;
     this.failedSwal.show();
   }); }
   }

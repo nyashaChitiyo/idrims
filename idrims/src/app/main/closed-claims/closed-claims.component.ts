@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-closed-claims',
@@ -12,7 +13,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
 }) 
 export class ClosedClaimsComponent implements OnInit {
 
-  claims: any;
+  claims;
   claimID : string;
   vehicleVRN:string;
   claimDATE:string;
@@ -25,20 +26,19 @@ export class ClosedClaimsComponent implements OnInit {
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
-  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) {
-    const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/view/status",{
+  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient, private data:DataService) {
+  this.httpClient.post("http://108.61.174.41:7070/api/claims/view/status",{
       "bool": false,
   })
 
   .subscribe(data => {
     if (data) {  
      this.claims = data
-     console.log(data)
     } else {
    
     }
   }, error => {
-    console.log(Response); 
+    this.data.error(error['message']);
     this.failedSwal.show();
   }); 
    }

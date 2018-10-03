@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-insurance-pricing-scheme',
@@ -8,8 +9,8 @@ import { DemoService } from '../../demo.service';
 })
 export class InsurancePricingSchemeComponent implements OnInit {
 
-  insclasses = [];
-  constructor(private demo: DemoService) { 
+  insclasses;
+  constructor(private demo: DemoService, private data: DataService) { 
     this.getInsTaxClass();
   }
 
@@ -20,6 +21,8 @@ export class InsurancePricingSchemeComponent implements OnInit {
         arr.push(insclasses)
         this.insclasses = arr[0];
         console.log(insclasses);
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }

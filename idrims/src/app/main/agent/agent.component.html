@@ -30,6 +30,7 @@
           <button class="btn btn-primary" (click)="isDisabled()">Edit</button>
           <button class="btn btn-warning" (click)="saveProfile()" >De-Activate</button>
           <button class="btn btn-primary" aria-hidden="true" routerLink ="/admin/userManagement/viewAgents"> Cancel</button></div>
+          <app-loading *ngIf="isClicked"></app-loading>
     </section>
     <swal
     #successSwal

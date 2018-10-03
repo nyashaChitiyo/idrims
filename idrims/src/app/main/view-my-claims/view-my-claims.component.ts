@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DemoService } from '../../demo.service';
+import {DataService} from '../data.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,9 +11,9 @@ import {Router} from '@angular/router';
 export class ViewMyClaimsComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  public claims= [];
+  public claims;
   public temp_var: Object = false;
-  constructor( private demo: DemoService,private router: Router) { 
+  constructor(private data:DataService, private demo: DemoService,private router: Router) { 
   }
 
   ngOnInit() {
@@ -27,6 +28,8 @@ export class ViewMyClaimsComponent implements OnInit {
         this.claims = arr[0]; 
         console.log(this.claims);
         this.temp_var=true;
+      }, error=>{
+        this.data.error(error['message']);
       }
     )
   }

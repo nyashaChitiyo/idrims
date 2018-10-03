@@ -32,6 +32,7 @@ export class VerifyVehicleComponent implements OnInit {
   licTaxClass = '';
   insTaxClass = '';
   vOwnership = '';
+  isClicked=false;
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
@@ -54,6 +55,8 @@ export class VerifyVehicleComponent implements OnInit {
           this.licTaxClasses = arr[0];
           
           console.log(this.licTaxClasses);
+        }, error => {
+          this.data.error(error['message']);
         }); 
       }
 
@@ -65,6 +68,8 @@ export class VerifyVehicleComponent implements OnInit {
               this.insTaxClasses = arr[0];
 
               console.log(this.insTaxClasses);
+            }, error=>{
+              this.data.error(error['message']);
             }
           ) 
         } 
@@ -84,6 +89,8 @@ return false;
   saveVehicle(){
 
     if(this.validate()){
+      
+      this.isClicked = true;
       try{
     const data = this.httpClient.post('http://108.61.174.41:7070/api/vehicles/view/vehicleRegistrationNumber',{
       "vehicleRegistrationNumber":this.vehicleVRN
@@ -104,14 +111,16 @@ return false;
         })
         .subscribe(data => {
           if (data['status'] === "Success ") {  
+            this.data.success('Successfully verified your vehicle');
+            this.isClicked=false;
            this.successSwal.show();
             this.reset();
           } else { 
             this.failedSwal.show();
           }
         }, error => {
-          console.log(error[0])  
-          console.log(error) 
+          this.isClicked=false;
+          this.data.error(error['message']);
           this.failedSwal.show();
         }); 
         }
@@ -146,6 +155,7 @@ return false;
               if(this.vUsage){
 
                       if(this.selectedValue){
+                        if(this.ZinArreas || +this.ZinArreas==0){
                         if(this.selectedTaxClass){
                           if(this.vOwnership){
                        return true;
@@ -156,6 +166,10 @@ return false;
                         }
                         else{
                           this.data.error('please enter Insurance Tax Class');
+                        }
+                      }
+                        else{
+                          this.data.error('please enter Zinara arears, enter 0 if u have non');
                         }
                       }
                       else{

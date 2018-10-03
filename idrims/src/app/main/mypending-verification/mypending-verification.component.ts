@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class MypendingVerificationComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
-  public vehicles= [];
+  public vehicles;
   public temp_var: Object = false;
 
   

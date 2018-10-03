@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import {Router} from '@angular/router';
+import {DataService} from '../data.service';
 @Component({
   selector: 'app-vehicles',
   templateUrl: './vehicles.component.html',
@@ -9,12 +10,12 @@ import {Router} from '@angular/router';
 })
 export class VehiclesComponent implements OnInit {
 
-  public vehicles= [];
+  vehicles;
   dtOptions: DataTables.Settings = {};
   public temp_var: Object = false;
   isBackOffice;
  
-  constructor(private httpClient: HttpClient, private demo: DemoService,private router: Router) { 
+  constructor(private data:DataService, private httpClient: HttpClient, private demo: DemoService,private router: Router) { 
     this.getVehicle();
 
     if(localStorage.getItem('userGroup')==='ADMIN01'){
@@ -44,18 +45,9 @@ export class VehiclesComponent implements OnInit {
         arr.push(data)
         this.vehicles = arr[0];
         this.temp_var=true;
+      }, error=>{
+        this.data.error(error['message']);
       }
     ) 
   }
-
-  /*getVehicle(){
-    this.demo.getVehicles()
-    .subscribe(data => {
-      let arr=[]; 
-      //console.log(data)
-      arr.push(data);
-      this.vehicles = arr[0];
-      //console.log(this.vehicles)
-    });
-  }*/
 }

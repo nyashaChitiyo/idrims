@@ -11,7 +11,7 @@ import { DataService } from '../data.service';
 export class AddCollectionPointComponent implements OnInit {
 
   regions = [];
-
+  isClicked=false;
   colName = '';
   Address = ''; 
   code = '';
@@ -38,11 +38,15 @@ export class AddCollectionPointComponent implements OnInit {
       let arr1 = arr[0].map(a => a.name);
       let regionIds = arr[0].map(a => a.id);
       this.allRegionNames = arr[0];
-    })
+    },
+  error =>{
+    this.data.error(error['message']);
+  })
    }
 
    postColPoint(){
      if(this.validate()){
+      this.isClicked=true;
        try{
    this.demo.post('http://108.61.174.41:7070/api/location/create/CollectionPoint',
     {
@@ -57,17 +61,18 @@ export class AddCollectionPointComponent implements OnInit {
       'subRegion': this.selectedReg
     })
     .subscribe(data => {
-      if (data['success'] === true) {        
+      if (data['success'] === true) {
+        this.isClicked = false;        
         this.successSwal.show();
-        console.log(data['message'], + data['message']);
         this.reset();
       } else {
-        console.log('failed',+ data);
+        this.isClicked = false;
         this.failedSwal.show();
         
       }
     }, error => {
-      console.log(Response);
+      this.isClicked = false;
+      this.data.error(error['message'])
       this.failedSwal.show();
     });  }
     catch(error){
@@ -143,6 +148,9 @@ export class AddCollectionPointComponent implements OnInit {
         this.allSubRegions = arr[0];
         
         console.log(this.allRegionNames);
+      }, error=>{
+        this.isClicked = false;
+        this.data.error(error['message']);
       })
   }
   ngOnInit() {

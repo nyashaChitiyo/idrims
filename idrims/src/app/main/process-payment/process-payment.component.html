@@ -24,7 +24,8 @@
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/customer/getIdrive"> Cancel</button>
       </div>
       </div>
-      <div *ngIf="isPending"><app-loading></app-loading></div>
+      <!--<div *ngIf="isPending"><app-loading></app-loading></div>-->
+      <app-loading *ngIf="isClick"></app-loading>
     </section> 
     </div>
 

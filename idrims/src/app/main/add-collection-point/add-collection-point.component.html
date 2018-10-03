@@ -65,6 +65,7 @@
         <button type="submit" class="btn btn-primary" (click)="postColPoint()">Submit</button>
         <button class="btn btn-warning" aria-hidden="true" routerLink ="/admin/locations/collectionPoints"> Cancel</button>
       </div>
+      <app-loading *ngIf="isClicked"></app-loading>
     </section>
     <swal
     #successSwal

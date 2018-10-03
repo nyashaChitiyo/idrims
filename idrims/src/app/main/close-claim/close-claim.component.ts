@@ -4,6 +4,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { DemoService } from '../../demo.service';
 import { SweetAlert2Module } from '@toverux/ngx-sweetalert2';
 import {SwalComponent} from '@toverux/ngx-sweetalert2';
+import {DataService} from '../data.service';
 
 @Component({
   selector: 'app-close-claim',
@@ -20,7 +21,8 @@ export class CloseClaimComponent implements OnInit {
   firstName: string; 
   isEditable = true;
   lastName: string;
-  natureOfClaim:string;
+  selectedValue:string='';
+  isClicked=false;
   vehicleRegistrationNumber:string; 
   dateOfLoss: string;
 
@@ -29,41 +31,46 @@ export class CloseClaimComponent implements OnInit {
 
   @ViewChild('successSwal') private successSwal: SwalComponent;
   @ViewChild('failedSwal') private failedSwal: SwalComponent;
-  constructor(private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { }
-
-  ngOnInit() {
+  constructor(private data: DataService, private activatedRoute: ActivatedRoute, private demo: DemoService,private httpClient: HttpClient) { 
     this.activatedRoute.queryParams.subscribe(res =>{
       this.claimId = res['claimId'];       
        this.claimDate = res['createdAt'];
        this.vehicleVRN= res['vehicleRegistrationNumber'];
        this.firstName= res['firstName'];
        this.lastName= res['lastName'];
-       this.natureOfClaim= res['natureOfClaim']; 
+       this.selectedValue= res['natureOfClaim']; 
        this.dateOfLoss= res['dateOfLoss']; 
        console.log(res)
     })
   }
+
+  ngOnInit() {
+  }
   
   updateClaim(){
+    this.isClicked = true;
     const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update/details",{
       "claimId": this.claimId,
       "dateOfLoss": this.dateOfLoss,
-      "natureOfClaim": this.natureOfClaim,
+      "natureOfClaim": this.selectedValue,
   })
 
   .subscribe(data => {
     if (data) {  
-     this.successSwal.show();
+     this.isClicked = false;
     } else {
       this.failedSwal.show();
+      this.isClicked = false;
     }
   }, error => {
-    console.log(Response); 
+    this.isClicked=false;
+    this.data.error(error['message']);
     this.failedSwal.show();
   });
   }
 
 closeClaim(){
+  this.isClicked=true;
  const data = this.httpClient.post("http://108.61.174.41:7070/api/claims/update/status",{
       "claimId": +this.claimId,
       "status": false
@@ -71,12 +78,15 @@ closeClaim(){
 
   .subscribe(data => {
     if (data) {  
+      this.isClicked=false;
      this.successSwal.show();
     } else {
+      this.isClicked=false;
       this.failedSwal.show();
     }
   }, error => {
-    console.log(error); 
+    this.data.error(error['message']);
+    this.isClicked=false;
     this.failedSwal.show();
   });
   }

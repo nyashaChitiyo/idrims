@@ -17,6 +17,7 @@ export class RegisterUserComponent implements OnInit {
   firstname: string;
   nationalID: string;
   phoneNumber: string;
+  isClicked = false;
   surname: string;
   userGroup: string;
   @ViewChild('successSwal') private successSwal: SwalComponent;
@@ -28,6 +29,7 @@ export class RegisterUserComponent implements OnInit {
  
   postProfile(){
     if(this.validate()){
+      this.isClicked = true;
   this.httpClient.post('http://108.61.174.41:7070/api/user/agent/create/agent',
   {
       "email": this.email,
@@ -41,14 +43,16 @@ export class RegisterUserComponent implements OnInit {
   })
   .subscribe(data => {
     if (data['success'] === true) {  
+      this.isClicked=false;
      this.successSwal.show();
       this.reset();
     } else {
+      this.isClicked= false;
       this.data.error('internal server error');
     }
       }, 
     error => {
-      console.log(error)
+      this.isClicked = false;
       this.data.error(error['message']);
     });}
   }

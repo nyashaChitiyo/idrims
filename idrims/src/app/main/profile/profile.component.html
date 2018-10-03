@@ -1,5 +1,6 @@
 <div class="content-wrapper">
 <div class="row">
+  <app-message></app-message>
     <div class="col-md-5">
     </div> 
         <div class="panel panel-info">
@@ -50,6 +51,7 @@
     
                </div>
           </div>
+          <app-loading *ngIf="isClick"></app-loading>
         </div>
         <div class="row">
           <app-message></app-message>
