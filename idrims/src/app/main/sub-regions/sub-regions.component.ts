@@ -25,7 +25,7 @@ export class SubRegionsComponent implements OnInit {
         console.log(this.regions);
 
       },error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     );
   }

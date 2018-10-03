@@ -40,7 +40,7 @@ export class AddCollectionPointComponent implements OnInit {
       this.allRegionNames = arr[0];
     },
   error =>{
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
   })
    }
 
@@ -72,7 +72,7 @@ export class AddCollectionPointComponent implements OnInit {
       }
     }, error => {
       this.isClicked = false;
-      this.data.error(error['message'])
+      this.data.error(error['error'].message)
       this.failedSwal.show();
     });  }
     catch(error){
@@ -150,7 +150,7 @@ export class AddCollectionPointComponent implements OnInit {
         console.log(this.allRegionNames);
       }, error=>{
         this.isClicked = false;
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       })
   }
   ngOnInit() {

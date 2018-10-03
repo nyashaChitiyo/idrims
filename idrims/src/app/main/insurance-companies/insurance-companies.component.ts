@@ -25,7 +25,7 @@ export class InsuranceCompaniesComponent implements OnInit {
         arr.push(data)
         this.companies = arr[0];
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

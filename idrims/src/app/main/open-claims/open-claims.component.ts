@@ -46,7 +46,7 @@ export class OpenClaimsComponent implements OnInit {
         this.claims = arr[0];
         console.log(data);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }
@@ -78,7 +78,7 @@ export class OpenClaimsComponent implements OnInit {
       this.failedSwal.show();
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   }); 
   }

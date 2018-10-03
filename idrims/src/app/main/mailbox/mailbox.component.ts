@@ -55,7 +55,7 @@ export class MailboxComponent implements OnInit {
         this.requests = arr[0].filter(
           order => order.transactionStatus === 'ORDER');
       }, error =>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }
@@ -78,7 +78,7 @@ export class MailboxComponent implements OnInit {
         }
       }, error=>{
         this.isClick = false; 
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

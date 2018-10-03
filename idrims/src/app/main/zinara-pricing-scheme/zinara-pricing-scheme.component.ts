@@ -23,7 +23,7 @@ export class ZinaraPricingSchemeComponent implements OnInit {
         arr.push(taxclasses)
         this.taxclasses = arr[0];
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   } 

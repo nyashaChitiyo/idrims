@@ -37,7 +37,7 @@ export class ViewCustomersComponent implements OnInit {
           this.dataTable = table.DataTable();
           console.log(arr[0]);
         }, error => {
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         }
       ) 
     }

@@ -82,12 +82,18 @@ export class GetIdriveComponent implements OnInit {
           console.log(data1)
         }
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       });
    }
   }
   ngOnInit() {
 
+    this.activatedRoute.queryParams.subscribe(params =>{
+      console.log(params)
+      this.insuranceCompanySelect = params['insuranceCompany'];
+      this.insuranceTypeSelect = params['insuranceType'];
+
+    })
     var id: number = +localStorage.getItem('userId');
     // this.getIdrive();
 
@@ -117,7 +123,7 @@ export class GetIdriveComponent implements OnInit {
         arr.push(data)
         this.companies = arr[0];
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
     this.demo.get('http://108.61.174.41:7070/api/location/view/allRegions')
@@ -128,7 +134,7 @@ export class GetIdriveComponent implements OnInit {
       let regionIds = arr[0].map(a => a.id);
       this.allRegionNames = arr[0];
     }, error=>{
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
     })
   }
 
@@ -168,7 +174,7 @@ export class GetIdriveComponent implements OnInit {
         else
         this.failedSwal.show();
       },error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       });
       }
   getColPoints(){
@@ -187,7 +193,7 @@ export class GetIdriveComponent implements OnInit {
         
         console.log(this.allRegionNames);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
         this.isClick=true;
       })}
       else if(this.isDelivery){
@@ -204,7 +210,7 @@ export class GetIdriveComponent implements OnInit {
             
             console.log(this.allRegionNames);
       },error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       })}
   }
 
@@ -223,7 +229,7 @@ export class GetIdriveComponent implements OnInit {
         
         console.log(this.allSuburbs);
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       })
   }
     onEditClick(){
@@ -241,7 +247,7 @@ export class GetIdriveComponent implements OnInit {
         
         console.log(this.allRegionNames);
       },error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       })
     }
     else{
@@ -259,7 +265,7 @@ export class GetIdriveComponent implements OnInit {
           
           console.log(this.allRegionNames);
         }, error=>{
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         })}
   }
  
@@ -332,7 +338,8 @@ export class GetIdriveComponent implements OnInit {
         this.failedSwal.show();
       }, error=>{
         this.isClick=false;
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
+        console.log(error)
       });}
       else if(localStorage.getItem('userGroup')==='AGENT01'){
         this.getCustomerIdrive();

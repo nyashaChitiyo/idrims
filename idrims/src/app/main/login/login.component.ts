@@ -44,16 +44,12 @@ export class LoginComponent implements OnInit, AfterViewInit {
     console.log('Local height: ' + this.innerHeight);
   }
 
-  async login() {
+   login() {
     
     if (this.validate()) {
-      this.loading.onRequestStarted();
-      var msg: string = await this.session.login(this.username, this.password);
-      console.log(msg)
-     /* if(msg=="success") 
-      this.data.error(msg);
-      else
-      this.data.success("login successful")*/
+      
+     this.session.login(this.username, this.password);
+
     }
   }
 

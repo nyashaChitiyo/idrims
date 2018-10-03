@@ -38,7 +38,7 @@ export class ClosedClaimsComponent implements OnInit {
    
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.failedSwal.show();
   }); 
    }

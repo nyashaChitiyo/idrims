@@ -41,7 +41,7 @@ export class AgentTransactionsComponent implements OnInit {
         console.log(this.transactions);
         this.temp_var=true;
       }, error=>{
-        this.data.error(error['message']);
+        this.data.error(error['error'].message);
       }
     ) 
   }

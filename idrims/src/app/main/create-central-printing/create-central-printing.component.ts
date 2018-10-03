@@ -56,7 +56,7 @@ export class CreateCentralPrintingComponent implements OnInit {
         
       }
     }, error => {
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
       this.isClicked=false;
       this.failedSwal.show();
     });  }

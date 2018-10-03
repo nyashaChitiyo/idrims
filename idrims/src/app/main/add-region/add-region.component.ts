@@ -42,7 +42,7 @@ export class AddRegionComponent implements OnInit {
           
           console.log(this.allPrints);
         }, error=>{
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         });
        }
 
@@ -68,7 +68,7 @@ export class AddRegionComponent implements OnInit {
       
     }
   }, error => {
-    this.data.error(error['message']);
+    this.data.error(error['error'].message);
     this.isClicked=false;
     this.failedSwal.show();
   }); 

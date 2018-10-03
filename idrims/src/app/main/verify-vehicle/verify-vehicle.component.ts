@@ -56,7 +56,7 @@ export class VerifyVehicleComponent implements OnInit {
           
           console.log(this.licTaxClasses);
         }, error => {
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
         }); 
       }
 
@@ -69,7 +69,7 @@ export class VerifyVehicleComponent implements OnInit {
 
               console.log(this.insTaxClasses);
             }, error=>{
-              this.data.error(error['message']);
+              this.data.error(error['error'].message);
             }
           ) 
         } 
@@ -120,7 +120,7 @@ return false;
           }
         }, error => {
           this.isClicked=false;
-          this.data.error(error['message']);
+          this.data.error(error['error'].message);
           this.failedSwal.show();
         }); 
         }

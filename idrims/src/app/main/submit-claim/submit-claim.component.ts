@@ -37,7 +37,7 @@ export class SubmitClaimComponent implements OnInit {
         
       }
     },error=>{
-      this.data.error(error['message'])
+      this.data.error(error['error'].message)
     })
   }
   onEditClick(){
@@ -70,7 +70,7 @@ export class SubmitClaimComponent implements OnInit {
         this.failedSwal.show();
       }
     }, error=>{
-      this.data.error(error['message']);
+      this.data.error(error['error'].message);
       this.isClick=false;
     })}
   }
