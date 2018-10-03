@@ -19,6 +19,7 @@
         <th>Phone Number</th>
         <th>First Name</th>
         <th>Surname</th>
+        <th>id</th>
         <th>View</th>
       </tr>
       </thead>
@@ -27,6 +28,7 @@
         <td>{{customer.phoneNumber}}</td>
         <td>{{customer.firstname}}</td>
         <td>{{customer.lastname}}</td>
+        <td>{{customer.nationalId}}</td>
         <td><button (click)="getCustomer(user)" class="btn btn-primary btn-block margin-bottom">view</button></td>
       </tr>
       </tbody>
