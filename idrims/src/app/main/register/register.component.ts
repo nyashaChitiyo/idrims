@@ -11,10 +11,7 @@ import {SwalComponent} from '@toverux/ngx-sweetalert2';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  selectedValue: string;
-  allColPointNames= [];
-  colPoint = '';
-  colPointIds = '';
+
   email: string;
   address: string;
   firstname: string;

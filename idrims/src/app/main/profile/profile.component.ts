@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
   selectedValue: string="";
   allSubRegions = [];
   selectedReg: string="";
-  allColPoints = [];
+  allColPoints;
   allSuburbs = [];
   changeState;
   selectedCol: number =0;
@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
   vehicleNames= [];
   oldPin;
   streetAddress:string;
+  collectionP:string;
   newPin;
   confirmPin;
   
@@ -61,7 +62,8 @@ export class ProfileComponent implements OnInit {
         if(data1){
           this.dataAddress = data1
           this.streetAddress = this.dataAddress.streetAdrress
-   
+          this.collectionP = this.dataAddress.collectionPointName;
+          console.log(data1)
         }
       }, error=>{
         this.data.error('Please add address to your profile')
@@ -71,8 +73,6 @@ export class ProfileComponent implements OnInit {
     this.email = localStorage.getItem('email');
     this.nationalId = localStorage.getItem('nationalId');
     this.phoneNumber = localStorage.getItem('phoneNumber');
-
-
    }
 
   ngOnInit() {
@@ -91,7 +91,7 @@ export class ProfileComponent implements OnInit {
 
   getColPoints(){
 
-    if(this.isCollection){
+    if(this.isCollection || this.isDelivery){
     this.demo.post('http://108.61.174.41:7070/api/location/view/CollectionPointInSubRegion',
     {
       "id": +this.selectedReg
@@ -99,6 +99,7 @@ export class ProfileComponent implements OnInit {
       .subscribe(data => {
         let arr = [];
         arr.push(data);
+        console.log(data)
         let arr1 = arr[0].map(a => a.name);
         //let regionIds = arr[0].map(a => a.id);
         this.allColPoints = arr[0];       
@@ -106,7 +107,7 @@ export class ProfileComponent implements OnInit {
       },error=>{
         this.data.error(error['error'].message);
       })} 
-      else if(this.isDelivery){
+     if(this.isDelivery){
         this.demo.post('http://108.61.174.41:7070/api/location/view/SuburbInSubRegion',
         {
           "id": +this.selectedReg
@@ -172,7 +173,8 @@ export class ProfileComponent implements OnInit {
   changeLocation(){
     if(this.validateAddress() && (this.validateCollection() || this.validateDelivery())){     
      if(this.allColPoints && !(this.dataAddress)) {
-       this.isClick = true;
+      this.isClick = true;
+      
       let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
       if(this.isCollection){
       this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
@@ -180,9 +182,9 @@ export class ProfileComponent implements OnInit {
         "collectionPointId": +this.selectedCol,
         "collectionPointName": arr1['name'],
         "id": 0,
-        "regionId": this.selectedValue,
+        "regionId": +this.selectedValue,
         "streetAdrress": "",
-        "subRegionId": this.selectedReg,
+        "subRegionId": +this.selectedReg,
         "suburbId": 0,
         "userId": +localStorage.getItem('userId')
       })
@@ -206,10 +208,10 @@ export class ProfileComponent implements OnInit {
             "collectionPointId": 0,
             "collectionPointName": '',
             "id": 0,
-            "regionId": this.selectedValue,
+            "regionId": +this.selectedValue,
             "streetAdrress": this.delAddress,
-            "subRegionId": this.selectedReg,
-            "suburbId": this.selectedSurb,
+            "subRegionId": +this.selectedReg,
+            "suburbId": +this.selectedSurb,
             "userId": +localStorage.getItem('userId')
           })
                 .subscribe(data => {
@@ -233,19 +235,46 @@ export class ProfileComponent implements OnInit {
     }
   }
   changeDelivery(){
-    console.log('in change');
-    console.log(this.dataAddress)
+  
+      console.log(this.allColPoints)
     let arr1 = this.allColPoints.find(a => a.id == this.selectedCol);
     this.isClick=true;
+    var colPointId: number;
+    var colPointName: string;
+    var id: string;
+    var regionId: string;
+    var streetAddress: string;
+    var subRegionId: string;
+    var surbubId: string;
+
+    if(this.isCollection){
+      colPointId = this.selectedCol;
+      colPointName = arr1['name'],
+      id = this.dataAddress['id'];
+      regionId = this.selectedValue;
+      streetAddress = this.dataAddress['streetAdrress'];
+      subRegionId = this.selectedReg,
+      surbubId = this.dataAddress['suburbId'];    
+    }
+
+    if(this.isDelivery){
+      colPointId = this.dataAddress['collectionPointId'];
+      colPointName = this.dataAddress['collectionPointName'];
+      id = this.dataAddress['id'];
+      regionId = this.selectedValue;
+      streetAddress = this.delAddress;
+      subRegionId = this.selectedReg,
+      surbubId = this.selectedSurb;   
+    }
     this.demo.post('http://108.61.174.41:7070/api/user/update/deliveryAddress',
     {
-      "collectionPointId":  +this.selectedCol,
-      "collectionPointName": this.dataAddress.collectionPointName,
-      "id": this.dataAddress.id,
-      "regionId": this.selectedValue,
-      "streetAdrress": this.delAddress,
-      "subRegionId": this.selectedReg,
-      "suburbId": this.selectedSurb,
+      "collectionPointId":  colPointId,
+      "collectionPointName": colPointName,
+      "id": +id,
+      "regionId": +regionId,
+      "streetAdrress": streetAddress,
+      "subRegionId": +subRegionId,
+      "suburbId": +subRegionId,
       "userId": +localStorage.getItem('userId')
     })
           .subscribe(data => {
@@ -260,8 +289,7 @@ export class ProfileComponent implements OnInit {
             this.isClick=false;
             this.data.error(error['error'].message);
           })
-    
-  }
+}
 
   changePin(){
     if(this.validatePin()){

@@ -65,7 +65,7 @@ import { AgentTransactionsComponent } from './main/agent-transactions/agent-tran
 import { AgentGetIdriveComponent } from './main/agent-get-idrive/agent-get-idrive.component';
 import {QuotationDetailsComponent} from './main/quotation-details/quotation-details.component';
 import {ProcessPaymentComponent} from './main/process-payment/process-payment.component';
-
+import {QuotationComponent} from './main/quotation/quotation.component';
 import { AgentDashboardComponent } from './main/agent-dashboard/agent-dashboard.component';
 //import { BackofficeDashboardComponent } from './main/backoffice-dashboard/backoffice-dashboard.component';
 import { SBbackofficeDashboardComponent } from './main/sbbackoffice-dashboard/sbbackoffice-dashboard.component';
@@ -150,9 +150,9 @@ const appRoutes: Routes = [
   {path: 'agent/addVehicle', component: AddVehicleComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myVehicles', component: MyVehiclesComponent, canActivate:[AuthGuardRouteService]}, 
   {path: 'customer/getIdrive', component: GetIdriveComponent, canActivate:[AuthGuardRouteService]},
-  {path: 'customer/getIdrive/:vehicleRegistrationNumber', component: QuotationDetailsComponent},
+  {path: 'customer/getIdrive/:vehicleRegistrationNumber', component: QuotationDetailsComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/getIdrive/:vehicleRegistrationNumber/:quotationId/:grandTotal', component: ProcessPaymentComponent}, 
-  {path: 'customer/getIdrive/generate/quote', component: GetIdriveComponent}, 
+  {path: 'customer/getIdrive/generate/quote', component: QuotationComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myPendingVehicles', component: MypendingVerificationComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myVerifiedVehicles', component: MyVerifiedVehiclesComponent, canActivate:[AuthGuardRouteService]},
   {path: 'customer/myTransactions', component: MyTransactionsComponent, canActivate:[AuthGuardRouteService]},

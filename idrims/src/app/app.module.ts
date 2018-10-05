@@ -105,6 +105,7 @@ import {MessageComponent} from './main/message/message.component';
 import {DataService} from './main/data.service';
 import { ZinaraReportsComponent } from './main/zinara-reports/zinara-reports.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {QuotationComponent} from './main/quotation/quotation.component';
 import {WebsocketService} from './websocket.service';
 import { SBadminReportsComponent } from './main/sbadmin-reports/sbadmin-reports.component';
 import { SupervisorAgentsManagementComponent } from './main/supervisor-agents-management/supervisor-agents-management.component';
@@ -137,6 +138,7 @@ import { ViewSuburbsComponent } from './main/view-suburbs/view-suburbs.component
     VehiclesComponent,
     CollectionPointsComponent,
     InsuranceCompaniesComponent,
+    QuotationComponent,
     ProductsComponent,
     VerifyVehicleComponent,
     AddCollectionPointComponent,
