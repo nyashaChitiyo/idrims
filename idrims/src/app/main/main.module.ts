@@ -90,7 +90,6 @@ import { CreateSuburbComponent } from './create-suburb/create-suburb.component';
 import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
 
 
-
 @NgModule({
   imports: [
     CommonModule
@@ -117,6 +116,7 @@ import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
   CustomerComponent,
   ClosedClaimsComponent,
   OpenClaimsComponent,
+  QuotationComponent,
   PricingSchemeComponent,
   ZinaraPricingSchemeComponent,
   InsurancePricingSchemeComponent,
@@ -154,7 +154,6 @@ import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
   AgentGetIdriveComponent,
   QuotationDetailsComponent,
   ProcessPaymentComponent,
-  QuotationComponent,
   CustomerDashboardComponent,
   AgentDashboardComponent,
   BackofficeDashboardComponent,

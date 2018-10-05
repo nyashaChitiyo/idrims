@@ -29,7 +29,7 @@
                     <tr>
                       <td>Contact details</td>
                       <td>{{phoneNumber}}</td>
-                      <td><a>{{email}}</a></td>
+                      <td></td>
                     </tr>
                     <br>
                     <tr>
@@ -38,7 +38,11 @@
                     <tr>
                         <td>Home Address</td>
                         <td>{{streetAddress}}</td>
-                      </tr>
+                    </tr>
+                    <tr>
+                      <td>Collection Point</td>
+                      <td>{{collectionP}}</td>
+                  </tr>
                   </tbody>
                 </table>              
                 <button type="submit" class="btn btn-primary" (click)="AddAddress()">Add / Update Address</button>
@@ -54,7 +58,7 @@
           <app-loading *ngIf="isClick"></app-loading>
         </div>
         <div class="row">
-          <app-message></app-message>
+  
         <div *ngIf = "isAddAddress"class="card">
             <div class="col-md-3 col-lg-3 "></div>
             <div class="col-md-3 col-lg-9 ">

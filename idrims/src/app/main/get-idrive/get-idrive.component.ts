@@ -275,9 +275,9 @@ export class GetIdriveComponent implements OnInit {
  
   
   getIdrive() {
-    this.isClick = true;
+    
     if(this.isPreffered || (this.validateCustomer() && (this.validateIsCollection() || this.validateIsDelivery()))){
-    console.log([this.selectedValue+'  '+this.selectedReg+' '+this.selectedCol+'surburb '+this.selectedSurb]+' address'+this.delAddress)
+    this.isClick = true;
    if(localStorage.getItem('userGroup')==='CUST01'){
     var id: number = +localStorage.getItem('userId');
     let fullDeliveryAddress = [];
@@ -288,12 +288,12 @@ export class GetIdriveComponent implements OnInit {
       if(this.isPrefC){
        colPointId = this.prefData['collectionPointId']
       collectionType = 'C';
-      fullDeliveryAddress = [this.prefData['regionId'], this.prefData['subRegionId'],this.prefData['suburbId'],this.prefData['streetAdrress']];
+      //fullDeliveryAddress = null; 
       }
       else if(this.isPrefD){
         colPointId = this.prefData['collectionPointId'];
         collectionType = 'D';
-        fullDeliveryAddress = null; 
+        fullDeliveryAddress = [this.prefData['regionId'], this.prefData['subRegionId'],this.prefData['suburbId'],this.prefData['streetAdrress']];
       }
     }
     else{
@@ -306,7 +306,8 @@ export class GetIdriveComponent implements OnInit {
     else if(this.changeState == 'C'){
       colPointId = this.selectedCol;
     collectionType = this.changeState;
-    fullDeliveryAddress = null;}}
+    //fullDeliveryAddress = null;
+  }}
     console.log(fullDeliveryAddress)
     console.log(colPointId)
     this.demo.post('http://108.61.174.41:7070/api/orders/create/quotation',

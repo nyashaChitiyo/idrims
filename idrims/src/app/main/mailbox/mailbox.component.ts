@@ -47,8 +47,6 @@ export class MailboxComponent implements OnInit {
     })
     .subscribe(
       (data)=> {
-        console.log('sjdfbjskdbhcbaskbjabcbasdbcajcblasdbajbdcsasjdd')
-        console.log(data)
         let arr = [];
         arr.push(data)
         this.temp_var=true;
@@ -83,8 +81,4 @@ export class MailboxComponent implements OnInit {
     ) 
   }
 
-
-
-
-  
 }

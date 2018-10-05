@@ -66,6 +66,7 @@ export class RegisterAgentComponent implements OnInit {
       
       console.log(this.allPrintingStations);
     }, error=>{
+      this.isClicked=false;
       this.data.error(error['error'].message);
     })
   }
@@ -136,7 +137,8 @@ export class RegisterAgentComponent implements OnInit {
   }
 }
 catch(error){
-  this.data.error(''+error)
+  this.data.error(error['error'].message);
+  this.isClicked=false;
 }
 }}
 stationType(){
