@@ -40,7 +40,7 @@ export class ViewAgentsComponent implements OnInit {
     this.router.navigate(['admin/userManagement/viewAgents/'+user.phoneNumber],data);
   }
 
-  getUsers(){
+  getUsers(){ 
   
     this.demo.post('http://108.61.174.41:7070/api/user/view/group',
   {
