@@ -8,8 +8,8 @@
     <p class="login-box-msg">Sign in to start your session</p>
 
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Username">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" class="form-control" [(ngModel)]="username" placeholder="Phone number">
+        <span class="glyphicon glyphicon-earphone form-control-feedback"></span>
       </div>
       <br>
       <div class="form-group has-feedback">
@@ -31,8 +31,9 @@
       </div>
     </div>
 
-    <a routerLink="/forgotPassword">I forgot my password</a><br>
-    <a routerLink="/register" class="text-center">Register a new membership</a>
+    <a class="a" routerLink="/forgotPassword">I forgot my password</a>
+    <br>
+    <a routerLink="/register" class="text-center">Register</a>
 
   </div>
 <app-loading *ngIf="loading.loading"></app-loading>

@@ -94,7 +94,7 @@ export class SessionsService {
       }
     }, error =>{
       //msg = "error";
-      
+      console.error(error)
       this.loading.onRequestFinished();
      
       this.data.error(error['error'].message);
@@ -115,7 +115,7 @@ console.log(message)
 }
   isAuthenticated(roles: string[]): Observable<boolean> {
     console.log('auth status: ' + this.isLoggedIn);
-    //this.loading.onRequestFinished();
+
     return this.isLoggedIn ? of(true) : of(false);
   }
   logout(): void {
@@ -134,7 +134,6 @@ console.log(message)
   }
   getUserInformation () {
     const details = { 'phoneNumber' : '0775181633'};
-    // tslint:disable-next-line:max-line-length
     this.httpClient.get('http://108.61.174.41:7070/api/user/me')
     .subscribe(userData => {
       this.isLoggedIn = true;

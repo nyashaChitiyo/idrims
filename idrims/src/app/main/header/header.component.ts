@@ -10,9 +10,11 @@ import {WebsocketService} from "../../websocket.service";
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  fullName: string;
-  userType: string;
-  userStation: string;
+  lastname: string;
+  userGroup: string;
+  isCustomer;
+  firstname: string;
+  userStationName: string;
   unverifiedcount = [];
   pendingVerificationNotification = [];
   openClaims = [];
@@ -22,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(private session: SessionsService, private router: Router,private httpClient: HttpClient, private websocket: WebsocketService) {
 
-    if(localStorage.getItem('userGroup')==='ADMIN01' || localStorage.getItem('userGroup')==='AGENT01'){
+    if(localStorage.getItem('userGroup')==='ADMIN01' || localStorage.getItem('userGroup')==='AGENT01' || localStorage.getItem('userGroup') === 'CUST01'){
     this.verifyUser();
     let stompClient = this.websocket.connect();
     stompClient.connect({}, frame => {
@@ -43,9 +45,10 @@ export class HeaderComponent implements OnInit {
         })
     });}
 
-    this.fullName = localStorage.getItem('firstname');
-    this.userType = localStorage.getItem('userGroup');
-    this.userStation = localStorage.getItem('userStationName');
+    this.firstname = localStorage.getItem('firstname');
+    this.lastname = localStorage.getItem('lastname');
+    this.userGroup = localStorage.getItem('userGroup');
+    this.userStationName = localStorage.getItem('userStationName');
     this.countUnverified();
   }
 
@@ -58,6 +61,8 @@ export class HeaderComponent implements OnInit {
       this.isAdmin = true;
     else if(localStorage.getItem('userGroup') ==='AGENT01')
       this.isAgent = true;
+    else if(localStorage.getItem('userGroup') ==='CUST01')
+    this.isCustomer= true
   }
   printDisks(){
     this.disks = [];

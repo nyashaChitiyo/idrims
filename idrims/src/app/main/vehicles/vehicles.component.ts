@@ -30,6 +30,7 @@ export class VehiclesComponent implements OnInit {
 
   ngOnInit() { 
     this.dtOptions = {
+      order: [[1, "desc"]],
       pagingType: 'full_numbers',
       pageLength: 5
     };
@@ -42,6 +43,7 @@ export class VehiclesComponent implements OnInit {
     .subscribe(
       (data: Response)=> {
         let arr = [];
+        console.log(data)
         arr.push(data)
         this.vehicles = arr[0];
         this.temp_var=true;

@@ -48,7 +48,6 @@ export class ProcessPaymentComponent implements OnInit {
     .subscribe(data => {
      
       if (data['status'] =='success') {   
-        this.isClick=false;
         this.data.warning('Please enter pin your mobile phone');
         this.trackReference = data;
         this.trackPayment();
@@ -79,21 +78,21 @@ export class ProcessPaymentComponent implements OnInit {
       
         //this.data.success(data['message']);
 
-        Observable.interval(6000)
-        .take(20).map((x) => x+1)
-        .subscribe((x) => {
          
-          if(data['status']=='SUCCESS'){
+          if(data['status']=='COMPLETED'){
             this.isClick=false;
           this.data.success(data['status']);
+          return
          }
           else if((data['status'])==('PENDING')){
-          this.isClick = true;
+          this.trackPayment();
           }
           else{
           this.data.error(data['status']);
-          this.isClick = false;}
-        })
+          this.isClick = false;
+        return
+        }
+    
         this.ecocashNumber = '';
 
     }, error=>{

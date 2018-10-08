@@ -16,8 +16,7 @@ export class AuthGuard implements CanActivate {
     this.authService.redirectUrl = url;
     const roles = route.data['roles'] as Array<string>;
     return this.authService.isAuthenticated(roles)
-      // .take(1)
-      // .map(user => !!user)
+ 
       .do(authenticated => {
 
         if (!authenticated) {

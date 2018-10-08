@@ -65,8 +65,9 @@
                 <img src="assets/img/avatar.png" class="img-circle" alt="User Image">
   
                 <p>
-                  {{firstname}} - {{userGroup}}
-                  <small>Stationed at {{userStationName}}</small>
+                  {{firstname}} - {{lastname}}
+                  <small *ngIf="isCustomer">Customer</small>
+                  <small *ngIf="!isCustomer">Stationed at {{userStationName}}</small>
                 </p>
               </li>
               <!-- Menu Body -->
