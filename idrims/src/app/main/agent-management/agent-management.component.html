@@ -25,7 +25,7 @@
                       <th>Phone Number</th> 
                       <th>First Name</th>
                       <th>Surname</th> 
-                      <th>Station</th> 
+                      <th>Location</th> 
                       <th>View</th>
                     </tr>  
                   </thead>
@@ -34,7 +34,7 @@
                       <td>{{user.phoneNumber}}</td>
                       <td>{{user.firstname}}</td>
                       <td>{{user.lastname}}</td>
-                      <td>{{user.userStatus}}</td>
+                      <td>{{user.userStationName}}</td>
                       <!--<td><button routerLink="/userManagement/{{user.phoneNumber}}" class="btn btn-primary btn-block margin-bottom">view</button></td>-->
                       <td><button type="button" (click)="getAgent()" class="btn btn-primary btn-block margin-bottom">view</button></td>
                     </tr>

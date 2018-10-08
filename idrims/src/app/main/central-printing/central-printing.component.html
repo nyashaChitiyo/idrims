@@ -24,7 +24,8 @@
   <div class="box">
       <!-- /.box-header -->
       <div class="box-body">
-        <table class="table table-hover" id="" cellspacing="0">
+    <table id="users" datatable [dtOptions]="dtOptions" class="table table-striped table-bordered" *ngIf="this.temp_var">
+        
           <thead>
 
           <tr>

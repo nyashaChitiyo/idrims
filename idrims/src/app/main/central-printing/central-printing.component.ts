@@ -9,13 +9,23 @@ import {DataService} from '../data.service';
 })
 export class CentralPrintingComponent implements OnInit {
 
+
+  dtOptions: DataTables.Settings = {};
+
   prints;
+
+  public temp_var: Object = false;
+
   constructor(private demo: DemoService, private data: DataService) {
     this.getCentralPrinting()
   }
 
 
   ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5
+    };
 
   }
    getCentralPrinting(){
@@ -26,6 +36,8 @@ export class CentralPrintingComponent implements OnInit {
         let arr = [];
         arr.push(data)
         this.prints = arr[0];
+        this.temp_var=true;
+
 
       }
     ) }
