@@ -79,27 +79,15 @@ export class GetIdriveComponent implements OnInit {
           this.prefData = data1;
           this.myAddress = data1['streetAdrress'];
           this.myCollectionPoint = data1['collectionPointName'];
-          console.log(data1)
         }
       }, error=>{
-        this.data.error(error['error'].message);
+       // this.data.error(error['error'].message);
       });
    }
   }
   ngOnInit() {
 
-    /*this.activatedRoute.queryParams.subscribe(params =>{
-      console.log(params)
-      this.insuranceCompanySelect = params['insuranceCompany'];
-      this.insuranceTypeSelect = params['insuranceType'];
-      this.insurancePeriodSelect = params['insurancePeriod'];
-      this.vehicleRegistrationNumber1 = params['vehicleRegistrationNumber'];
-      this.vehicle = params['vehicleRegistrationNumber'];
-      this.zbcPeriodSelect = params['zbcPeriod'];
-      this.zinaraPeriodSelect = params['zinaraPeriod']
-    })*/
     var id: number = +localStorage.getItem('userId');
-    // this.getIdrive();
 
     this.httpClient.post('http://108.61.174.41:7070/api/subscriptions/view/verified',
     {
@@ -375,7 +363,7 @@ export class GetIdriveComponent implements OnInit {
           this.isPreffered = true;
         }
         else{
-          this.data.error('Register Address to continue');
+          this.data.error('Register Address to your profile to continue');
         }
       }
       }

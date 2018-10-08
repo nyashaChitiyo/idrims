@@ -43,17 +43,16 @@ export class AgentRegisterCustomerComponent implements OnInit {
      'userStation' : 0
     })
     .subscribe(data => {
-      if (data['success'] == true) {  
+      if (data) {  
         this.isClick=false;
         this.data.success(data['message']);
        this.successSwal.show();
         this.reset();
-      } else {
-        this.failedSwal.show();
       }
     }, error => {
       this.data.error(error['error'].message);
       this.isClick=false;
+      console.error(error)
       this.failedSwal.show();
     }); 
     }

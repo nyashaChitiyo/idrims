@@ -75,13 +75,14 @@ export class ProcessPaymentComponent implements OnInit {
     }
     )
     .subscribe(data => {
-      
-        //this.data.success(data['message']);
 
          
           if(data['status']=='COMPLETED'){
             this.isClick=false;
-          this.data.success(data['status']);
+          this.data.success('Payment Successful');
+          this.successSwal.show();
+          this.router.navigateByUrl('customer/Dashboard');
+          
           return
          }
           else if((data['status'])==('PENDING')){

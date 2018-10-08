@@ -37,12 +37,11 @@ export class AgentSubmitClaimComponent implements OnInit {
        "vehicleRegistrationNumber": this.VRN
       })
       .subscribe(data => {
-        if (data['status'] === "success") {  
+        if (data) {  
          this.successSwal.show();
           this.reset();
-        } else {
           this.isClick=false;
-          this.failedSwal.show();
+          this.data.success('Claim submitted successfully you will be contacted soon');
         }
       }, error => {
         this.isClick=false;
