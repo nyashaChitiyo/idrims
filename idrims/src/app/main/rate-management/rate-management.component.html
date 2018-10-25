@@ -1,0 +1,39 @@
+<div class="content-wrapper">
+    <hr>
+    <!-- Content Header (Page header) -->
+    <section align= "center" class="content-header">
+      <h1>
+        <strong>Rate Management</strong>
+      </h1>
+      <br>
+      <br>
+      <div class="box">
+          <hr>
+          <!-- /.box-header -->
+          <!-- form start -->
+            <div class="box-body"> 
+              <div class="row">
+                <div class="col-md-4">
+                    <span class="input-group-addon"><b>USD</b></span>
+                    <input type="text" [(ngModel)]= "usd" name="usd" id="usd" class="form-control" style="text-align: center">                
+                </div>
+                <div class="col-md-4">
+                    <span class="input-group-addon"><b>RTGS Money</b></span>
+                    <input type="text" [(ngModel)]= "rtgs" name="rtgs" id="rtgs" (change)="changeRtgs()"class="form-control" (keyup)="onRtgs()" style="text-transform: uppercase">                
+                </div>
+                <div class="col-md-4">
+                    <span class="input-group-addon"><b>Percentage</b></span>
+                    <input type="text" [(ngModel)]= "percentage" name="percentage" (change)="changePercentage()" id="percentage" (keyup)="onPercentage()" class="form-control"style="text-transform: uppercase">                
+                </div>
+              </div>
+            </div>
+            </div>
+      
+            <div class="box-footer">
+              <button type="submit" class="btn btn-danger" (click)="postVehicle()">Submit Rate</button>
+            </div>
+    </section>
+    <hr>
+
+    
+</div>

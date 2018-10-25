@@ -88,6 +88,7 @@ import { CreateCentralPrintingComponent } from './create-central-printing/create
 import { SuburbsComponent } from './suburbs/suburbs.component';
 import { CreateSuburbComponent } from './create-suburb/create-suburb.component';
 import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
+import { RateManagementComponent } from './rate-management/rate-management.component';
 
 
 @NgModule({
@@ -180,6 +181,7 @@ import { ViewSuburbsComponent } from './view-suburbs/view-suburbs.component';
   CreateCentralPrintingComponent,
   SuburbsComponent,
   CreateSuburbComponent,
-  ViewSuburbsComponent]
+  ViewSuburbsComponent,
+  RateManagementComponent]
 })
 export class MainModule { }

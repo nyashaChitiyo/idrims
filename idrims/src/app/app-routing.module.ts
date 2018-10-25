@@ -92,13 +92,14 @@ import { CustomerComponent } from './main/customer/customer.component';
 import { SuburbsComponent } from './main/suburbs/suburbs.component';
 import { CreateSuburbComponent } from './main/create-suburb/create-suburb.component';
 import { ViewSuburbsComponent } from './main/view-suburbs/view-suburbs.component';
-
+import {RateManagementComponent} from './main/rate-management/rate-management.component';
 //import { NgxPermissionsGuard } from 'ngx-permissions';
  
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent}, 
+  {path: 'admin/ratemanagement', component: RateManagementComponent, canActivate:[AuthGuardRouteService]}, 
   {path: 'forgotPassword', component: ForgotPasswordComponent},  
   {path: 'customer/Dashboard', component: CustomerDashboardComponent, canActivate:[AuthGuardRouteService]},
   {path: 'Dashboard', component: DashboardComponent, canActivate:[AuthGuardRouteService]},

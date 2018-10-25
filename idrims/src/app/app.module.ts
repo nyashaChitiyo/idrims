@@ -95,6 +95,7 @@ import { RegisterSupervisorComponent } from './main/register-supervisor/register
 import { SupervisorReportsComponent } from './main/supervisor-reports/supervisor-reports.component';
 import { SupervisorDashBoardComponent } from './main/supervisor-dash-board/supervisor-dash-board.component';
 import { MonthlyReportComponent } from './main/monthly-report/monthly-report.component';
+import {RateManagementComponent} from './main/rate-management/rate-management.component';
 import { WeeklyReportComponent } from './main/weekly-report/weekly-report.component';
 import { DailyReportComponent } from './main/daily-report/daily-report.component';
 import { TransactionReportsComponent } from './main/transaction-reports/transaction-reports.component';
@@ -140,6 +141,7 @@ import { ViewSuburbsComponent } from './main/view-suburbs/view-suburbs.component
     InsuranceCompaniesComponent,
     QuotationComponent,
     ProductsComponent,
+    RateManagementComponent,
     VerifyVehicleComponent,
     AddCollectionPointComponent,
     AddInsuranceCompanyComponent,

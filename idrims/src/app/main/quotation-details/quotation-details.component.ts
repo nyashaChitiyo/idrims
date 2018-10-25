@@ -18,6 +18,7 @@ export class QuotationDetailsComponent implements OnInit {
   deliveryFee;
   grandTotal;
   startDate;
+  rate: number = 2.3;
   endDate;
   policyPeriod;
   governmentLevy;

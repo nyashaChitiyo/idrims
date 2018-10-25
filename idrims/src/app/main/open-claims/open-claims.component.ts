@@ -27,11 +27,6 @@ export class OpenClaimsComponent implements OnInit {
   }
 
   ngOnInit() {
-    // this.activatedRoute.params.subscribe(res =>{
-    //    this.claimID = res['claimId'];
-    //    console.log(this.claimID);
-
-    //  })
   }
 
   getClaims(){

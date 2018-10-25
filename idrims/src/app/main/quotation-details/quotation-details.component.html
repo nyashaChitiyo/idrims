@@ -60,8 +60,17 @@
                         <td><b><a>{{grandTotal | currency}}</a></b></td>
                       </tr>
                     </tbody>
-                  </table>             
-                  <button class="btn btn-primary" (click)="makePayment()">Proceed to payment    {{grandTotal | currency}}</button>
+                  </table>     
+                  <br>
+                  <div class="row">       
+                    <div class="col-md-6">
+                  <button class="btn btn-primary" (click)="makePayment()">USD Balance: &nbsp; &nbsp;{{grandTotal | currency}}</button>
+                </div>
+
+                <div class="col-md-6">
+                    <button class="btn btn-warning" (click)="makePayment()">Mobile Money balance:&nbsp; &nbsp;  {{grandTotal*rate | currency}}</button>
+                  </div> 
+                </div> 
                 </div>
                 <div class="col-md-2 col-lg-2"> </div>
               </div>
